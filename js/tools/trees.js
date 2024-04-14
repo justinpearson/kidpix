@@ -29,7 +29,6 @@ drawTree(750, 600, 60, -Math.PI / 2, 12, 15);
 
 // https://github.com/PavlyukVadim/amadev/tree/master/RecursiveTree
 function drawTree(startX, startY, length, angle, depth, branchWidth) {
-    var rand = Math.random;
     var newLength, newAngle, newDepth, maxBranch = 3,
         endX, endY, maxAngle = 2 * Math.PI / 6,
         subBranches;
@@ -44,7 +43,7 @@ function drawTree(startX, startY, length, angle, depth, branchWidth) {
 
     // tweak color slightly
     const colorOffset = depth <= 2 ? 128 : 64;
-    const randColor = (((rand() * 64) + colorOffset) >> 0);
+    const randColor = (((Math.random() * 64) + colorOffset) >> 0);
     const red = randColor;
     const green = 0;
     const blue = 0;
@@ -52,13 +51,13 @@ function drawTree(startX, startY, length, angle, depth, branchWidth) {
 
     // old:
     // if (depth <= 2) {
-    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(' + '0,0,' + (((rand() * 64) + 128) >> 0) + ')'; // blue
-    //     KiddoPaint.Display.context.strokeStyle = 'rgb(' + (((rand() * 64) + 128) >> 0) + ',0,0)'; // red
-    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(0,' + (((rand() * 64) + 128) >> 0) + ',0)'; // green
+    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(' + '0,0,' + (((Math.random() * 64) + 128) >> 0) + ')'; // blue
+    //     KiddoPaint.Display.context.strokeStyle = 'rgb(' + (((Math.random() * 64) + 128) >> 0) + ',0,0)'; // red
+    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(0,' + (((Math.random() * 64) + 128) >> 0) + ',0)'; // green
     // } else {
-    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(' + '0,20,' + (((rand() * 64) + 64) >> 0) + ')'; // blue
-    //     KiddoPaint.Display.context.strokeStyle = 'rgb(' + (((rand() * 64) + 64) >> 0) + ',0,20)'; // red
-    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(0,' + (((rand() * 64) + 64) >> 0) + ',20)'; // greeen
+    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(' + '0,20,' + (((Math.random() * 64) + 64) >> 0) + ')'; // blue
+    //     KiddoPaint.Display.context.strokeStyle = 'rgb(' + (((Math.random() * 64) + 64) >> 0) + ',0,20)'; // red
+    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(0,' + (((Math.random() * 64) + 64) >> 0) + ',20)'; // greeen
     // }
 
     KiddoPaint.Display.context.stroke();
@@ -67,12 +66,12 @@ function drawTree(startX, startY, length, angle, depth, branchWidth) {
     if (!newDepth) {
         return;
     }
-    subBranches = (rand() * (maxBranch - 1)) + 1;
+    subBranches = (Math.random() * (maxBranch - 1)) + 1;
     branchWidth *= 0.7;
 
     for (var i = 0; i < subBranches; i++) {
-        newAngle = angle + rand() * maxAngle - maxAngle * 0.5;
-        newLength = length * (0.7 + rand() * 0.3);
+        newAngle = angle + Math.random() * maxAngle - maxAngle * 0.5;
+        newLength = length * (0.7 + Math.random() * 0.3);
         drawTree(endX, endY, newLength, newAngle, newDepth, branchWidth);
     }
 
