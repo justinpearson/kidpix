@@ -2,3 +2,4 @@
 node_modules
 js/app.js
 .firebase
+package-lock.json
