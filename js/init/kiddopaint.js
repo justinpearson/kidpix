@@ -553,11 +553,31 @@ function mouse_wheel(ev) {
 }
 
 function save_to_file() {
-    var canvasToSave = KiddoPaint.Current.modifiedAlt ? trimAndFlattenCanvas(KiddoPaint.Display.main_canvas) : KiddoPaint.Display.main_canvas;
+
+    // jpp - always crop saved png, and remove its transparency.
+    var canvasToSave = trimAndFlattenCanvas(KiddoPaint.Display.main_canvas);
+    // orig:
+    // var canvasToSave = KiddoPaint.Current.modifiedAlt ? trimAndFlattenCanvas(KiddoPaint.Display.main_canvas) : KiddoPaint.Display.main_canvas;
+
     var image = canvasToSave.toDataURL("image/png");
+
+    // nice format for timestamp in filename
+    // https://chat.openai.com/c/926c6bbf-c626-456e-9832-08e5088ecf2b
+    const d = new Date();
+    const formattedDate = [
+        d.getFullYear(),
+        (d.getMonth() + 1).toString().padStart(2, '0'),
+        d.getDate().toString().padStart(2, '0'),
+        d.getHours().toString().padStart(2, '0'),
+        d.getMinutes().toString().padStart(2, '0'),
+        d.getSeconds().toString().padStart(2, '0')
+    ].join('-');
+    // old:
+    // const formattedDate = Date.now();
+
     var a = document.createElement("a");
     a.href = image;
-    a.download = "kidpix-" + Date.now() + ".png";
+    a.download = "kidpix-" + formattedDate + ".png";
     a.click();
 }
 
