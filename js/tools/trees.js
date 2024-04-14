@@ -42,11 +42,25 @@ function drawTree(startX, startY, length, angle, depth, branchWidth) {
     KiddoPaint.Display.context.lineWidth = branchWidth;
     KiddoPaint.Display.context.lineTo(endX, endY);
 
-    if (depth <= 2) {
-        KiddoPaint.Display.context.strokeStyle = 'rgb(0,' + (((rand() * 64) + 128) >> 0) + ',0)';
-    } else {
-        KiddoPaint.Display.context.strokeStyle = 'rgb(0,' + (((rand() * 64) + 64) >> 0) + ',20)';
-    }
+    // tweak color slightly
+    const colorOffset = depth <= 2 ? 128 : 64;
+    const randColor = (((rand() * 64) + colorOffset) >> 0);
+    const red = randColor;
+    const green = 0;
+    const blue = 0;
+    KiddoPaint.Display.context.strokeStyle = `rgb(${red},${green},${blue})`;
+
+    // old:
+    // if (depth <= 2) {
+    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(' + '0,0,' + (((rand() * 64) + 128) >> 0) + ')'; // blue
+    //     KiddoPaint.Display.context.strokeStyle = 'rgb(' + (((rand() * 64) + 128) >> 0) + ',0,0)'; // red
+    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(0,' + (((rand() * 64) + 128) >> 0) + ',0)'; // green
+    // } else {
+    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(' + '0,20,' + (((rand() * 64) + 64) >> 0) + ')'; // blue
+    //     KiddoPaint.Display.context.strokeStyle = 'rgb(' + (((rand() * 64) + 64) >> 0) + ',0,20)'; // red
+    //     // KiddoPaint.Display.context.strokeStyle = 'rgb(0,' + (((rand() * 64) + 64) >> 0) + ',20)'; // greeen
+    // }
+
     KiddoPaint.Display.context.stroke();
     newDepth = depth - 1;
 
