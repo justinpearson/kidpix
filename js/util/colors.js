@@ -79,7 +79,7 @@ KiddoPaint.Colors.All = [KiddoPaint.Colors.Palette.Basic,
     KiddoPaint.Colors.Palette.Greyscale
 ]
 
-KiddoPaint.Colors.Current.PaletteNumber = 0;
+KiddoPaint.Colors.Current.PaletteNumber = 6; // load dani's favorite colors by default.
 KiddoPaint.Colors.Current.Palette = KiddoPaint.Colors.All[KiddoPaint.Colors.Current.PaletteNumber];
 
 KiddoPaint.Colors.rainbowPalette = function() {
