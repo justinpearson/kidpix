@@ -49,7 +49,7 @@ KiddoPaint.Sprite.prevPage = function() {
 
 function init_sprites_submenu() {
     let sheet = KiddoPaint.Sprite.sheets[KiddoPaint.Sprite.sheetPage];
-    const maxcols = 14;
+    const maxcols = 15;
 
     let row = KiddoPaint.Sprite.page;
 
