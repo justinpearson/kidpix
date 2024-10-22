@@ -7,6 +7,7 @@ KiddoPaint.Tools.Toolbox.Tree = function() {
         tool.isDown = true;
         KiddoPaint.Sounds.brushtree();
         drawTree(ev._x, ev._y, 32 * KiddoPaint.Current.scaling, -Math.PI / 2, 12, 15)
+        // drawTree(ev._x, ev._y, 180 * KiddoPaint.Current.scaling, 0, 12, 15) // big tree at 3 o'clock
     };
 
     this.mousemove = function(ev) {};
@@ -28,7 +29,11 @@ function hexToRgb(hex) {
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
-    return {r,g,b};
+    return {
+        r,
+        g,
+        b
+    };
 }
 
 /*
