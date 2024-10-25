@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.RainbowDoughnut = function(step) { // https://stackoverflow.com/questions/22223950/angle-gradient-in-canvas
+KiddoPaint.Brushes.RainbowDoughnut = function (step) { // https://stackoverflow.com/questions/22223950/angle-gradient-in-canvas
     var canvas = document.createElement('canvas');
     var size = 32 * KiddoPaint.Current.scaling;
     canvas.width = size * 2;

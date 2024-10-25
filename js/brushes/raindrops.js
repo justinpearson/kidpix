@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.Raindrops = function(color1) {
+KiddoPaint.Brushes.Raindrops = function (color1) {
     color1 = color1 || 'black';
     let size = (5 + (100 * Math.random())) * KiddoPaint.Current.scaling;
 

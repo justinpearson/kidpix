@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.MeanStreak = function(step) {
+KiddoPaint.Brushes.MeanStreak = function (step) {
     var canvasBrush = document.createElement('canvas');
     var size = 32 * KiddoPaint.Current.scaling;
     canvasBrush.width = size * 2;

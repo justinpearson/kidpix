@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.Looper = function() {
+KiddoPaint.Tools.Toolbox.Looper = function () {
     var tool = this;
     this.isDown = false;
     this.size = 5;
@@ -6,11 +6,11 @@ KiddoPaint.Tools.Toolbox.Looper = function() {
     this.lstep = 0;
     this.lincr = 0.15;
     this.previousCoord = null;
-    this.stroke = function() {
+    this.stroke = function () {
         return KiddoPaint.Textures.Solid(KiddoPaint.Current.modifiedMeta ? KiddoPaint.Colors.randomColor() : KiddoPaint.Current.color);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.previousCoord = {
             x: ev._x + tool.radius * Math.sin(-tool.lstep),
@@ -18,7 +18,7 @@ KiddoPaint.Tools.Toolbox.Looper = function() {
         }
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             let x = ev._x + tool.radius * Math.sin(-tool.lstep);
             let y = ev._y + tool.radius * Math.cos(tool.lstep);
@@ -42,7 +42,7 @@ KiddoPaint.Tools.Toolbox.Looper = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             tool.isDown = false;

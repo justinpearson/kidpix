@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.RotatingPentagon = function(color1, step) {
+KiddoPaint.Brushes.RotatingPentagon = function (color1, step) {
     color1 = color1 || 'black';
     var interval = 50;
     step = step % interval / interval;

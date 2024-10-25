@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.BezFollow = function() {
+KiddoPaint.Tools.Toolbox.BezFollow = function () {
     var tool = this;
     this.isDown = false;
     this.previousEv = null;
@@ -10,22 +10,22 @@ KiddoPaint.Tools.Toolbox.BezFollow = function() {
     };
     this.points = [];
 
-    this.size = function() {
+    this.size = function () {
         return KiddoPaint.Tools.Pencil.size;
     }
 
-    this.texture = function() {
+    this.texture = function () {
         return KiddoPaint.Tools.Pencil.texture();
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.points = [];
         tool.mousemove(ev);
         tool.previousEv = ev;
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             if (ev._y < tool.ylimit.min) {
                 tool.ylimit.min = ev._y;
@@ -45,7 +45,7 @@ KiddoPaint.Tools.Toolbox.BezFollow = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             tool.points.push([ev._x, ev._y]);

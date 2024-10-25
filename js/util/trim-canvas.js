@@ -112,7 +112,7 @@ function trimCanvas2(canvas) {
 }
 
 // https://gist.github.com/timdown/021d9c8f2aabc7092df564996f5afbbf
-var trimCanvas3 = (function() {
+var trimCanvas3 = (function () {
     function rowBlank(imageData, width, y) {
         for (var x = 0; x < width; ++x) {
             if (imageData.data[y * width * 4 + x * 4 + 3] !== 0) return false;
@@ -127,7 +127,7 @@ var trimCanvas3 = (function() {
         return true;
     }
 
-    return function(canvas) {
+    return function (canvas) {
         if (canvas.width == 0 || canvas.height == 0) return canvas;
         var ctx = canvas.getContext("2d");
         var width = canvas.width;
@@ -153,7 +153,7 @@ var trimCanvas3 = (function() {
     };
 })();
 
-var trimAndFlattenCanvas = (function() {
+var trimAndFlattenCanvas = (function () {
     function rowBlank(imageData, width, y) {
         for (var x = 0; x < width; ++x) {
             if (imageData.data[y * width * 4 + x * 4 + 3] !== 0) return false;
@@ -168,7 +168,7 @@ var trimAndFlattenCanvas = (function() {
         return true;
     }
 
-    return function(canvas) {
+    return function (canvas) {
         if (canvas.width == 0 || canvas.height == 0) return canvas;
         var ctx = canvas.getContext("2d");
         var width = canvas.width;

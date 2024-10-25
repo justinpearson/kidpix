@@ -9,7 +9,7 @@
  * @license MIT License <http://www.opensource.org/licenses/mit-license.php>
  */
 
-(function(root, factory) {
+(function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['exports'], factory);
     } else if (typeof exports === 'object') {
@@ -17,7 +17,7 @@
     } else {
         factory(root);
     }
-}(this, function(exports) {
+}(this, function (exports) {
     function Node(obj, dimension, parent) {
         this.obj = obj;
         this.left = null;
@@ -42,7 +42,7 @@
                 return new Node(points[0], dim, parent);
             }
 
-            points.sort(function(a, b) {
+            points.sort(function (a, b) {
                 return a[dimensions[dim]] - b[dimensions[dim]];
             });
 
@@ -80,7 +80,7 @@
 
         // Convert to a JSON serializable structure; this just requires removing
         // the `parent` property
-        this.toJSON = function(src) {
+        this.toJSON = function (src) {
             if (!src) src = this.root;
             var dest = new Node(src.obj, src.dimension, null);
             if (src.left) dest.left = self.toJSON(src.left);
@@ -88,7 +88,7 @@
             return dest;
         };
 
-        this.insert = function(point) {
+        this.insert = function (point) {
             function innerSearch(node, parent) {
 
                 if (node === null) {
@@ -122,7 +122,7 @@
             }
         };
 
-        this.remove = function(point) {
+        this.remove = function (point) {
             var node;
 
             function nodeSearch(node) {
@@ -226,13 +226,13 @@
             removeNode(node);
         };
 
-        this.nearest = function(point, maxNodes, maxDistance) {
+        this.nearest = function (point, maxNodes, maxDistance) {
             var i,
                 result,
                 bestNodes;
 
             bestNodes = new BinaryHeap(
-                function(e) {
+                function (e) {
                     return -e[1];
                 }
             );
@@ -319,7 +319,7 @@
             return result;
         };
 
-        this.balanceFactor = function() {
+        this.balanceFactor = function () {
             function height(node) {
                 if (node === null) {
                     return 0;
@@ -347,14 +347,14 @@
     }
 
     BinaryHeap.prototype = {
-        push: function(element) {
+        push: function (element) {
             // Add the new element to the end of the array.
             this.content.push(element);
             // Allow it to bubble up.
             this.bubbleUp(this.content.length - 1);
         },
 
-        pop: function() {
+        pop: function () {
             // Store the first element so we can return it later.
             var result = this.content[0];
             // Get the element at the end of the array.
@@ -368,11 +368,11 @@
             return result;
         },
 
-        peek: function() {
+        peek: function () {
             return this.content[0];
         },
 
-        remove: function(node) {
+        remove: function (node) {
             var len = this.content.length;
             // To remove a value, we must search through the array to find
             // it.
@@ -394,11 +394,11 @@
             throw new Error("Node not found.");
         },
 
-        size: function() {
+        size: function () {
             return this.content.length;
         },
 
-        bubbleUp: function(n) {
+        bubbleUp: function (n) {
             // Fetch the element that has to be moved.
             var element = this.content[n];
             // When at 0, an element can not go up any further.
@@ -420,7 +420,7 @@
             }
         },
 
-        sinkDown: function(n) {
+        sinkDown: function (n) {
             // Look up the target element and its score.
             var length = this.content.length,
                 element = this.content[n],

@@ -5,7 +5,7 @@
  * Copyright 2011 Evan Wallace
  * Released under the MIT license
  */
-var fx = function() {
+var fx = function () {
     function q(a, d, c) {
         return Math.max(a, Math.min(d, c))
     }
@@ -13,11 +13,11 @@ var fx = function() {
     function w(b) {
         return {
             _: b,
-            loadContentsOf: function(b) {
+            loadContentsOf: function (b) {
                 a = this._.gl;
                 this._.loadContentsOf(b)
             },
-            destroy: function() {
+            destroy: function () {
                 a = this._.gl;
                 this._.destroy()
             }
@@ -33,10 +33,10 @@ var fx = function() {
         if (a.getExtension("OES_texture_float") && a.getExtension("OES_texture_float_linear")) {
             var e = new r(100, 100, a.RGBA, a.FLOAT);
             try {
-                e.drawTo(function() {
+                e.drawTo(function () {
                     c = a.FLOAT
                 })
-            } catch (g) {}
+            } catch (g) { }
             e.destroy()
         }
         this._.texture && this._.texture.destroy();
@@ -54,7 +54,7 @@ var fx = function() {
         this._.isInitialized &&
             a._.width == this.width && a._.height == this.height || B.call(this, d ? d : a._.width, c ? c : a._.height);
         a._.use();
-        this._.texture.drawTo(function() {
+        this._.texture.drawTo(function () {
             h.getDefaultShader().drawRect()
         });
         return this
@@ -68,7 +68,7 @@ var fx = function() {
 
     function f(a, d, c, e) {
         (c || this._.texture).use();
-        this._.spareTexture.drawTo(function() {
+        this._.spareTexture.drawTo(function () {
             a.uniforms(d).drawRect()
         });
         this._.spareTexture.swapWith(e || this._.texture)
@@ -83,7 +83,7 @@ var fx = function() {
     function F() {
         var b = new r(this._.texture.width, this._.texture.height, a.RGBA, a.UNSIGNED_BYTE);
         this._.texture.use();
-        b.drawTo(function() {
+        b.drawTo(function () {
             h.getDefaultShader().drawRect()
         });
         return w(b)
@@ -93,14 +93,14 @@ var fx = function() {
         var b = this._.texture.width,
             d = this._.texture.height,
             c = new Uint8Array(4 * b * d);
-        this._.texture.drawTo(function() {
+        this._.texture.drawTo(function () {
             a.readPixels(0, 0, b, d, a.RGBA, a.UNSIGNED_BYTE, c)
         });
         return c
     }
 
     function k(b) {
-        return function() {
+        return function () {
             a = this._.gl;
             return b.apply(this, arguments)
         }
@@ -140,7 +140,7 @@ var fx = function() {
         this.ya = [];
         this.u = [];
         this.y2 = [];
-        a.sort(function(a, b) {
+        a.sort(function (a, b) {
             return a[0] - b[0]
         });
         for (var c = 0; c < d; c++) this.xa.push(a[c][0]), this.ya.push(a[c][1]);
@@ -229,7 +229,7 @@ var fx = function() {
         a.unsharpMask = a.unsharpMask || new h(null, "uniform sampler2D blurredTexture;uniform sampler2D originalTexture;uniform float strength;uniform float threshold;varying vec2 texCoord;void main(){vec4 blurred=texture2D(blurredTexture,texCoord);vec4 original=texture2D(originalTexture,texCoord);gl_FragColor=mix(blurred,original,1.0+strength);}");
         this._.extraTexture.ensureFormat(this._.texture);
         this._.texture.use();
-        this._.extraTexture.drawTo(function() {
+        this._.extraTexture.drawTo(function () {
             h.getDefaultShader().drawRect()
         });
         this._.extraTexture.use(1);
@@ -424,7 +424,7 @@ var fx = function() {
             e = x.apply(null, a),
             c = y(c);
         return this.matrixWarp([c[0] * e[0] + c[1] * e[3] + c[2] * e[6], c[0] * e[1] + c[1] * e[4] + c[2] * e[7], c[0] * e[2] + c[1] * e[5] + c[2] * e[8], c[3] * e[0] + c[4] * e[3] + c[5] * e[6], c[3] * e[1] + c[4] * e[4] + c[5] * e[7], c[3] * e[2] + c[4] * e[5] + c[5] * e[8], c[6] * e[0] + c[7] * e[3] + c[8] * e[6],
-            c[6] * e[1] + c[7] * e[4] + c[8] * e[7], c[6] * e[2] + c[7] * e[5] + c[8] * e[8]
+        c[6] * e[1] + c[7] * e[4] + c[8] * e[7], c[6] * e[2] + c[7] * e[5] + c[8] * e[8]
         ])
     }
 
@@ -439,7 +439,7 @@ var fx = function() {
         return this
     }
     var v = {};
-    (function() {
+    (function () {
         function a(b) {
             if (!b.getExtension("OES_texture_float")) return !1;
             var c = b.createFramebuffer(),
@@ -485,16 +485,16 @@ var fx = function() {
             return 127 === d[0] || 128 === d[0]
         }
 
-        function d() {}
+        function d() { }
 
         function c(a) {
             "OES_texture_float_linear" === a ? (void 0 === this.$OES_texture_float_linear$ && Object.defineProperty(this,
                 "$OES_texture_float_linear$", {
-                    enumerable: !1,
-                    configurable: !1,
-                    writable: !1,
-                    value: new d
-                }), a = this.$OES_texture_float_linear$) : a = n.call(this, a);
+                enumerable: !1,
+                configurable: !1,
+                writable: !1,
+                value: new d
+            }), a = this.$OES_texture_float_linear$) : a = n.call(this, a);
             return a
         }
 
@@ -504,7 +504,7 @@ var fx = function() {
         }
         try {
             var g = document.createElement("canvas").getContext("experimental-webgl")
-        } catch (l) {}
+        } catch (l) { }
         if (g && -1 === g.getSupportedExtensions().indexOf("OES_texture_float_linear") && a(g)) {
             var n = WebGLRenderingContext.prototype.getExtension,
                 f = WebGLRenderingContext.prototype.getSupportedExtensions;
@@ -513,7 +513,7 @@ var fx = function() {
         }
     })();
     var a;
-    v.canvas = function() {
+    v.canvas = function () {
         var b = document.createElement("canvas");
         try {
             a = b.getContext("experimental-webgl", {
@@ -561,13 +561,13 @@ var fx = function() {
         return b
     };
     v.splineInterpolate = t;
-    var h = function() {
+    var h = function () {
         function b(b, c) {
             var e = a.createShader(b);
             a.shaderSource(e, c);
             a.compileShader(e);
             if (!a.getShaderParameter(e,
-                    a.COMPILE_STATUS)) throw "compile error: " + a.getShaderInfoLog(e);
+                a.COMPILE_STATUS)) throw "compile error: " + a.getShaderInfoLog(e);
             return e
         }
 
@@ -584,11 +584,11 @@ var fx = function() {
         }
         var c = "attribute vec2 vertex;attribute vec2 _texCoord;varying vec2 texCoord;void main(){texCoord=_texCoord;gl_Position=vec4(vertex*2.0-1.0,0.0,1.0);}",
             e = "uniform sampler2D texture;varying vec2 texCoord;void main(){gl_FragColor=texture2D(texture,texCoord);}";
-        d.prototype.destroy = function() {
+        d.prototype.destroy = function () {
             a.deleteProgram(this.program);
             this.program = null
         };
-        d.prototype.uniforms = function(b) {
+        d.prototype.uniforms = function (b) {
             a.useProgram(this.program);
             for (var e in b)
                 if (b.hasOwnProperty(e)) {
@@ -596,37 +596,37 @@ var fx = function() {
                     if (null !== c) {
                         var d = b[e];
                         if ("[object Array]" == Object.prototype.toString.call(d)) switch (d.length) {
-                                case 1:
-                                    a.uniform1fv(c, new Float32Array(d));
-                                    break;
-                                case 2:
-                                    a.uniform2fv(c, new Float32Array(d));
-                                    break;
-                                case 3:
-                                    a.uniform3fv(c, new Float32Array(d));
-                                    break;
-                                case 4:
-                                    a.uniform4fv(c, new Float32Array(d));
-                                    break;
-                                case 9:
-                                    a.uniformMatrix3fv(c, !1, new Float32Array(d));
-                                    break;
-                                case 16:
-                                    a.uniformMatrix4fv(c, !1, new Float32Array(d));
-                                    break;
-                                default:
-                                    throw "dont't know how to load uniform \"" + e + '" of length ' + d.length;
-                            } else if ("[object Number]" == Object.prototype.toString.call(d)) a.uniform1f(c, d);
-                            else throw 'attempted to set uniform "' + e + '" to invalid value ' + (d || "undefined").toString();
+                            case 1:
+                                a.uniform1fv(c, new Float32Array(d));
+                                break;
+                            case 2:
+                                a.uniform2fv(c, new Float32Array(d));
+                                break;
+                            case 3:
+                                a.uniform3fv(c, new Float32Array(d));
+                                break;
+                            case 4:
+                                a.uniform4fv(c, new Float32Array(d));
+                                break;
+                            case 9:
+                                a.uniformMatrix3fv(c, !1, new Float32Array(d));
+                                break;
+                            case 16:
+                                a.uniformMatrix4fv(c, !1, new Float32Array(d));
+                                break;
+                            default:
+                                throw "dont't know how to load uniform \"" + e + '" of length ' + d.length;
+                        } else if ("[object Number]" == Object.prototype.toString.call(d)) a.uniform1f(c, d);
+                        else throw 'attempted to set uniform "' + e + '" to invalid value ' + (d || "undefined").toString();
                     }
                 } return this
         };
-        d.prototype.textures = function(b) {
+        d.prototype.textures = function (b) {
             a.useProgram(this.program);
             for (var c in b) b.hasOwnProperty(c) && a.uniform1i(a.getUniformLocation(this.program, c), b[c]);
             return this
         };
-        d.prototype.drawRect = function(b, c, e, d) {
+        d.prototype.drawRect = function (b, c, e, d) {
             var f = a.getParameter(a.VIEWPORT);
             c = void 0 !== c ? (c - f[1]) / f[3] : 0;
             b = void 0 !== b ? (b - f[0]) / f[2] : 0;
@@ -647,13 +647,13 @@ var fx = function() {
             a.vertexAttribPointer(this.texCoordAttribute, 2, a.FLOAT, !1, 0, 0);
             a.drawArrays(a.TRIANGLE_STRIP, 0, 4)
         };
-        d.getDefaultShader = function() {
+        d.getDefaultShader = function () {
             a.defaultShader = a.defaultShader || new d;
             return a.defaultShader
         };
         return d
     }();
-    z.prototype.interpolate = function(a) {
+    z.prototype.interpolate = function (a) {
         for (var d = 0, c = this.ya.length - 1; 1 < c - d;) {
             var e = c + d >> 1;
             this.xa[e] > a ? c = e : d = e
@@ -664,123 +664,123 @@ var fx = function() {
         a = (a - this.xa[d]) / e;
         return g * this.ya[d] + a * this.ya[c] + ((g * g * g - g) * this.y2[d] + (a * a * a - a) * this.y2[c]) * e * e / 6
     };
-    var r = function() {
-            function b(b, c, d, f) {
-                this.gl = a;
-                this.id = a.createTexture();
-                this.width = b;
-                this.height = c;
-                this.format = d;
-                this.type = f;
-                a.bindTexture(a.TEXTURE_2D, this.id);
-                a.texParameteri(a.TEXTURE_2D, a.TEXTURE_MAG_FILTER, a.LINEAR);
-                a.texParameteri(a.TEXTURE_2D, a.TEXTURE_MIN_FILTER, a.LINEAR);
-                a.texParameteri(a.TEXTURE_2D, a.TEXTURE_WRAP_S, a.CLAMP_TO_EDGE);
-                a.texParameteri(a.TEXTURE_2D,
-                    a.TEXTURE_WRAP_T, a.CLAMP_TO_EDGE);
-                b && c && a.texImage2D(a.TEXTURE_2D, 0, this.format, b, c, 0, this.format, this.type, null)
-            }
+    var r = function () {
+        function b(b, c, d, f) {
+            this.gl = a;
+            this.id = a.createTexture();
+            this.width = b;
+            this.height = c;
+            this.format = d;
+            this.type = f;
+            a.bindTexture(a.TEXTURE_2D, this.id);
+            a.texParameteri(a.TEXTURE_2D, a.TEXTURE_MAG_FILTER, a.LINEAR);
+            a.texParameteri(a.TEXTURE_2D, a.TEXTURE_MIN_FILTER, a.LINEAR);
+            a.texParameteri(a.TEXTURE_2D, a.TEXTURE_WRAP_S, a.CLAMP_TO_EDGE);
+            a.texParameteri(a.TEXTURE_2D,
+                a.TEXTURE_WRAP_T, a.CLAMP_TO_EDGE);
+            b && c && a.texImage2D(a.TEXTURE_2D, 0, this.format, b, c, 0, this.format, this.type, null)
+        }
 
-            function d(a) {
-                null == c && (c = document.createElement("canvas"));
-                c.width = a.width;
-                c.height = a.height;
-                a = c.getContext("2d");
-                a.clearRect(0, 0, c.width, c.height);
-                return a
+        function d(a) {
+            null == c && (c = document.createElement("canvas"));
+            c.width = a.width;
+            c.height = a.height;
+            a = c.getContext("2d");
+            a.clearRect(0, 0, c.width, c.height);
+            return a
+        }
+        b.fromElement = function (c) {
+            var d = new b(0, 0, a.RGBA, a.UNSIGNED_BYTE);
+            d.loadContentsOf(c);
+            return d
+        };
+        b.prototype.loadContentsOf = function (b) {
+            this.width = b.width || b.videoWidth;
+            this.height = b.height || b.videoHeight;
+            a.bindTexture(a.TEXTURE_2D,
+                this.id);
+            a.texImage2D(a.TEXTURE_2D, 0, this.format, this.format, this.type, b)
+        };
+        b.prototype.initFromBytes = function (b, c, d) {
+            this.width = b;
+            this.height = c;
+            this.format = a.RGBA;
+            this.type = a.UNSIGNED_BYTE;
+            a.bindTexture(a.TEXTURE_2D, this.id);
+            a.texImage2D(a.TEXTURE_2D, 0, a.RGBA, b, c, 0, a.RGBA, this.type, new Uint8Array(d))
+        };
+        b.prototype.destroy = function () {
+            a.deleteTexture(this.id);
+            this.id = null
+        };
+        b.prototype.use = function (b) {
+            a.activeTexture(a.TEXTURE0 + (b || 0));
+            a.bindTexture(a.TEXTURE_2D, this.id)
+        };
+        b.prototype.unuse = function (b) {
+            a.activeTexture(a.TEXTURE0 +
+                (b || 0));
+            a.bindTexture(a.TEXTURE_2D, null)
+        };
+        b.prototype.ensureFormat = function (b, c, d, f) {
+            if (1 == arguments.length) {
+                var h = arguments[0];
+                b = h.width;
+                c = h.height;
+                d = h.format;
+                f = h.type
             }
-            b.fromElement = function(c) {
-                var d = new b(0, 0, a.RGBA, a.UNSIGNED_BYTE);
-                d.loadContentsOf(c);
-                return d
-            };
-            b.prototype.loadContentsOf = function(b) {
-                this.width = b.width || b.videoWidth;
-                this.height = b.height || b.videoHeight;
-                a.bindTexture(a.TEXTURE_2D,
-                    this.id);
-                a.texImage2D(a.TEXTURE_2D, 0, this.format, this.format, this.type, b)
-            };
-            b.prototype.initFromBytes = function(b, c, d) {
-                this.width = b;
-                this.height = c;
-                this.format = a.RGBA;
-                this.type = a.UNSIGNED_BYTE;
-                a.bindTexture(a.TEXTURE_2D, this.id);
-                a.texImage2D(a.TEXTURE_2D, 0, a.RGBA, b, c, 0, a.RGBA, this.type, new Uint8Array(d))
-            };
-            b.prototype.destroy = function() {
-                a.deleteTexture(this.id);
-                this.id = null
-            };
-            b.prototype.use = function(b) {
-                a.activeTexture(a.TEXTURE0 + (b || 0));
-                a.bindTexture(a.TEXTURE_2D, this.id)
-            };
-            b.prototype.unuse = function(b) {
-                a.activeTexture(a.TEXTURE0 +
-                    (b || 0));
-                a.bindTexture(a.TEXTURE_2D, null)
-            };
-            b.prototype.ensureFormat = function(b, c, d, f) {
-                if (1 == arguments.length) {
-                    var h = arguments[0];
-                    b = h.width;
-                    c = h.height;
-                    d = h.format;
-                    f = h.type
-                }
-                if (b != this.width || c != this.height || d != this.format || f != this.type) this.width = b, this.height = c, this.format = d, this.type = f, a.bindTexture(a.TEXTURE_2D, this.id), a.texImage2D(a.TEXTURE_2D, 0, this.format, b, c, 0, this.format, this.type, null)
-            };
-            b.prototype.drawTo = function(b) {
-                a.framebuffer = a.framebuffer || a.createFramebuffer();
-                a.bindFramebuffer(a.FRAMEBUFFER,
-                    a.framebuffer);
-                a.framebufferTexture2D(a.FRAMEBUFFER, a.COLOR_ATTACHMENT0, a.TEXTURE_2D, this.id, 0);
-                if (a.checkFramebufferStatus(a.FRAMEBUFFER) !== a.FRAMEBUFFER_COMPLETE) throw Error("incomplete framebuffer");
-                a.viewport(0, 0, this.width, this.height);
-                b();
-                a.bindFramebuffer(a.FRAMEBUFFER, null)
-            };
-            var c = null;
-            b.prototype.fillUsingCanvas = function(b) {
-                b(d(this));
-                this.format = a.RGBA;
-                this.type = a.UNSIGNED_BYTE;
-                a.bindTexture(a.TEXTURE_2D, this.id);
-                a.texImage2D(a.TEXTURE_2D, 0, a.RGBA, a.RGBA, a.UNSIGNED_BYTE, c);
-                return this
-            };
-            b.prototype.toImage = function(b) {
-                this.use();
-                h.getDefaultShader().drawRect();
-                var f = 4 * this.width * this.height,
-                    k = new Uint8Array(f),
-                    n = d(this),
-                    p = n.createImageData(this.width, this.height);
-                a.readPixels(0, 0, this.width, this.height, a.RGBA, a.UNSIGNED_BYTE, k);
-                for (var m = 0; m < f; m++) p.data[m] = k[m];
-                n.putImageData(p, 0, 0);
-                b.src = c.toDataURL()
-            };
-            b.prototype.swapWith = function(a) {
-                var b;
-                b = a.id;
-                a.id = this.id;
-                this.id = b;
-                b = a.width;
-                a.width = this.width;
-                this.width = b;
-                b = a.height;
-                a.height = this.height;
-                this.height = b;
-                b = a.format;
-                a.format =
-                    this.format;
-                this.format = b
-            };
-            return b
-        }(),
+            if (b != this.width || c != this.height || d != this.format || f != this.type) this.width = b, this.height = c, this.format = d, this.type = f, a.bindTexture(a.TEXTURE_2D, this.id), a.texImage2D(a.TEXTURE_2D, 0, this.format, b, c, 0, this.format, this.type, null)
+        };
+        b.prototype.drawTo = function (b) {
+            a.framebuffer = a.framebuffer || a.createFramebuffer();
+            a.bindFramebuffer(a.FRAMEBUFFER,
+                a.framebuffer);
+            a.framebufferTexture2D(a.FRAMEBUFFER, a.COLOR_ATTACHMENT0, a.TEXTURE_2D, this.id, 0);
+            if (a.checkFramebufferStatus(a.FRAMEBUFFER) !== a.FRAMEBUFFER_COMPLETE) throw Error("incomplete framebuffer");
+            a.viewport(0, 0, this.width, this.height);
+            b();
+            a.bindFramebuffer(a.FRAMEBUFFER, null)
+        };
+        var c = null;
+        b.prototype.fillUsingCanvas = function (b) {
+            b(d(this));
+            this.format = a.RGBA;
+            this.type = a.UNSIGNED_BYTE;
+            a.bindTexture(a.TEXTURE_2D, this.id);
+            a.texImage2D(a.TEXTURE_2D, 0, a.RGBA, a.RGBA, a.UNSIGNED_BYTE, c);
+            return this
+        };
+        b.prototype.toImage = function (b) {
+            this.use();
+            h.getDefaultShader().drawRect();
+            var f = 4 * this.width * this.height,
+                k = new Uint8Array(f),
+                n = d(this),
+                p = n.createImageData(this.width, this.height);
+            a.readPixels(0, 0, this.width, this.height, a.RGBA, a.UNSIGNED_BYTE, k);
+            for (var m = 0; m < f; m++) p.data[m] = k[m];
+            n.putImageData(p, 0, 0);
+            b.src = c.toDataURL()
+        };
+        b.prototype.swapWith = function (a) {
+            var b;
+            b = a.id;
+            a.id = this.id;
+            this.id = b;
+            b = a.width;
+            a.width = this.width;
+            this.width = b;
+            b = a.height;
+            a.height = this.height;
+            this.height = b;
+            b = a.format;
+            a.format =
+                this.format;
+            this.format = b
+        };
+        return b
+    }(),
         s = "float random(vec3 scale,float seed){return fract(sin(dot(gl_FragCoord.xyz+seed,scale))*43758.5453+seed);}";
     return v
 }();

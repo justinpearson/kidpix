@@ -1,11 +1,11 @@
-KiddoPaint.Tools.Toolbox.WackyMixerVenetianBlinds = function() {
+KiddoPaint.Tools.Toolbox.WackyMixerVenetianBlinds = function () {
     var tool = this;
     this.isDown = false;
     this.animInterval = 100;
     this.timeout = null;
     this.currentEv = null;
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.currentEv = ev;
         KiddoPaint.Display.context.save();
@@ -20,11 +20,11 @@ KiddoPaint.Tools.Toolbox.WackyMixerVenetianBlinds = function() {
         tool.toolDraw();
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         tool.currentEv = ev;
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             KiddoPaint.Display.context.restore();
@@ -39,7 +39,7 @@ KiddoPaint.Tools.Toolbox.WackyMixerVenetianBlinds = function() {
         }
     };
 
-    this.toolDraw = function() {
+    this.toolDraw = function () {
         if (tool.isDown) {
             KiddoPaint.Sounds.mixervenetian();
             // alpha hide hack

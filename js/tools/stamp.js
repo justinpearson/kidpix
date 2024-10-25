@@ -1,11 +1,11 @@
-KiddoPaint.Tools.Toolbox.Stamp = function() {
+KiddoPaint.Tools.Toolbox.Stamp = function () {
     var tool = this;
     this.isDown = false;
     this.stamp = '🚂';
     this.size = 64;
     this.useColor = false;
     this.seed = 1;
-    this.texture = function() {
+    this.texture = function () {
         var altSize = KiddoPaint.Cache.getStampSettings(tool.stamp).altSize;
         if (KiddoPaint.Current.modifiedRange !== 0) {
             var modifiedSize = KiddoPaint.Current.modifiedRange + 112;
@@ -24,7 +24,7 @@ KiddoPaint.Tools.Toolbox.Stamp = function() {
         return KiddoPaint.Stamps.stamp(tool.stamp, KiddoPaint.Current.modifiedAlt, KiddoPaint.Current.modifiedMeta, tool.size, hueShift, tool.useColor ? KiddoPaint.Current.color : null);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         var rng = srng(tool.seed);
         tool.isDown = true;
         KiddoPaint.Sounds.stamp();
@@ -41,7 +41,7 @@ KiddoPaint.Tools.Toolbox.Stamp = function() {
         }
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         var rng = srng(tool.seed);
         if (!tool.isDown) {
             KiddoPaint.Display.previewContext.fillStyle = tool.useColor ? KiddoPaint.Current.color : null;
@@ -57,7 +57,7 @@ KiddoPaint.Tools.Toolbox.Stamp = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         tool.isDown = false;
         tool.seed += 1;
         KiddoPaint.Display.saveMain();

@@ -14,7 +14,7 @@ KiddoPaint.Sprite.sheets = [
     'img/kidpix-spritesheet-8.png',
 ];
 
-KiddoPaint.Sprite.nextSprite = function() {
+KiddoPaint.Sprite.nextSprite = function () {
     const maxrow = KiddoPaint.Sprite.sheets.length - 1;
     KiddoPaint.Sprite.sheetPage += 1;
     if (KiddoPaint.Sprite.sheetPage > maxrow) {
@@ -22,7 +22,7 @@ KiddoPaint.Sprite.nextSprite = function() {
     }
 }
 
-KiddoPaint.Sprite.prevSprite = function() {
+KiddoPaint.Sprite.prevSprite = function () {
     const maxrow = KiddoPaint.Sprite.sheets.length - 1;
     KiddoPaint.Sprite.sheetPage -= 1;
     if (KiddoPaint.Sprite.sheetPage < 0) {
@@ -30,7 +30,7 @@ KiddoPaint.Sprite.prevSprite = function() {
     }
 }
 
-KiddoPaint.Sprite.nextPage = function() {
+KiddoPaint.Sprite.nextPage = function () {
     const maxrow = 7;
     KiddoPaint.Sprite.page += 1;
     if (KiddoPaint.Sprite.page > maxrow) {
@@ -38,7 +38,7 @@ KiddoPaint.Sprite.nextPage = function() {
     }
 }
 
-KiddoPaint.Sprite.prevPage = function() {
+KiddoPaint.Sprite.prevPage = function () {
     const maxrow = 7;
     KiddoPaint.Sprite.page -= 1;
     if (KiddoPaint.Sprite.page < 0) {
@@ -61,16 +61,16 @@ function init_sprites_submenu() {
             spriteSheet: sheet,
             spriteRow: row,
             spriteCol: j,
-            handler: function(e) {
+            handler: function (e) {
                 var img = new Image();
                 img.src = sheet;
                 img.crossOrigin = 'anonymous';
-                img.onload = function() {
+                img.onload = function () {
                     KiddoPaint.Tools.SpritePlacer.image = scaleImageDataCanvasAPIPixelated(extractSprite(img, 32, j, row, 0), 2);
-                    KiddoPaint.Tools.SpritePlacer.soundBefore = function() {
+                    KiddoPaint.Tools.SpritePlacer.soundBefore = function () {
                         KiddoPaint.Sounds.stamp();
                     };
-                    KiddoPaint.Tools.SpritePlacer.soundDuring = function() {};
+                    KiddoPaint.Tools.SpritePlacer.soundDuring = function () { };
                     KiddoPaint.Current.tool = KiddoPaint.Tools.SpritePlacer;
                 };
             }
@@ -82,8 +82,8 @@ function init_sprites_submenu() {
     KiddoPaint.Submenu.sprites.push({
         name: 'Next Page',
         emoji: '↪',
-        handler: function(e) {
-            (e.type == 'contextmenu') ? KiddoPaint.Sprite.prevPage(): KiddoPaint.Sprite.nextPage();
+        handler: function (e) {
+            (e.type == 'contextmenu') ? KiddoPaint.Sprite.prevPage() : KiddoPaint.Sprite.nextPage();
             init_sprites_submenu();
             show_generic_submenu('sprites');
         }
@@ -92,8 +92,8 @@ function init_sprites_submenu() {
     KiddoPaint.Submenu.sprites.push({
         name: 'Next Stamp Pack',
         emoji: '➡️',
-        handler: function(e) {
-            (e.type == 'contextmenu') ? KiddoPaint.Sprite.prevSprite(): KiddoPaint.Sprite.nextSprite();
+        handler: function (e) {
+            (e.type == 'contextmenu') ? KiddoPaint.Sprite.prevSprite() : KiddoPaint.Sprite.nextSprite();
             init_sprites_submenu();
             show_generic_submenu('sprites');
         }

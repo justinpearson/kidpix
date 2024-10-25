@@ -1,20 +1,20 @@
-KiddoPaint.Tools.Toolbox.Line = function() {
+KiddoPaint.Tools.Toolbox.Line = function () {
     var tool = this;
     this.isDown = false;
     this.size = 7;
     this.stomp = true;
-    this.texture = function() {
+    this.texture = function () {
         return KiddoPaint.Textures.Solid(KiddoPaint.Current.color);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.x = ev._x;
         tool.y = ev._y;
         KiddoPaint.Sounds.lineStart();
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             if (tool.stomp) {
                 KiddoPaint.Display.clearTmp();
@@ -41,7 +41,7 @@ KiddoPaint.Tools.Toolbox.Line = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             tool.isDown = false;

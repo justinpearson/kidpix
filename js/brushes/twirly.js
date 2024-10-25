@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.Twirly = function(color1, step) {
+KiddoPaint.Brushes.Twirly = function (color1, step) {
     color1 = color1 || 'black';
     step = step % 24 / 24;
 

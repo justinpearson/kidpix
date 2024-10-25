@@ -61,7 +61,7 @@ function show_generic_submenu(subtoolbar) {
 
         // click handler
         let localFRef = buttonDetail.handler;
-        let wrappedHandler = function(e) {
+        let wrappedHandler = function (e) {
             KiddoPaint.Sounds.submenuoption();
             localFRef(e);
         };

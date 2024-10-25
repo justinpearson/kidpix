@@ -70,19 +70,19 @@ KiddoPaint.Colors.Palette.CyanMagenta = ["#22FFFF", "#44FFFF", "#2AF7FF", "#31F0
 
 
 KiddoPaint.Colors.All = [KiddoPaint.Colors.Palette.Basic,
-    KiddoPaint.Colors.Palette.DawnBringer,
-    KiddoPaint.Colors.Palette.Endesga,
-    KiddoPaint.Colors.Palette.Pastels,
-    KiddoPaint.Colors.Palette.Pinks,
-    KiddoPaint.Colors.Palette.Blues,
-    KiddoPaint.Colors.Palette.CyanMagenta,
-    KiddoPaint.Colors.Palette.Greyscale
+KiddoPaint.Colors.Palette.DawnBringer,
+KiddoPaint.Colors.Palette.Endesga,
+KiddoPaint.Colors.Palette.Pastels,
+KiddoPaint.Colors.Palette.Pinks,
+KiddoPaint.Colors.Palette.Blues,
+KiddoPaint.Colors.Palette.CyanMagenta,
+KiddoPaint.Colors.Palette.Greyscale
 ]
 
 KiddoPaint.Colors.Current.PaletteNumber = 6; // load dani's favorite colors by default.
 KiddoPaint.Colors.Current.Palette = KiddoPaint.Colors.All[KiddoPaint.Colors.Current.PaletteNumber];
 
-KiddoPaint.Colors.rainbowPalette = function() {
+KiddoPaint.Colors.rainbowPalette = function () {
     var rpal = [];
     if (KiddoPaint.Colors.Current.PaletteNumber == 0) {
         rpal = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'violet'];
@@ -100,11 +100,11 @@ KiddoPaint.Colors.rainbowPalette = function() {
     return rpal;
 }
 
-KiddoPaint.Colors.currentPalette = function() {
+KiddoPaint.Colors.currentPalette = function () {
     return KiddoPaint.Colors.All[KiddoPaint.Colors.Current.PaletteNumber];
 }
 
-KiddoPaint.Colors.nextPalette = function() {
+KiddoPaint.Colors.nextPalette = function () {
     KiddoPaint.Colors.Current.PaletteNumber += 1;
     if (KiddoPaint.Colors.Current.PaletteNumber >= KiddoPaint.Colors.All.length) {
         KiddoPaint.Colors.Current.PaletteNumber = 0;
@@ -113,7 +113,7 @@ KiddoPaint.Colors.nextPalette = function() {
     return KiddoPaint.Colors.Current.Palette;
 }
 
-KiddoPaint.Colors.prevPalette = function() {
+KiddoPaint.Colors.prevPalette = function () {
     KiddoPaint.Colors.Current.PaletteNumber -= 1;
     if (KiddoPaint.Colors.Current.PaletteNumber < 0) {
         KiddoPaint.Colors.Current.PaletteNumber = KiddoPaint.Colors.All.length - 1;
@@ -122,26 +122,26 @@ KiddoPaint.Colors.prevPalette = function() {
     return KiddoPaint.Colors.Current.Palette;
 }
 
-KiddoPaint.Colors.nextColor = function() {
+KiddoPaint.Colors.nextColor = function () {
     return KiddoPaint.Colors.Palette.Bright[KiddoPaint.Display.step % KiddoPaint.Colors.Palette.Bright.length];
 }
 
-KiddoPaint.Colors.randomColor = function() {
+KiddoPaint.Colors.randomColor = function () {
     return KiddoPaint.Colors.Palette.Bright[Math.floor(Math.random() * KiddoPaint.Colors.Palette.Bright.length)];
 }
 
 KiddoPaint.Colors.Current.colorStep = 0;
-KiddoPaint.Colors.getAndIncColorStep = function() {
+KiddoPaint.Colors.getAndIncColorStep = function () {
     KiddoPaint.Colors.Current.colorStep += 1;
     return KiddoPaint.Colors.Current.colorStep;
 }
 
-KiddoPaint.Colors.nextAllColor = function() {
+KiddoPaint.Colors.nextAllColor = function () {
     var pal = KiddoPaint.Colors.currentPalette();
     return pal[KiddoPaint.Colors.getAndIncColorStep() % pal.length];
 }
 
-KiddoPaint.Colors.randomAllColor = function() {
+KiddoPaint.Colors.randomAllColor = function () {
     var pal = KiddoPaint.Colors.currentPalette();
     return pal[Math.floor(Math.random() * pal.length)];
 }

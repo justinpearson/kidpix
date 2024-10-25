@@ -1,9 +1,9 @@
-KiddoPaint.Brushes.LeakyPen = function() {
+KiddoPaint.Brushes.LeakyPen = function () {
     var prevSize = 3;
     var baseSize = 3;
     var maxSize = Math.PI * baseSize * Math.E;
 
-    return function(color1, distPrev) {
+    return function (color1, distPrev) {
         color1 = color1 || 'black';
         if (distPrev < 2) {
             if (prevSize < maxSize) {

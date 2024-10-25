@@ -1,10 +1,10 @@
-KiddoPaint.Tools.Toolbox.WackyMixerShadowBoxes = function() {
+KiddoPaint.Tools.Toolbox.WackyMixerShadowBoxes = function () {
     var tool = this;
     this.isDown = false;
     this.animInterval = 50;
     this.timeout = null;
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         KiddoPaint.Display.context.save();
         KiddoPaint.Display.canvas.classList = "";
@@ -18,9 +18,9 @@ KiddoPaint.Tools.Toolbox.WackyMixerShadowBoxes = function() {
         tool.toolDraw();
     };
 
-    this.mousemove = function(ev) {};
+    this.mousemove = function (ev) { };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             KiddoPaint.Display.context.restore();
@@ -34,7 +34,7 @@ KiddoPaint.Tools.Toolbox.WackyMixerShadowBoxes = function() {
         }
     };
 
-    this.toolDraw = function() {
+    this.toolDraw = function () {
         if (tool.isDown) {
             KiddoPaint.Sounds.mixershadowbox();
 

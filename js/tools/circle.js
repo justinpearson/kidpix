@@ -1,22 +1,22 @@
-KiddoPaint.Tools.Toolbox.Circle = function() {
+KiddoPaint.Tools.Toolbox.Circle = function () {
     var tool = this;
     this.isDown = false;
     this.size = 1;
     this.stomp = true;
     this.startEv = null;
-    this.texture = function() {
+    this.texture = function () {
         return KiddoPaint.Textures.None();
     };
-    this.stroke = function() {
+    this.stroke = function () {
         return KiddoPaint.Textures.Solid(KiddoPaint.Current.color);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.startEv = ev;
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             if (tool.stomp) {
                 KiddoPaint.Display.clearTmp();
@@ -49,7 +49,7 @@ KiddoPaint.Tools.Toolbox.Circle = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             tool.isDown = false;

@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.Splatters = function() {
+KiddoPaint.Brushes.Splatters = function () {
     let size = 27 * KiddoPaint.Current.scaling;
 
     var canvasBrush = document.createElement('canvas');

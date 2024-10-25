@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.Triangles = function() {
+KiddoPaint.Brushes.Triangles = function () {
     let size = 35 * KiddoPaint.Current.scaling;
 
     var canvasBrush = document.createElement('canvas');

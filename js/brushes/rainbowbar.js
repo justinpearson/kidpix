@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.RainbowBar = function(step) { // https://stackoverflow.com/questions/22223950/angle-gradient-in-canvas
+KiddoPaint.Brushes.RainbowBar = function (step) { // https://stackoverflow.com/questions/22223950/angle-gradient-in-canvas
     var canvas = document.createElement('canvas');
     var size = 35 * KiddoPaint.Current.scaling;
     canvas.width = size * 2.25;

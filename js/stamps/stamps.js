@@ -1,4 +1,4 @@
-KiddoPaint.Stamps.stamp = function(stamp, alt, ctrl, size, shiftAmount, color) {
+KiddoPaint.Stamps.stamp = function (stamp, alt, ctrl, size, shiftAmount, color) {
     stamp = stamp || '';
     var canvasBrush = document.createElement('canvas');
     canvasBrush.width = Math.max(size + (size * 0.05), 24);
@@ -36,14 +36,14 @@ KiddoPaint.Stamps.stamp = function(stamp, alt, ctrl, size, shiftAmount, color) {
     return canvasBrush;
 }
 
-KiddoPaint.Stamps.nextPage = function() {
+KiddoPaint.Stamps.nextPage = function () {
     KiddoPaint.Stamps.page += 1;
     if (KiddoPaint.Stamps.page > KiddoPaint.Stamps.grouping.pages) {
         KiddoPaint.Stamps.page = 1;
     }
 }
 
-KiddoPaint.Stamps.prevPage = function() {
+KiddoPaint.Stamps.prevPage = function () {
     KiddoPaint.Stamps.page -= 1;
     if (KiddoPaint.Stamps.page < 1) {
         KiddoPaint.Stamps.page = KiddoPaint.Stamps.grouping.pages;

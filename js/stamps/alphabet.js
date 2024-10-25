@@ -27,16 +27,16 @@ KiddoPaint.Alphabet.wingdings = {
     }
 }
 
-KiddoPaint.Alphabet.nextPage = function() {
+KiddoPaint.Alphabet.nextPage = function () {
     KiddoPaint.Alphabet.page += 1;
     if (KiddoPaint.Alphabet.page > KiddoPaint.Alphabet.english.pages) {
         KiddoPaint.Alphabet.page = 1;
     }
 }
 
-KiddoPaint.Alphabet.nextWingding = function(page) {
+KiddoPaint.Alphabet.nextWingding = function (page) {
     var idx = 0;
-    return function(page) {
+    return function (page) {
         if (idx >= KiddoPaint.Alphabet.wingdings['character' + page].letters.length) {
             idx = 0;
         }

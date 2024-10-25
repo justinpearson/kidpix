@@ -1,18 +1,18 @@
-KiddoPaint.Tools.Toolbox.Eraser = function() {
+KiddoPaint.Tools.Toolbox.Eraser = function () {
     var tool = this;
     this.isDown = false;
     this.size = 10;
     this.isSquareEraser = true;
-    this.texture = function() {
+    this.texture = function () {
         return KiddoPaint.Textures.Solid('rgb(240, 180, 180)');
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.mousemove(ev);
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         let currentSize = tool.size * KiddoPaint.Current.scaling;
         var ctx = tool.isDown ? KiddoPaint.Display.context : KiddoPaint.Display.previewContext;
         ctx.fillStyle = tool.texture();
@@ -26,7 +26,7 @@ KiddoPaint.Tools.Toolbox.Eraser = function() {
 
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             tool.isDown = false;

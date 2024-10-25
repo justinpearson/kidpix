@@ -1,18 +1,18 @@
-KiddoPaint.Tools.Toolbox.EraserWhiteCircles = function() {
+KiddoPaint.Tools.Toolbox.EraserWhiteCircles = function () {
     var tool = this;
     this.isDown = false;
     this.size = 10;
 
-    this.reset = function() {
+    this.reset = function () {
         tool.size = 25;
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.mousemove(ev);
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             KiddoPaint.Sounds.bubblepops();
             let currentSize = tool.size * KiddoPaint.Current.scaling;
@@ -29,7 +29,7 @@ KiddoPaint.Tools.Toolbox.EraserWhiteCircles = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             tool.isDown = false;

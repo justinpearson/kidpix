@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.Rose = function(color1, step) {
+KiddoPaint.Brushes.Rose = function (color1, step) {
     color1 = color1 || 'black';
     var interval = 257;
     var fraction = interval / 7;

@@ -1,10 +1,10 @@
-KiddoPaint.Tools.Toolbox.EraserLetters = function() {
+KiddoPaint.Tools.Toolbox.EraserLetters = function () {
     var tool = this;
     this.isDown = false;
     this.animInterval = 10;
     this.timeout = null;
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         let interval = tool.animInterval;
         tool.timeout = setTimeout(function draw() {
@@ -15,9 +15,9 @@ KiddoPaint.Tools.Toolbox.EraserLetters = function() {
         tool.toolDraw();
     };
 
-    this.mousemove = function(ev) {};
+    this.mousemove = function (ev) { };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             if (tool.timeout) {
@@ -29,7 +29,7 @@ KiddoPaint.Tools.Toolbox.EraserLetters = function() {
         }
     };
 
-    this.toolDraw = function() {
+    this.toolDraw = function () {
         if (tool.isDown) {
             KiddoPaint.Sounds.mixershadowbox();
             let rx = getRandomFloat(-10, KiddoPaint.Display.canvas.width);

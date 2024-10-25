@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.Bubbles = function(color1) {
+KiddoPaint.Brushes.Bubbles = function (color1) {
     color1 = color1 || 'black';
 
     var canvasBrush = document.createElement('canvas');

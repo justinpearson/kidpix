@@ -1,9 +1,9 @@
-KiddoPaint.Tools.Toolbox.Cut = function() {
+KiddoPaint.Tools.Toolbox.Cut = function () {
     var tool = this;
     this.isDown = false;
     this.length = 50;
     this.width = 50;
-    this.size = function() {
+    this.size = function () {
         let lx = tool.length;
         let ly = tool.width;
         return {
@@ -14,12 +14,12 @@ KiddoPaint.Tools.Toolbox.Cut = function() {
     this.stomp = true;
     this.selectedData;
 
-    this.texture = function() {
+    this.texture = function () {
         return KiddoPaint.Textures.None();
     };
 
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         KiddoPaint.Sounds.truckStart();
         tool.isDown = true;
         tool.x = ev._x;
@@ -33,7 +33,7 @@ KiddoPaint.Tools.Toolbox.Cut = function() {
         tool.mousemove(ev);
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         sizex = tool.size().x;
         sizey = tool.size().y;
 
@@ -61,7 +61,7 @@ KiddoPaint.Tools.Toolbox.Cut = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             KiddoPaint.Sounds.truckEnd();
             sizex = tool.size().x;

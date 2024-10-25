@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.SmoothPen = function() {
+KiddoPaint.Tools.Toolbox.SmoothPen = function () {
     var tool = this;
     this.isDown = false;
     this.previousEv = null;
@@ -6,21 +6,21 @@ KiddoPaint.Tools.Toolbox.SmoothPen = function() {
     this.points = [];
     this.rainbowMode = false;
 
-    this.size = function() {
+    this.size = function () {
         return KiddoPaint.Tools.Pencil.size;
     }
 
-    this.texture = function() {
+    this.texture = function () {
         tool.rainbowMode = KiddoPaint.Tools.Pencil.texture.toString().includes('RSolid');
         return KiddoPaint.Tools.Pencil.texture();
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.points = [];
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             if (tool.previousEv == null || distanceBetween(tool.previousEv, ev) > tool.spacing) {
                 tool.points.push([ev._x, ev._y]);
@@ -30,7 +30,7 @@ KiddoPaint.Tools.Toolbox.SmoothPen = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             tool.points.push([ev._x, ev._y]);

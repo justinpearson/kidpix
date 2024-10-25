@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.Dumbbell = function(color1, color2) {
+KiddoPaint.Brushes.Dumbbell = function (color1, color2) {
     color1 = color1 || 'black';
     color2 = color2 || 'black';
 

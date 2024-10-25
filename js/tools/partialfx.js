@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.Ink = function() {
+KiddoPaint.Tools.Toolbox.Ink = function () {
     var tool = this;
     this.isDown = false;
     this.size = 36;
@@ -6,13 +6,13 @@ KiddoPaint.Tools.Toolbox.Ink = function() {
     this.gfx = fx.canvas();
     this.initialClick = {};
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.initialClick = ev;
         tool.mousemove(ev);
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         var target = KiddoPaint.Display.main_context.getImageData(ev._x - tool.size, ev._y - tool.size, 2 * tool.size, 2 * tool.size);
         var ctx = tool.isDown ? KiddoPaint.Display.context : KiddoPaint.Display.previewContext;
 
@@ -23,7 +23,7 @@ KiddoPaint.Tools.Toolbox.Ink = function() {
         t.destroy();
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             KiddoPaint.Display.saveMain();

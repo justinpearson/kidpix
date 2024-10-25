@@ -1,10 +1,10 @@
-KiddoPaint.Tools.Toolbox.ElectricMixerInvert = function() {
+KiddoPaint.Tools.Toolbox.ElectricMixerInvert = function () {
     var tool = this;
     this.isDown = false;
     this.leftside = {};
     this.rightside = {};
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
 
         tool.leftside = KiddoPaint.Display.main_context.getImageData(0, 0, KiddoPaint.Display.main_canvas.width / 2, KiddoPaint.Display.main_canvas.height);
@@ -12,9 +12,9 @@ KiddoPaint.Tools.Toolbox.ElectricMixerInvert = function() {
         tool.animate(ev);
     };
 
-    this.mousemove = function(ev) {};
+    this.mousemove = function (ev) { };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             tool.leftside = {};
@@ -22,7 +22,7 @@ KiddoPaint.Tools.Toolbox.ElectricMixerInvert = function() {
         }
     };
 
-    this.animate = function(ev) {
+    this.animate = function (ev) {
         var iter = 1;
         var right = flattenImage(tool.rightside);
         var left = flattenImage(tool.leftside);

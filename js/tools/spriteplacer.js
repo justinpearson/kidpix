@@ -1,19 +1,19 @@
-KiddoPaint.Tools.Toolbox.SpritePlacer = function() {
+KiddoPaint.Tools.Toolbox.SpritePlacer = function () {
     var tool = this;
     this.isDown = false;
     this.image = {};
     this.prevTool = {};
     this.size = {};
-    this.soundBefore = function() {};
-    this.soundDuring = function() {};
+    this.soundBefore = function () { };
+    this.soundDuring = function () { };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.mousemove(ev);
         tool.soundBefore();
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         var ctx = tool.isDown ? KiddoPaint.Display.context : KiddoPaint.Display.previewContext;
         var alt = KiddoPaint.Current.modifiedAlt;
         var ctrl = KiddoPaint.Current.modifiedMeta;
@@ -58,7 +58,7 @@ KiddoPaint.Tools.Toolbox.SpritePlacer = function() {
         drawImageff(tool.image, ev._x, ev._y, tool.size.width, tool.size.height, KiddoPaint.Current.modifiedAlt, KiddoPaint.Current.modifiedMeta, true);
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             KiddoPaint.Display.saveMain();

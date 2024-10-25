@@ -1,36 +1,36 @@
-KiddoPaint.Tools.Toolbox.PlainBrush = function() {
+KiddoPaint.Tools.Toolbox.PlainBrush = function () {
     var tool = this;
     this.isDown = false;
     this.previousEv = null;
-    this.texture = function() {};
-    this.preprocess = function() {};
-    this.postprocess = function() {};
-    this.soundduring = function() {};
+    this.texture = function () { };
+    this.preprocess = function () { };
+    this.postprocess = function () { };
+    this.soundduring = function () { };
     this.spacing = 5;
     this.step = 0; // local tool step which resets on mouse up
     this.pstep = 0; // local persistent step which resets when invoker chooses; used in connect the dots
     this.alwaysGapFill = false;
 
-    this.reset = function() {
+    this.reset = function () {
         tool.isDown = false;
         tool.previousEv = null;
-        tool.texture = function() {};
-        tool.preprocess = function() {};
-        tool.postprocess = function() {};
-        tool.soundduring = function() {};
+        tool.texture = function () { };
+        tool.preprocess = function () { };
+        tool.postprocess = function () { };
+        tool.soundduring = function () { };
         tool.step = 0;
         tool.pstep = 0;
         tool.alwaysGapFill = false;
     }
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.mousemove(ev);
         tool.previousEv = ev;
         tool.preprocess();
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             if (tool.previousEv == null || distanceBetween(tool.previousEv, ev) > tool.spacing) {
                 if (KiddoPaint.Current.modifiedTilde) {
@@ -66,7 +66,7 @@ KiddoPaint.Tools.Toolbox.PlainBrush = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             tool.isDown = false;

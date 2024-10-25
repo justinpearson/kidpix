@@ -1,15 +1,15 @@
-KiddoPaint.Tools.Toolbox.ElectricMixerPip = function() {
+KiddoPaint.Tools.Toolbox.ElectricMixerPip = function () {
     var tool = this;
     this.isDown = false;
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         KiddoPaint.Sounds.mixerpip();
     };
 
-    this.mousemove = function(ev) {};
+    this.mousemove = function (ev) { };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             KiddoPaint.Sounds.mixershadowbox();
             tool.isDown = false;

@@ -1,16 +1,16 @@
-KiddoPaint.Tools.Toolbox.Guilloche = function() {
+KiddoPaint.Tools.Toolbox.Guilloche = function () {
     var tool = this;
     this.isDown = false;
     this.minDistance = 50;
     this.previousEv = null;
     this.randomSettings = {};
-    this.texture = function() {
+    this.texture = function () {
         // XXX TODO FIXME add double click menu to select texture - it looks super cool
         //        return KiddoPaint.Textures.Sand(KiddoPaint.Current.color);
         return KiddoPaint.Textures.Solid(KiddoPaint.Current.color);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.randomSettings = {
             outradius: (41 + 64 * Math.random()) * KiddoPaint.Current.scaling,
             inradius: (21 + 42 * Math.random()) * KiddoPaint.Current.scaling,
@@ -24,7 +24,7 @@ KiddoPaint.Tools.Toolbox.Guilloche = function() {
         tool.mousemove(ev);
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
 
         if (!tool.isDown) return;
 
@@ -50,7 +50,7 @@ KiddoPaint.Tools.Toolbox.Guilloche = function() {
             tool.previousEv = ev;
         }
     };
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             tool.previousEv = null;

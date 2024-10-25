@@ -1,4 +1,4 @@
-KiddoPaint.Textures.Solid = function(color1) {
+KiddoPaint.Textures.Solid = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -13,7 +13,7 @@ KiddoPaint.Textures.Solid = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Partial1 = function(color1) {
+KiddoPaint.Textures.Partial1 = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -30,7 +30,7 @@ KiddoPaint.Textures.Partial1 = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Partial2 = function(color1) {
+KiddoPaint.Textures.Partial2 = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -46,7 +46,7 @@ KiddoPaint.Textures.Partial2 = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Partial3 = function(color1) {
+KiddoPaint.Textures.Partial3 = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -62,7 +62,7 @@ KiddoPaint.Textures.Partial3 = function(color1) {
 }
 
 
-KiddoPaint.Textures.PartialSquares = function(color1) {
+KiddoPaint.Textures.PartialSquares = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -78,7 +78,7 @@ KiddoPaint.Textures.PartialSquares = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.PartialArtifactAlias = function(color1) {
+KiddoPaint.Textures.PartialArtifactAlias = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -94,25 +94,25 @@ KiddoPaint.Textures.PartialArtifactAlias = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.RSolid = function() {
+KiddoPaint.Textures.RSolid = function () {
     color1 = KiddoPaint.Colors.randomAllColor();
     //color1 = KiddoPaint.Colors.randomColor();
     return KiddoPaint.Textures.Solid(color1);
 }
 
-KiddoPaint.Textures.HueSolid = function(hue) {
+KiddoPaint.Textures.HueSolid = function (hue) {
     let hsl = `hsl(${hue}, 100%, 55%)`;
     return hsl;
 }
 
-KiddoPaint.Textures.None = function() {
+KiddoPaint.Textures.None = function () {
     var canvasPattern = document.createElement('canvas');
     canvasPattern.width = 1;
     canvasPattern.height = 1;
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Stripes = function(color1) {
+KiddoPaint.Textures.Stripes = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -136,7 +136,7 @@ KiddoPaint.Textures.Stripes = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Speckles = function(color1) {
+KiddoPaint.Textures.Speckles = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -157,7 +157,7 @@ KiddoPaint.Textures.Speckles = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Bubbles = function(color1) {
+KiddoPaint.Textures.Bubbles = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -185,7 +185,7 @@ KiddoPaint.Textures.Bubbles = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Thatch = function(color1) {
+KiddoPaint.Textures.Thatch = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -217,7 +217,7 @@ KiddoPaint.Textures.Thatch = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Shingles = function(color1) {
+KiddoPaint.Textures.Shingles = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -243,7 +243,7 @@ KiddoPaint.Textures.Shingles = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Diamond = function(color1) {
+KiddoPaint.Textures.Diamond = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -264,7 +264,7 @@ KiddoPaint.Textures.Diamond = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Ribbon = function(color1) {
+KiddoPaint.Textures.Ribbon = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -288,7 +288,7 @@ KiddoPaint.Textures.Ribbon = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Sand = function(color1) {
+KiddoPaint.Textures.Sand = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -314,7 +314,7 @@ KiddoPaint.Textures.Sand = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Brick = function(color1) {
+KiddoPaint.Textures.Brick = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -336,7 +336,7 @@ KiddoPaint.Textures.Brick = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Chevron = function(color1) {
+KiddoPaint.Textures.Chevron = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -362,7 +362,7 @@ KiddoPaint.Textures.Chevron = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Stairs = function(color1) {
+KiddoPaint.Textures.Stairs = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -384,7 +384,7 @@ KiddoPaint.Textures.Stairs = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Cross = function(color1) {
+KiddoPaint.Textures.Cross = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -409,7 +409,7 @@ KiddoPaint.Textures.Cross = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.DiagBrick = function(color1) {
+KiddoPaint.Textures.DiagBrick = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -437,7 +437,7 @@ KiddoPaint.Textures.DiagBrick = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.CornerStair = function(color1) {
+KiddoPaint.Textures.CornerStair = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -464,7 +464,7 @@ KiddoPaint.Textures.CornerStair = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Houndstooth = function(color1) {
+KiddoPaint.Textures.Houndstooth = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -495,7 +495,7 @@ KiddoPaint.Textures.Houndstooth = function(color1) {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Rainbow = function() {
+KiddoPaint.Textures.Rainbow = function () {
 
     var patternCanvas = document.createElement('canvas'),
         dotWidth = 20,
@@ -521,7 +521,7 @@ KiddoPaint.Textures.Rainbow = function() {
     return KiddoPaint.Display.context.createPattern(patternCanvas, 'repeat');
 }
 
-KiddoPaint.Textures.RainbowBar = function() {
+KiddoPaint.Textures.RainbowBar = function () {
     var canvas = document.createElement('canvas');
     var size = 50 * KiddoPaint.Current.scaling;
     canvas.width = size * 2;
@@ -543,7 +543,7 @@ KiddoPaint.Textures.RainbowBar = function() {
     return KiddoPaint.Display.context.createPattern(canvas, 'repeat');
 }
 
-KiddoPaint.Textures.RainbowGrad = function(start, end) {
+KiddoPaint.Textures.RainbowGrad = function (start, end) {
     if (start && end) {
         var grad = KiddoPaint.Display.context.createLinearGradient(start._x, start._y, start._x, end._y);
         grad.addColorStop(0, 'red');
@@ -559,7 +559,7 @@ KiddoPaint.Textures.RainbowGrad = function(start, end) {
     }
 }
 
-KiddoPaint.Textures.BigGrid = function() {
+KiddoPaint.Textures.BigGrid = function () {
     let color1 = 'black';
     let color2 = 'white';
     let size = 64;
@@ -580,7 +580,7 @@ KiddoPaint.Textures.BigGrid = function() {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Screen1 = function() {
+KiddoPaint.Textures.Screen1 = function () {
     var canvasPattern = document.createElement('canvas');
     canvasPattern.width = 2;
     canvasPattern.height = 2;
@@ -591,7 +591,7 @@ KiddoPaint.Textures.Screen1 = function() {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Screen2 = function() {
+KiddoPaint.Textures.Screen2 = function () {
     var canvasPattern = document.createElement('canvas');
     canvasPattern.width = 2;
     canvasPattern.height = 2;
@@ -602,7 +602,7 @@ KiddoPaint.Textures.Screen2 = function() {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Screen3 = function() {
+KiddoPaint.Textures.Screen3 = function () {
     var canvasPattern = document.createElement('canvas');
     canvasPattern.width = 2;
     canvasPattern.height = 2;
@@ -613,7 +613,7 @@ KiddoPaint.Textures.Screen3 = function() {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.Screen4 = function() {
+KiddoPaint.Textures.Screen4 = function () {
     var canvasPattern = document.createElement('canvas');
     canvasPattern.width = 2;
     canvasPattern.height = 2;
@@ -624,7 +624,7 @@ KiddoPaint.Textures.Screen4 = function() {
     return KiddoPaint.Display.context.createPattern(canvasPattern, 'repeat');
 }
 
-KiddoPaint.Textures.SprayPaint2 = function(color1) {
+KiddoPaint.Textures.SprayPaint2 = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -667,7 +667,7 @@ KiddoPaint.Textures.SprayPaint2 = function(color1) {
 
     return canvasPattern;
 }
-KiddoPaint.Textures.SprayPaint3 = function(color1) {
+KiddoPaint.Textures.SprayPaint3 = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -697,7 +697,7 @@ KiddoPaint.Textures.SprayPaint3 = function(color1) {
 
     return canvasPattern;
 }
-KiddoPaint.Textures.SprayPaint4 = function(color1) {
+KiddoPaint.Textures.SprayPaint4 = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -718,7 +718,7 @@ KiddoPaint.Textures.SprayPaint4 = function(color1) {
     contextPattern.fillRect(1, 14, 1, 1);
     return canvasPattern;
 }
-KiddoPaint.Textures.SprayPaint5 = function(color1) {
+KiddoPaint.Textures.SprayPaint5 = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -757,7 +757,7 @@ KiddoPaint.Textures.SprayPaint5 = function(color1) {
 
     return canvasPattern;
 }
-KiddoPaint.Textures.SprayPaint6 = function(color1) {
+KiddoPaint.Textures.SprayPaint6 = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');
@@ -781,7 +781,7 @@ KiddoPaint.Textures.SprayPaint6 = function(color1) {
 
     return canvasPattern;
 }
-KiddoPaint.Textures.SprayPaint7 = function(color1) {
+KiddoPaint.Textures.SprayPaint7 = function (color1) {
     color1 = color1 || 'black';
 
     var canvasPattern = document.createElement('canvas');

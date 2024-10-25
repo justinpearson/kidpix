@@ -110,7 +110,7 @@ KiddoPaint.Sounds.Library.english = {
     '!': 'sndmp3/english/number-eclamation-WAVSOUND.R_000a5774.wav.mp3',
 };
 
-KiddoPaint.Sounds.Library.playRand = function(sound) {
+KiddoPaint.Sounds.Library.playRand = function (sound) {
     if (KiddoPaint.Sounds.Library.enabled && KiddoPaint.Sounds.Library[sound]) {
         var idx = Math.floor(Math.random() * KiddoPaint.Sounds.Library[sound].length);
         var s = KiddoPaint.Sounds.Library[sound][idx];
@@ -120,7 +120,7 @@ KiddoPaint.Sounds.Library.playRand = function(sound) {
     }
 };
 
-KiddoPaint.Sounds.Library.playKey = function(key) {
+KiddoPaint.Sounds.Library.playKey = function (key) {
     if (KiddoPaint.Sounds.Library.enabled && KiddoPaint.Sounds.Library.english[key]) {
         var s = KiddoPaint.Sounds.Library.english[key];
         if (s) {
@@ -130,7 +130,7 @@ KiddoPaint.Sounds.Library.playKey = function(key) {
     }
 };
 
-KiddoPaint.Sounds.Library.playIdx = function(sound, idx) {
+KiddoPaint.Sounds.Library.playIdx = function (sound, idx) {
     if (KiddoPaint.Sounds.Library.enabled && KiddoPaint.Sounds.Library[sound] && idx < KiddoPaint.Sounds.Library[sound].length) {
         var s = KiddoPaint.Sounds.Library[sound][idx];
         if (s) {
@@ -139,7 +139,7 @@ KiddoPaint.Sounds.Library.playIdx = function(sound, idx) {
     }
 };
 
-KiddoPaint.Sounds.Library.playSingle = function(sound) {
+KiddoPaint.Sounds.Library.playSingle = function (sound) {
     if (KiddoPaint.Sounds.Library.enabled && KiddoPaint.Sounds.Library[sound]) {
         var s = KiddoPaint.Sounds.Library[sound][0];
         if (s) {
@@ -148,7 +148,7 @@ KiddoPaint.Sounds.Library.playSingle = function(sound) {
     }
 };
 
-KiddoPaint.Sounds.Library.pplaySingle = async function(sound) {
+KiddoPaint.Sounds.Library.pplaySingle = async function (sound) {
     if (KiddoPaint.Sounds.Library.enabled && KiddoPaint.Sounds.Library[sound]) {
         var s = KiddoPaint.Sounds.Library[sound][0];
         if (s) {
@@ -166,168 +166,168 @@ function pplayAudio(audio) {
 
 
 // randomzied sounds
-KiddoPaint.Sounds.explosion = function() {
+KiddoPaint.Sounds.explosion = function () {
     KiddoPaint.Sounds.Library.playRand('explosion');
 }
-KiddoPaint.Sounds.oops = function() {
+KiddoPaint.Sounds.oops = function () {
     KiddoPaint.Sounds.Library.playRand('oops');
 }
-KiddoPaint.Sounds.bubblepops = function() {
+KiddoPaint.Sounds.bubblepops = function () {
     KiddoPaint.Sounds.Library.playRand('bubblepops');
 }
 
 // multipart sounds
-KiddoPaint.Sounds.lineStart = function() {
+KiddoPaint.Sounds.lineStart = function () {
     KiddoPaint.Sounds.Library.playIdx('line', 0);
 }
 
-KiddoPaint.Sounds.lineDuring = function() {
+KiddoPaint.Sounds.lineDuring = function () {
     KiddoPaint.Sounds.Library.playIdx('line', 1);
 }
 
-KiddoPaint.Sounds.lineEnd = function() {
+KiddoPaint.Sounds.lineEnd = function () {
     KiddoPaint.Sounds.Library.playIdx('line', 2);
 }
 
-KiddoPaint.Sounds.truckStart = function() {
+KiddoPaint.Sounds.truckStart = function () {
     KiddoPaint.Sounds.Library.playIdx('truck', 0);
 }
 
-KiddoPaint.Sounds.truckDuring = function() {
+KiddoPaint.Sounds.truckDuring = function () {
     KiddoPaint.Sounds.Library.playIdx('truck', 1);
 }
 
-KiddoPaint.Sounds.truckEnd = function() {
+KiddoPaint.Sounds.truckEnd = function () {
     KiddoPaint.Sounds.Library.playIdx('truck', 2);
 }
 
-KiddoPaint.Sounds.xyStart = function() {
+KiddoPaint.Sounds.xyStart = function () {
     KiddoPaint.Sounds.Library.playIdx('xy', 0);
 }
 
-KiddoPaint.Sounds.xyDuring = function() {
+KiddoPaint.Sounds.xyDuring = function () {
     KiddoPaint.Sounds.Library.playIdx('xy', 1);
 }
 
-KiddoPaint.Sounds.xyEnd = function() {
+KiddoPaint.Sounds.xyEnd = function () {
     KiddoPaint.Sounds.Library.playIdx('xy', 2);
 }
 
 // single target sounds
-KiddoPaint.Sounds.pencil = function() {
+KiddoPaint.Sounds.pencil = function () {
     KiddoPaint.Sounds.Library.playSingle('pencil');
 }
-KiddoPaint.Sounds.box = function() {
+KiddoPaint.Sounds.box = function () {
     KiddoPaint.Sounds.Library.playSingle('box');
 }
-KiddoPaint.Sounds.circle = function() {
+KiddoPaint.Sounds.circle = function () {
     KiddoPaint.Sounds.Library.playSingle('circle');
 }
-KiddoPaint.Sounds.stamp = function() {
+KiddoPaint.Sounds.stamp = function () {
     KiddoPaint.Sounds.Library.playSingle('stamp');
 }
-KiddoPaint.Sounds.flood = function() {
+KiddoPaint.Sounds.flood = function () {
     KiddoPaint.Sounds.Library.playSingle('flood');
 }
-KiddoPaint.Sounds.mainmenu = function() {
+KiddoPaint.Sounds.mainmenu = function () {
     KiddoPaint.Sounds.Library.playSingle('mainmenu');
 }
-KiddoPaint.Sounds.submenucolor = function() {
+KiddoPaint.Sounds.submenucolor = function () {
     KiddoPaint.Sounds.Library.playSingle('submenucolor');
 }
-KiddoPaint.Sounds.submenuoption = function() {
+KiddoPaint.Sounds.submenuoption = function () {
     KiddoPaint.Sounds.Library.playSingle('submenuoption');
 }
-KiddoPaint.Sounds.unimpl = function() {
+KiddoPaint.Sounds.unimpl = function () {
     KiddoPaint.Sounds.Library.playSingle('unimpl');
 }
-KiddoPaint.Sounds.brushzigzag = function() {
+KiddoPaint.Sounds.brushzigzag = function () {
     KiddoPaint.Sounds.Library.playSingle('brushzigzag');
 }
-KiddoPaint.Sounds.brushleakypen = function() {
+KiddoPaint.Sounds.brushleakypen = function () {
     KiddoPaint.Sounds.Library.playSingle('brushleakypen');
 }
-KiddoPaint.Sounds.brushbubbly = function() {
+KiddoPaint.Sounds.brushbubbly = function () {
     KiddoPaint.Sounds.Library.playSingle('brushbubbly');
 }
-KiddoPaint.Sounds.brushdots = function() {
+KiddoPaint.Sounds.brushdots = function () {
     KiddoPaint.Sounds.Library.playSingle('brushdots');
 }
-KiddoPaint.Sounds.brushpies = function() {
+KiddoPaint.Sounds.brushpies = function () {
     KiddoPaint.Sounds.Library.playSingle('brushpies');
 }
-KiddoPaint.Sounds.brushecho = function() {
+KiddoPaint.Sounds.brushecho = function () {
     KiddoPaint.Sounds.Library.playSingle('brushecho');
 }
-KiddoPaint.Sounds.brushnorthern = function() {
+KiddoPaint.Sounds.brushnorthern = function () {
     KiddoPaint.Sounds.Library.playSingle('brushnorthern');
 }
-KiddoPaint.Sounds.brushfuzzer = function() {
+KiddoPaint.Sounds.brushfuzzer = function () {
     KiddoPaint.Sounds.Library.playSingle('brushfuzzer');
 }
-KiddoPaint.Sounds.brushzoom = function() {
+KiddoPaint.Sounds.brushzoom = function () {
     KiddoPaint.Sounds.Library.playSingle('brushzoom');
 }
-KiddoPaint.Sounds.brushpines = function() {
+KiddoPaint.Sounds.brushpines = function () {
     KiddoPaint.Sounds.Library.playSingle('brushpines');
 }
-KiddoPaint.Sounds.brushtwirly = function() {
+KiddoPaint.Sounds.brushtwirly = function () {
     KiddoPaint.Sounds.Library.playSingle('brushtwirly');
 }
-KiddoPaint.Sounds.brushkaliediscope = function() {
+KiddoPaint.Sounds.brushkaliediscope = function () {
     KiddoPaint.Sounds.Library.playSingle('brushkaliediscope');
 }
-KiddoPaint.Sounds.brushrollingdots = function() {
+KiddoPaint.Sounds.brushrollingdots = function () {
     KiddoPaint.Sounds.Library.playSingle('brushrollingdots');
 }
-KiddoPaint.Sounds.brushinvert = function() {
+KiddoPaint.Sounds.brushinvert = function () {
     KiddoPaint.Sounds.Library.playSingle('brushinvert');
 }
-KiddoPaint.Sounds.brushguil = function() {
+KiddoPaint.Sounds.brushguil = function () {
     KiddoPaint.Sounds.Library.playSingle('brushguil');
 }
-KiddoPaint.Sounds.brushtree = function() {
+KiddoPaint.Sounds.brushtree = function () {
     KiddoPaint.Sounds.Library.playSingle('brushtree');
 }
-KiddoPaint.Sounds.brushstars = function() {
+KiddoPaint.Sounds.brushstars = function () {
     KiddoPaint.Sounds.Library.playSingle('brushstars');
 }
-KiddoPaint.Sounds.brushxos = function() {
+KiddoPaint.Sounds.brushxos = function () {
     KiddoPaint.Sounds.Library.playSingle('brushxos');
 }
-KiddoPaint.Sounds.brushcards = function() {
+KiddoPaint.Sounds.brushcards = function () {
     KiddoPaint.Sounds.Library.playSingle('brushcards');
 }
-KiddoPaint.Sounds.brushshapes = function() {
+KiddoPaint.Sounds.brushshapes = function () {
     KiddoPaint.Sounds.Library.playSingle('brushshapes');
 }
-KiddoPaint.Sounds.brushprints = function() {
+KiddoPaint.Sounds.brushprints = function () {
     KiddoPaint.Sounds.Library.playSingle('brushprints');
 }
-KiddoPaint.Sounds.brushspraypaint = function() {
+KiddoPaint.Sounds.brushspraypaint = function () {
     KiddoPaint.Sounds.Library.playSingle('brushspraypaint');
 }
-KiddoPaint.Sounds.mixerwallpaper = function() {
+KiddoPaint.Sounds.mixerwallpaper = function () {
     KiddoPaint.Sounds.Library.playSingle('mixerwallpaper');
 }
-KiddoPaint.Sounds.mixerinvert = function() {
+KiddoPaint.Sounds.mixerinvert = function () {
     KiddoPaint.Sounds.Library.playSingle('mixerinvert');
 }
-KiddoPaint.Sounds.mixervenetian = function() {
+KiddoPaint.Sounds.mixervenetian = function () {
     KiddoPaint.Sounds.Library.playSingle('mixervenetian');
 }
-KiddoPaint.Sounds.mixershadowbox = function() {
+KiddoPaint.Sounds.mixershadowbox = function () {
     KiddoPaint.Sounds.Library.playSingle('mixershadowbox');
 }
-KiddoPaint.Sounds.mixerpip = function() {
+KiddoPaint.Sounds.mixerpip = function () {
     KiddoPaint.Sounds.Library.playSingle('mixerpip');
 }
-KiddoPaint.Sounds.mixerframe = function() {
+KiddoPaint.Sounds.mixerframe = function () {
     KiddoPaint.Sounds.Library.playSingle('mixerframe');
 }
-KiddoPaint.Sounds.eraserfadea = function() {
+KiddoPaint.Sounds.eraserfadea = function () {
     KiddoPaint.Sounds.Library.playSingle('eraserfade');
 }
-KiddoPaint.Sounds.eraserfadeb = function() {
+KiddoPaint.Sounds.eraserfadeb = function () {
     KiddoPaint.Sounds.Library.playSingle('mixerpip');
 }

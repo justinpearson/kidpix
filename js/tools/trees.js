@@ -1,18 +1,18 @@
 // this & maze can be refactored to a generic tool that takes a lambda
-KiddoPaint.Tools.Toolbox.Tree = function() {
+KiddoPaint.Tools.Toolbox.Tree = function () {
     var tool = this;
     this.isDown = false;
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         KiddoPaint.Sounds.brushtree();
         drawTree(ev._x, ev._y, 32 * KiddoPaint.Current.scaling, -Math.PI / 2, 12, 15)
         // drawTree(ev._x, ev._y, 180 * KiddoPaint.Current.scaling, 0, 12, 15) // big tree at 3 o'clock
     };
 
-    this.mousemove = function(ev) {};
+    this.mousemove = function (ev) { };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             KiddoPaint.Display.saveMain();

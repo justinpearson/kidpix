@@ -1,6 +1,6 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Compositing/Example#Compositing_example
 
-var lightMix = function() {
+var lightMix = function () {
     var canvas2 = document.createElement("canvas");
     canvas2.width = 360;
     canvas2.height = 360;
@@ -23,7 +23,7 @@ var lightMix = function() {
     return ctx.canvas;
 };
 
-var colorSphere = function() {
+var colorSphere = function () {
     var canvas1 = document.createElement("canvas");
     canvas1.width = 360;
     canvas1.height = 360;
@@ -61,7 +61,7 @@ var colorSphere = function() {
 
 // HSV (1978) = H: Hue / S: Saturation / V: Value
 Color = {};
-Color.HSV_RGB = function(o) {
+Color.HSV_RGB = function (o) {
     var H = o.H / 360,
         S = o.S / 100,
         V = o.V / 100,

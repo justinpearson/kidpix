@@ -1,7 +1,7 @@
-KiddoPaint.Brushes.Circles = function() {
+KiddoPaint.Brushes.Circles = function () {
     var flip = 0;
 
-    return function(color1, color2, alwaysFill) {
+    return function (color1, color2, alwaysFill) {
         color1 = color1 || 'black';
         color2 = color2 || color1;
         alwaysFill = alwaysFill || false;
@@ -31,7 +31,7 @@ KiddoPaint.Brushes.Circles = function() {
     }
 }();
 
-KiddoPaint.Brushes.RCircles = function() {
+KiddoPaint.Brushes.RCircles = function () {
     var color1 = KiddoPaint.Colors.randomColor();
     var color2 = KiddoPaint.Colors.randomColor();
     return KiddoPaint.Brushes.Circles(color1, color2, true);

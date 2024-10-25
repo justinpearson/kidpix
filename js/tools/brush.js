@@ -1,13 +1,13 @@
-KiddoPaint.Tools.Toolbox.Brush = function() {
+KiddoPaint.Tools.Toolbox.Brush = function () {
     var tool = this;
     this.isDown = false;
     this.didMove = false;
     this.previousEv = null;
     this.minDistance = 0;
-    this.texture = function(angle) {};
+    this.texture = function (angle) { };
     this.soundduring = null;
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
 
         tool.didMove = true; // put first click
@@ -17,12 +17,12 @@ KiddoPaint.Tools.Toolbox.Brush = function() {
         tool.previousEv = ev;
     };
 
-    this.reset = function() {
+    this.reset = function () {
         tool.soundduring = null;
-        tool.texture = function(angle) {};
+        tool.texture = function (angle) { };
     }
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             if (!tool.didMove) {
                 // just kidding! we're moving, so clear the first builder mark and ...
@@ -43,7 +43,7 @@ KiddoPaint.Tools.Toolbox.Brush = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             tool.previousEv = null;

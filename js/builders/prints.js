@@ -1,4 +1,4 @@
-KiddoPaint.Builders.Prints = function(color1, print, angle) {
+KiddoPaint.Builders.Prints = function (color1, print, angle) {
     color1 = color1 || 'black';
     angle = angle || 0;
 

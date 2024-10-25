@@ -1,12 +1,12 @@
 // https://www.html5rocks.com/en/tutorials/canvas/imagefilters/
 Filters = {};
-Filters.getPixels = function(img) {
+Filters.getPixels = function (img) {
     var c, ctx;
     if (img.getContext) {
         c = img;
         try {
             ctx = c.getContext('2d');
-        } catch (e) {}
+        } catch (e) { }
     }
     if (!ctx) {
         c = this.getCanvas(img.width, img.height);
@@ -16,14 +16,14 @@ Filters.getPixels = function(img) {
     return ctx.getImageData(0, 0, c.width, c.height);
 };
 
-Filters.getCanvas = function(w, h) {
+Filters.getCanvas = function (w, h) {
     var c = document.createElement('canvas');
     c.width = w;
     c.height = h;
     return c;
 };
 
-Filters.filterImage = function(filter, image, var_args) {
+Filters.filterImage = function (filter, image, var_args) {
     var args = [this.getPixels(image)];
     for (var i = 2; i < arguments.length; i++) {
         args.push(arguments[i]);
@@ -31,7 +31,7 @@ Filters.filterImage = function(filter, image, var_args) {
     return filter.apply(null, args);
 };
 
-Filters.grayscale = function(pixels, args) {
+Filters.grayscale = function (pixels, args) {
     var d = pixels.data;
     for (var i = 0; i < d.length; i += 4) {
         var r = d[i];
@@ -44,7 +44,7 @@ Filters.grayscale = function(pixels, args) {
     return pixels;
 };
 
-Filters.brightness = function(pixels, adjustment) {
+Filters.brightness = function (pixels, adjustment) {
     var d = pixels.data;
     for (var i = 0; i < d.length; i += 4) {
         d[i] += adjustment;
@@ -54,7 +54,7 @@ Filters.brightness = function(pixels, adjustment) {
     return pixels;
 };
 
-Filters.invert = function(pixels) {
+Filters.invert = function (pixels) {
     var d = pixels.data;
     for (var i = 0; i < d.length; i += 4) {
         d[i] = 255 - d[i];
@@ -64,7 +64,7 @@ Filters.invert = function(pixels) {
     return pixels;
 };
 
-Filters.gcoOpWithWhite = function(imageData, alpha, op) {
+Filters.gcoOpWithWhite = function (imageData, alpha, op) {
     var canvas = KiddoPaint.Display.imageTypeToCanvas(imageData, false);
     var ctx = canvas.getContext('2d');
     ctx.globalCompositeOperation = op;
@@ -74,16 +74,16 @@ Filters.gcoOpWithWhite = function(imageData, alpha, op) {
     return canvas;
 }
 
-Filters.gcoInvert = function(imageData, alpha) {
+Filters.gcoInvert = function (imageData, alpha) {
     return Filters.gcoOpWithWhite(imageData, alpha, 'difference');
 }
 
-Filters.gcoOverlay = function(imageData, alpha) {
+Filters.gcoOverlay = function (imageData, alpha) {
     return Filters.gcoOpWithWhite(imageData, alpha, 'overlay');
 }
 
 
-Filters.threshold = function(pixels, threshold) {
+Filters.threshold = function (pixels, threshold) {
     var d = pixels.data;
     for (var i = 0; i < d.length; i += 4) {
         var r = d[i];
@@ -98,11 +98,11 @@ Filters.threshold = function(pixels, threshold) {
 Filters.tmpCanvas = document.createElement('canvas');
 Filters.tmpCtx = Filters.tmpCanvas.getContext('2d');
 
-Filters.createImageData = function(w, h) {
+Filters.createImageData = function (w, h) {
     return this.tmpCtx.createImageData(w, h);
 };
 
-Filters.convolute = function(pixels, weights, opaque) {
+Filters.convolute = function (pixels, weights, opaque) {
     var side = Math.round(Math.sqrt(weights.length));
     var halfSide = Math.floor(side / 2);
 
@@ -150,7 +150,7 @@ Filters.convolute = function(pixels, weights, opaque) {
 if (!window.Float32Array)
     Float32Array = Array;
 
-Filters.convoluteFloat32 = function(pixels, weights, opaque) {
+Filters.convoluteFloat32 = function (pixels, weights, opaque) {
     var side = Math.round(Math.sqrt(weights.length));
     var halfSide = Math.floor(side / 2);
 
@@ -199,7 +199,7 @@ Filters.convoluteFloat32 = function(pixels, weights, opaque) {
     return output;
 };
 
-Filters.sobel = function(px) {
+Filters.sobel = function (px) {
     px = Filters.grayscale(px);
     var vertical = Filters.convoluteFloat32(px,
         [-1, -2, -1,
@@ -208,8 +208,8 @@ Filters.sobel = function(px) {
         ]);
     var horizontal = Filters.convoluteFloat32(px,
         [-1, 0, 1,
-            -2, 0, 2,
-            -1, 0, 1
+        -2, 0, 2,
+        -1, 0, 1
         ]);
     var id = Filters.createImageData(vertical.width, vertical.height);
     for (var i = 0; i < id.data.length; i += 4) {

@@ -1,21 +1,21 @@
-KiddoPaint.Tools.Toolbox.Pencil = function() {
+KiddoPaint.Tools.Toolbox.Pencil = function () {
     var tool = this;
     this.isDown = false;
     this.lastX = 0;
     this.lastY = 0;
     this.size = 7;
 
-    this.texture = function(color) {
+    this.texture = function (color) {
         return KiddoPaint.Textures.Solid(color);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.lastX = ev._x;
         tool.lastY = ev._y;
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             KiddoPaint.Sounds.pencil();
             KiddoPaint.Display.context.beginPath();
@@ -31,7 +31,7 @@ KiddoPaint.Tools.Toolbox.Pencil = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             KiddoPaint.Display.context.closePath();

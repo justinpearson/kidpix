@@ -4,7 +4,7 @@ KiddoPaint.Cache.Defaults = {
     altSize: 144
 }
 
-KiddoPaint.Cache.getStampSettings = function(stamp) {
+KiddoPaint.Cache.getStampSettings = function (stamp) {
     if (!KiddoPaint.Cache.StampSettings[stamp]) {
         KiddoPaint.Cache.StampSettings[stamp] = {
             hueShift: KiddoPaint.Cache.Defaults.hueShift,
@@ -14,7 +14,7 @@ KiddoPaint.Cache.getStampSettings = function(stamp) {
     return KiddoPaint.Cache.StampSettings[stamp];
 }
 
-KiddoPaint.Cache.setStampSetting = function(stamp, setting, value) {
+KiddoPaint.Cache.setStampSetting = function (stamp, setting, value) {
     if (!KiddoPaint.Cache.StampSettings[stamp]) {
         KiddoPaint.Cache.StampSettings[stamp] = {
             hueShift: KiddoPaint.Cache.Defaults.hueShift,

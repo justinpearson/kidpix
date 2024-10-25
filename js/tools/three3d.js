@@ -1,12 +1,12 @@
-KiddoPaint.Tools.Toolbox.ThreeDBrush = function() {
+KiddoPaint.Tools.Toolbox.ThreeDBrush = function () {
     var tool = this;
     this.isDown = false;
-    this.size = function() {
+    this.size = function () {
         return 16 * KiddoPaint.Current.scaling;
     }
     this.previousEv = null;
     this.spacing = 3;
-    this.texture = function() {
+    this.texture = function () {
         let shadecolor = colorNearWhite(color2json(KiddoPaint.Current.color)) ? 'black' : 'white';
         if (KiddoPaint.Current.modifiedAlt) {
             return KiddoPaint.Textures.Bubbles(shadecolor);
@@ -22,13 +22,13 @@ KiddoPaint.Tools.Toolbox.ThreeDBrush = function() {
         }
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.mousemove(ev);
         tool.previousEv = ev;
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             if (KiddoPaint.Current.modifiedToggle) {
                 ev._x = ev._x - (ev._x % (tool.size()));
@@ -41,7 +41,7 @@ KiddoPaint.Tools.Toolbox.ThreeDBrush = function() {
                 KiddoPaint.Display.context.fillStyle = tool.texture();
                 KiddoPaint.Display.context.fillRect(Math.round(ev._x), Math.round(ev._y), tool.size() / 2, tool.size() / 2);
             } else {
-                bresenham(tool.previousEv._x, tool.previousEv._y, ev._x, ev._y, function(lx, ly) {
+                bresenham(tool.previousEv._x, tool.previousEv._y, ev._x, ev._y, function (lx, ly) {
                     KiddoPaint.Display.context.fillStyle = KiddoPaint.Current.color;
                     KiddoPaint.Display.context.fillRect(lx, ly, tool.size(), tool.size());
 
@@ -53,7 +53,7 @@ KiddoPaint.Tools.Toolbox.ThreeDBrush = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             tool.isDown = false;

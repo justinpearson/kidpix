@@ -1,12 +1,12 @@
-KiddoPaint.Tools.Toolbox.Flood = function() {
+KiddoPaint.Tools.Toolbox.Flood = function () {
 
     var tool = this;
     this.gcop = 'destination-in';
-    this.texture = function(color) {
+    this.texture = function (color) {
         return KiddoPaint.Textures.Solid(KiddoPaint.Current.color);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         if (KiddoPaint.Current.modifiedAlt) {
             tool.canvasWideReplace(ev);
         } else {
@@ -14,7 +14,7 @@ KiddoPaint.Tools.Toolbox.Flood = function() {
         }
     }
 
-    this.canvasWideReplace = function(ev) {
+    this.canvasWideReplace = function (ev) {
         KiddoPaint.Sounds.flood();
         var x = ev._x;
         var y = ev._y;
@@ -39,9 +39,9 @@ KiddoPaint.Tools.Toolbox.Flood = function() {
         var d = pixels.data;
         for (var i = 0; i < d.length; i += 4) {
             if ((pixels.data[i] == original_color.r &&
-                    pixels.data[i + 1] == original_color.g &&
-                    pixels.data[i + 2] == original_color.b &&
-                    pixels.data[i + 3] == original_color.a)) {
+                pixels.data[i + 1] == original_color.g &&
+                pixels.data[i + 2] == original_color.b &&
+                pixels.data[i + 3] == original_color.a)) {
                 changedPixels.data[i] = color.r;
                 changedPixels.data[i + 1] = color.g;
                 changedPixels.data[i + 2] = color.b;
@@ -58,7 +58,7 @@ KiddoPaint.Tools.Toolbox.Flood = function() {
         KiddoPaint.Display.saveMain();
     }
 
-    this.boundedFill = function(ev) {
+    this.boundedFill = function (ev) {
         KiddoPaint.Sounds.flood();
         var x = ev._x;
         var y = ev._y;
@@ -169,7 +169,7 @@ KiddoPaint.Tools.Toolbox.Flood = function() {
         KiddoPaint.Display.saveMain(); // corrupts alpha
     };
 
-    this.mousemove = function(ev) {};
-    this.mouseup = function(ev) {};
+    this.mousemove = function (ev) { };
+    this.mouseup = function (ev) { };
 };
 KiddoPaint.Tools.Flood = new KiddoPaint.Tools.Toolbox.Flood();

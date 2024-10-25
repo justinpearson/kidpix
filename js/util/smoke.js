@@ -1,7 +1,7 @@
 // smoke.js - https://github.com/bijection/smoke.js/blob/master/LICENSE - MIT
 /*   Magic UMD boilerplate Beginning  */
 /**/
-(function(root, factory) {
+(function (root, factory) {
     /**/
     if (typeof define === 'function' && define.amd) {
         /**/
@@ -19,7 +19,7 @@
         /**/
     }
     /**/
-}(typeof self !== 'undefined' ? self : this, function() {
+}(typeof self !== 'undefined' ? self : this, function () {
 
 
 
@@ -98,20 +98,20 @@
     return function SmokeMachine(context, color) {
         var smokeParticleImage = makeSmokeSprite(color),
             particles = [],
-            preDrawCallback = function() {}
+            preDrawCallback = function () { }
 
         function updateAndDrawParticles(deltatime) {
             context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
-            particles.forEach(function(p) {
+            particles.forEach(function (p) {
                 updateParticle(p, deltatime)
             })
-            particles = particles.filter(function(p) {
+            particles = particles.filter(function (p) {
                 return p.age < p.lifetime
             })
 
             preDrawCallback(deltatime, particles)
-            particles.forEach(function(p) {
+            particles.forEach(function (p) {
                 drawParticle(p, smokeParticleImage, context)
             })
         }
@@ -144,7 +144,7 @@
                 lastframe = performance.now()
                 polyfillAnimFrame(frame)
             },
-            setPreDrawCallback: function(f) {
+            setPreDrawCallback: function (f) {
                 preDrawCallback = f
             },
             stop: function stop() {

@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.Pies = function(color1) {
+KiddoPaint.Brushes.Pies = function (color1) {
     color1 = color1 || 'black';
 
     var canvasBrush = document.createElement('canvas');

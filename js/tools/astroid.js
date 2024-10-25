@@ -1,13 +1,13 @@
-KiddoPaint.Tools.Toolbox.Astroid = function() {
+KiddoPaint.Tools.Toolbox.Astroid = function () {
     var tool = this;
     this.size = 1;
-    this.stroke = function() {
+    this.stroke = function () {
         return KiddoPaint.Current.color;
     };
     this.points = [];
 
     // http://mathworld.wolfram.com/Astroid.html
-    this.drawAstroid = function(pt1, pt2, pt3) {
+    this.drawAstroid = function (pt1, pt2, pt3) {
         var interval = 37 * KiddoPaint.Current.scaling;
 
         seg1deltax = (pt2.x - pt1.x) / interval;
@@ -41,7 +41,7 @@ KiddoPaint.Tools.Toolbox.Astroid = function() {
         }
     }
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         KiddoPaint.Sounds.xyStart();
         tool.points.push({
             x: ev._x,
@@ -49,7 +49,7 @@ KiddoPaint.Tools.Toolbox.Astroid = function() {
         });
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         KiddoPaint.Display.clearTmp();
         if (tool.points.length == 1) {
             KiddoPaint.Sounds.xyDuring();
@@ -69,7 +69,7 @@ KiddoPaint.Tools.Toolbox.Astroid = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.points.length == 3) {
             KiddoPaint.Sounds.xyEnd();
             KiddoPaint.Display.clearTmp();

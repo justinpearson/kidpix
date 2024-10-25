@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.Icy = function(color1) {
+KiddoPaint.Brushes.Icy = function (color1) {
     color1 = color1 || 'black';
 
     var radius = 32 * KiddoPaint.Current.scaling * KiddoPaint.Current.multiplier;

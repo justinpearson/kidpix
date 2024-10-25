@@ -1,4 +1,4 @@
-KiddoPaint.Builders.Rail = function(color1, angle) {
+KiddoPaint.Builders.Rail = function (color1, angle) {
     color1 = color1 || 'black';
     angle = angle || 0;
 

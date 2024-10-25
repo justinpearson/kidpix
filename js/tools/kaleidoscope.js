@@ -1,14 +1,14 @@
-KiddoPaint.Tools.Toolbox.Kaleidoscope = function() {
+KiddoPaint.Tools.Toolbox.Kaleidoscope = function () {
     // bug: undo does one quadrant
     var tool = this;
     this.isDown = false;
     this.size = 2;
     this.origin = {};
-    this.texture = function() {
+    this.texture = function () {
         return KiddoPaint.Textures.Solid(KiddoPaint.Current.color);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.previousEv = {
             x: 0,
@@ -24,7 +24,7 @@ KiddoPaint.Tools.Toolbox.Kaleidoscope = function() {
         KiddoPaint.Display.context.moveTo(0, 0);
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             KiddoPaint.Sounds.brushkaliediscope();
             var x = tool.origin._x - ev._x;
@@ -64,7 +64,7 @@ KiddoPaint.Tools.Toolbox.Kaleidoscope = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             KiddoPaint.Display.context.restore();
             KiddoPaint.Display.context.closePath();

@@ -10,10 +10,10 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
 /*Constants (these are accessible by Smooth.WHATEVER in user space)
  */
 
-(function() {
+(function () {
     var AbstractInterpolator, CubicInterpolator, Enum, LinearInterpolator, NearestInterpolator, PI, SincFilterInterpolator, Smooth, clipClamp, clipMirror, clipPeriodic, defaultConfig, getColumn, getType, isValidNumber, k, makeLanczosWindow, makeScaledFunction, makeSincKernel, normalizeScaleTo, shallowCopy, sin, sinc, v, validateNumber, validateVector,
         __hasProp = Object.prototype.hasOwnProperty,
-        __extends = function(child, parent) {
+        __extends = function (child, parent) {
             for (var key in parent) {
                 if (__hasProp.call(parent, key)) child[key] = parent[key];
             }
@@ -59,17 +59,17 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
     /*Index clipping functions
      */
 
-    clipClamp = function(i, n) {
+    clipClamp = function (i, n) {
         return Math.max(0, Math.min(i, n - 1));
     };
 
-    clipPeriodic = function(i, n) {
+    clipPeriodic = function (i, n) {
         i = i % n;
         if (i < 0) i += n;
         return i;
     };
 
-    clipMirror = function(i, n) {
+    clipMirror = function (i, n) {
         var period;
         period = 2 * (n - 1);
         i = clipPeriodic(i, period);
@@ -83,22 +83,22 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
     Subclasses must override interpolate().
     */
 
-    AbstractInterpolator = (function() {
+    AbstractInterpolator = (function () {
 
         function AbstractInterpolator(array, config) {
             this.array = array.slice(0);
             this.length = this.array.length;
             if (!(this.clipHelper = {
-                    clamp: this.clipHelperClamp,
-                    zero: this.clipHelperZero,
-                    periodic: this.clipHelperPeriodic,
-                    mirror: this.clipHelperMirror
-                } [config.clip])) {
+                clamp: this.clipHelperClamp,
+                zero: this.clipHelperZero,
+                periodic: this.clipHelperPeriodic,
+                mirror: this.clipHelperMirror
+            }[config.clip])) {
                 throw "Invalid clip: " + config.clip;
             }
         }
 
-        AbstractInterpolator.prototype.getClippedInput = function(i) {
+        AbstractInterpolator.prototype.getClippedInput = function (i) {
             if ((0 <= i && i < this.length)) {
                 return this.array[i];
             } else {
@@ -106,23 +106,23 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
             }
         };
 
-        AbstractInterpolator.prototype.clipHelperClamp = function(i) {
+        AbstractInterpolator.prototype.clipHelperClamp = function (i) {
             return this.array[clipClamp(i, this.length)];
         };
 
-        AbstractInterpolator.prototype.clipHelperZero = function(i) {
+        AbstractInterpolator.prototype.clipHelperZero = function (i) {
             return 0;
         };
 
-        AbstractInterpolator.prototype.clipHelperPeriodic = function(i) {
+        AbstractInterpolator.prototype.clipHelperPeriodic = function (i) {
             return this.array[clipPeriodic(i, this.length)];
         };
 
-        AbstractInterpolator.prototype.clipHelperMirror = function(i) {
+        AbstractInterpolator.prototype.clipHelperMirror = function (i) {
             return this.array[clipMirror(i, this.length)];
         };
 
-        AbstractInterpolator.prototype.interpolate = function(t) {
+        AbstractInterpolator.prototype.interpolate = function (t) {
             throw 'Subclasses of AbstractInterpolator must override the interpolate() method.';
         };
 
@@ -130,7 +130,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
 
     })();
 
-    NearestInterpolator = (function(_super) {
+    NearestInterpolator = (function (_super) {
 
         __extends(NearestInterpolator, _super);
 
@@ -138,7 +138,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
             NearestInterpolator.__super__.constructor.apply(this, arguments);
         }
 
-        NearestInterpolator.prototype.interpolate = function(t) {
+        NearestInterpolator.prototype.interpolate = function (t) {
             return this.getClippedInput(Math.round(t));
         };
 
@@ -146,7 +146,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
 
     })(AbstractInterpolator);
 
-    LinearInterpolator = (function(_super) {
+    LinearInterpolator = (function (_super) {
 
         __extends(LinearInterpolator, _super);
 
@@ -154,7 +154,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
             LinearInterpolator.__super__.constructor.apply(this, arguments);
         }
 
-        LinearInterpolator.prototype.interpolate = function(t) {
+        LinearInterpolator.prototype.interpolate = function (t) {
             var k;
             k = Math.floor(t);
             t -= k;
@@ -165,7 +165,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
 
     })(AbstractInterpolator);
 
-    CubicInterpolator = (function(_super) {
+    CubicInterpolator = (function (_super) {
 
         __extends(CubicInterpolator, _super);
 
@@ -174,11 +174,11 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
             CubicInterpolator.__super__.constructor.apply(this, arguments);
         }
 
-        CubicInterpolator.prototype.getTangent = function(k) {
+        CubicInterpolator.prototype.getTangent = function (k) {
             return this.tangentFactor * (this.getClippedInput(k + 1) - this.getClippedInput(k - 1)) / 2;
         };
 
-        CubicInterpolator.prototype.interpolate = function(t) {
+        CubicInterpolator.prototype.interpolate = function (t) {
             var k, m, p, t2, t3;
             k = Math.floor(t);
             m = [this.getTangent(k), this.getTangent(k + 1)];
@@ -195,7 +195,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
 
     sin = Math.sin, PI = Math.PI;
 
-    sinc = function(x) {
+    sinc = function (x) {
         if (x === 0) {
             return 1;
         } else {
@@ -203,19 +203,19 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
         }
     };
 
-    makeLanczosWindow = function(a) {
-        return function(x) {
+    makeLanczosWindow = function (a) {
+        return function (x) {
             return sinc(x / a);
         };
     };
 
-    makeSincKernel = function(window) {
-        return function(x) {
+    makeSincKernel = function (window) {
+        return function (x) {
             return sinc(x) * window(x);
         };
     };
 
-    SincFilterInterpolator = (function(_super) {
+    SincFilterInterpolator = (function (_super) {
 
         __extends(SincFilterInterpolator, _super);
 
@@ -226,7 +226,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
             this.kernel = makeSincKernel(config.sincWindow);
         }
 
-        SincFilterInterpolator.prototype.interpolate = function(t) {
+        SincFilterInterpolator.prototype.interpolate = function (t) {
             var k, n, sum, _ref, _ref2;
             k = Math.floor(t);
             sum = 0;
@@ -240,7 +240,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
 
     })(AbstractInterpolator);
 
-    getColumn = function(arr, i) {
+    getColumn = function (arr, i) {
         var row, _i, _len, _results;
         _results = [];
         for (_i = 0, _len = arr.length; _i < _len; _i++) {
@@ -250,30 +250,30 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
         return _results;
     };
 
-    makeScaledFunction = function(f, baseScale, scaleRange) {
+    makeScaledFunction = function (f, baseScale, scaleRange) {
         var scaleFactor, translation;
         if (scaleRange.join === '0,1') {
             return f;
         } else {
             scaleFactor = baseScale / (scaleRange[1] - scaleRange[0]);
             translation = scaleRange[0];
-            return function(t) {
+            return function (t) {
                 return f(scaleFactor * (t - translation));
             };
         }
     };
 
-    getType = function(x) {
+    getType = function (x) {
         return Object.prototype.toString.call(x).slice('[object '.length, -1);
     };
 
-    validateNumber = function(n) {
+    validateNumber = function (n) {
         if (isNaN(n)) throw 'NaN in Smooth() input';
         if (getType(n) !== 'Number') throw 'Non-number in Smooth() input';
         if (!isFinite(n)) throw 'Infinity in Smooth() input';
     };
 
-    validateVector = function(v, dimension) {
+    validateVector = function (v, dimension) {
         var n, _i, _len;
         if (getType(v) !== 'Array') throw 'Non-vector in Smooth() input';
         if (v.length !== dimension) throw 'Inconsistent dimension in Smooth() input';
@@ -283,11 +283,11 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
         }
     };
 
-    isValidNumber = function(n) {
+    isValidNumber = function (n) {
         return (getType(n) === 'Number') && isFinite(n) && !isNaN(n);
     };
 
-    normalizeScaleTo = function(s) {
+    normalizeScaleTo = function (s) {
         var invalidErr;
         invalidErr = "scaleTo param must be number or array of two numbers";
         switch (getType(s)) {
@@ -305,7 +305,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
         return s;
     };
 
-    shallowCopy = function(obj) {
+    shallowCopy = function (obj) {
         var copy, k, v;
         copy = {};
         for (k in obj) {
@@ -316,7 +316,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
         return copy;
     };
 
-    Smooth = function(arr, config) {
+    Smooth = function (arr, config) {
         var baseDomainEnd, dimension, i, interpolator, interpolatorClass, interpolators, k, n, properties, smoothFunc, v;
         if (config == null) config = {};
         properties = {};
@@ -332,12 +332,12 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
             if (config[k] == null) config[k] = v;
         }
         if (!(interpolatorClass = {
-                nearest: NearestInterpolator,
-                linear: LinearInterpolator,
-                cubic: CubicInterpolator,
-                lanczos: SincFilterInterpolator,
-                sinc: SincFilterInterpolator
-            } [config.method])) {
+            nearest: NearestInterpolator,
+            linear: LinearInterpolator,
+            cubic: CubicInterpolator,
+            lanczos: SincFilterInterpolator,
+            sinc: SincFilterInterpolator
+        }[config.method])) {
             throw "Invalid method: " + config.method;
         }
         if (config.method === 'lanczos') {
@@ -345,7 +345,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
         }
         if (arr.length < 2) throw 'Array must have at least two elements';
         properties.count = arr.length;
-        smoothFunc = (function() {
+        smoothFunc = (function () {
             var _i, _j, _len, _len2;
             switch (getType(arr[0])) {
                 case 'Number':
@@ -357,7 +357,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
                         }
                     }
                     interpolator = new interpolatorClass(arr, config);
-                    return function(t) {
+                    return function (t) {
                         return interpolator.interpolate(t);
                     };
                 case 'Array':
@@ -369,7 +369,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
                             validateVector(v, dimension);
                         }
                     }
-                    interpolators = (function() {
+                    interpolators = (function () {
                         var _results;
                         _results = [];
                         for (i = 0; 0 <= dimension ? i < dimension : i > dimension; 0 <= dimension ? i++ : i--) {
@@ -377,7 +377,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
                         }
                         return _results;
                     })();
-                    return function(t) {
+                    return function (t) {
                         var interpolator, _k, _len3, _results;
                         _results = [];
                         for (_k = 0, _len3 = interpolators.length; _k < _len3; _k++) {

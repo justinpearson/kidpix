@@ -1,19 +1,19 @@
-KiddoPaint.Tools.Toolbox.Maze = function() {
+KiddoPaint.Tools.Toolbox.Maze = function () {
     var tool = this;
     this.isDown = false;
 
-    this.texture = function() {
+    this.texture = function () {
         return KiddoPaint.Textures.Solid(KiddoPaint.Current.color);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         var maze = makeMaze();
         KiddoPaint.Display.context.drawImage(maze, ev._x, ev._y);
     };
 
-    this.mousemove = function(ev) {};
-    this.mouseup = function(ev) {
+    this.mousemove = function (ev) { };
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             KiddoPaint.Display.saveMain();
@@ -39,15 +39,15 @@ function makeMaze() {
     wallColor = KiddoPaint.Current.color;
     pathColor = KiddoPaint.Current.altColor;
 
-    randomGen = function(seed) {
+    randomGen = function (seed) {
         if (seed === undefined) var seed = performance.now()
-        return function() {
+        return function () {
             seed = (seed * 9301 + 49297) % 233280
             return seed / 233280
         }
     }
 
-    init = function() {
+    init = function () {
         offset = pathWidth / 2 + outerWall
         map = []
         mazeWidth = outerWall * 2 + width * (pathWidth + wall) - wall
@@ -78,16 +78,16 @@ function makeMaze() {
     }
     init();
 
-    loop = function() {
+    loop = function () {
         x = route[route.length - 1][0] | 0
         y = route[route.length - 1][1] | 0
 
         var directions = [
-                [1, 0],
-                [-1, 0],
-                [0, 1],
-                [0, -1]
-            ],
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1]
+        ],
             alternatives = []
 
         for (var i = 0; i < directions.length; i++) {

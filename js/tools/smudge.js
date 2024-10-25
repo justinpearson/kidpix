@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.Smudge = function() {
+KiddoPaint.Tools.Toolbox.Smudge = function () {
     //	 https://stackoverflow.com/a/61970857
     var tool = this;
     this.isDown = false;
@@ -7,13 +7,13 @@ KiddoPaint.Tools.Toolbox.Smudge = function() {
     this.brushCtx = document.createElement('canvas').getContext("2d");
 
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.previousEv = ev;
         updateBrush(ev._x, ev._y);
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (!tool.isDown) {
             return;
         }
@@ -34,7 +34,7 @@ KiddoPaint.Tools.Toolbox.Smudge = function() {
         tool.previousEv = ev;
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             KiddoPaint.Display.context.globalAlpha = 1;

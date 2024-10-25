@@ -1,18 +1,18 @@
-KiddoPaint.Tools.Toolbox.Scribble = function() {
+KiddoPaint.Tools.Toolbox.Scribble = function () {
     var tool = this;
     this.isDown = false;
     this.previousEv = null;
-    this.texture = function() {
+    this.texture = function () {
         return KiddoPaint.Textures.Solid(KiddoPaint.Current.color);
     };
     this.spacing = 5;
     this.size = 1;
-    this.jitter = function() {
+    this.jitter = function () {
         let baseJitter = KiddoPaint.Current.modifiedMeta ? 25 : 10;
         return baseJitter + (Math.random() * baseJitter);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         KiddoPaint.Sounds.brushzigzag();
         tool.isDown = true;
         KiddoPaint.Display.context.beginPath();
@@ -20,7 +20,7 @@ KiddoPaint.Tools.Toolbox.Scribble = function() {
         tool.previousEv = ev;
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             if (tool.previousEv == null || distanceBetween(tool.previousEv, ev) > tool.spacing) {
                 KiddoPaint.Sounds.brushzigzag();
@@ -35,7 +35,7 @@ KiddoPaint.Tools.Toolbox.Scribble = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             tool.isDown = false;

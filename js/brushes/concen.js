@@ -1,4 +1,4 @@
-KiddoPaint.Brushes.Concentric = function(color1, step) {
+KiddoPaint.Brushes.Concentric = function (color1, step) {
     color1 = color1 || 'black';
 
     var canvasBrush = document.createElement('canvas');

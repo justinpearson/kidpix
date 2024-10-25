@@ -1,21 +1,21 @@
-KiddoPaint.Tools.Toolbox.Tnt = function() {
+KiddoPaint.Tools.Toolbox.Tnt = function () {
     var tool = this;
     this.isDown = false;
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.animate(ev);
     };
 
-    this.mousemove = function(ev) {};
+    this.mousemove = function (ev) { };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
         }
     };
 
-    this.animate = function(ev) {
+    this.animate = function (ev) {
         KiddoPaint.Display.saveUndo();
         KiddoPaint.Display.pauseUndo();
 

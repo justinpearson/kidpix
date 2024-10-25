@@ -1,4 +1,4 @@
-KiddoPaint.Builders.Road = function(color1, color2, angle) {
+KiddoPaint.Builders.Road = function (color1, color2, angle) {
     color1 = color1 || 'black';
     color2 = (color2 === color1) ? 'yellow' : color2;
     angle = angle || 0;

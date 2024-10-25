@@ -1,18 +1,18 @@
-KiddoPaint.Tools.Toolbox.Contours = function() {
+KiddoPaint.Tools.Toolbox.Contours = function () {
     var tool = this;
     this.isDown = false;
     this.size = 2;
-    this.stroke = function() {
+    this.stroke = function () {
         return KiddoPaint.Textures.Solid(KiddoPaint.Current.modified ? KiddoPaint.Colors.randomColor() : KiddoPaint.Current.color);
     };
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.x = ev._x;
         tool.y = ev._y;
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             KiddoPaint.Sounds.brushnorthern();
             KiddoPaint.Display.context.beginPath();
@@ -25,7 +25,7 @@ KiddoPaint.Tools.Toolbox.Contours = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             tool.isDown = false;

@@ -18,7 +18,7 @@ const JumbleFx = {
     THRESHOLD: 'threshold'
 }
 
-KiddoPaint.Tools.Toolbox.WholeCanvasEffect = function() {
+KiddoPaint.Tools.Toolbox.WholeCanvasEffect = function () {
     var tool = this;
     this.isDown = false;
     this.gfx = fx.canvas(); // expensive; create once
@@ -27,7 +27,7 @@ KiddoPaint.Tools.Toolbox.WholeCanvasEffect = function() {
     this.initialClick = {};
     this.effect = JumbleFx.PANCAKE;
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.initialClick = ev;
         tool.mainImageData = KiddoPaint.Display.main_context.getImageData(0, 0, KiddoPaint.Display.main_canvas.width, KiddoPaint.Display.main_canvas.height);
@@ -37,7 +37,7 @@ KiddoPaint.Tools.Toolbox.WholeCanvasEffect = function() {
         tool.mousemove(ev);
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             KiddoPaint.Display.clearTmp();
             var drawDistance = distanceBetween(ev, tool.initialClick);
@@ -138,7 +138,7 @@ KiddoPaint.Tools.Toolbox.WholeCanvasEffect = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             tool.textureGfx.destroy();

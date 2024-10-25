@@ -1,5 +1,5 @@
-KiddoPaint.Builders.Arrow = function(color1, angle) {
-    jitter = function() {
+KiddoPaint.Builders.Arrow = function (color1, angle) {
+    jitter = function () {
         let baseJitter = 10;
         return baseJitter + (Math.random() * baseJitter);
     };

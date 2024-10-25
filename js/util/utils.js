@@ -350,7 +350,7 @@ function srng(seed) {
     var prime = 4241;
     var maximum = 4243;
     return {
-        next: function() {
+        next: function () {
             seed *= constant;
             seed += prime;
             return seed % maximum / maximum;

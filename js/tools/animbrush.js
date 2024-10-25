@@ -1,24 +1,24 @@
-KiddoPaint.Tools.Toolbox.AnimBrush = function() {
+KiddoPaint.Tools.Toolbox.AnimBrush = function () {
     var tool = this;
     this.isDown = false;
     this.previousEv = null;
     this.currentEv = null;
     this.distanceFromPrev = null;
-    this.texture = function() {};
-    this.preprocess = function() {};
-    this.postprocess = function() {};
+    this.texture = function () { };
+    this.preprocess = function () { };
+    this.postprocess = function () { };
     this.step = 0;
     this.animInterval = 30;
     this.timeout = null;
 
-    this.reset = function() {
+    this.reset = function () {
         tool.isDown = false;
         tool.currentEv = null;
         tool.previousEv = null;
         tool.distanceFromPrev = null;
-        tool.texture = function() {};
-        tool.preprocess = function() {};
-        tool.postprocess = function() {};
+        tool.texture = function () { };
+        tool.preprocess = function () { };
+        tool.postprocess = function () { };
         tool.step = 0;
         tool.animInterval = 30;
         if (tool.timeout) {
@@ -27,7 +27,7 @@ KiddoPaint.Tools.Toolbox.AnimBrush = function() {
         }
     }
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.preprocess();
         tool.currentEv = ev;
@@ -40,7 +40,7 @@ KiddoPaint.Tools.Toolbox.AnimBrush = function() {
         tool.toolDraw();
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             tool.distanceFromPrev = tool.previousEv ? distanceBetween(tool.previousEv, ev) : Number.MAX_VALUE;;
             tool.previousEv = tool.currentEv;
@@ -49,7 +49,7 @@ KiddoPaint.Tools.Toolbox.AnimBrush = function() {
         };
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.postprocess();
             tool.isDown = false;
@@ -65,7 +65,7 @@ KiddoPaint.Tools.Toolbox.AnimBrush = function() {
         }
     };
 
-    this.toolDraw = function() {
+    this.toolDraw = function () {
         if (tool.isDown) {
             let ev = tool.currentEv;
             var brushFill = tool.texture(tool.step, tool.distanceFromPrev);

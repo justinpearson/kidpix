@@ -1,32 +1,32 @@
-KiddoPaint.Tools.Toolbox.PlainBrush = function() {
+KiddoPaint.Tools.Toolbox.PlainBrush = function () {
     var tool = this;
     this.isDown = false;
     this.previousEv = null;
-    this.texture = function() {};
-    this.preprocess = function() {};
-    this.postprocess = function() {};
+    this.texture = function () { };
+    this.preprocess = function () { };
+    this.postprocess = function () { };
     this.spacing = 5;
     this.step = 0;
     this.points = [];
 
-    this.reset = function() {
+    this.reset = function () {
         tool.isDown = false;
         tool.previousEv = null;
-        tool.texture = function() {};
-        tool.preprocess = function() {};
-        tool.postprocess = function() {};
+        tool.texture = function () { };
+        tool.preprocess = function () { };
+        tool.postprocess = function () { };
         tool.step = 0;
         tool.points = [];
     }
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.mousemove(ev);
         tool.previousEv = ev;
         tool.preprocess();
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         if (tool.isDown) {
             var point = [ev._x, ev.y];
             tool.points.push(point);
@@ -34,7 +34,7 @@ KiddoPaint.Tools.Toolbox.PlainBrush = function() {
         tool.mousemoveDirect(ev);
     }
 
-    this.mousemoveDirect = function(ev) {
+    this.mousemoveDirect = function (ev) {
         if (tool.isDown) {
             if (tool.previousEv == null || distanceBetween(tool.previousEv, ev) > tool.spacing) {
                 if (KiddoPaint.Current.modifiedTilde) {
@@ -70,7 +70,7 @@ KiddoPaint.Tools.Toolbox.PlainBrush = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             KiddoPaint.Display.clearTmp();
             var s = Smooth(tool.points, {
@@ -91,7 +91,7 @@ KiddoPaint.Tools.Toolbox.PlainBrush = function() {
         }
     }
 
-    this.mouseupDirect = function(ev) {
+    this.mouseupDirect = function (ev) {
         if (tool.isDown) {
             tool.mousemove(ev);
             tool.isDown = false;

@@ -379,7 +379,7 @@ function computeMaxError(points, bez, parameters) {
 };
 
 //Sample 't's and map them to relative distances along the curve:
-var mapTtoRelativeDistances = function(bez, B_parts) {
+var mapTtoRelativeDistances = function (bez, B_parts) {
     var B_t_curr;
     var B_t_dist = [0];
     var B_t_prev = bez[0];

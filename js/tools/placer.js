@@ -1,16 +1,16 @@
-KiddoPaint.Tools.Toolbox.Placer = function() {
+KiddoPaint.Tools.Toolbox.Placer = function () {
     var tool = this;
     this.isDown = false;
     this.image = {};
     this.prevTool = {};
     this.size = {};
 
-    this.mousedown = function(ev) {
+    this.mousedown = function (ev) {
         tool.isDown = true;
         tool.mousemove(ev);
     };
 
-    this.mousemove = function(ev) {
+    this.mousemove = function (ev) {
         var ctx = tool.isDown ? KiddoPaint.Display.context : KiddoPaint.Display.previewContext;
         var alt = KiddoPaint.Current.modifiedAlt;
         var ctrl = KiddoPaint.Current.modifiedMeta;
@@ -51,7 +51,7 @@ KiddoPaint.Tools.Toolbox.Placer = function() {
         }
     };
 
-    this.mouseup = function(ev) {
+    this.mouseup = function (ev) {
         if (tool.isDown) {
             tool.isDown = false;
             tool.image = {};

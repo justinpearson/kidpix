@@ -15,7 +15,7 @@ KiddoPaint.Alphabet = {};
 KiddoPaint.Sprite = {};
 
 function init_kiddo_paint() {
-    document.addEventListener("contextmenu", function(e) {
+    document.addEventListener("contextmenu", function (e) {
         e.preventDefault();
     }, false);
 
@@ -142,7 +142,7 @@ function init_listeners(canvas) {
     canvas.addEventListener('mouseup', ev_canvas);
 
     // Set up touch events for mobile, etc
-    canvas.addEventListener("touchstart", function(e) {
+    canvas.addEventListener("touchstart", function (e) {
         var touch = e.touches[0];
         var mouseEvent = new MouseEvent("mousedown", {
             clientX: touch.clientX,
@@ -151,7 +151,7 @@ function init_listeners(canvas) {
         canvas.dispatchEvent(mouseEvent);
         e.preventDefault();
     }, false);
-    canvas.addEventListener("touchend", function(e) {
+    canvas.addEventListener("touchend", function (e) {
         var touch = e.changedTouches[0];
         var mouseEvent = new MouseEvent("mouseup", {
             clientX: touch.clientX,
@@ -160,7 +160,7 @@ function init_listeners(canvas) {
         canvas.dispatchEvent(mouseEvent);
         e.preventDefault();
     }, false);
-    canvas.addEventListener("touchmove", function(e) {
+    canvas.addEventListener("touchmove", function (e) {
         var touch = e.touches[0];
         var mouseEvent = new MouseEvent("mousemove", {
             clientX: touch.clientX,
@@ -170,7 +170,7 @@ function init_listeners(canvas) {
         e.preventDefault();
     }, false);
 
-    canvas.addEventListener('mouseleave', function() {
+    canvas.addEventListener('mouseleave', function () {
         // we force a mouse up - this fixes a bug with some effects in which a clearPrev wipes the whole canvas
         KiddoPaint.Current.tool.mouseup(KiddoPaint.Current.ev);
         KiddoPaint.Display.clearPreview();
@@ -178,7 +178,7 @@ function init_listeners(canvas) {
         KiddoPaint.Display.clearBnim();
     });
     canvas.addEventListener("mousewheel", mouse_wheel);
-    canvas.addEventListener("dragover", function(ev) {
+    canvas.addEventListener("dragover", function (ev) {
         if (ev.preventDefault) {
             ev.preventDefault();
         };
@@ -286,12 +286,12 @@ function init_color_selector() {
 }
 
 function init_color_paging() {
-    document.getElementById('colorprev').addEventListener('mousedown', function() {
+    document.getElementById('colorprev').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.submenucolor();
         KiddoPaint.Colors.prevPalette();
         set_colors_to_current_palette();
     });
-    document.getElementById('colornext').addEventListener('mousedown', function() {
+    document.getElementById('colornext').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.submenucolor();
         KiddoPaint.Colors.nextPalette();
         set_colors_to_current_palette();
@@ -312,12 +312,12 @@ function show_sub_toolbar(subtoolbar) {
 }
 
 function init_tool_bar() {
-    document.getElementById('save').addEventListener('mousedown', function() {
+    document.getElementById('save').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         save_to_file();
     });
 
-    document.getElementById('pencil').addEventListener('mousedown', function() {
+    document.getElementById('pencil').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu('pencil');
         KiddoPaint.Current.tool = KiddoPaint.Tools.Pencil;
@@ -325,7 +325,7 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add('cursor-pencil');
     });
 
-    document.getElementById('line').addEventListener('mousedown', function() {
+    document.getElementById('line').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu('line');
         KiddoPaint.Current.tool = KiddoPaint.Tools.Line;
@@ -333,7 +333,7 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add('cursor-crosshair');
     });
 
-    document.getElementById('square').addEventListener('mousedown', function() {
+    document.getElementById('square').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu('square');
         KiddoPaint.Current.tool = KiddoPaint.Tools.Square;
@@ -341,7 +341,7 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add('cursor-crosshair');
     });
 
-    document.getElementById('circle').addEventListener('mousedown', function() {
+    document.getElementById('circle').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu('circle');
         KiddoPaint.Current.tool = KiddoPaint.Tools.Circle;
@@ -349,14 +349,14 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add('cursor-crosshair');
     });
 
-    document.getElementById('brush').addEventListener('mousedown', function() {
+    document.getElementById('brush').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         reset_ranges();
         show_generic_submenu('wackybrush');
         KiddoPaint.Submenu.wackybrush[0].handler();
     });
 
-    document.getElementById('stamp').addEventListener('mousedown', function() {
+    document.getElementById('stamp').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         reset_ranges();
         KiddoPaint.Display.canvas.classList = "";
@@ -371,7 +371,7 @@ function init_tool_bar() {
         }
     });
 
-    document.getElementById('alphabet').addEventListener('mousedown', function() {
+    document.getElementById('alphabet').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         init_alphabet_bar('character' + KiddoPaint.Alphabet.page);
         show_sub_toolbar('alphabettoolbar');
@@ -382,7 +382,7 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add('cursor-none');
     });
 
-    document.getElementById('flood').addEventListener('mousedown', function() {
+    document.getElementById('flood').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu('flood');
         KiddoPaint.Current.tool = KiddoPaint.Tools.Flood;
@@ -390,7 +390,7 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add('cursor-bucket');
     });
 
-    document.getElementById('eraser').addEventListener('mousedown', function() {
+    document.getElementById('eraser').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         KiddoPaint.Current.tool = KiddoPaint.Tools.Eraser;
         KiddoPaint.Display.canvas.classList = "";
@@ -398,7 +398,7 @@ function init_tool_bar() {
         show_generic_submenu('eraser');
     });
 
-    document.getElementById('truck').addEventListener('mousedown', function() {
+    document.getElementById('truck').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu('truck');
         KiddoPaint.Current.tool = KiddoPaint.Tools.Cut;
@@ -406,13 +406,13 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add('cursor-crosshair');
     });
 
-    document.getElementById('undo').addEventListener('mousedown', function() {
+    document.getElementById('undo').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         KiddoPaint.Sounds.oops();
         KiddoPaint.Display.undo(!KiddoPaint.Current.modifiedAlt);
     });
 
-    document.getElementById('alnext').addEventListener('mousedown', function() {
+    document.getElementById('alnext').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.submenuoption();
         KiddoPaint.Alphabet.nextPage();
         init_alphabet_bar('character' + KiddoPaint.Alphabet.page);
@@ -424,7 +424,7 @@ function init_tool_bar() {
     //        init_stamp_bar('stamp' + KiddoPaint.Stamps.page);
     //    });
 
-    document.getElementById('jumble').addEventListener('mousedown', function() {
+    document.getElementById('jumble').addEventListener('mousedown', function () {
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu('jumble');
         KiddoPaint.Display.canvas.classList = "";
@@ -459,7 +459,7 @@ function init_alphabet_subtoolbar() {
     var alphaselect = document.querySelectorAll('*[id^="xal"]');
     for (var i = 0; i < alphaselect.length; i++) {
         var alphaButton = alphaselect[i];
-        alphaButton.addEventListener('mousedown', function(ev) {
+        alphaButton.addEventListener('mousedown', function (ev) {
             reset_ranges();
             src = ev.srcElement || ev.target;
             KiddoPaint.Tools.Stamp.stamp = src.firstChild.nodeValue;
@@ -587,9 +587,9 @@ function image_upload(ev) {
         var file = files[0];
         if (typeof FileReader !== "undefined") {
             var reader = new FileReader();
-            reader.onload = function(evt) {
+            reader.onload = function (evt) {
                 var img = new Image();
-                img.onload = function() {
+                img.onload = function () {
                     if (KiddoPaint.Current.modifiedAlt) {
                         KiddoPaint.Display.context.drawImage(img, 0, 0);
                         KiddoPaint.Display.saveMain();
