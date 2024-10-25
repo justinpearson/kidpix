@@ -905,7 +905,7 @@ KiddoPaint.Display.loadFromLocalStorage = function () {
     if (typeof Storage != "undefined" && localStorage.getItem("kiddopaint")) {
         img.src = localStorage.getItem("kiddopaint");
     } else {
-        img.src = "static/splash.png";
+        img.src = "./src/assets/static/splash.png";
     }
 };
 
@@ -4304,7 +4304,7 @@ KiddoPaint.Tools.EraserFadeAway = new KiddoPaint.Tools.Toolbox.EraserFadeAway();
 
 KiddoPaint.Tools.Toolbox.EraserHiddenPicture = function () {
     var tool = this;
-    this.hiddenPictures = ["img/kp-h-bear.png", "img/kp-h-bison.png", "img/kp-h-corn.png", "img/kp-h-eye.png", "img/kp-h-fox.png", "img/kp-h-horse.png", "img/kp-h-hummingbird.png", "img/kp-h-ladybug.png", "img/kp-h-lion.png", "img/kp-h-magnet.png", "img/kp-h-moth.png", "img/kp-h-octopus.png"];
+    this.hiddenPictures = ["./src/assets/img/kp-h-bear.png", "./src/assets/img/kp-h-bison.png", "./src/assets/img/kp-h-corn.png", "./src/assets/img/kp-h-eye.png", "./src/assets/img/kp-h-fox.png", "./src/assets/img/kp-h-horse.png", "./src/assets/img/kp-h-hummingbird.png", "./src/assets/img/kp-h-ladybug.png", "./src/assets/img/kp-h-lion.png", "./src/assets/img/kp-h-magnet.png", "./src/assets/img/kp-h-moth.png", "./src/assets/img/kp-h-octopus.png"];
     this.isDown = false;
     this.size = 32;
     this.hiddenPattern = null;
@@ -6166,7 +6166,7 @@ KiddoPaint.Tools.ElectricMixerInvert = new KiddoPaint.Tools.Toolbox.ElectricMixe
 
 KiddoPaint.Tools.Toolbox.WackyMixerPattern = function () {
     var tool = this;
-    this.patternImages = ["img/kidpix-mixer-pattern-206.png", "img/kidpix-mixer-pattern-207.png", "img/kidpix-mixer-pattern-208.png", "img/kidpix-mixer-pattern-209.png", "img/kidpix-mixer-pattern-210.png", "img/kidpix-mixer-pattern-211.png", "img/kidpix-mixer-pattern-212.png", "img/kidpix-mixer-pattern-213.png", "img/kidpix-mixer-pattern-214.png", "img/kidpix-mixer-pattern-215.png", "img/kidpix-mixer-pattern-216.png", "img/kidpix-mixer-pattern-217.png", "img/kidpix-mixer-pattern-218.png", "img/kidpix-mixer-pattern-219.png", "img/kidpix-mixer-pattern-220.png", "img/kidpix-mixer-pattern-221.png", "img/kidpix-mixer-pattern-222.png", "img/kidpix-mixer-pattern-223.png", "img/kidpix-mixer-pattern-224.png", "img/kidpix-mixer-pattern-225.png", "img/kidpix-mixer-pattern-226.png", "img/kidpix-mixer-pattern-227.png", "img/kidpix-mixer-pattern-228.png", "img/kidpix-mixer-pattern-229.png", "img/kidpix-mixer-pattern-230.png"];
+    this.patternImages = ["./src/assets/img/kidpix-mixer-pattern-206.png", "./src/assets/img/kidpix-mixer-pattern-207.png", "./src/assets/img/kidpix-mixer-pattern-208.png", "./src/assets/img/kidpix-mixer-pattern-209.png", "./src/assets/img/kidpix-mixer-pattern-210.png", "./src/assets/img/kidpix-mixer-pattern-211.png", "./src/assets/img/kidpix-mixer-pattern-212.png", "./src/assets/img/kidpix-mixer-pattern-213.png", "./src/assets/img/kidpix-mixer-pattern-214.png", "./src/assets/img/kidpix-mixer-pattern-215.png", "./src/assets/img/kidpix-mixer-pattern-216.png", "./src/assets/img/kidpix-mixer-pattern-217.png", "./src/assets/img/kidpix-mixer-pattern-218.png", "./src/assets/img/kidpix-mixer-pattern-219.png", "./src/assets/img/kidpix-mixer-pattern-220.png", "./src/assets/img/kidpix-mixer-pattern-221.png", "./src/assets/img/kidpix-mixer-pattern-222.png", "./src/assets/img/kidpix-mixer-pattern-223.png", "./src/assets/img/kidpix-mixer-pattern-224.png", "./src/assets/img/kidpix-mixer-pattern-225.png", "./src/assets/img/kidpix-mixer-pattern-226.png", "./src/assets/img/kidpix-mixer-pattern-227.png", "./src/assets/img/kidpix-mixer-pattern-228.png", "./src/assets/img/kidpix-mixer-pattern-229.png", "./src/assets/img/kidpix-mixer-pattern-230.png"];
     this.mousedown = function (ev) {
         KiddoPaint.Sounds.mixerframe();
         let image = new Image();
@@ -7411,7 +7411,7 @@ KiddoPaint.Textures.SprayPaint7 = function (color1) {
 
 KiddoPaint.Submenu.wackybrush = [{
     name: "Leaky Pen",
-    imgSrc: "img/tool-menu-wacky-brush-70.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-70.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7424,7 +7424,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Zig Zag",
-    imgSrc: "img/tool-menu-wacky-brush-71.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-71.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7432,7 +7432,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Dots",
-    imgSrc: "img/tool-menu-wacky-brush-72.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-72.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7446,7 +7446,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Bubbly",
-    imgSrc: "img/tool-menu-wacky-brush-73.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-73.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7459,7 +7459,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Pies",
-    imgSrc: "img/tool-menu-wacky-brush-74.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-74.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7473,7 +7473,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Echoes",
-    imgSrc: "img/tool-menu-wacky-brush-75.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-75.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7487,7 +7487,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Northern Lights",
-    imgSrc: "img/tool-menu-wacky-brush-76.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-76.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7495,7 +7495,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Fuzzer",
-    imgSrc: "img/tool-menu-wacky-brush-77.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-77.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-none");
@@ -7503,7 +7503,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Magnifying Glass",
-    imgSrc: "img/tool-menu-wacky-brush-78.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-78.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7511,7 +7511,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Spray Paint",
-    imgSrc: "img/tool-menu-wacky-brush-79.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-79.png",
     handler: function (e) {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7527,7 +7527,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Pine Needles",
-    imgSrc: "img/tool-menu-wacky-brush-80.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-80.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7535,7 +7535,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "3-D",
-    imgSrc: "img/tool-menu-wacky-brush-81.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-81.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7543,7 +7543,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Kaliediscope",
-    imgSrc: "img/tool-menu-wacky-brush-82.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-82.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7551,7 +7551,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Connect The Dots",
-    imgSrc: "img/tool-menu-wacky-brush-84.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-84.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7565,7 +7565,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Swirl",
-    imgSrc: "img/tool-menu-wacky-brush-86.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-86.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7579,7 +7579,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Rotating Dots",
-    imgSrc: "img/br12.png",
+    imgSrc: "./src/assets/img/br12.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7593,7 +7593,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Inverter",
-    imgSrc: "img/tool-menu-wacky-brush-87.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-87.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7601,7 +7601,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Geometry",
-    imgSrc: "img/tool-menu-wacky-brush-88.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-88.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7609,7 +7609,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "XY to XY",
-    imgSrc: "img/br16.png",
+    imgSrc: "./src/assets/img/br16.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7617,7 +7617,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Tree",
-    imgSrc: "img/tool-menu-wacky-brush-89.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-89.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7625,7 +7625,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Splatter Paint",
-    imgSrc: "img/tool-menu-wacky-brush-91.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-91.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7639,7 +7639,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Starburst",
-    imgSrc: "img/br-starburst.png",
+    imgSrc: "./src/assets/img/br-starburst.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7652,7 +7652,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "The Looper",
-    imgSrc: "img/tool-menu-wacky-brush-92.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-92.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7660,7 +7660,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "A Galaxy of Stars",
-    imgSrc: "img/tool-menu-wacky-brush-94.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-94.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7674,7 +7674,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Lots of Hugs and Xs",
-    imgSrc: "img/tool-menu-wacky-brush-95.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-95.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7688,7 +7688,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "A Full Deck of Cards",
-    imgSrc: "img/tool-menu-wacky-brush-96.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-96.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7702,7 +7702,7 @@ KiddoPaint.Submenu.wackybrush = [{
     }
 }, {
     name: "Shapes and More Shapes",
-    imgSrc: "img/tool-menu-wacky-brush-97.png",
+    imgSrc: "./src/assets/img/tool-menu-wacky-brush-97.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -7941,7 +7941,7 @@ KiddoPaint.Submenu.circle = [{
     }
 }, {
     name: "Texture ?",
-    imgSrc: "img/tool-unknown.png",
+    imgSrc: "./src/assets/img/tool-unknown.png",
     handler: function () {
         KiddoPaint.Tools.Circle.texture = function (start, end) {
             return KiddoPaint.Textures.RainbowGrad(start, end);
@@ -7951,7 +7951,7 @@ KiddoPaint.Submenu.circle = [{
 
 KiddoPaint.Submenu.eraser = [{
     name: "Eraser Squre 20",
-    imgSrc: "img/tool-submenu-eraser-178.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-178.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
@@ -7961,7 +7961,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "Eraser Circle 15",
-    imgSrc: "img/tool-submenu-eraser-179.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-179.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
@@ -7971,7 +7971,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "Eraser",
-    imgSrc: "img/tool-submenu-eraser-180.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-180.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
@@ -7981,7 +7981,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "Eraser",
-    imgSrc: "img/tool-submenu-eraser-181.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-181.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
@@ -7991,7 +7991,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "Firecracker",
-    imgSrc: "img/tool-submenu-eraser-182.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-182.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-tnt");
@@ -7999,7 +7999,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "Hidden Pictures",
-    imgSrc: "img/tool-submenu-eraser-183.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-183.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
@@ -8008,7 +8008,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "White Circles",
-    imgSrc: "img/tool-submenu-eraser-184.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-184.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
@@ -8017,7 +8017,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "Slip-Sliding Away",
-    imgSrc: "img/tool-submenu-eraser-185.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-185.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8025,7 +8025,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "#$%!*!!",
-    imgSrc: "img/tool-submenu-eraser-186.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-186.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8033,7 +8033,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "Fade Away",
-    imgSrc: "img/tool-submenu-eraser-187.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-187.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8041,7 +8041,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "Black Hole",
-    imgSrc: "img/tool-submenu-eraser-189.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-189.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
@@ -8050,7 +8050,7 @@ KiddoPaint.Submenu.eraser = [{
     }
 }, {
     name: "Count Down",
-    imgSrc: "img/tool-submenu-eraser-190.png",
+    imgSrc: "./src/assets/img/tool-submenu-eraser-190.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
@@ -8281,7 +8281,7 @@ KiddoPaint.Submenu.flood = [{
     }
 }, {
     name: "Texture ?",
-    imgSrc: "img/tool-unknown.png",
+    imgSrc: "./src/assets/img/tool-unknown.png",
     handler: function () {
         KiddoPaint.Tools.Flood.gcop = "source-atop";
         KiddoPaint.Tools.Flood.texture = function () {
@@ -8298,7 +8298,7 @@ KiddoPaint.Submenu.flood = [{
 
 KiddoPaint.Submenu.jumble = [{
     name: "Invert",
-    imgSrc: "img/tool-submenu-wacky-mixer-164.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-164.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8306,7 +8306,7 @@ KiddoPaint.Submenu.jumble = [{
     }
 }, {
     name: "Raindrops",
-    imgSrc: "img/tool-submenu-wacky-mixer-165.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-165.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8327,7 +8327,7 @@ KiddoPaint.Submenu.jumble = [{
     }
 }, {
     name: "Checkerboard",
-    imgSrc: "img/tool-submenu-wacky-mixer-166.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-166.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8335,7 +8335,7 @@ KiddoPaint.Submenu.jumble = [{
     }
 }, {
     name: "Wallpaper",
-    imgSrc: "img/tool-submenu-wacky-mixer-167.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-167.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8343,7 +8343,7 @@ KiddoPaint.Submenu.jumble = [{
     }
 }, {
     name: "Venetian Blinds",
-    imgSrc: "img/tool-submenu-wacky-mixer-168.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-168.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8351,13 +8351,13 @@ KiddoPaint.Submenu.jumble = [{
     }
 }, {
     name: "The Outliner",
-    imgSrc: "img/tool-submenu-wacky-mixer-169.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-169.png",
     handler: function () {
         KiddoPaint.Sounds.unimpl();
     }
 }, {
     name: "Shadow Boxes",
-    imgSrc: "img/tool-submenu-wacky-mixer-170.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-170.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8365,19 +8365,19 @@ KiddoPaint.Submenu.jumble = [{
     }
 }, {
     name: "Zoom In",
-    imgSrc: "img/tool-submenu-wacky-mixer-171.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-171.png",
     handler: function () {
         KiddoPaint.Sounds.unimpl();
     }
 }, {
     name: "Broken Glass",
-    imgSrc: "img/tool-submenu-wacky-mixer-172.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-172.png",
     handler: function () {
         KiddoPaint.Sounds.unimpl();
     }
 }, {
     name: "Picture In A Picture",
-    imgSrc: "img/tool-submenu-wacky-mixer-173.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-173.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8385,13 +8385,13 @@ KiddoPaint.Submenu.jumble = [{
     }
 }, {
     name: "The Highlighter",
-    imgSrc: "img/tool-submenu-wacky-mixer-174.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-174.png",
     handler: function () {
         KiddoPaint.Sounds.unimpl();
     }
 }, {
     name: "Pattern Maker",
-    imgSrc: "img/tool-submenu-wacky-mixer-175.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-175.png",
     handler: function () {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -8399,7 +8399,7 @@ KiddoPaint.Submenu.jumble = [{
     }
 }, {
     name: "Wrap Around",
-    imgSrc: "img/tool-submenu-wacky-mixer-176.png",
+    imgSrc: "./src/assets/img/tool-submenu-wacky-mixer-176.png",
     handler: function () {
         KiddoPaint.Sounds.unimpl();
     }
@@ -8425,37 +8425,37 @@ KiddoPaint.Submenu.jumble = [{
 
 KiddoPaint.Submenu.line = [{
     name: "Size 1",
-    imgSrc: "img/pw1.png",
+    imgSrc: "./src/assets/img/pw1.png",
     handler: function () {
         KiddoPaint.Tools.Line.size = 1;
     }
 }, {
     name: "Size 5",
-    imgSrc: "img/pw2.png",
+    imgSrc: "./src/assets/img/pw2.png",
     handler: function () {
         KiddoPaint.Tools.Line.size = 5;
     }
 }, {
     name: "Size 10",
-    imgSrc: "img/pw3.png",
+    imgSrc: "./src/assets/img/pw3.png",
     handler: function () {
         KiddoPaint.Tools.Line.size = 9;
     }
 }, {
     name: "Size 25",
-    imgSrc: "img/pw4.png",
+    imgSrc: "./src/assets/img/pw4.png",
     handler: function () {
         KiddoPaint.Tools.Line.size = 13;
     }
 }, {
     name: "Size 100",
-    imgSrc: "img/pw5.png",
+    imgSrc: "./src/assets/img/pw5.png",
     handler: function () {
         KiddoPaint.Tools.Line.size = 17;
     }
 }, {
     name: "Size 100",
-    imgSrc: "img/pw6.png",
+    imgSrc: "./src/assets/img/pw6.png",
     handler: function () {
         KiddoPaint.Tools.Line.size = 25;
     }
@@ -8685,7 +8685,7 @@ KiddoPaint.Submenu.line = [{
     }
 }, {
     name: "Rainbow",
-    imgSrc: "img/tool-unknown.png",
+    imgSrc: "./src/assets/img/tool-unknown.png",
     handler: function () {
         KiddoPaint.Tools.Line.stomp = false;
         KiddoPaint.Tools.Line.texture = function () {
@@ -8696,37 +8696,37 @@ KiddoPaint.Submenu.line = [{
 
 KiddoPaint.Submenu.pencil = [{
     name: "Size 1",
-    imgSrc: "img/tool-submenu-pencil-size-1.png",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-1.png",
     handler: function () {
         KiddoPaint.Tools.Pencil.size = 1;
     }
 }, {
     name: "Size 5",
-    imgSrc: "img/tool-submenu-pencil-size-2.png",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-2.png",
     handler: function () {
         KiddoPaint.Tools.Pencil.size = 5;
     }
 }, {
     name: "Size 10",
-    imgSrc: "img/tool-submenu-pencil-size-3.png",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-3.png",
     handler: function () {
         KiddoPaint.Tools.Pencil.size = 9;
     }
 }, {
     name: "Size 25",
-    imgSrc: "img/tool-submenu-pencil-size-4.png",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-4.png",
     handler: function () {
         KiddoPaint.Tools.Pencil.size = 13;
     }
 }, {
     name: "Size 100",
-    imgSrc: "img/tool-submenu-pencil-size-5.png",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-5.png",
     handler: function () {
         KiddoPaint.Tools.Pencil.size = 17;
     }
 }, {
     name: "Size 100",
-    imgSrc: "img/tool-submenu-pencil-size-6.png",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-6.png",
     handler: function () {
         KiddoPaint.Tools.Pencil.size = 25;
     }
@@ -8936,7 +8936,7 @@ KiddoPaint.Submenu.pencil = [{
     }
 }, {
     name: "Rainbow",
-    imgSrc: "img/tool-unknown.png",
+    imgSrc: "./src/assets/img/tool-unknown.png",
     handler: function () {
         var hue = 0;
         KiddoPaint.Tools.Pencil.texture = function (color) {
@@ -9019,7 +9019,7 @@ KiddoPaint.Submenu.sprites = [];
 
 KiddoPaint.Sprite.sheetPage = 0;
 
-KiddoPaint.Sprite.sheets = ["img/kidpix-spritesheet-0.png", "img/kidpix-spritesheet-0b.png", "img/kidpix-spritesheet-1.png", "img/kidpix-spritesheet-2.png", "img/kidpix-spritesheet-3.png", "img/kidpix-spritesheet-4.png", "img/kidpix-spritesheet-5.png", "img/kidpix-spritesheet-6.png", "img/kidpix-spritesheet-7.png", "img/kidpix-spritesheet-8.png"];
+KiddoPaint.Sprite.sheets = ["./src/assets/img/kidpix-spritesheet-0.png", "./src/assets/img/kidpix-spritesheet-0b.png", "./src/assets/img/kidpix-spritesheet-1.png", "./src/assets/img/kidpix-spritesheet-2.png", "./src/assets/img/kidpix-spritesheet-3.png", "./src/assets/img/kidpix-spritesheet-4.png", "./src/assets/img/kidpix-spritesheet-5.png", "./src/assets/img/kidpix-spritesheet-6.png", "./src/assets/img/kidpix-spritesheet-7.png", "./src/assets/img/kidpix-spritesheet-8.png"];
 
 KiddoPaint.Sprite.nextSprite = function () {
     const maxrow = KiddoPaint.Sprite.sheets.length - 1;
@@ -9312,7 +9312,7 @@ KiddoPaint.Submenu.square = [{
     }
 }, {
     name: "Texture ?",
-    imgSrc: "img/tool-unknown.png",
+    imgSrc: "./src/assets/img/tool-unknown.png",
     handler: function () {
         KiddoPaint.Tools.Square.texture = function (start, end) {
             return KiddoPaint.Textures.RainbowGrad(start, end);
@@ -9322,10 +9322,10 @@ KiddoPaint.Submenu.square = [{
 
 KiddoPaint.Submenu.stickers = [{
     name: "Kid Pix Sticker 1",
-    imgSrc: "img/kp-sticker-1.png",
+    imgSrc: "./src/assets/img/kp-sticker-1.png",
     handler: function (e) {
         var img = new Image();
-        img.src = "img/kp-sticker-1.png";
+        img.src = "./src/assets/img/kp-sticker-1.png";
         img.crossOrigin = "anonymous";
         img.onload = function () {
             KiddoPaint.Tools.Placer.image = img;
@@ -9338,10 +9338,10 @@ KiddoPaint.Submenu.stickers = [{
     }
 }, {
     name: "Kid Pix Sticker 2",
-    imgSrc: "img/kp-sticker-2.png",
+    imgSrc: "./src/assets/img/kp-sticker-2.png",
     handler: function (e) {
         var img = new Image();
-        img.src = "img/kp-sticker-2.png";
+        img.src = "./src/assets/img/kp-sticker-2.png";
         img.crossOrigin = "anonymous";
         img.onload = function () {
             KiddoPaint.Tools.Placer.image = img;
@@ -9354,10 +9354,10 @@ KiddoPaint.Submenu.stickers = [{
     }
 }, {
     name: "Kid Pix Sticker 3",
-    imgSrc: "img/kp-sticker-3.png",
+    imgSrc: "./src/assets/img/kp-sticker-3.png",
     handler: function (e) {
         var img = new Image();
-        img.src = "img/kp-sticker-3.png";
+        img.src = "./src/assets/img/kp-sticker-3.png";
         img.crossOrigin = "anonymous";
         img.onload = function () {
             KiddoPaint.Tools.Placer.image = img;
@@ -9370,10 +9370,10 @@ KiddoPaint.Submenu.stickers = [{
     }
 }, {
     name: "Kid Pix Sticker 4",
-    imgSrc: "img/kp-sticker-4.png",
+    imgSrc: "./src/assets/img/kp-sticker-4.png",
     handler: function (e) {
         var img = new Image();
-        img.src = "img/kp-sticker-4.png";
+        img.src = "./src/assets/img/kp-sticker-4.png";
         img.crossOrigin = "anonymous";
         img.onload = function () {
             KiddoPaint.Tools.Placer.image = img;
@@ -9386,10 +9386,10 @@ KiddoPaint.Submenu.stickers = [{
     }
 }, {
     name: "Kid Pix Sticker 5",
-    imgSrc: "img/kp-sticker-5.png",
+    imgSrc: "./src/assets/img/kp-sticker-5.png",
     handler: function (e) {
         var img = new Image();
-        img.src = "img/kp-sticker-5.png";
+        img.src = "./src/assets/img/kp-sticker-5.png";
         img.crossOrigin = "anonymous";
         img.onload = function () {
             KiddoPaint.Tools.Placer.image = img;
@@ -9402,10 +9402,10 @@ KiddoPaint.Submenu.stickers = [{
     }
 }, {
     name: "Kid Pix Sticker 6",
-    imgSrc: "img/kp-sticker-6.png",
+    imgSrc: "./src/assets/img/kp-sticker-6.png",
     handler: function (e) {
         var img = new Image();
-        img.src = "img/kp-sticker-6.png";
+        img.src = "./src/assets/img/kp-sticker-6.png";
         img.crossOrigin = "anonymous";
         img.onload = function () {
             KiddoPaint.Tools.Placer.image = img;
@@ -9420,98 +9420,98 @@ KiddoPaint.Submenu.stickers = [{
 
 KiddoPaint.Submenu.truck = [{
     name: "Truck 1",
-    imgSrc: "img/tool-submenu-truck-192.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-192.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 50;
         KiddoPaint.Tools.Cut.width = 50;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-193.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-193.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 25;
         KiddoPaint.Tools.Cut.width = 25;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-194.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-194.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 10;
         KiddoPaint.Tools.Cut.width = 10;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-195.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-195.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 5;
         KiddoPaint.Tools.Cut.width = 5;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-196.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-196.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 1;
         KiddoPaint.Tools.Cut.width = 1;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-197.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-197.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 50;
         KiddoPaint.Tools.Cut.width = 25;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-198.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-198.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 25;
         KiddoPaint.Tools.Cut.width = 10;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-199.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-199.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 10;
         KiddoPaint.Tools.Cut.width = 5;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-200.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-200.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 5;
         KiddoPaint.Tools.Cut.width = 2;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-201.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-201.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 25;
         KiddoPaint.Tools.Cut.width = 50;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-202.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-202.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 10;
         KiddoPaint.Tools.Cut.width = 25;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-203.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-203.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 5;
         KiddoPaint.Tools.Cut.width = 10;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-204.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-204.png",
     handler: function () {
         KiddoPaint.Tools.Cut.length = 2;
         KiddoPaint.Tools.Cut.width = 5;
     }
 }, {
     name: "Truck 2",
-    imgSrc: "img/tool-submenu-truck-205.png",
+    imgSrc: "./src/assets/img/tool-submenu-truck-205.png",
     handler: function () {
         KiddoPaint.Sounds.unimpl();
     }
@@ -10252,143 +10252,143 @@ KiddoPaint.Sounds.Library = {};
 
 KiddoPaint.Sounds.Library.enabled = true;
 
-KiddoPaint.Sounds.Library.explosion = [new Audio("sndmp3/kidpix-tool-eraser-tnt-explosion.wav.mp3")];
+KiddoPaint.Sounds.Library.explosion = [new Audio("./src/assets/sndmp3/kidpix-tool-eraser-tnt-explosion.wav.mp3")];
 
-KiddoPaint.Sounds.Library.oops = [new Audio("sndmp3/oops0.wav.mp3"), new Audio("sndmp3/oops1.wav.mp3"), new Audio("sndmp3/oops2.wav.mp3"), new Audio("sndmp3/oops3.wav.mp3")];
+KiddoPaint.Sounds.Library.oops = [new Audio("./src/assets/sndmp3/oops0.wav.mp3"), new Audio("./src/assets/sndmp3/oops1.wav.mp3"), new Audio("./src/assets/sndmp3/oops2.wav.mp3"), new Audio("./src/assets/sndmp3/oops3.wav.mp3")];
 
-KiddoPaint.Sounds.Library.bubblepops = [new Audio("sndmp3/bubble-pop-2WAVSOUND.R_0004edd3.wav.mp3"), new Audio("sndmp3/bubble-pop-3WAVSOUND.R_0004fccd.wav.mp3"), new Audio("sndmp3/bubble-pop-4WAVSOUND.R_0004f480.wav.mp3"), new Audio("sndmp3/bubble-pop-WAVSOUND.R_00050452.wav.mp3"), new Audio("sndmp3/bubble-pop-WAVSOUND.R_000031f6.wav.mp3")];
+KiddoPaint.Sounds.Library.bubblepops = [new Audio("./src/assets/sndmp3/bubble-pop-2WAVSOUND.R_0004edd3.wav.mp3"), new Audio("./src/assets/sndmp3/bubble-pop-3WAVSOUND.R_0004fccd.wav.mp3"), new Audio("./src/assets/sndmp3/bubble-pop-4WAVSOUND.R_0004f480.wav.mp3"), new Audio("./src/assets/sndmp3/bubble-pop-WAVSOUND.R_00050452.wav.mp3"), new Audio("./src/assets/sndmp3/bubble-pop-WAVSOUND.R_000031f6.wav.mp3")];
 
-KiddoPaint.Sounds.Library.pencil = [new Audio("sndmp3/kidpix-tool-pencil.wav.mp3")];
+KiddoPaint.Sounds.Library.pencil = [new Audio("./src/assets/sndmp3/kidpix-tool-pencil.wav.mp3")];
 
-KiddoPaint.Sounds.Library.stamp = [new Audio("sndmp3/stamp0.wav.mp3")];
+KiddoPaint.Sounds.Library.stamp = [new Audio("./src/assets/sndmp3/stamp0.wav.mp3")];
 
-KiddoPaint.Sounds.Library.flood = [new Audio("sndmp3/flood0.wav.mp3")];
+KiddoPaint.Sounds.Library.flood = [new Audio("./src/assets/sndmp3/flood0.wav.mp3")];
 
-KiddoPaint.Sounds.Library.mainmenu = [new Audio("sndmp3/kidpix-menu-click-main-tools.wav.mp3")];
+KiddoPaint.Sounds.Library.mainmenu = [new Audio("./src/assets/sndmp3/kidpix-menu-click-main-tools.wav.mp3")];
 
-KiddoPaint.Sounds.Library.submenucolor = [new Audio("sndmp3/kidpix-menu-click-submenu-color.wav.mp3")];
+KiddoPaint.Sounds.Library.submenucolor = [new Audio("./src/assets/sndmp3/kidpix-menu-click-submenu-color.wav.mp3")];
 
-KiddoPaint.Sounds.Library.submenuoption = [new Audio("sndmp3/kidpix-menu-click-submenu-options.wav.mp3")];
+KiddoPaint.Sounds.Library.submenuoption = [new Audio("./src/assets/sndmp3/kidpix-menu-click-submenu-options.wav.mp3")];
 
-KiddoPaint.Sounds.Library.box = [new Audio("sndmp3/kidpix-tool-box-during-approx.wav.mp3")];
+KiddoPaint.Sounds.Library.box = [new Audio("./src/assets/sndmp3/kidpix-tool-box-during-approx.wav.mp3")];
 
-KiddoPaint.Sounds.Library.circle = [new Audio("sndmp3/kidpix-tool-circle-during-approx.wav.mp3")];
+KiddoPaint.Sounds.Library.circle = [new Audio("./src/assets/sndmp3/kidpix-tool-circle-during-approx.wav.mp3")];
 
-KiddoPaint.Sounds.Library.eraserfade = [new Audio("sndmp3/eraser-tool-fade-2WAVSOUND.R_0002f58b.wav.mp3")];
+KiddoPaint.Sounds.Library.eraserfade = [new Audio("./src/assets/sndmp3/eraser-tool-fade-2WAVSOUND.R_0002f58b.wav.mp3")];
 
-KiddoPaint.Sounds.Library.doordingdong = [new Audio("sndmp3/kidpix-eraser-doorbell-ding-dong.wav.mp3")];
+KiddoPaint.Sounds.Library.doordingdong = [new Audio("./src/assets/sndmp3/kidpix-eraser-doorbell-ding-dong.wav.mp3")];
 
-KiddoPaint.Sounds.Library.doorcreak = [new Audio("sndmp3/kidpix-eraser-doorbell-door-creak.wav.mp3")];
+KiddoPaint.Sounds.Library.doorcreak = [new Audio("./src/assets/sndmp3/kidpix-eraser-doorbell-door-creak.wav.mp3")];
 
-KiddoPaint.Sounds.Library.doorwow = [new Audio("sndmp3/kidpix-eraser-doorbell-wwoooowwww.wav.mp3")];
+KiddoPaint.Sounds.Library.doorwow = [new Audio("./src/assets/sndmp3/kidpix-eraser-doorbell-wwoooowwww.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushbubbly = [new Audio("sndmp3/kidpix-submenu-brush-bubbly.wav.mp3")];
+KiddoPaint.Sounds.Library.brushbubbly = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-bubbly.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushleakypen = [new Audio("sndmp3/kidpix-submenu-brush-leaky-pen.wav.mp3")];
+KiddoPaint.Sounds.Library.brushleakypen = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-leaky-pen.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushzigzag = [new Audio("sndmp3/kidpix-submenu-brush-zigzag.wav.mp3")];
+KiddoPaint.Sounds.Library.brushzigzag = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-zigzag.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushdots = [new Audio("sndmp3/kidpix-submenu-brush-dots.wav.mp3")];
+KiddoPaint.Sounds.Library.brushdots = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-dots.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushpies = [new Audio("sndmp3/kidpix-submenu-brush-pies.wav.mp3")];
+KiddoPaint.Sounds.Library.brushpies = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-pies.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushecho = [new Audio("sndmp3/kidpix-submenu-brush-owl.wav.mp3")];
+KiddoPaint.Sounds.Library.brushecho = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-owl.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushnorthern = [new Audio("sndmp3/kidpix-submenu-brush-northern.wav.mp3")];
+KiddoPaint.Sounds.Library.brushnorthern = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-northern.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushfuzzer = [new Audio("sndmp3/kidpix-submenu-brush-fuzzer.wav.mp3")];
+KiddoPaint.Sounds.Library.brushfuzzer = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-fuzzer.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushzoom = [new Audio("sndmp3/kidpix-submenu-brush-zoom.wav.mp3")];
+KiddoPaint.Sounds.Library.brushzoom = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-zoom.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushpines = [new Audio("sndmp3/kidpix-submenu-brush-pines.wav.mp3")];
+KiddoPaint.Sounds.Library.brushpines = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-pines.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushtwirly = [new Audio("sndmp3/kidpix-submenu-brush-twirly.wav.mp3")];
+KiddoPaint.Sounds.Library.brushtwirly = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-twirly.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushkaliediscope = [new Audio("sndmp3/kidpix-submenu-brush-kaliediscope.wav.mp3")];
+KiddoPaint.Sounds.Library.brushkaliediscope = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-kaliediscope.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushrollingdots = [new Audio("sndmp3/kidpix-submenu-brush-rollingdots.wav.mp3")];
+KiddoPaint.Sounds.Library.brushrollingdots = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-rollingdots.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushinvert = [new Audio("sndmp3/kidpix-submenu-brush-inverter.wav.mp3")];
+KiddoPaint.Sounds.Library.brushinvert = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-inverter.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushguil = [new Audio("sndmp3/kidpix-submenu-brush-guilloche.wav.mp3")];
+KiddoPaint.Sounds.Library.brushguil = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-guilloche.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushtree = [new Audio("sndmp3/kidpix-submenu-brush-tree.wav.mp3")];
+KiddoPaint.Sounds.Library.brushtree = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-tree.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushstars = [new Audio("sndmp3/kidpix-submenu-brush-stars.wav.mp3")];
+KiddoPaint.Sounds.Library.brushstars = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-stars.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushxos = [new Audio("sndmp3/kidpix-submenu-brush-xos.wav.mp3")];
+KiddoPaint.Sounds.Library.brushxos = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-xos.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushcards = [new Audio("sndmp3/kidpix-submenu-brush-cards.wav.mp3")];
+KiddoPaint.Sounds.Library.brushcards = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-cards.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushshapes = [new Audio("sndmp3/kidpix-submenu-brush-shapes.wav.mp3")];
+KiddoPaint.Sounds.Library.brushshapes = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-shapes.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushprints = [new Audio("sndmp3/kidpix-submenu-brush-prints.wav.mp3")];
+KiddoPaint.Sounds.Library.brushprints = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-prints.wav.mp3")];
 
-KiddoPaint.Sounds.Library.brushspraypaint = [new Audio("sndmp3/kidpix-submenu-brush-spraypaint.wav.mp3")];
+KiddoPaint.Sounds.Library.brushspraypaint = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-spraypaint.wav.mp3")];
 
-KiddoPaint.Sounds.Library.mixerwallpaper = [new Audio("sndmp3/electric-mixer-wallpaper-jitter-boingo-WAVSOUND.R_00024fcc.wav.mp3")];
+KiddoPaint.Sounds.Library.mixerwallpaper = [new Audio("./src/assets/sndmp3/electric-mixer-wallpaper-jitter-boingo-WAVSOUND.R_00024fcc.wav.mp3")];
 
-KiddoPaint.Sounds.Library.mixerinvert = [new Audio("sndmp3/electric-mixer-inverter-rolling-sound-WAVSOUND.R_0001fcfa.wav.mp3")];
+KiddoPaint.Sounds.Library.mixerinvert = [new Audio("./src/assets/sndmp3/electric-mixer-inverter-rolling-sound-WAVSOUND.R_0001fcfa.wav.mp3")];
 
-KiddoPaint.Sounds.Library.mixervenetian = [new Audio("sndmp3/electric-mixer-venetian-WAVSOUND.R_0001df56.wav.mp3")];
+KiddoPaint.Sounds.Library.mixervenetian = [new Audio("./src/assets/sndmp3/electric-mixer-venetian-WAVSOUND.R_0001df56.wav.mp3")];
 
-KiddoPaint.Sounds.Library.mixershadowbox = [new Audio("sndmp3/electric-mixer-shadow-boxes-WAVSOUND.R_0002a07a.wav.mp3")];
+KiddoPaint.Sounds.Library.mixershadowbox = [new Audio("./src/assets/sndmp3/electric-mixer-shadow-boxes-WAVSOUND.R_0002a07a.wav.mp3")];
 
-KiddoPaint.Sounds.Library.mixerpip = [new Audio("sndmp3/electric-mixer-pip-drum-crash-1WAVSOUND.R_0002d96e.wav.mp3")];
+KiddoPaint.Sounds.Library.mixerpip = [new Audio("./src/assets/sndmp3/electric-mixer-pip-drum-crash-1WAVSOUND.R_0002d96e.wav.mp3")];
 
-KiddoPaint.Sounds.Library.mixerframe = [new Audio("sndmp3/western-gun-shot-twirl-WAVSOUND.R_0005ed70.wav.mp3")];
+KiddoPaint.Sounds.Library.mixerframe = [new Audio("./src/assets/sndmp3/western-gun-shot-twirl-WAVSOUND.R_0005ed70.wav.mp3")];
 
-KiddoPaint.Sounds.Library.unimpl = [new Audio("sndmp3/chord.wav.mp3")];
+KiddoPaint.Sounds.Library.unimpl = [new Audio("./src/assets/sndmp3/chord.wav.mp3")];
 
-KiddoPaint.Sounds.Library.line = [new Audio("sndmp3/kidpix-tool-line-start.wav.mp3"), new Audio("sndmp3/kidpix-tool-line-start.wav.mp3"), new Audio("sndmp3/kidpix-tool-line-end.wav.mp3")];
+KiddoPaint.Sounds.Library.line = [new Audio("./src/assets/sndmp3/kidpix-tool-line-start.wav.mp3"), new Audio("./src/assets/sndmp3/kidpix-tool-line-start.wav.mp3"), new Audio("./src/assets/sndmp3/kidpix-tool-line-end.wav.mp3")];
 
-KiddoPaint.Sounds.Library.truck = [new Audio("sndmp3/kidpix-truck-truckin.wav.mp3"), new Audio("sndmp3/kidpix-truck-truckin-go.wav.mp3"), new Audio("sndmp3/kidpix-truck-skid.wav.mp3")];
+KiddoPaint.Sounds.Library.truck = [new Audio("./src/assets/sndmp3/kidpix-truck-truckin.wav.mp3"), new Audio("./src/assets/sndmp3/kidpix-truck-truckin-go.wav.mp3"), new Audio("./src/assets/sndmp3/kidpix-truck-skid.wav.mp3")];
 
-KiddoPaint.Sounds.Library.xy = [new Audio("sndmp3/kidpix-submenu-brush-xy-start.wav.mp3"), new Audio("sndmp3/kidpix-submenu-brush-xy-during.wav.mp3"), new Audio("sndmp3/kidpix-submenu-brush-xy-end.wav.mp3")];
+KiddoPaint.Sounds.Library.xy = [new Audio("./src/assets/sndmp3/kidpix-submenu-brush-xy-start.wav.mp3"), new Audio("./src/assets/sndmp3/kidpix-submenu-brush-xy-during.wav.mp3"), new Audio("./src/assets/sndmp3/kidpix-submenu-brush-xy-end.wav.mp3")];
 
 KiddoPaint.Sounds.Library.english = {
-    A: "sndmp3/english/alpha-a-WAVSOUND.R_0007d8f2.wav.mp3",
-    B: "sndmp3/english/alpha-b-WAVSOUND.R_0007ee1f.wav.mp3",
-    C: "sndmp3/english/alpha-c-WAVSOUND.R_000803fc.wav.mp3",
-    D: "sndmp3/english/alpha-d-WAVSOUND.R_000815df.wav.mp3",
-    E: "sndmp3/english/alpha-e-WAVSOUND.R_00082fcc.wav.mp3",
-    F: "sndmp3/english/alpha-f-WAVSOUND.R_00084629.wav.mp3",
-    G: "sndmp3/english/alpha-g-WAVSOUND.R_000853d0.wav.mp3",
-    H: "sndmp3/english/alpha-h-WAVSOUND.R_00086213.wav.mp3",
-    I: "sndmp3/english/alpha-i-WAVSOUND.R_00087a00.wav.mp3",
-    J: "sndmp3/english/alpha-j-WAVSOUND.R_00088ced.wav.mp3",
-    K: "sndmp3/english/alpha-k-WAVSOUND.R_0008a72e.wav.mp3",
-    L: "sndmp3/english/alpha-l-WAVSOUND.R_0008bda3.wav.mp3",
-    M: "sndmp3/english/alpha-m-WAVSOUND.R_0008d0f8.wav.mp3",
-    N: "sndmp3/english/alpha-n-WAVSOUND.R_0008e695.wav.mp3",
-    O: "sndmp3/english/alpha-o-WAVSOUND.R_0008fcaa.wav.mp3",
-    P: "sndmp3/english/alpha-p-WAVSOUND.R_00091bdb.wav.mp3",
-    Q: "sndmp3/english/alpha-q-WAVSOUND.R_00092aee.wav.mp3",
-    R: "sndmp3/english/alpha-r-WAVSOUND.R_0009639f.wav.mp3",
-    S: "sndmp3/english/alpha-s-WAVSOUND.R_00097948.wav.mp3",
-    T: "sndmp3/english/alpha-t-WAVSOUND.R_00099085.wav.mp3",
-    U: "sndmp3/english/alpha-u-WAVSOUND.R_0009a406.wav.mp3",
-    V: "sndmp3/english/alpha-v-WAVSOUND.R_0009bbcf.wav.mp3",
-    W: "sndmp3/english/alpha-w-WAVSOUND.R_0009d8cc.wav.mp3",
-    X: "sndmp3/english/alpha-x-WAVSOUND.R_0009ff1d.wav.mp3",
-    Y: "sndmp3/english/alpha-y-WAVSOUND.R_000a177a.wav.mp3",
-    Z: "sndmp3/english/alpha-z-WAVSOUND.R_000a2fe7.wav.mp3",
-    0: "sndmp3/english/number-0-WAVSOUND.R_000a7832.wav.mp3",
-    1: "sndmp3/english/number-1-WAVSOUND.R_000a9f1f.wav.mp3",
-    2: "sndmp3/english/number-2-WAVSOUND.R_000ab58c.wav.mp3",
-    3: "sndmp3/english/number-3-WAVSOUND.R_000aca17.wav.mp3",
-    4: "sndmp3/english/number-4-WAVSOUND.R_000ae7a4.wav.mp3",
-    5: "sndmp3/english/number-5-WAVSOUND.R_000afbb1.wav.mp3",
-    6: "sndmp3/english/number-6-WAVSOUND.R_000b205a.wav.mp3",
-    7: "sndmp3/english/number-7-WAVSOUND.R_000b43e7.wav.mp3",
-    8: "sndmp3/english/number-8-WAVSOUND.002_000555ac.wav.mp3",
-    9: "sndmp3/english/number-9-WAVSOUND.R_000b7db1.wav.mp3",
-    "&": "sndmp3/english/number-ampersand-WAVSOUND.R_000be96f.wav.mp3",
-    "=": "sndmp3/english/number-equals-WAVSOUND.R_000bce22.wav.mp3",
-    "-": "sndmp3/english/number-minus-WAVSOUND.R_000bb0e5.wav.mp3",
-    "+": "sndmp3/english/number-plus-WAVSOUND.R_000b9a58.wav.mp3",
-    "?": "sndmp3/english/number-question-mark-WAVSOUND.R_000a661d.wav.mp3",
-    "!": "sndmp3/english/number-eclamation-WAVSOUND.R_000a5774.wav.mp3"
+    A: "./src/assets/sndmp3/english/alpha-a-WAVSOUND.R_0007d8f2.wav.mp3",
+    B: "./src/assets/sndmp3/english/alpha-b-WAVSOUND.R_0007ee1f.wav.mp3",
+    C: "./src/assets/sndmp3/english/alpha-c-WAVSOUND.R_000803fc.wav.mp3",
+    D: "./src/assets/sndmp3/english/alpha-d-WAVSOUND.R_000815df.wav.mp3",
+    E: "./src/assets/sndmp3/english/alpha-e-WAVSOUND.R_00082fcc.wav.mp3",
+    F: "./src/assets/sndmp3/english/alpha-f-WAVSOUND.R_00084629.wav.mp3",
+    G: "./src/assets/sndmp3/english/alpha-g-WAVSOUND.R_000853d0.wav.mp3",
+    H: "./src/assets/sndmp3/english/alpha-h-WAVSOUND.R_00086213.wav.mp3",
+    I: "./src/assets/sndmp3/english/alpha-i-WAVSOUND.R_00087a00.wav.mp3",
+    J: "./src/assets/sndmp3/english/alpha-j-WAVSOUND.R_00088ced.wav.mp3",
+    K: "./src/assets/sndmp3/english/alpha-k-WAVSOUND.R_0008a72e.wav.mp3",
+    L: "./src/assets/sndmp3/english/alpha-l-WAVSOUND.R_0008bda3.wav.mp3",
+    M: "./src/assets/sndmp3/english/alpha-m-WAVSOUND.R_0008d0f8.wav.mp3",
+    N: "./src/assets/sndmp3/english/alpha-n-WAVSOUND.R_0008e695.wav.mp3",
+    O: "./src/assets/sndmp3/english/alpha-o-WAVSOUND.R_0008fcaa.wav.mp3",
+    P: "./src/assets/sndmp3/english/alpha-p-WAVSOUND.R_00091bdb.wav.mp3",
+    Q: "./src/assets/sndmp3/english/alpha-q-WAVSOUND.R_00092aee.wav.mp3",
+    R: "./src/assets/sndmp3/english/alpha-r-WAVSOUND.R_0009639f.wav.mp3",
+    S: "./src/assets/sndmp3/english/alpha-s-WAVSOUND.R_00097948.wav.mp3",
+    T: "./src/assets/sndmp3/english/alpha-t-WAVSOUND.R_00099085.wav.mp3",
+    U: "./src/assets/sndmp3/english/alpha-u-WAVSOUND.R_0009a406.wav.mp3",
+    V: "./src/assets/sndmp3/english/alpha-v-WAVSOUND.R_0009bbcf.wav.mp3",
+    W: "./src/assets/sndmp3/english/alpha-w-WAVSOUND.R_0009d8cc.wav.mp3",
+    X: "./src/assets/sndmp3/english/alpha-x-WAVSOUND.R_0009ff1d.wav.mp3",
+    Y: "./src/assets/sndmp3/english/alpha-y-WAVSOUND.R_000a177a.wav.mp3",
+    Z: "./src/assets/sndmp3/english/alpha-z-WAVSOUND.R_000a2fe7.wav.mp3",
+    0: "./src/assets/sndmp3/english/number-0-WAVSOUND.R_000a7832.wav.mp3",
+    1: "./src/assets/sndmp3/english/number-1-WAVSOUND.R_000a9f1f.wav.mp3",
+    2: "./src/assets/sndmp3/english/number-2-WAVSOUND.R_000ab58c.wav.mp3",
+    3: "./src/assets/sndmp3/english/number-3-WAVSOUND.R_000aca17.wav.mp3",
+    4: "./src/assets/sndmp3/english/number-4-WAVSOUND.R_000ae7a4.wav.mp3",
+    5: "./src/assets/sndmp3/english/number-5-WAVSOUND.R_000afbb1.wav.mp3",
+    6: "./src/assets/sndmp3/english/number-6-WAVSOUND.R_000b205a.wav.mp3",
+    7: "./src/assets/sndmp3/english/number-7-WAVSOUND.R_000b43e7.wav.mp3",
+    8: "./src/assets/sndmp3/english/number-8-WAVSOUND.002_000555ac.wav.mp3",
+    9: "./src/assets/sndmp3/english/number-9-WAVSOUND.R_000b7db1.wav.mp3",
+    "&": "./src/assets/sndmp3/english/number-ampersand-WAVSOUND.R_000be96f.wav.mp3",
+    "=": "./src/assets/sndmp3/english/number-equals-WAVSOUND.R_000bce22.wav.mp3",
+    "-": "./src/assets/sndmp3/english/number-minus-WAVSOUND.R_000bb0e5.wav.mp3",
+    "+": "./src/assets/sndmp3/english/number-plus-WAVSOUND.R_000b9a58.wav.mp3",
+    "?": "./src/assets/sndmp3/english/number-question-mark-WAVSOUND.R_000a661d.wav.mp3",
+    "!": "./src/assets/sndmp3/english/number-eclamation-WAVSOUND.R_000a5774.wav.mp3"
 };
 
 KiddoPaint.Sounds.Library.playRand = function (sound) {

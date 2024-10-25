@@ -1,6 +1,6 @@
 KiddoPaint.Submenu.truck = [{
     name: 'Truck 1',
-    imgSrc: 'img/tool-submenu-truck-192.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-192.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 50;
         KiddoPaint.Tools.Cut.width = 50;
@@ -8,7 +8,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-193.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-193.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 25;
         KiddoPaint.Tools.Cut.width = 25;
@@ -16,7 +16,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-194.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-194.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 10;
         KiddoPaint.Tools.Cut.width = 10;
@@ -25,7 +25,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-195.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-195.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 5;
         KiddoPaint.Tools.Cut.width = 5;
@@ -34,7 +34,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-196.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-196.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 1;
         KiddoPaint.Tools.Cut.width = 1;
@@ -43,7 +43,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-197.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-197.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 50;
         KiddoPaint.Tools.Cut.width = 25;
@@ -52,7 +52,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-198.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-198.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 25;
         KiddoPaint.Tools.Cut.width = 10;
@@ -61,7 +61,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-199.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-199.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 10;
         KiddoPaint.Tools.Cut.width = 5;
@@ -70,7 +70,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-200.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-200.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 5;
         KiddoPaint.Tools.Cut.width = 2;
@@ -79,7 +79,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-201.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-201.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 25;
         KiddoPaint.Tools.Cut.width = 50;
@@ -88,7 +88,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-202.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-202.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 10;
         KiddoPaint.Tools.Cut.width = 25;
@@ -97,7 +97,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-203.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-203.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 5;
         KiddoPaint.Tools.Cut.width = 10;
@@ -106,7 +106,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-204.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-204.png',
     handler: function () {
         KiddoPaint.Tools.Cut.length = 2;
         KiddoPaint.Tools.Cut.width = 5;
@@ -115,7 +115,7 @@ KiddoPaint.Submenu.truck = [{
 },
 {
     name: 'Truck 2',
-    imgSrc: 'img/tool-submenu-truck-205.png',
+    imgSrc: './src/assets/img/tool-submenu-truck-205.png',
     handler: function () {
         KiddoPaint.Sounds.unimpl();
     }

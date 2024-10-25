@@ -240,7 +240,7 @@ KiddoPaint.Submenu.flood = [{
 },
 {
     name: 'Texture ?',
-    imgSrc: 'img/tool-unknown.png',
+    imgSrc: './src/assets/img/tool-unknown.png',
     handler: function () {
         KiddoPaint.Tools.Flood.gcop = 'source-atop';
         KiddoPaint.Tools.Flood.texture = function () {
