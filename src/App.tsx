@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import React, { useState } from 'react';
+import ColorPalette from './ColorPalette';
+import MainToolbar from './MainToolbar';
+
+const App: React.FC = () => {
+  const [penColor, setPenColor] = useState<string>('#000000'); // default pen color: black
+  const handleColorChange = (color: string) => { setPenColor(color); };
+
+  const [selectedTool, setSelectedTool] = useState<string>('Wacky Pencil'); // default tool: pencil
+  const handleToolChange = (tool: string) => { setSelectedTool(tool); };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => { setCount((count) => count + 1); }}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h1>Drawing Program</h1>
+      <p>Selected Pen Color: {penColor}</p>
+      <p>Selected Tool: {selectedTool}</p>
+      <ColorPalette onColorSelect={handleColorChange} />
+      <MainToolbar onToolSelect={handleToolChange} />
+    </div>
+  );
 }
 
 export default App
