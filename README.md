@@ -4,8 +4,18 @@ My fork of vikrum's kidpixjs (Kid Pix 1.0 HTML/JS implementation, https://github
 
 See below for vikrum's original readme and vite's template readme.
 
+# Quick-start (NEW)
 
-# One-time Install
+- install
+  - install brew, yarn, vite
+  - git clone
+- run
+  - yarn dev
+  - open http://localhost:5173/
+- build
+  - ??
+
+# One-time Install (OLD)
 
 Required for both playing and changing code.
 
@@ -27,7 +37,7 @@ Instructions for Mac.
         - now should have package-lock.json.
     - now should be able to run locally, see below.
 
-# How to Play
+# How to Play (OLD)
 
 (On local laptop -- no internet connection required!)
 
@@ -36,7 +46,7 @@ Instructions for Mac.
 - open localhost:8000 in browser
 
 
-# How to Change Code
+# How to Change Code (OLD)
 - cd into kidpix dir
 - change code as desired
 - run ./build.sh
