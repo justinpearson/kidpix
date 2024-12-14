@@ -392,7 +392,7 @@ function init_tool_bar() {
     document.getElementById("undo").addEventListener("mousedown", function () {
         KiddoPaint.Sounds.mainmenu();
         KiddoPaint.Sounds.oops();
-        KiddoPaint.Display.undo(!KiddoPaint.Current.modifiedAlt);
+        KiddoPaint.Display.undo(); // holding opt makes undo button not work; remove modifier
     });
     document.getElementById("alnext").addEventListener("mousedown", function () {
         KiddoPaint.Sounds.submenuoption();
@@ -762,7 +762,7 @@ function getColorIndicesForCoord(x, y, width) {
     return [red, red + 1, red + 2, red + 3];
 }
 
-KiddoPaint.Display.undoData = null;
+KiddoPaint.Display.undoData = [];
 
 KiddoPaint.Display.undoOn = true;
 
@@ -855,23 +855,25 @@ KiddoPaint.Display.toggleUndo = function () {
 
 KiddoPaint.Display.saveUndo = function () {
     if (KiddoPaint.Display.undoOn) {
-        KiddoPaint.Display.undoData = KiddoPaint.Display.main_canvas.toDataURL();
+        KiddoPaint.Display.undoData.push(KiddoPaint.Display.main_canvas.toDataURL());
+        console.log(`undo data len: ${KiddoPaint.Display.undoData.length}`)
     }
     return KiddoPaint.Display.undoOn;
 };
 
-KiddoPaint.Display.undo = function (doClearMain) {
-    if (KiddoPaint.Display.undoData) {
-        var nextUndoData = KiddoPaint.Display.main_canvas.toDataURL();
+// main undo function
+KiddoPaint.Display.undo = function () {
+    if (KiddoPaint.Display.undoData.length > 0) {
+        // var nextUndoData = KiddoPaint.Display.main_canvas.toDataURL();
         var img = new Image();
-        img.src = KiddoPaint.Display.undoData;
+        img.src = KiddoPaint.Display.undoData.pop();
         img.onload = function () {
-            if (doClearMain) {
-                KiddoPaint.Display.clearMain();
-            }
+            KiddoPaint.Display.clearMain();
             KiddoPaint.Display.main_context.drawImage(img, 0, 0);
         };
-        KiddoPaint.Display.undoData = nextUndoData;
+        // KiddoPaint.Display.undoData.push(nextUndoData);
+    } else {
+        console.log('no undo data, sry')
     }
 };
 
