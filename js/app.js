@@ -392,7 +392,12 @@ function init_tool_bar() {
     document.getElementById("undo").addEventListener("mousedown", function () {
         KiddoPaint.Sounds.mainmenu();
         KiddoPaint.Sounds.oops();
-        KiddoPaint.Display.undo(!KiddoPaint.Current.modifiedAlt);
+        KiddoPaint.Display.undo(); // holding opt makes undo button not work; remove modifier
+    });
+    document.getElementById("redo").addEventListener("mousedown", function () {
+        KiddoPaint.Sounds.mainmenu();
+        KiddoPaint.Sounds.oops();
+        KiddoPaint.Display.redo();
     });
     document.getElementById("alnext").addEventListener("mousedown", function () {
         KiddoPaint.Sounds.submenuoption();
@@ -762,7 +767,8 @@ function getColorIndicesForCoord(x, y, width) {
     return [red, red + 1, red + 2, red + 3];
 }
 
-KiddoPaint.Display.undoData = null;
+KiddoPaint.Display.undoData = [];
+KiddoPaint.Display.redoData = [];
 
 KiddoPaint.Display.undoOn = true;
 
@@ -855,23 +861,47 @@ KiddoPaint.Display.toggleUndo = function () {
 
 KiddoPaint.Display.saveUndo = function () {
     if (KiddoPaint.Display.undoOn) {
-        KiddoPaint.Display.undoData = KiddoPaint.Display.main_canvas.toDataURL();
+        KiddoPaint.Display.undoData.push(KiddoPaint.Display.main_canvas.toDataURL());
+        if (KiddoPaint.Display.undoData.length > 30) {
+            console.log('undo buffer full, removing oldest...');
+            KiddoPaint.Display.undoData.shift();
+        }
+        KiddoPaint.Display.redoData = [];
     }
     return KiddoPaint.Display.undoOn;
 };
 
-KiddoPaint.Display.undo = function (doClearMain) {
-    if (KiddoPaint.Display.undoData) {
-        var nextUndoData = KiddoPaint.Display.main_canvas.toDataURL();
-        var img = new Image();
-        img.src = KiddoPaint.Display.undoData;
-        img.onload = function () {
-            if (doClearMain) {
-                KiddoPaint.Display.clearMain();
-            }
-            KiddoPaint.Display.main_context.drawImage(img, 0, 0);
-        };
-        KiddoPaint.Display.undoData = nextUndoData;
+// Note: a key non-obvious part of this undo / redo implementation is the fact
+// that elsewhere in the app, the drawing tools only save the canvas immediately
+// BEFORE they draw to the canvas. So the current state of the canvas is not actually
+// saved in the undo or redo buffers; it is essentially a 3rd state that needs to be 
+// accounted for in the undo / redo logic. That's why the first step of a undo/redo
+// operation is to push the canvas onto the opposite buffer, to save it.
+
+KiddoPaint.Display.popAndLoad = function (stack) {
+    var img = new Image();
+    img.src = stack.pop();
+    img.onload = function () {
+        KiddoPaint.Display.clearMain();
+        KiddoPaint.Display.main_context.drawImage(img, 0, 0);
+    };
+}
+
+KiddoPaint.Display.undo = function () {
+    if (KiddoPaint.Display.undoData.length > 0) {
+        KiddoPaint.Display.redoData.push(KiddoPaint.Display.main_canvas.toDataURL());
+        KiddoPaint.Display.popAndLoad(KiddoPaint.Display.undoData);
+    } else {
+        console.log('undo buffer empty, nothing to do');
+    }
+};
+
+KiddoPaint.Display.redo = function () {
+    if (KiddoPaint.Display.redoData.length > 0) {
+        KiddoPaint.Display.undoData.push(KiddoPaint.Display.main_canvas.toDataURL());
+        KiddoPaint.Display.popAndLoad(KiddoPaint.Display.redoData);
+    } else {
+        console.log('redo buffer empty, nothing to do');
     }
 };
 
