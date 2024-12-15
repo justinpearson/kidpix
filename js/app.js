@@ -394,6 +394,11 @@ function init_tool_bar() {
         KiddoPaint.Sounds.oops();
         KiddoPaint.Display.undo(); // holding opt makes undo button not work; remove modifier
     });
+    document.getElementById("redo").addEventListener("mousedown", function () {
+        KiddoPaint.Sounds.mainmenu();
+        KiddoPaint.Sounds.oops();
+        KiddoPaint.Display.redo();
+    });
     document.getElementById("alnext").addEventListener("mousedown", function () {
         KiddoPaint.Sounds.submenuoption();
         KiddoPaint.Alphabet.nextPage();
@@ -763,6 +768,7 @@ function getColorIndicesForCoord(x, y, width) {
 }
 
 KiddoPaint.Display.undoData = [];
+KiddoPaint.Display.redoData = [];
 
 KiddoPaint.Display.undoOn = true;
 
@@ -856,24 +862,46 @@ KiddoPaint.Display.toggleUndo = function () {
 KiddoPaint.Display.saveUndo = function () {
     if (KiddoPaint.Display.undoOn) {
         KiddoPaint.Display.undoData.push(KiddoPaint.Display.main_canvas.toDataURL());
-        console.log(`undo data len: ${KiddoPaint.Display.undoData.length}`)
+        if (KiddoPaint.Display.undoData.length > 30) {
+            console.log('undo buffer full, removing oldest...');
+            KiddoPaint.Display.undoData.shift();
+        }
+        KiddoPaint.Display.redoData = [];
     }
     return KiddoPaint.Display.undoOn;
 };
 
-// main undo function
+// Note: a key non-obvious part of this undo / redo implementation is the fact
+// that elsewhere in the app, the drawing tools only save the canvas immediately
+// BEFORE they draw to the canvas. So the current state of the canvas is not actually
+// saved in the undo or redo buffers; it is essentially a 3rd state that needs to be 
+// accounted for in the undo / redo logic. That's why the first step of a undo/redo
+// operation is to push the canvas onto the opposite buffer, to save it.
+
+KiddoPaint.Display.popAndLoad = function (stack) {
+    var img = new Image();
+    img.src = stack.pop();
+    img.onload = function () {
+        KiddoPaint.Display.clearMain();
+        KiddoPaint.Display.main_context.drawImage(img, 0, 0);
+    };
+}
+
 KiddoPaint.Display.undo = function () {
     if (KiddoPaint.Display.undoData.length > 0) {
-        // var nextUndoData = KiddoPaint.Display.main_canvas.toDataURL();
-        var img = new Image();
-        img.src = KiddoPaint.Display.undoData.pop();
-        img.onload = function () {
-            KiddoPaint.Display.clearMain();
-            KiddoPaint.Display.main_context.drawImage(img, 0, 0);
-        };
-        // KiddoPaint.Display.undoData.push(nextUndoData);
+        KiddoPaint.Display.redoData.push(KiddoPaint.Display.main_canvas.toDataURL());
+        KiddoPaint.Display.popAndLoad(KiddoPaint.Display.undoData);
     } else {
-        console.log('no undo data, sry')
+        console.log('undo buffer empty, nothing to do');
+    }
+};
+
+KiddoPaint.Display.redo = function () {
+    if (KiddoPaint.Display.redoData.length > 0) {
+        KiddoPaint.Display.undoData.push(KiddoPaint.Display.main_canvas.toDataURL());
+        KiddoPaint.Display.popAndLoad(KiddoPaint.Display.redoData);
+    } else {
+        console.log('redo buffer empty, nothing to do');
     }
 };
 
