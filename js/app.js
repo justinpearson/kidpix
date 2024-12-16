@@ -10417,8 +10417,20 @@ KiddoPaint.Sounds.Library.english = {
     "=": "./src/assets/sndmp3/english/number-equals-WAVSOUND.R_000bce22.wav.mp3",
     "-": "./src/assets/sndmp3/english/number-minus-WAVSOUND.R_000bb0e5.wav.mp3",
     "+": "./src/assets/sndmp3/english/number-plus-WAVSOUND.R_000b9a58.wav.mp3",
-    "?": "./src/assets/sndmp3/english/number-question-mark-WAVSOUND.R_000a661d.wav.mp3",
-    "!": "./src/assets/sndmp3/english/number-eclamation-WAVSOUND.R_000a5774.wav.mp3"
+    "?": "./src/assets/sndmp3/english/question-mark.m4a",
+    "!": "./src/assets/sndmp3/english/exclamation-point.m4a",
+    '<': './src/assets/sndmp3/english/less-than.m4a',
+    '>': './src/assets/sndmp3/english/greater-than.m4a',
+    '$': './src/assets/sndmp3/english/dollar-sign.m4a',
+    '%': './src/assets/sndmp3/english/percent.m4a',
+    '^': './src/assets/sndmp3/english/caret.m4a',
+    '&': './src/assets/sndmp3/english/ampersand.m4a',
+    '@': './src/assets/sndmp3/english/at-sign.m4a',
+    '*': './src/assets/sndmp3/english/star-character.m4a',
+    '(': './src/assets/sndmp3/english/left-paren.m4a',
+    ')': './src/assets/sndmp3/english/right-paren.m4a',
+    '~': './src/assets/sndmp3/english/tilde.m4a',
+    '|': './src/assets/sndmp3/english/pipe-char.m4a'
 };
 
 KiddoPaint.Sounds.Library.playRand = function (sound) {
