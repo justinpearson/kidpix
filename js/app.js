@@ -311,6 +311,18 @@ function init_tool_bar() {
         save_to_file();
     });
     document.getElementById("pencil").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("pencil").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu("pencil");
         KiddoPaint.Current.tool = KiddoPaint.Tools.Pencil;
@@ -318,6 +330,18 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add("cursor-pencil");
     });
     document.getElementById("line").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("line").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu("line");
         KiddoPaint.Current.tool = KiddoPaint.Tools.Line;
@@ -325,6 +349,18 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
     });
     document.getElementById("square").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("square").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu("square");
         KiddoPaint.Current.tool = KiddoPaint.Tools.Square;
@@ -332,6 +368,18 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
     });
     document.getElementById("circle").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("circle").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu("circle");
         KiddoPaint.Current.tool = KiddoPaint.Tools.Circle;
@@ -339,12 +387,36 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
     });
     document.getElementById("brush").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("brush").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         reset_ranges();
         show_generic_submenu("wackybrush");
         KiddoPaint.Submenu.wackybrush[0].handler();
     });
     document.getElementById("stamp").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("stamp").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         reset_ranges();
         KiddoPaint.Display.canvas.classList = "";
@@ -359,6 +431,18 @@ function init_tool_bar() {
         }
     });
     document.getElementById("alphabet").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("alphabet").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         init_alphabet_bar("character" + KiddoPaint.Alphabet.page);
         show_sub_toolbar("alphabettoolbar");
@@ -369,6 +453,18 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add("cursor-none");
     });
     document.getElementById("flood").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("flood").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu("flood");
         KiddoPaint.Current.tool = KiddoPaint.Tools.Flood;
@@ -376,6 +472,18 @@ function init_tool_bar() {
         KiddoPaint.Display.canvas.classList.add("cursor-bucket");
     });
     document.getElementById("eraser").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("eraser").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         KiddoPaint.Current.tool = KiddoPaint.Tools.Eraser;
         KiddoPaint.Display.canvas.classList = "";
@@ -383,6 +491,18 @@ function init_tool_bar() {
         show_generic_submenu("eraser");
     });
     document.getElementById("truck").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("truck").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu("truck");
         KiddoPaint.Current.tool = KiddoPaint.Tools.Cut;
@@ -405,6 +525,18 @@ function init_tool_bar() {
         init_alphabet_bar("character" + KiddoPaint.Alphabet.page);
     });
     document.getElementById("jumble").addEventListener("mousedown", function () {
+        document.getElementById("pencil").style = "";
+        document.getElementById("line").style = "";
+        document.getElementById("square").style = "";
+        document.getElementById("circle").style = "";
+        document.getElementById("brush").style = "";
+        document.getElementById("stamp").style = "";
+        document.getElementById("alphabet").style = "";
+        document.getElementById("flood").style = "";
+        document.getElementById("eraser").style = "";
+        document.getElementById("truck").style = "";
+        document.getElementById("jumble").style = "";
+        document.getElementById("jumble").style = "border-color:red; border-width: 5px";
         KiddoPaint.Sounds.mainmenu();
         show_generic_submenu("jumble");
         KiddoPaint.Display.canvas.classList = "";
