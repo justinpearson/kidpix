@@ -10317,12 +10317,15 @@ KiddoPaint.Builders.Road = function (color1, color2, angle) {
 
 KiddoPaint.Alphabet.english = {
     face: "sans-serif",
-    pages: 2,
+    pages: 3,
     character1: {
-        letters: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     },
     character2: {
-        letters: ["!", "?", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "<", ">", "$", "%", "^", "&", "@", "*", "(", ")", "~", "|"]
+        letters: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25']
+    },
+    character3: {
+        letters: ['.', '!', '?', '@', '#', '$', '%', '^', '&', '*', '+', '-', '=', '(', ')', '[', ']', '{', '}', '<', '>', '|', ',', ';', ':', '\'', '"', '\\', '/', '_']
     }
 };
 
@@ -10535,6 +10538,7 @@ KiddoPaint.Sounds.Library.english = {
     X: "./src/assets/sndmp3/english/alpha-x-WAVSOUND.R_0009ff1d.wav.mp3",
     Y: "./src/assets/sndmp3/english/alpha-y-WAVSOUND.R_000a177a.wav.mp3",
     Z: "./src/assets/sndmp3/english/alpha-z-WAVSOUND.R_000a2fe7.wav.mp3",
+
     0: "./src/assets/sndmp3/english/number-0-WAVSOUND.R_000a7832.wav.mp3",
     1: "./src/assets/sndmp3/english/number-1-WAVSOUND.R_000a9f1f.wav.mp3",
     2: "./src/assets/sndmp3/english/number-2-WAVSOUND.R_000ab58c.wav.mp3",
@@ -10545,24 +10549,58 @@ KiddoPaint.Sounds.Library.english = {
     7: "./src/assets/sndmp3/english/number-7-WAVSOUND.R_000b43e7.wav.mp3",
     8: "./src/assets/sndmp3/english/number-8-WAVSOUND.002_000555ac.wav.mp3",
     9: "./src/assets/sndmp3/english/number-9-WAVSOUND.R_000b7db1.wav.mp3",
-    "&": "./src/assets/sndmp3/english/number-ampersand-WAVSOUND.R_000be96f.wav.mp3",
-    "=": "./src/assets/sndmp3/english/number-equals-WAVSOUND.R_000bce22.wav.mp3",
-    "-": "./src/assets/sndmp3/english/number-minus-WAVSOUND.R_000bb0e5.wav.mp3",
-    "+": "./src/assets/sndmp3/english/number-plus-WAVSOUND.R_000b9a58.wav.mp3",
-    "?": "./src/assets/sndmp3/english/question-mark.m4a",
-    "!": "./src/assets/sndmp3/english/exclamation-point.m4a",
-    '<': './src/assets/sndmp3/english/less-than.m4a',
-    '>': './src/assets/sndmp3/english/greater-than.m4a',
-    '$': './src/assets/sndmp3/english/dollar-sign.m4a',
-    '%': './src/assets/sndmp3/english/percent.m4a',
-    '^': './src/assets/sndmp3/english/caret.m4a',
-    '&': './src/assets/sndmp3/english/ampersand.m4a',
-    '@': './src/assets/sndmp3/english/at-sign.m4a',
-    '*': './src/assets/sndmp3/english/star-character.m4a',
-    '(': './src/assets/sndmp3/english/left-paren.m4a',
-    ')': './src/assets/sndmp3/english/right-paren.m4a',
-    '~': './src/assets/sndmp3/english/tilde.m4a',
-    '|': './src/assets/sndmp3/english/pipe-char.m4a'
+
+    10: "./src/assets/sndmp3/english/jcp - 10.m4a",
+    11: "./src/assets/sndmp3/english/jcp - 11.m4a",
+    12: "./src/assets/sndmp3/english/jcp - 12.m4a",
+    13: "./src/assets/sndmp3/english/jcp - 13.m4a",
+    14: "./src/assets/sndmp3/english/jcp - 14.m4a",
+    15: "./src/assets/sndmp3/english/jcp - 15.m4a",
+    16: "./src/assets/sndmp3/english/jcp - 16.m4a",
+    17: "./src/assets/sndmp3/english/jcp - 17.m4a",
+    18: "./src/assets/sndmp3/english/jcp - 18.m4a",
+    19: "./src/assets/sndmp3/english/jcp - 19.m4a",
+    20: "./src/assets/sndmp3/english/jcp - 20.m4a",
+    21: "./src/assets/sndmp3/english/jcp - 21.m4a",
+    22: "./src/assets/sndmp3/english/jcp - 22.m4a",
+    23: "./src/assets/sndmp3/english/jcp - 23.m4a",
+    24: "./src/assets/sndmp3/english/jcp - 24.m4a",
+    25: "./src/assets/sndmp3/english/jcp - 25.m4a",
+
+    '_': './src/assets/sndmp3/english/dp - underscore.m4a',
+    '*': './src/assets/sndmp3/english/dp - star.m4a',
+    '/': './src/assets/sndmp3/english/dp - slash.m4a',
+    '\'': './src/assets/sndmp3/english/dp - single quote.m4a',
+    ';': './src/assets/sndmp3/english/dp - semicolon.m4a',
+    ')': './src/assets/sndmp3/english/dp - right paren.m4a',
+    ']': './src/assets/sndmp3/english/dp - right bracket.m4a',
+    '}': './src/assets/sndmp3/english/dp - right brace.m4a',
+    '?': './src/assets/sndmp3/english/dp - question mark.m4a',
+    '#': './src/assets/sndmp3/english/dp - pound.m4a',
+    '+': './src/assets/sndmp3/english/dp - plus.m4a',
+    '|': './src/assets/sndmp3/english/dp - pipe.m4a',
+    '.': './src/assets/sndmp3/english/dp - period.m4a',
+    '%': './src/assets/sndmp3/english/dp - percent.m4a',
+    '<': './src/assets/sndmp3/english/dp - less than.m4a',
+    '(': './src/assets/sndmp3/english/dp - left paren.m4a',
+    '[': './src/assets/sndmp3/english/dp - left bracket.m4a',
+    '{': './src/assets/sndmp3/english/dp - left brace.m4a',
+    '-': './src/assets/sndmp3/english/dp - hyphen.m4a',
+    '>': './src/assets/sndmp3/english/dp - greater than.m4a',
+    '!': './src/assets/sndmp3/english/dp - exclam pt.m4a',
+    '=': './src/assets/sndmp3/english/dp - equals.m4a',
+    '"': './src/assets/sndmp3/english/dp - double quote.m4a',
+    '$': './src/assets/sndmp3/english/dp - dollar.m4a',
+    '-': './src/assets/sndmp3/english/dp - dash.m4a',
+    ',': './src/assets/sndmp3/english/dp - comma.m4a',
+    ':': './src/assets/sndmp3/english/dp - colon.m4a',
+    '^': './src/assets/sndmp3/english/dp - caret.m4a',
+    '`': './src/assets/sndmp3/english/dp - backtick.m4a',
+    '\\': './src/assets/sndmp3/english/dp - backslash.m4a',
+    '@': './src/assets/sndmp3/english/dp - at.m4a',
+    '*': './src/assets/sndmp3/english/dp - asterisk.m4a',
+    '&': './src/assets/sndmp3/english/dp - ampersand.m4a',
+
 };
 
 KiddoPaint.Sounds.Library.playRand = function (sound) {
