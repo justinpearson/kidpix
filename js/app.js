@@ -548,7 +548,21 @@ function init_tool_bar() {
 
 function init_alphabet_bar(alphabetgroup) {
     var alphabettoolbar = KiddoPaint.Alphabet.english[alphabetgroup].letters;
+    // first letter / number / symbol is selected when the bar is created:
     KiddoPaint.Tools.Stamp.stamp = alphabettoolbar[0];
+    // clear out old buttons:
+    var alphaselect = document.querySelectorAll('*[id^="xal"]');
+    for (var i = 0; i < alphaselect.length; i++) {
+        var b = alphaselect[i];
+        // first letter is highlighted:
+        if (i == 0) {
+            b.style = "border-color:red; border-width: 5px";
+        } else {
+            b.style = "";
+        }
+        b.removeAllChildren();
+    }
+    // add new buttons:
     for (var i = 0; i < alphabettoolbar.length; i++) {
         var buttonValue = "<h1>" + alphabettoolbar[i] + "</h1>";
         document.getElementById("xal" + i).innerHTML = buttonValue;
@@ -573,8 +587,16 @@ function init_alphabet_subtoolbar() {
         alphaButton.addEventListener("mousedown", function (ev) {
             reset_ranges();
             src = ev.srcElement || ev.target;
+            // if button has no child, it's a blank button -> do nothing.
+            if (src.firstChild == null) { console.log('empty button, no-op.'); return; }
             KiddoPaint.Tools.Stamp.stamp = src.firstChild.nodeValue;
             KiddoPaint.Sounds.Library.playKey(KiddoPaint.Tools.Stamp.stamp);
+            const alphaselect2 = document.querySelectorAll('*[id^="xal"]');
+            for (var j = 0; j < alphaselect2.length; j++) {
+                var b = alphaselect2[j];
+                b.style = "";
+            }
+            src.parentNode.style = "border-color:red; border-width: 5px";
         });
     }
 }
@@ -749,6 +771,15 @@ function show_generic_submenu(subtoolbar) {
         } else { }
         let localFRef = buttonDetail.handler;
         let wrappedHandler = function (e) {
+            // disable all red outlines for subtool
+            for (var j = 0, len = document.getElementById('genericsubmenu').getElementsByTagName('button').length; j < len; j++) {
+                var b = document.getElementById('genericsubmenu').getElementsByTagName('button')[j];
+                console.log('j=', j, ', b=', b)
+                b.style = "";
+            }
+            // Set clicked-subtool's outline to red:
+            e.target.parentNode.style = "border-color:red; border-width: 5px";
+            // TODO: mult buttons in submenu may be selected at once, eg, pencil's thickness + pattern.
             KiddoPaint.Sounds.submenuoption();
             localFRef(e);
         };
