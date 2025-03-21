@@ -575,6 +575,12 @@ function init_alphabet_subtoolbar() {
             src = ev.srcElement || ev.target;
             KiddoPaint.Tools.Stamp.stamp = src.firstChild.nodeValue;
             KiddoPaint.Sounds.Library.playKey(KiddoPaint.Tools.Stamp.stamp);
+            const alphaselect2 = document.querySelectorAll('*[id^="xal"]');
+            for (var j = 0; j < alphaselect2.length; j++) {
+                var b = alphaselect2[j];
+                b.style = "";
+            }
+            src.parentNode.style = "border-color:red; border-width: 5px";
         });
     }
 }
