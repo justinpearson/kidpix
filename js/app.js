@@ -749,6 +749,15 @@ function show_generic_submenu(subtoolbar) {
         } else { }
         let localFRef = buttonDetail.handler;
         let wrappedHandler = function (e) {
+            // disable all red outlines for subtool
+            for (var j = 0, len = document.getElementById('genericsubmenu').getElementsByTagName('button').length; j < len; j++) {
+                var b = document.getElementById('genericsubmenu').getElementsByTagName('button')[j];
+                console.log('j=', j, ', b=', b)
+                b.style = "";
+            }
+            // Set clicked-subtool's outline to red:
+            e.target.parentNode.style = "border-color:red; border-width: 5px";
+            // TODO: mult buttons in submenu may be selected at once, eg, pencil's thickness + pattern.
             KiddoPaint.Sounds.submenuoption();
             localFRef(e);
         };
