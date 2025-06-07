@@ -1,0 +1,17 @@
+# Set up current best-practices tech stack
+
+(To familiarize yourself with this project, please read the following `README.md` and any docs it references.)
+
+Now that we've removed my previous failed React implementation, let's set up a modern tech stack.
+
+Please ensure the following tech stack is set up:
+
+- documentation -- please read doc/doc-philosophy.md to inform how you create & update docs
+- vite + yarn for project scaffolding, package management, and development
+- typescript protection
+- eslint linter setup, installed as pre-commit check (use "husky" tool?)
+- git version control, with logically-separated commits, that uses the "Conventional Commits" spec
+	- (this is specified in .cursor/rules/*, did you read those files?)
+- github for PRs (use gh GitHub CLI)
+- deployment via github actions and hosted on github pages
+- jest + playwright for unit and browser-based integration tests, run automatically via github actions
