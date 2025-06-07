@@ -1,0 +1,13 @@
+# Remove current React implementation attempt
+
+(To familiarize yourself with this project, please read the following `README.md` and any docs it references.)
+
+To start fresh, let's remove my previous React-based implementation attempt:
+
+- main.tsx
+- App.tsx
+- ColorPalette.tsx
+- MainToolbar.tsx
+- etc.
+
+You can update any TS, linter, yarn, or vite configs too, if needed.
