@@ -1,8 +1,14 @@
-# Summary
+# KidPix React/Typescript
 
-My fork of vikrum's kidpixjs (Kid Pix 1.0 HTML/JS implementation, https://github.com/vikrum/kidpix) to react + typescript + vite.
+The 1989 KidPix drawing app, from vikrum's www.kidpix.app (Kid Pix 1.0 HTML/JS implementation, https://github.com/vikrum/kidpix), ported to React / TypeScript, to learn software best-practices. See below for vikrum's original readme and vite's template readme.
 
-See below for vikrum's original readme and vite's template readme.
+Goal: Port Vikrum's KidPix app into a modern, scalable, production-ready software + infra stack. Let's learn React / TypeScript, web dev, automated testing, CI / CD, deployment, and monitoring / alerting.
+
+Also, let's use this project to learn AI-assisted coding tools (VS Code Copilot, Cursor, Claude Code).
+
+If you are an AI agent, please read the "rules" files in `.cursor/rules`, and the AI-generated summary file `CLAUDE.md`, for guidance on how you should act. Then, read the feature requests in `prompts-TODO/`, and implement the oldest one, putting your changes into logical git commits, and submitting a PR (for details, see `.cursor/rules/feature_workflow.md`). After merging, move completed feature-request files into `prompts-DONE/`.
+
+
 
 # Quick-start (NEW)
 

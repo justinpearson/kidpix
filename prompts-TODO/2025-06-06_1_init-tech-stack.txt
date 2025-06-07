@@ -1,0 +1,13 @@
+Hello. To familiarize yourself with this project, please read the following `README.md` and any docs it references (in this repo).
+
+Now, we will set up this project.
+
+Please ensure the following tech stack is set up:
+
+- documentation -- please read doc/doc-philosophy.md to inform how you create & update docs
+- vite + yarn for project scaffolding, package management, and development
+- git version control, with logically-separated commits, that uses the "Conventional Commits" spec
+- github for PRs (use gh GitHub CLI)
+- deployment via github actions and hosted on github pages
+- jest + playwright for unit and browser-based integration tests, run automatically via github actions
+
