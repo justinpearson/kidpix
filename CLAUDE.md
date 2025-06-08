@@ -13,27 +13,70 @@ This is a React/TypeScript port of the classic 1989 Kid Pix drawing application.
 - **Package Manager**: Yarn 1.22.22
 - **Linting**: ESLint 9 with TypeScript support
 
+## CRITICAL COMMIT WORKFLOW
+
+⚠️ **MANDATORY INTERMEDIATE COMMITS** ⚠️
+
+Following the pattern from `.cursor/rules/git_auto_commit.md`, when implementing multi-step features:
+
+### RULE: Commit After Each Logical Step
+
+1. **NEVER** batch multiple completed tasks into one commit
+2. **ALWAYS** commit immediately after completing each logical piece of work
+3. **MUST** use conventional commit format for all commits
+4. **MUST** maintain clear and consistent commit history
+
+### Implementation Pattern:
+
+- Complete one feature component → **COMMIT IMMEDIATELY**
+- Complete configuration setup → **COMMIT IMMEDIATELY**
+- Complete testing setup → **COMMIT IMMEDIATELY**
+- Complete documentation → **COMMIT IMMEDIATELY**
+
+### Benefits:
+
+- Maintains clear and consistent commit history
+- Provides traceability between tasks and code changes
+- Prevents losing work if something goes wrong
+- Follows industry best practices for version control
+
+### Example Workflow:
+
+```bash
+# ✅ CORRECT: Intermediate commits
+git commit -m "feat(tooling): set up ESLint with Husky pre-commit hooks"
+git commit -m "feat(tooling): configure Conventional Commits validation"
+git commit -m "feat(ci): set up GitHub Actions for deployment"
+
+# ❌ INCORRECT: Batched commit
+git commit -m "feat(tooling): set up entire tech stack"
+```
+
 ## Development Commands
 
 ### Development Server
+
 ```bash
 yarn dev
 # Opens development server at http://localhost:5173/
 ```
 
 ### Build
+
 ```bash
 yarn build
 # Runs TypeScript compiler and Vite build
 ```
 
 ### Linting
+
 ```bash
 yarn lint
 # Runs ESLint on all files
 ```
 
 ### Preview Built App
+
 ```bash
 yarn preview
 # Preview the built application locally
@@ -42,6 +85,7 @@ yarn preview
 ## Architecture Overview
 
 ### Current React Structure
+
 The application is being migrated from a monolithic JavaScript structure to modular React components:
 
 - `src/App.tsx`: Main application component with state management for pen color and selected tool
@@ -50,29 +94,33 @@ The application is being migrated from a monolithic JavaScript structure to modu
 - `src/Pencil.tsx`: Individual tool components
 
 ### Legacy JavaScript Structure (in migration)
+
 The original codebase uses a modular architecture around the `KiddoPaint` namespace with the following structure:
 
 **IMPORTANT**: `js/app.js` is the authoritative source - it's a concatenation of all `js/*` files with additional features implemented directly in it that are not reflected in the individual source files.
 
 #### Core Namespaces
+
 ```javascript
 var KiddoPaint = {};
-KiddoPaint.Tools = {};        // Drawing tools
-KiddoPaint.Textures = {};     // Pattern generators  
-KiddoPaint.Brushes = {};      // Brush generators
-KiddoPaint.Builders = {};     // Complex shape builders
-KiddoPaint.Stamps = {};       // Stamp/sticker system
-KiddoPaint.Sounds = {};       // Audio system
-KiddoPaint.Display = {};      // Multi-layer canvas management
-KiddoPaint.Colors = {};       // Color palette system
-KiddoPaint.Current = {};      // Application state
-KiddoPaint.Cache = {};        // Performance caching
-KiddoPaint.Alphabet = {};     // Letter/number stamps
-KiddoPaint.Sprite = {};       // Sprite management
+KiddoPaint.Tools = {}; // Drawing tools
+KiddoPaint.Textures = {}; // Pattern generators
+KiddoPaint.Brushes = {}; // Brush generators
+KiddoPaint.Builders = {}; // Complex shape builders
+KiddoPaint.Stamps = {}; // Stamp/sticker system
+KiddoPaint.Sounds = {}; // Audio system
+KiddoPaint.Display = {}; // Multi-layer canvas management
+KiddoPaint.Colors = {}; // Color palette system
+KiddoPaint.Current = {}; // Application state
+KiddoPaint.Cache = {}; // Performance caching
+KiddoPaint.Alphabet = {}; // Letter/number stamps
+KiddoPaint.Sprite = {}; // Sprite management
 ```
 
 #### Multi-Layer Canvas System
+
 The application uses multiple HTML5 canvas layers:
+
 - **Main Canvas** (`kiddopaint`): Final rendered artwork
 - **Tmp Canvas** (`tmpCanvas`): Current drawing operations and primary interaction layer
 - **Preview Canvas** (`previewCanvas`): Tool previews and temporary effects
@@ -80,16 +128,25 @@ The application uses multiple HTML5 canvas layers:
 - **Bnim Canvas** (`bnimCanvas`): Background image manipulation
 
 #### Tool Architecture
+
 All tools follow a consistent interface pattern with three mouse event handlers:
+
 ```javascript
-KiddoPaint.Tools.Toolbox.ToolName = function() {
-    this.mousedown = function(ev) { /* start drawing */ };
-    this.mousemove = function(ev) { /* continue drawing */ };
-    this.mouseup = function(ev) { /* finish drawing */ };
+KiddoPaint.Tools.Toolbox.ToolName = function () {
+  this.mousedown = function (ev) {
+    /* start drawing */
+  };
+  this.mousemove = function (ev) {
+    /* continue drawing */
+  };
+  this.mouseup = function (ev) {
+    /* finish drawing */
+  };
 };
 ```
 
 #### Key Directories
+
 - `js/tools/`: Drawing tools (pencil, brush, eraser, effects)
 - `js/brushes/`: Brush pattern generators (circles, splatters, animations)
 - `js/textures/`: Fill pattern generators (stripes, speckles, gradients)
@@ -113,24 +170,30 @@ KiddoPaint.Tools.Toolbox.ToolName = function() {
 ## Key Development Patterns
 
 ### Component Structure
+
 Follow React best practices:
+
 - Functional components with hooks
 - TypeScript interfaces for props
 - Proper state management between components
 - Event handlers passed as props
 
 ### Canvas Integration
+
 When migrating canvas-based tools:
+
 - Use useRef hooks for canvas elements
 - Implement proper cleanup in useEffect
 - Maintain the original three-method pattern (mousedown, mousemove, mouseup) in React event handlers
 
 ### State Management
+
 Currently using local component state. Consider upgrading to Context API or state management library as complexity grows.
 
 ## Testing Strategy
 
 No testing framework is currently configured. When adding tests:
+
 - Add Jest and React Testing Library
 - Write unit tests for individual components
 - Add integration tests for tool interactions
@@ -146,32 +209,44 @@ No testing framework is currently configured. When adding tests:
 ## Key Systems
 
 ### Event Handling
+
 Central event dispatcher routes mouse/touch events to the current tool:
+
 ```javascript
 function ev_canvas(ev) {
-    var func = KiddoPaint.Current.tool[ev.type];
-    if (func) func(ev);
+  var func = KiddoPaint.Current.tool[ev.type];
+  if (func) func(ev);
 }
 ```
 
 ### Modifier Keys
+
 Extensive use of modifier keys (Shift, Alt, Ctrl, Meta) to alter tool behavior. Many tools support Shift to enlarge their effect.
 
 ### Submenu System
+
 Submenus are defined as arrays of button configurations that are dynamically rendered:
+
 ```javascript
-KiddoPaint.Submenu.toolname = [{
-    name: 'Option Name',
-    imgSrc: 'img/icon.png',
-    handler: function() { /* configure tool */ }
-}];
+KiddoPaint.Submenu.toolname = [
+  {
+    name: "Option Name",
+    imgSrc: "img/icon.png",
+    handler: function () {
+      /* configure tool */
+    },
+  },
+];
 ```
 
 ### Sound Integration
+
 Each tool can have associated sounds (start, during, end) with support for random sound selection and multi-part audio sequences.
 
 ### Canvas Management
+
 The `KiddoPaint.Display` system handles:
+
 - Canvas clearing and saving operations
 - Undo functionality (single-level)
 - Local storage persistence
@@ -182,20 +257,25 @@ The `KiddoPaint.Display` system handles:
 The project maintains both the new React structure and original JavaScript code during migration. Key considerations:
 
 ### Critical Source Files
+
 - **Use `js/app.js` as the authoritative reference** - contains latest implementations
 - Individual `js/*` files may be outdated compared to app.js
 - Preserve original tool behavior, sound effects, and multi-layer canvas architecture
 - Asset files (images, sounds) in `src/assets/` maintain original structure
 
 ### Canvas Integration Strategy
+
 When migrating canvas-based tools to React:
+
 - Preserve the five-canvas layer system (main, tmp, preview, anim, bnim)
 - Maintain pixel-perfect rendering (`imageSmoothingEnabled = false`)
 - Keep the three-method pattern (mousedown, mousemove, mouseup) in React event handlers
 - Use useRef hooks for canvas elements with proper cleanup in useEffect
 
 ### Tool Migration Pattern
+
 For each tool migration:
+
 1. Study the tool's implementation in `js/app.js` (not individual files)
 2. Identify associated submenu definitions and sound effects
 3. Create React component maintaining original behavior
@@ -203,7 +283,9 @@ For each tool migration:
 5. Test with original asset files to ensure compatibility
 
 ### State Management Considerations
+
 Original uses global `KiddoPaint.Current` object. In React migration:
+
 - Convert to Context API or state management solution
 - Maintain compatibility with canvas layer system
 - Preserve undo/redo and local storage functionality
