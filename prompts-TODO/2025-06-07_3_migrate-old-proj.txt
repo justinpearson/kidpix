@@ -19,8 +19,16 @@ files, in such a way so that I can view my existing app
 (index.html -> kidpix.html -> js/app.js), but ALSO the "original" KidPix app
 that is powered by the JS files in the js/ directory (except for js/app.js).
 
+For example, one approach would be:
+
+1. somehow configure the project to build the js/*.js files (EXCEPT FOR js/app.js, see below)
+2. create a new file kidpix-orig.html that uses those js/*.js files
+3. in index.html, add a new link that points to kidpix-orig.html
+
+(Happy to hear other ideas if you have them!)
+
 IMPORTANT: do not modify the file `js/app.js`. That powers the current KidPix
-app. It is basically a concatenation of all the `js/*` javascript files, BUT
+app (kidpix.html). It is basically a concatenation of all the `js/*` javascript files, BUT
 ALSO CONTAINS MY OWN FEATURES. (Unfortunately, for expediency, I have
 implemented several features in app.js which are not reflected in the
 original JS files.) DO NOT MODIFY app.js!!
