@@ -25,6 +25,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# TypeScript build cache
+*.tsbuildinfo
+
 # Temporary files for PR creation
 pr-title.txt
 pr-body.txt
