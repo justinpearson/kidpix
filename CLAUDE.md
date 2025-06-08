@@ -25,6 +25,7 @@ Following the pattern from `.cursor/rules/git_auto_commit.md`, when implementing
 2. **ALWAYS** commit immediately after completing each logical piece of work
 3. **MUST** use conventional commit format for all commits
 4. **MUST** maintain clear and consistent commit history
+5. **MUST** document Claude settings changes in commit messages when any file under `.claude/` is modified
 
 ### Implementation Pattern:
 
