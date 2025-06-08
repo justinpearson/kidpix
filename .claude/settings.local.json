@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(yarn build)",
-      "Bash(yarn lint)"
+      "Bash(yarn lint)",
+      "Bash(yarn --version)",
+      "Bash(yarn install)",
+      "Bash(yarn tsc:*)",
+      "WebFetch(domain:docs.anthropic.com)"
     ],
     "deny": []
   }
