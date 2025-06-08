@@ -28,6 +28,10 @@ dist-ssr
 # TypeScript build cache
 *.tsbuildinfo
 
+# Test output directories
+playwright-report/
+test-results/
+
 # Temporary files for PR creation
 pr-title.txt
 pr-body.txt
