@@ -1,95 +1,237 @@
 # Quick Start - Kid Pix Maintainer Guide
 
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Development Environment Setup](#development-environment-setup)
+  - [1. Get the Code](#1-get-the-code)
+  - [2. Install Dependencies](#2-install-dependencies)
+  - [3. Start Development Server](#3-start-development-server)
+  - [4. Verify Your Setup](#4-verify-your-setup)
+- [Development Workflow](#development-workflow)
+  - [Code Organization](#code-organization)
+  - [Making Changes](#making-changes)
+  - [Git Workflow](#git-workflow)
+- [Testing Your Changes](#testing-your-changes)
+  - [Unit Testing (Vitest)](#unit-testing-vitest)
+  - [End-to-End Testing (Playwright)](#end-to-end-testing-playwright)
+  - [Manual Testing Checklist](#manual-testing-checklist)
+  - [Performance Testing](#performance-testing)
+- [Deployment](#deployment)
+  - [Automatic Deployment](#automatic-deployment)
+  - [Manual Deployment Testing](#manual-deployment-testing)
+- [Technology Decisions](#technology-decisions)
+  - [Why These Tools?](#why-these-tools)
+- [Next Steps](#next-steps)
+
 ## Prerequisites
 
 Before you begin, make sure you understand what Kid Pix is by reading the [user quick-start guide](../user/quick-start.md).
 
+**Required Software:**
+
+- [Node.js](https://nodejs.org/) v18 or higher
+- [Yarn](https://yarnpkg.com/) package manager
+- [Git](https://git-scm.com/)
+- Modern IDE with TypeScript support (VS Code recommended)
+
 ## Development Environment Setup
 
 ### 1. Get the Code
+
 ```bash
-git clone https://github.com/vikrum/kidpix.git
+git clone https://github.com/justinpearson/kidpix.git
 cd kidpix
 ```
 
 ### 2. Install Dependencies
+
 ```bash
-npm install
+yarn install
 ```
 
 This installs:
-- `uglify-es` - JavaScript minification and concatenation
-- `js-beautify` - Code formatting
 
-### 3. Set Up Local Development
+- **React 19** - UI framework
+- **TypeScript** - Type safety and developer experience
+- **Vite** - Fast build tool with HMR
+- **Vitest** - Jest-compatible testing framework
+- **Playwright** - Browser automation for e2e tests
+- **ESLint + Prettier** - Code quality and formatting
+- **Husky** - Git hooks for automated quality checks
+
+### 3. Start Development Server
+
 ```bash
-# Start a local web server (choose one)
-python -m http.server 8000          # Python 3
-python -m SimpleHTTPServer 8000     # Python 2  
-npx http-server                      # Node.js
-php -S localhost:8000                # PHP
-
-# Open in browser
-open http://localhost:8000
+yarn dev
+# Open http://localhost:5173/
 ```
 
-### 4. Make Your First Build
-```bash
-./build.sh
-```
+The development server includes:
 
-This script:
-- Formats all JavaScript and CSS files
-- Concatenates JavaScript modules into `js/app.js`
-- Processes files in dependency order: init → util → tools → textures → submenus → brushes → builders → stamps → sounds
+- Hot module replacement (HMR) for instant updates
+- TypeScript compilation with error reporting
+- Source maps for debugging
+
+### 4. Verify Your Setup
+
+```bash
+# Run linting
+yarn lint
+
+# Run unit tests
+yarn test
+
+# Run e2e tests (opens browser)
+yarn test:e2e
+
+# Build for production
+yarn build
+```
 
 ## Development Workflow
 
 ### Code Organization
-- **Source files**: Individual modules in `js/` subdirectories
-- **Built file**: Combined into `js/app.js` for production
-- **Never edit**: `js/app.js` directly (it gets overwritten)
 
-### Making Changes
-1. Edit individual source files in appropriate `js/` subdirectories
-2. Run `./build.sh` to regenerate `js/app.js`
-3. Refresh browser to see changes
-4. Test thoroughly before committing
+**New React/TypeScript Structure:**
 
-### File Structure
+```
+src/
+├── assets/           # Static assets (images, sounds, CSS)
+├── components/       # React components
+├── hooks/           # Custom React hooks
+├── utils/           # Utility functions
+├── types/           # TypeScript type definitions
+├── __tests__/       # Unit tests
+└── App.tsx          # Main application component
+```
+
+**Legacy JavaScript (preserved for reference):**
+
 ```
 js/
-├── init/          # Application initialization
-├── util/          # Core utilities (display, colors, caching)
-├── tools/         # Drawing tools (pencil, brush, eraser, etc.)
-├── textures/      # Fill pattern generators
-├── submenus/      # UI submenu definitions
-├── brushes/       # Brush pattern generators  
-├── builders/      # Shape construction tools
-├── stamps/        # Stamp/sprite systems
-└── sounds/        # Audio system
+├── init/            # Original initialization code
+├── tools/           # Original drawing tools
+├── brushes/         # Original brush generators
+└── app.js           # Concatenated legacy code (DO NOT EDIT)
 ```
+
+### Making Changes
+
+#### For New React Development:
+
+1. Create/edit components in `src/`
+2. Add unit tests in `src/__tests__/`
+3. Add e2e tests in `tests/e2e/`
+4. Use TypeScript for type safety
+5. Pre-commit hooks automatically run linting and formatting
+
+#### For Legacy Code Reference:
+
+- **NEVER edit `js/app.js`** directly
+- Use legacy code as reference for porting to React
+- Original build process preserved but not used for new development
+
+### Git Workflow
+
+**Conventional Commits (enforced by commitlint):**
+
+```bash
+# Examples of proper commit messages
+git commit -m "feat(canvas): add drawing tool component"
+git commit -m "fix(ui): resolve color picker accessibility issue"
+git commit -m "test(tools): add unit tests for brush generator"
+```
+
+**Pre-commit Hooks:**
+
+- ESLint automatically fixes code style issues
+- Prettier formats all files
+- TypeScript compilation checked
+- Commit message format validated
 
 ## Testing Your Changes
 
-### Browser Testing
-- Test in Chrome, Firefox, Safari, and Edge
-- Test on both desktop and mobile devices
-- Verify audio works (many browsers require user interaction first)
+### Unit Testing (Vitest)
 
-### Canvas Testing
-- Draw with various tools and verify output
-- Test saving functionality
-- Check that undo works properly
-- Verify modifier keys (Shift, Alt, Ctrl, Cmd) work as expected
+```bash
+yarn test          # Run tests once
+yarn test:ui       # Interactive test runner
+yarn test --watch  # Watch mode during development
+```
+
+### End-to-End Testing (Playwright)
+
+```bash
+yarn test:e2e                    # Run all browsers
+yarn test:e2e --project=chromium # Single browser
+yarn test:e2e --headed           # See browser during test
+```
+
+### Manual Testing Checklist
+
+- [ ] Drawing tools work correctly
+- [ ] Color picker functions properly
+- [ ] Audio plays when expected
+- [ ] Responsive design works on mobile
+- [ ] Keyboard shortcuts function
+- [ ] Local storage saves/loads artwork
 
 ### Performance Testing
-- Large drawings should remain responsive
-- No memory leaks during extended use
-- Smooth animation for animated brushes
+
+- [ ] Large drawings remain responsive
+- [ ] No memory leaks during extended use
+- [ ] Canvas operations are smooth
+- [ ] Build bundle size is reasonable
+
+## Deployment
+
+### Automatic Deployment
+
+- **Main branch**: Auto-deploys to GitHub Pages via GitHub Actions
+- **PR branches**: Build and test verification only
+
+### Manual Deployment Testing
+
+```bash
+yarn build          # Create production build
+yarn preview        # Test production build locally
+```
+
+## Technology Decisions
+
+### Why These Tools?
+
+**Vite over Create React App:**
+
+- Faster development server with native ESM
+- Better TypeScript integration
+- Smaller bundle sizes
+- Modern tooling ecosystem
+
+**Vitest over Jest:**
+
+- Native Vite integration
+- Faster test execution
+- Same API as Jest (easy migration)
+- Better ESM support
+
+**Playwright over Cypress:**
+
+- Multiple browser testing (Chrome, Firefox, Safari)
+- Better CI/CD integration
+- More reliable for canvas testing
+- Native TypeScript support
+
+**Yarn over npm:**
+
+- Deterministic dependency resolution
+- Better workspace management
+- Faster installation
 
 ## Next Steps
 
 - Read the [maintainer how-to guides](how-to/) for specific development tasks
 - Review the [architecture explanations](explanations/) for deeper understanding
-- Check the [maintainer how-to guide for adding new tools](how-to/add-new-tool.md)
+- Check the development patterns in `CLAUDE.md`
+- Review the testing strategy in this documentation

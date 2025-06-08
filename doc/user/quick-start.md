@@ -1,5 +1,19 @@
 # Quick Start - Kid Pix User Guide
 
+## Table of Contents
+
+- [What is Kid Pix?](#what-is-kid-pix)
+- [Getting Started](#getting-started)
+  - [Using Kid Pix Online](#using-kid-pix-online)
+  - [Using Kid Pix Locally](#using-kid-pix-locally)
+- [Basic Drawing](#basic-drawing)
+- [Exploring Tools](#exploring-tools)
+- [Sound and Audio](#sound-and-audio)
+- [Saving Your Work](#saving-your-work)
+- [Tips for Fun](#tips-for-fun)
+- [Troubleshooting](#troubleshooting)
+- [Next Steps](#next-steps)
+
 ## What is Kid Pix?
 
 Kid Pix is a playful digital painting program that recreates the magic of the classic 1989 Kid Pix software. It's designed for creative expression with whimsical tools, sound effects, and delightful surprises. Whether you're 8 or 80, Kid Pix encourages experimentation and fun over precision.
@@ -7,11 +21,13 @@ Kid Pix is a playful digital painting program that recreates the magic of the cl
 ## Getting Started
 
 ### Using Kid Pix Online
+
 1. Open your web browser and go to [kidpix.app](https://kidpix.app)
 2. The Kid Pix canvas will load automatically
 3. Start clicking on tools and drawing!
 
 ### Using Kid Pix Locally
+
 1. Download or clone this repository
 2. Start a local web server in the project directory:
    - **Python 3**: `python -m http.server 8000`
@@ -21,7 +37,7 @@ Kid Pix is a playful digital painting program that recreates the magic of the cl
 3. Open your browser and go to `http://localhost:8000`
 4. Kid Pix will load and you can start creating!
 
-*Note: You need a web server because the app loads JavaScript modules and audio files that browsers block when opening files directly.*
+_Note: You need a web server because the app loads JavaScript modules and audio files that browsers block when opening files directly._
 
 ## Basic Tools
 
@@ -29,7 +45,7 @@ The main toolbar on the left contains these essential tools:
 
 - **💾 Save** - Download your artwork
 - **✏️ Wacky Pencil** - Draw lines with various pencil sizes
-- **📏 Line** - Draw straight lines  
+- **📏 Line** - Draw straight lines
 - **⬜ Rectangle** - Draw rectangles and squares
 - **⭕ Oval** - Draw circles and ovals
 - **🖌️ Wacky Brush** - Access dozens of creative brushes
