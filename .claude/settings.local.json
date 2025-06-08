@@ -6,7 +6,9 @@
       "Bash(yarn --version)",
       "Bash(yarn install)",
       "Bash(yarn tsc:*)",
-      "WebFetch(domain:docs.anthropic.com)"
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr checks:*)"
     ],
     "deny": []
   }
