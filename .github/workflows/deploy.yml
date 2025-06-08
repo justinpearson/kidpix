@@ -34,6 +34,15 @@ jobs:
       - name: Lint code
         run: yarn lint
 
+      - name: Run unit tests
+        run: yarn test --run
+
+      - name: Install Playwright browsers
+        run: yarn playwright install --with-deps
+
+      - name: Run e2e tests
+        run: yarn test:e2e
+
       - name: Build application
         run: yarn build
 
