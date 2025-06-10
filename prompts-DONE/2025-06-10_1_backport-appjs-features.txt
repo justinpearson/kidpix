@@ -1,0 +1,56 @@
+# New feature: port app.js's changes back to its original source JS files
+
+To familiarize yourself with this project, please read `README.md` and any docs it references.
+
+The original JS implementation is in:
+
+- js/brushes/*
+- js/builders/*
+- etc.
+
+Read CLAUDE-OLD-PROJ.md to inform your understanding of the original architecture.
+
+Now for the feature request.
+
+The file js/app.js is basically a concatenation of the other JS files in the js/ directory, but with a few features that I added on top. Now I would like to "back-port" those features back to the original JS files, for consistency. Long-term, this will allow us to remove app.js and build the app using the source JS files in the js/ dir.
+
+Here's my proposal for how we will transfer my edits / features from app.js back to the original source JS files in the js/ dir:
+
+Use the git history of js/app.js to see the edits I made to it, and make corresponding edits to the original source JS files, in the same chronological order.
+
+For example, the first git commit with a real feature added to js/app.js is commit SHA 3a5437a1f20afb2dd29c7d5fff55676b21e89b97, titled "Add multi-undo, removing any redo capability". Its 'git show' shows this diff:
+
+```
+$ git show 3a5437a1f20afb2dd29c7d5fff55676b21e89b97
+
+diff --git a/js/app.js b/js/app.js
+index 301eafe..f9f3786 100644
+--- a/js/app.js
++++ b/js/app.js
+@@ -392,7 +392,7 @@ function init_tool_bar() {
+     document.getElementById("undo").addEventListener("mousedown", function () {
+         KiddoPaint.Sounds.mainmenu();
+         KiddoPaint.Sounds.oops();
+-        KiddoPaint.Display.undo(!KiddoPaint.Current.modifiedAlt);
++        KiddoPaint.Display.undo(); // holding opt makes undo button not work; remove modifier
+     });
+
+...
+```
+
+Using `git grep` to search for a line from this diff, I see that code originated from `init/kiddopaint.js`:
+
+```
+% git grep 'document.getElementById("undo").addEventListener("mousedown"'
+init/kiddopaint.js:    document.getElementById("undo").addEventListener("mousedown", function () {
+```
+
+Therefore I would then modify the corresponding lines of `init/kiddopaint.js`.
+
+I'd then repeat this process with the other hunks of the diff, applying the changes from app.js back to its original JS files.
+
+Then I'd commit those changes to the original JS files, using basically the same git commit message, with a pointer to the original commit SHA. Then I'd move on to the next git commit in app.js's git log, repeating this process.
+
+That's the method I'd propose, to transfer my edits from app.js back to its original source JS files.
+
+Does this make sense? If so, let's get started!

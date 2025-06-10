@@ -1,0 +1,39 @@
+DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT 
+
+DO NOT DO THIS YET!!!
+
+
+# Migration part XXX: use original JS files in modern React app context
+
+(To familiarize yourself with this project, please read the following
+`README.md` and any docs it references.)
+
+Now that we have a modern tech stack setup, we can begin to migrate the
+plain-JS KidPix app to our new tech stack.
+
+The original JS implementation is in:
+
+- js/brushes/*
+- js/builders/*
+- etc.
+
+Let's see if we can get the original app ported to React. First read
+CLAUDE-OLD-PROJ.md to inform your understanding of the original architecture.
+Then configure our current React / Typescript project to use these old JS
+files, in such a way so that I can view my existing app
+(index.html -> kidpix.html -> js/app.js), but ALSO the "original" KidPix app
+that is powered by the JS files in the js/ directory (except for js/app.js).
+
+For example, one approach would be:
+
+1. somehow configure the project to build the js/*.js files (EXCEPT FOR js/app.js, see below)
+2. create a new file kidpix-orig.html that uses those js/*.js files
+3. in index.html, add a new link that points to kidpix-orig.html
+
+(Happy to hear other ideas if you have them!)
+
+IMPORTANT: do not modify the file `js/app.js`. That powers the current KidPix
+app (kidpix.html). It is basically a concatenation of all the `js/*` javascript files, BUT
+ALSO CONTAINS MY OWN FEATURES. (Unfortunately, for expediency, I have
+implemented several features in app.js which are not reflected in the
+original JS files.) DO NOT MODIFY app.js!!
