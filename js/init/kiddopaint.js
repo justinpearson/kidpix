@@ -442,6 +442,11 @@ function init_tool_bar() {
     KiddoPaint.Sounds.oops();
     KiddoPaint.Display.undo(); // holding opt makes undo button not work; remove modifier
   });
+  document.getElementById("redo").addEventListener("mousedown", function () {
+    KiddoPaint.Sounds.mainmenu();
+    KiddoPaint.Sounds.oops();
+    KiddoPaint.Display.redo();
+  });
 
   document.getElementById("alnext").addEventListener("mousedown", function () {
     KiddoPaint.Sounds.submenuoption();
