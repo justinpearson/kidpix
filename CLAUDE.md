@@ -60,6 +60,10 @@ git commit -m "feat(tooling): set up entire tech stack"
 ```bash
 yarn dev
 # Opens development server at http://localhost:5173/
+# Access points:
+# - http://localhost:5173/ - React/TypeScript version
+# - http://localhost:5173/kidpix.html - Original app using monolithic app.js
+# - http://localhost:5173/kidpix-orig.html - Original app using modular JS files
 ```
 
 ### Build
@@ -99,6 +103,11 @@ The application is being migrated from a monolithic JavaScript structure to modu
 The original codebase uses a modular architecture around the `KiddoPaint` namespace with the following structure:
 
 **IMPORTANT**: `js/app.js` is the authoritative source - it's a concatenation of all `js/*` files with additional features implemented directly in it that are not reflected in the individual source files.
+
+**NEW**: The application now supports both monolithic (`kidpix.html`) and modular (`kidpix-orig.html`) loading approaches:
+
+- `kidpix.html` - Uses concatenated `js/app.js` (includes additional features not in modular files)
+- `kidpix-orig.html` - Loads individual JS files from `js/` directory in correct order for easier development
 
 #### Core Namespaces
 

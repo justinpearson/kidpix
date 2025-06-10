@@ -67,11 +67,18 @@ yarn dev
 # Open http://localhost:5173/
 ```
 
+**Available Development Endpoints:**
+
+- `http://localhost:5173/` - React/TypeScript version (new architecture)
+- `http://localhost:5173/kidpix.html` - Original app using monolithic `app.js`
+- `http://localhost:5173/kidpix-orig.html` - Original app using modular JS files
+
 The development server includes:
 
 - Hot module replacement (HMR) for instant updates
 - TypeScript compilation with error reporting
 - Source maps for debugging
+- Direct serving of individual JS files for easier debugging
 
 ### 4. Verify Your Setup
 
@@ -106,15 +113,28 @@ src/
 └── App.tsx          # Main application component
 ```
 
-**Legacy JavaScript (preserved for reference):**
+**Legacy JavaScript Structure:**
 
 ```
 js/
-├── init/            # Original initialization code
-├── tools/           # Original drawing tools
-├── brushes/         # Original brush generators
+├── init/            # Original initialization code (kiddopaint.js, submenus.js)
+├── util/            # Core utilities (display, colors, caching, filters)
+├── tools/           # Drawing tools (pencil, brush, eraser, effects)
+├── textures/        # Fill pattern generators
+├── submenus/        # UI submenu definitions for tool options
+├── brushes/         # Brush pattern generators
+├── builders/        # Complex shape builders (arrows, roads, rails)
+├── stamps/          # Stamp and alphabet systems
+├── sounds/          # Audio system and sound library
 └── app.js           # Concatenated legacy code (DO NOT EDIT)
 ```
+
+**Important Notes:**
+
+- `kidpix.html` loads `app.js` (concatenated version with additional features)
+- `kidpix-orig.html` loads individual modular files for easier development
+- Use modular files when making changes to legacy JavaScript functionality
+- Both versions preserve original behavior and asset compatibility
 
 ### Making Changes
 
@@ -126,11 +146,13 @@ js/
 4. Use TypeScript for type safety
 5. Pre-commit hooks automatically run linting and formatting
 
-#### For Legacy Code Reference:
+#### For Legacy JavaScript Development:
 
-- **NEVER edit `js/app.js`** directly
+- **NEVER edit `js/app.js`** directly - it's auto-generated
+- Edit individual files in `js/` subdirectories (init, util, tools, etc.)
+- Test changes using `kidpix-orig.html` which loads modular files
 - Use legacy code as reference for porting to React
-- Original build process preserved but not used for new development
+- Files are loaded in specific order: init → util → tools → textures → submenus → brushes → builders → stamps → sounds
 
 ### Git Workflow
 
