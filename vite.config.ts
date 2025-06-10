@@ -4,4 +4,14 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [],
   base: process.env.NODE_ENV === "production" ? "/kidpix/" : "/",
+  publicDir: ".",
+  build: {
+    rollupOptions: {
+      input: {
+        main: "index.html",
+        kidpix: "kidpix.html",
+        kidpixOrig: "kidpix-orig.html",
+      },
+    },
+  },
 });
