@@ -1,15 +1,12 @@
-DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT 
+misc.txt
 
-DO NOT DO THIS YET!!!
+# Feature: write test files for the individual JS files in js/ dir.
 
 
-# Migration part XXX: use original JS files in modern React app context
 
-(To familiarize yourself with this project, please read the following
-`README.md` and any docs it references.)
 
-Now that we have a modern tech stack setup, we can begin to migrate the
-plain-JS KidPix app to our new tech stack.
+
+# Feature: Migrate plain-JS files to our new React / Typescript tech stack.
 
 The original JS implementation is in:
 
