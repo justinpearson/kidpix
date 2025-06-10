@@ -165,8 +165,12 @@ KiddoPaint.Tools.Toolbox.ToolName = function () {
 3. Implement using React/TypeScript best practices
 4. Ensure no build or lint errors before committing
 5. Use conventional commit format
-6. Create PR via GitHub CLI (`gh pr create`)
-7. After merge, move feature request file to `prompts-DONE/`
+6. Push branch and create PR via GitHub CLI (`gh pr create`)
+7. Verify CI passes on GitHub, make & push any needed corrections
+8. **BEFORE MERGING**: Move feature request file from `prompts-TODO/` to `prompts-DONE/` using `git mv`
+9. Commit and push the moved feature request file to the PR
+10. Merge PR and delete branch
+11. Locally: `git fetch origin/main` and fast-forward local main branch
 
 ## Key Development Patterns
 
