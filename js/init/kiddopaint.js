@@ -340,6 +340,24 @@ function show_sub_toolbar(subtoolbar) {
   }
 }
 
+function highlightSelectedTool(selectedToolId) {
+  // Clear all tool highlights
+  document.getElementById("pencil").style = "";
+  document.getElementById("line").style = "";
+  document.getElementById("square").style = "";
+  document.getElementById("circle").style = "";
+  document.getElementById("brush").style = "";
+  document.getElementById("stamp").style = "";
+  document.getElementById("alphabet").style = "";
+  document.getElementById("flood").style = "";
+  document.getElementById("eraser").style = "";
+  document.getElementById("truck").style = "";
+  document.getElementById("jumble").style = "";
+  // Highlight selected tool
+  document.getElementById(selectedToolId).style =
+    "border-color:red; border-width: 5px";
+}
+
 function init_tool_bar() {
   document.getElementById("save").addEventListener("mousedown", function () {
     KiddoPaint.Sounds.mainmenu();
@@ -347,6 +365,7 @@ function init_tool_bar() {
   });
 
   document.getElementById("pencil").addEventListener("mousedown", function () {
+    highlightSelectedTool("pencil");
     KiddoPaint.Sounds.mainmenu();
     show_generic_submenu("pencil");
     KiddoPaint.Current.tool = KiddoPaint.Tools.Pencil;
@@ -355,6 +374,7 @@ function init_tool_bar() {
   });
 
   document.getElementById("line").addEventListener("mousedown", function () {
+    highlightSelectedTool("line");
     KiddoPaint.Sounds.mainmenu();
     show_generic_submenu("line");
     KiddoPaint.Current.tool = KiddoPaint.Tools.Line;
@@ -363,6 +383,7 @@ function init_tool_bar() {
   });
 
   document.getElementById("square").addEventListener("mousedown", function () {
+    highlightSelectedTool("square");
     KiddoPaint.Sounds.mainmenu();
     show_generic_submenu("square");
     KiddoPaint.Current.tool = KiddoPaint.Tools.Square;
@@ -371,6 +392,7 @@ function init_tool_bar() {
   });
 
   document.getElementById("circle").addEventListener("mousedown", function () {
+    highlightSelectedTool("circle");
     KiddoPaint.Sounds.mainmenu();
     show_generic_submenu("circle");
     KiddoPaint.Current.tool = KiddoPaint.Tools.Circle;
@@ -379,6 +401,7 @@ function init_tool_bar() {
   });
 
   document.getElementById("brush").addEventListener("mousedown", function () {
+    highlightSelectedTool("brush");
     KiddoPaint.Sounds.mainmenu();
     reset_ranges();
     show_generic_submenu("wackybrush");
@@ -386,6 +409,7 @@ function init_tool_bar() {
   });
 
   document.getElementById("stamp").addEventListener("mousedown", function () {
+    highlightSelectedTool("stamp");
     KiddoPaint.Sounds.mainmenu();
     reset_ranges();
     KiddoPaint.Display.canvas.classList = "";
@@ -403,6 +427,7 @@ function init_tool_bar() {
   document
     .getElementById("alphabet")
     .addEventListener("mousedown", function () {
+      highlightSelectedTool("alphabet");
       KiddoPaint.Sounds.mainmenu();
       init_alphabet_bar("character" + KiddoPaint.Alphabet.page);
       show_sub_toolbar("alphabettoolbar");
@@ -414,6 +439,7 @@ function init_tool_bar() {
     });
 
   document.getElementById("flood").addEventListener("mousedown", function () {
+    highlightSelectedTool("flood");
     KiddoPaint.Sounds.mainmenu();
     show_generic_submenu("flood");
     KiddoPaint.Current.tool = KiddoPaint.Tools.Flood;
@@ -422,6 +448,7 @@ function init_tool_bar() {
   });
 
   document.getElementById("eraser").addEventListener("mousedown", function () {
+    highlightSelectedTool("eraser");
     KiddoPaint.Sounds.mainmenu();
     KiddoPaint.Current.tool = KiddoPaint.Tools.Eraser;
     KiddoPaint.Display.canvas.classList = "";
@@ -430,6 +457,7 @@ function init_tool_bar() {
   });
 
   document.getElementById("truck").addEventListener("mousedown", function () {
+    highlightSelectedTool("truck");
     KiddoPaint.Sounds.mainmenu();
     show_generic_submenu("truck");
     KiddoPaint.Current.tool = KiddoPaint.Tools.Cut;
@@ -461,6 +489,7 @@ function init_tool_bar() {
   //    });
 
   document.getElementById("jumble").addEventListener("mousedown", function () {
+    highlightSelectedTool("jumble");
     KiddoPaint.Sounds.mainmenu();
     show_generic_submenu("jumble");
     KiddoPaint.Display.canvas.classList = "";
