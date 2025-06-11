@@ -69,9 +69,7 @@ yarn dev
 
 **Available Development Endpoints:**
 
-- `http://localhost:5173/` - React/TypeScript version (new architecture)
-- `http://localhost:5173/kidpix.html` - Original app using monolithic `app.js`
-- `http://localhost:5173/kidpix-orig.html` - Original app using modular JS files
+- `http://localhost:5173/` - Original app using modular JS files (main entry point)
 
 The development server includes:
 
@@ -125,16 +123,14 @@ js/
 ├── brushes/         # Brush pattern generators
 ├── builders/        # Complex shape builders (arrows, roads, rails)
 ├── stamps/          # Stamp and alphabet systems
-├── sounds/          # Audio system and sound library
-└── app.js           # Concatenated legacy code (DO NOT EDIT)
+└── sounds/          # Audio system and sound library
 ```
 
 **Important Notes:**
 
-- `kidpix.html` loads `app.js` (concatenated version with additional features)
-- `kidpix-orig.html` loads individual modular files for easier development
-- Use modular files when making changes to legacy JavaScript functionality
-- Both versions preserve original behavior and asset compatibility
+- The main application now loads individual modular files for easier development
+- Individual files in `js/` directories are the primary source code
+- Files are loaded in specific order via `<script>` tags in `index.html`
 
 ### Making Changes
 
@@ -146,13 +142,12 @@ js/
 4. Use TypeScript for type safety
 5. Pre-commit hooks automatically run linting and formatting
 
-#### For Legacy JavaScript Development:
+#### For JavaScript Development:
 
-- **NEVER edit `js/app.js`** directly - it's auto-generated
 - Edit individual files in `js/` subdirectories (init, util, tools, etc.)
-- Test changes using `kidpix-orig.html` which loads modular files
-- Use legacy code as reference for porting to React
+- Changes are automatically picked up by the dev server
 - Files are loaded in specific order: init → util → tools → textures → submenus → brushes → builders → stamps → sounds
+- Use this codebase as foundation for porting to React
 
 ### Git Workflow
 
