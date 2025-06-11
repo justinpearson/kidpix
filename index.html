@@ -1,16 +1,298 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KidPix</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="JSKIDPIX v1.0.2021" />
+  <meta property="og:site_name" content="JSKIDPIX v1.0.2021" />
+  <meta property="og:url" content="https://kidpix.app/" />
+  <meta property="og:description" content="JSKIDPIX v1.0.2021" />
+  <meta property="og:image" content="https://kidpix.app/static/jskidpix.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="632" />
+  <meta property="og:image:height" content="394" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@vikrum5000">
+  <meta name="twitter:title" content="JSKIDPIX v1.0.2021">
+  <meta name="twitter:description" content="JSKidPix ✨">
+  <meta name="twitter:image" content="https://kidpix.app/static/jskidpix.png">
+  <meta name="msapplication-tap-highlight" content="no" />
+  <title>JSKIDPIX v1.0.2021</title>
+  <link rel="stylesheet" type="text/css" href="./src/assets/css/kidpix.css">
+  <link rel="icon" type="image/png" href="./src/assets/img/kidpix.png" />
+  
+  <!-- Load modular JS files in the same order as build.sh -->
+  <!-- js/init/* -->
+  <script type="text/javascript" src="js/init/kiddopaint.js"></script>
+  <script type="text/javascript" src="js/init/submenus.js"></script>
+  
+  <!-- js/util/* -->
+  <script type="text/javascript" src="js/util/array.js"></script>
+  <script type="text/javascript" src="js/util/cache.js"></script>
+  <script type="text/javascript" src="js/util/colors.js"></script>
+  <script type="text/javascript" src="js/util/display.js"></script>
+  <script type="text/javascript" src="js/util/dither.js"></script>
+  <script type="text/javascript" src="js/util/douglas-peucker.js"></script>
+  <script type="text/javascript" src="js/util/filters.js"></script>
+  <script type="text/javascript" src="js/util/fit-curve.js"></script>
+  <script type="text/javascript" src="js/util/glfx.js"></script>
+  <script type="text/javascript" src="js/util/html.js"></script>
+  <script type="text/javascript" src="js/util/kdtree.js"></script>
+  <script type="text/javascript" src="js/util/smoke.js"></script>
+  <script type="text/javascript" src="js/util/smooth.js"></script>
+  <script type="text/javascript" src="js/util/trim-canvas.js"></script>
+  <script type="text/javascript" src="js/util/utils.js"></script>
+  
+  <!-- js/tools/* -->
+  <script type="text/javascript" src="js/tools/animbrush.js"></script>
+  <script type="text/javascript" src="js/tools/astroid.js"></script>
+  <script type="text/javascript" src="js/tools/bezfollow.js"></script>
+  <script type="text/javascript" src="js/tools/brush.js"></script>
+  <script type="text/javascript" src="js/tools/circle.js"></script>
+  <script type="text/javascript" src="js/tools/composite.js"></script>
+  <script type="text/javascript" src="js/tools/contours.js"></script>
+  <script type="text/javascript" src="js/tools/cut.js"></script>
+  <script type="text/javascript" src="js/tools/eraser-doorbell.js"></script>
+  <script type="text/javascript" src="js/tools/eraser-fade-away.js"></script>
+  <script type="text/javascript" src="js/tools/eraser-hidden-pictures.js"></script>
+  <script type="text/javascript" src="js/tools/eraser-letters.js"></script>
+  <script type="text/javascript" src="js/tools/eraser-white-circles.js"></script>
+  <script type="text/javascript" src="js/tools/eraser.js"></script>
+  <script type="text/javascript" src="js/tools/flood.js"></script>
+  <script type="text/javascript" src="js/tools/fuzzer.js"></script>
+  <script type="text/javascript" src="js/tools/guilloche.js"></script>
+  <script type="text/javascript" src="js/tools/inverter.js"></script>
+  <script type="text/javascript" src="js/tools/kaleidoscope.js"></script>
+  <script type="text/javascript" src="js/tools/lanczosbrush.js"></script>
+  <script type="text/javascript" src="js/tools/line.js"></script>
+  <script type="text/javascript" src="js/tools/looper.js"></script>
+  <script type="text/javascript" src="js/tools/magnify.js"></script>
+  <script type="text/javascript" src="js/tools/maze.js"></script>
+  <script type="text/javascript" src="js/tools/partialfx.js"></script>
+  <script type="text/javascript" src="js/tools/pines.js"></script>
+  <script type="text/javascript" src="js/tools/pixelpencil.js"></script>
+  <script type="text/javascript" src="js/tools/placer.js"></script>
+  <script type="text/javascript" src="js/tools/plainbrush.js"></script>
+  <script type="text/javascript" src="js/tools/scribble.js"></script>
+  <script type="text/javascript" src="js/tools/smoke.js"></script>
+  <script type="text/javascript" src="js/tools/smoothpen.js"></script>
+  <script type="text/javascript" src="js/tools/smudge.js"></script>
+  <script type="text/javascript" src="js/tools/spiral.js"></script>
+  <script type="text/javascript" src="js/tools/spriteplacer.js"></script>
+  <script type="text/javascript" src="js/tools/square.js"></script>
+  <script type="text/javascript" src="js/tools/stamp.js"></script>
+  <script type="text/javascript" src="js/tools/three3d.js"></script>
+  <script type="text/javascript" src="js/tools/tnt.js"></script>
+  <script type="text/javascript" src="js/tools/trees.js"></script>
+  <script type="text/javascript" src="js/tools/wacky-mixer-checkerboard.js"></script>
+  <script type="text/javascript" src="js/tools/wacky-mixer-inverter.js"></script>
+  <script type="text/javascript" src="js/tools/wacky-mixer-pattern.js"></script>
+  <script type="text/javascript" src="js/tools/wacky-mixer-pip.js"></script>
+  <script type="text/javascript" src="js/tools/wacky-mixer-shadow-boxes.js"></script>
+  <script type="text/javascript" src="js/tools/wacky-mixer-venetian-blinds.js"></script>
+  <script type="text/javascript" src="js/tools/wacky-mixer-wallpaper.js"></script>
+  <script type="text/javascript" src="js/tools/wholefx.js"></script>
+  
+  <!-- js/textures/* -->
+  <script type="text/javascript" src="js/textures/gco.js"></script>
+  <script type="text/javascript" src="js/textures/textures.js"></script>
+  
+  <!-- js/submenus/* -->
+  <script type="text/javascript" src="js/submenus/brush.js"></script>
+  <script type="text/javascript" src="js/submenus/circle.js"></script>
+  <script type="text/javascript" src="js/submenus/eraser.js"></script>
+  <script type="text/javascript" src="js/submenus/flood.js"></script>
+  <script type="text/javascript" src="js/submenus/jumble.js"></script>
+  <script type="text/javascript" src="js/submenus/line.js"></script>
+  <script type="text/javascript" src="js/submenus/pencil.js"></script>
+  <script type="text/javascript" src="js/submenus/spray.js"></script>
+  <script type="text/javascript" src="js/submenus/sprites.js"></script>
+  <script type="text/javascript" src="js/submenus/square.js"></script>
+  <script type="text/javascript" src="js/submenus/stickers.js"></script>
+  <script type="text/javascript" src="js/submenus/truck.js"></script>
+  
+  <!-- js/brushes/* -->
+  <script type="text/javascript" src="js/brushes/bubbles.js"></script>
+  <script type="text/javascript" src="js/brushes/circles.js"></script>
+  <script type="text/javascript" src="js/brushes/concen.js"></script>
+  <script type="text/javascript" src="js/brushes/connectthedots.js"></script>
+  <script type="text/javascript" src="js/brushes/dumbbell.js"></script>
+  <script type="text/javascript" src="js/brushes/fsine.js"></script>
+  <script type="text/javascript" src="js/brushes/icy.js"></script>
+  <script type="text/javascript" src="js/brushes/leakypen.js"></script>
+  <script type="text/javascript" src="js/brushes/meanstreak.js"></script>
+  <script type="text/javascript" src="js/brushes/pies.js"></script>
+  <script type="text/javascript" src="js/brushes/rainbowball.js"></script>
+  <script type="text/javascript" src="js/brushes/rainbowbar.js"></script>
+  <script type="text/javascript" src="js/brushes/rainbowdoughnut.js"></script>
+  <script type="text/javascript" src="js/brushes/raindrops.js"></script>
+  <script type="text/javascript" src="js/brushes/rose.js"></script>
+  <script type="text/javascript" src="js/brushes/rpent.js"></script>
+  <script type="text/javascript" src="js/brushes/splatter.js"></script>
+  <script type="text/javascript" src="js/brushes/spray.js"></script>
+  <script type="text/javascript" src="js/brushes/triangles.js"></script>
+  <script type="text/javascript" src="js/brushes/twirly.js"></script>
+  
+  <!-- js/builders/* -->
+  <script type="text/javascript" src="js/builders/arrow.js"></script>
+  <script type="text/javascript" src="js/builders/prints.js"></script>
+  <script type="text/javascript" src="js/builders/rail.js"></script>
+  <script type="text/javascript" src="js/builders/road.js"></script>
+  
+  <!-- js/stamps/* -->
+  <script type="text/javascript" src="js/stamps/alphabet.js"></script>
+  <script type="text/javascript" src="js/stamps/stamps.js"></script>
+  
+  <!-- js/sounds/* -->
+  <script type="text/javascript" src="js/sounds/sounds.js"></script>
 </head>
 
-<body>
-  <a href="kidpix.html">TO OLD KIDPIX</a>
-  <div id="root"></div>
+<body onload="init_kiddo_paint();">
+  <div id="container">
+    <div id="toolbar">
+      <div id="mainbar">
+        <button class="tool" id="save" title="Save">
+          <img src="./src/assets/img/kp-m_27.png" class="pixelated">
+        </button>
+        <button class="tool" id="pencil" title="Wacky Pencil">
+          <img src="./src/assets/img/kp-m_28.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="line" title="Line">
+          <img src="./src/assets/img/kp-m_29.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="square" title="Rectangle">
+          <img src="./src/assets/img/kp-m_30.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="circle" title="Oval">
+          <img src="./src/assets/img/kp-m_31.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="brush" title="Wacky Brush">
+          <img src="./src/assets/img/kp-m_32.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="jumble" title="Electric Mixer">
+          <img src="./src/assets/img/kp-m_33.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="flood" title="Paint Can">
+          <img src="./src/assets/img/kp-m_34.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="eraser" title="Eraser">
+          <img src="./src/assets/img/kp-m_35.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="alphabet" title="Text">
+          <img src="./src/assets/img/kp-m_36.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="stamp" title="Rubber Stamps">
+          <img src="./src/assets/img/kp-m_37.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="truck" title="Moving Van">
+          <img src="./src/assets/img/kp-m_38.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="undo" title="The Undo Guy">
+          <img src="./src/assets/img/kp-m_39.png" class="pixelated" width="48" height="48">
+        </button>
+        <button class="tool" id="redo" title="The Redo Guy">
+          <img src="./src/assets/img/kp-m_40.png" class="pixelated" width="48" height="48">
+        </button>
+      </div>
+      <br>
+      <div id="colorbar">
+        <button class="currentColor" id="currentColor"> </button>
+        <div id="colorselector">
+          <button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button><button class="color">
+          </button>
+        </div>
+        <div><button class="colornav" id="colorprev">←</button><button class="colornav" id="colornext">→</button></div>
+        <br>
+        <div><button class="colornav"><a href="https://github.com/vikrum/" target="_blank"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMGMtNi42MjYgMC0xMiA1LjM3My0xMiAxMiAwIDUuMzAyIDMuNDM4IDkuOCA4LjIwNyAxMS4zODcuNTk5LjExMS43OTMtLjI2MS43OTMtLjU3N3YtMi4yMzRjLTMuMzM4LjcyNi00LjAzMy0xLjQxNi00LjAzMy0xLjQxNi0uNTQ2LTEuMzg3LTEuMzMzLTEuNzU2LTEuMzMzLTEuNzU2LTEuMDg5LS43NDUuMDgzLS43MjkuMDgzLS43MjkgMS4yMDUuMDg0IDEuODM5IDEuMjM3IDEuODM5IDEuMjM3IDEuMDcgMS44MzQgMi44MDcgMS4zMDQgMy40OTIuOTk3LjEwNy0uNzc1LjQxOC0xLjMwNS43NjItMS42MDQtMi42NjUtLjMwNS01LjQ2Ny0xLjMzNC01LjQ2Ny01LjkzMSAwLTEuMzExLjQ2OS0yLjM4MSAxLjIzNi0zLjIyMS0uMTI0LS4zMDMtLjUzNS0xLjUyNC4xMTctMy4xNzYgMCAwIDEuMDA4LS4zMjIgMy4zMDEgMS4yMy45NTctLjI2NiAxLjk4My0uMzk5IDMuMDAzLS40MDQgMS4wMi4wMDUgMi4wNDcuMTM4IDMuMDA2LjQwNCAyLjI5MS0xLjU1MiAzLjI5Ny0xLjIzIDMuMjk3LTEuMjMuNjUzIDEuNjUzLjI0MiAyLjg3NC4xMTggMy4xNzYuNzcuODQgMS4yMzUgMS45MTEgMS4yMzUgMy4yMjEgMCA0LjYwOS0yLjgwNyA1LjYyNC01LjQ3OSA1LjkyMS40My4zNzIuODIzIDEuMTAyLjgyMyAyLjIyMnYzLjI5M2MwIC4zMTkuMTkyLjY5NC44MDEuNTc2IDQuNzY1LTEuNTg5IDguMTk5LTYuMDg2IDguMTk5LTExLjM4NiAwLTYuNjI3LTUuMzczLTEyLTEyLTEyeiIvPjwvc3ZnPg=="
+                class="github" /></a>
+          </button><button class="colornav"><a href="https://twitter.com/vikrum5000/status/1423014244644122627"
+              target="_blank"><img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNC41NTdjLS44ODMuMzkyLTEuODMyLjY1Ni0yLjgyOC43NzUgMS4wMTctLjYwOSAxLjc5OC0xLjU3NCAyLjE2NS0yLjcyNC0uOTUxLjU2NC0yLjAwNS45NzQtMy4xMjcgMS4xOTUtLjg5Ny0uOTU3LTIuMTc4LTEuNTU1LTMuNTk0LTEuNTU1LTMuMTc5IDAtNS41MTUgMi45NjYtNC43OTcgNi4wNDUtNC4wOTEtLjIwNS03LjcxOS0yLjE2NS0xMC4xNDgtNS4xNDQtMS4yOSAyLjIxMy0uNjY5IDUuMTA4IDEuNTIzIDYuNTc0LS44MDYtLjAyNi0xLjU2Ni0uMjQ3LTIuMjI5LS42MTYtLjA1NCAyLjI4MSAxLjU4MSA0LjQxNSAzLjk0OSA0Ljg5LS42OTMuMTg4LTEuNDUyLjIzMi0yLjIyNC4wODQuNjI2IDEuOTU2IDIuNDQ0IDMuMzc5IDQuNiAzLjQxOS0yLjA3IDEuNjIzLTQuNjc4IDIuMzQ4LTcuMjkgMi4wNCAyLjE3OSAxLjM5NyA0Ljc2OCAyLjIxMiA3LjU0OCAyLjIxMiA5LjE0MiAwIDE0LjMwNy03LjcyMSAxMy45OTUtMTQuNjQ2Ljk2Mi0uNjk1IDEuNzk3LTEuNTYyIDIuNDU3LTIuNTQ5eiIvPjwvc3ZnPg=="
+                class="github" /></a>
+          </button></div>
+      </div>
+    </div>
+    <div id="hcontainer">
+      <div id="subtoolbars" class="subtoolbar">
+        <div id="genericsubmenu" class="hidden"></div>
+        <div id="alphabettoolbar" class="hidden">
+          <button class="tool alphabet" id="xal0"></button>
+          <button class="tool alphabet" id="xal1"></button>
+          <button class="tool alphabet" id="xal2"></button>
+          <button class="tool alphabet" id="xal3"></button>
+          <button class="tool alphabet" id="xal4"></button>
+          <button class="tool alphabet" id="xal5"></button>
+          <button class="tool alphabet" id="xal6"></button>
+          <button class="tool alphabet" id="xal7"></button>
+          <button class="tool alphabet" id="xal8"></button>
+          <button class="tool alphabet" id="xal9"></button>
+          <button class="tool alphabet" id="xal10"></button>
+          <button class="tool alphabet" id="xal11"></button>
+          <button class="tool alphabet" id="xal12"></button>
+          <button class="tool alphabet" id="xal13"></button>
+          <button class="tool alphabet" id="xal14"></button>
+          <button class="tool alphabet" id="xal15"></button>
+          <button class="tool alphabet" id="xal16"></button>
+          <button class="tool alphabet" id="xal17"></button>
+          <button class="tool alphabet" id="xal18"></button>
+          <button class="tool alphabet" id="xal19"></button>
+          <button class="tool alphabet" id="xal20"></button>
+          <button class="tool alphabet" id="xal21"></button>
+          <button class="tool alphabet" id="xal22"></button>
+          <button class="tool alphabet" id="xal23"></button>
+          <button class="tool alphabet" id="xal24"></button>
+          <button class="tool alphabet" id="xal25"></button>
+          <button class="tool alphabet" id="xal26"></button>
+          <button class="tool alphabet" id="xal27"></button>
+          <button class="tool alphabet" id="xal28"></button>
+          <button class="tool alphabet" id="xal29"></button>
+          <button class="tool alphabet" id="alnext">
+            <h1>↪</h1>
+          </button>
+        </div>
+      </div>
+      <div id="paint">
+        <!-- ultra widescreen:  -->
+        <!-- <canvas id="kiddopaint" class="pixelated" width="3000" height="1200">:(</canvas> -->
+        <!-- 2017 mbp laptop:  -->
+        <canvas id="kiddopaint" class="pixelated" width="1300" height="650">:(</canvas>
+      </div>
+    </div>
+    <div>
+    </div>
 </body>
 
 </html>

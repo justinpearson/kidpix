@@ -4,14 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a React/TypeScript port of the classic 1989 Kid Pix drawing application. The project migrates Vikrum's HTML/JavaScript implementation (kidpix.app) to a modern, scalable React/TypeScript stack for learning software best practices.
+This is a modular JavaScript implementation of the classic 1989 Kid Pix drawing application, based on Vikrum's HTML/JavaScript implementation (kidpix.app). The current focus is on maintaining and improving the modular JavaScript codebase as a foundation for future migration to React/TypeScript.
 
 ## Technology Stack
 
-- **Framework**: React 18 with TypeScript
-- **Build Tool**: Vite 5.4.9
+- **Runtime**: Modular JavaScript (ES5/ES6) loaded via script tags
+- **Build Tool**: Vite 5.4.9 for development server and asset serving
 - **Package Manager**: Yarn 1.22.22
-- **Linting**: ESLint 9 with TypeScript support
+- **Linting**: ESLint 9 (currently configured for TypeScript, needs update for JS)
+- **Testing**: Vitest and Playwright configured but not yet used for JS files
 
 ## CRITICAL COMMIT WORKFLOW
 
@@ -60,20 +61,22 @@ git commit -m "feat(tooling): set up entire tech stack"
 ```bash
 yarn dev
 # Opens development server at http://localhost:5173/
+# Access points:
+# - http://localhost:5173/ - Modular JavaScript version (main entry point)
 ```
 
 ### Build
 
 ```bash
 yarn build
-# Runs TypeScript compiler and Vite build
+# Runs Vite build for production deployment
 ```
 
 ### Linting
 
 ```bash
 yarn lint
-# Runs ESLint on all files
+# Runs ESLint (currently only on TypeScript files, needs update for JS files)
 ```
 
 ### Preview Built App
@@ -85,20 +88,11 @@ yarn preview
 
 ## Architecture Overview
 
-### Current React Structure
-
-The application is being migrated from a monolithic JavaScript structure to modular React components:
-
-- `src/App.tsx`: Main application component with state management for pen color and selected tool
-- `src/ColorPalette.tsx`: Color selection component
-- `src/MainToolbar.tsx`: Main toolbar component for tool selection
-- `src/Pencil.tsx`: Individual tool components
-
-### Legacy JavaScript Structure (in migration)
+### Current JavaScript Structure
 
 The original codebase uses a modular architecture around the `KiddoPaint` namespace with the following structure:
 
-**IMPORTANT**: `js/app.js` is the authoritative source - it's a concatenation of all `js/*` files with additional features implemented directly in it that are not reflected in the individual source files.
+**IMPORTANT**: The individual files in `js/` directories are now the primary source code. The application loads these modular files directly via script tags in `index.html` for easier development and maintenance.
 
 #### Core Namespaces
 
@@ -162,7 +156,7 @@ KiddoPaint.Tools.Toolbox.ToolName = function () {
 
 1. Read feature requests from `prompts-TODO/` directory (newest first)
 2. Create a new git branch for the feature
-3. Implement using React/TypeScript best practices
+3. Implement using JavaScript best practices in the modular structure
 4. Ensure no build or lint errors before committing
 5. Use conventional commit format
 6. Push branch and create PR via GitHub CLI (`gh pr create`)
@@ -174,41 +168,43 @@ KiddoPaint.Tools.Toolbox.ToolName = function () {
 
 ## Key Development Patterns
 
-### Component Structure
+### Adding New Tools
 
-Follow React best practices:
+1. Create tool file in `js/tools/` following the three-method pattern (mousedown, mousemove, mouseup)
+2. Add submenu definition in `js/submenus/` if needed
+3. Add associated sounds in `js/sounds/sounds.js`
+4. Update HTML toolbar in `index.html` with tool button
+5. Test changes with development server
 
-- Functional components with hooks
-- TypeScript interfaces for props
-- Proper state management between components
-- Event handlers passed as props
+### Adding New Brushes/Textures
+
+1. Create generator function in respective directory (`js/brushes/` or `js/textures/`)
+2. Return canvas element or pattern for use by tools
+3. Follow naming convention: `KiddoPaint.Brushes.BrushName` or `KiddoPaint.Textures.TextureName`
 
 ### Canvas Integration
 
-When migrating canvas-based tools:
-
-- Use useRef hooks for canvas elements
-- Implement proper cleanup in useEffect
-- Maintain the original three-method pattern (mousedown, mousemove, mouseup) in React event handlers
-
-### State Management
-
-Currently using local component state. Consider upgrading to Context API or state management library as complexity grows.
+- Always use `KiddoPaint.Display` methods for canvas operations
+- Maintain proper layer management and undo functionality
+- Preserve pixel-perfect rendering (`imageSmoothingEnabled = false`)
+- Keep the three-method pattern for all tools
 
 ## Testing Strategy
 
-No testing framework is currently configured. When adding tests:
+Testing framework is configured but not yet adapted for JavaScript files:
 
-- Add Jest and React Testing Library
-- Write unit tests for individual components
-- Add integration tests for tool interactions
+- Vitest and Playwright are set up but configured for TypeScript
+- Need to adapt testing for JavaScript files in `js/` directory
+- Focus on utility functions first (most testable)
+- Consider integration tests for tool interactions
 - Test canvas rendering functionality
 
 ## File Organization
 
-- `src/`: React/TypeScript source code
-- `src/assets/`: Static assets (images, sounds, CSS from original)
-- Original JS codebase preserved in `js/` for reference during migration
+- `js/`: Modular JavaScript source code (primary codebase)
+- `src/assets/`: Static assets (images, sounds, CSS)
+- `src/`: React/TypeScript components (future migration target)
+- `index.html`: Main application entry point loading modular JS files
 - Documentation in `doc/` with user and maintainer guides
 
 ## Key Systems
@@ -257,40 +253,24 @@ The `KiddoPaint.Display` system handles:
 - Local storage persistence
 - Layer compositing
 
-## Migration Notes
+## Future Migration Notes
 
-The project maintains both the new React structure and original JavaScript code during migration. Key considerations:
+The project currently uses modular JavaScript as a foundation for future React/TypeScript migration. Key considerations:
 
-### Critical Source Files
+### Current State
 
-- **Use `js/app.js` as the authoritative reference** - contains latest implementations
-- Individual `js/*` files may be outdated compared to app.js
+- Individual `js/*` files are the primary source code
+- Application loads modular files directly for easier development
 - Preserve original tool behavior, sound effects, and multi-layer canvas architecture
 - Asset files (images, sounds) in `src/assets/` maintain original structure
 
-### Canvas Integration Strategy
+### Future React Migration Strategy
 
-When migrating canvas-based tools to React:
+When migrating to React/TypeScript:
 
+- Use current modular JS files as reference implementation
 - Preserve the five-canvas layer system (main, tmp, preview, anim, bnim)
 - Maintain pixel-perfect rendering (`imageSmoothingEnabled = false`)
-- Keep the three-method pattern (mousedown, mousemove, mouseup) in React event handlers
-- Use useRef hooks for canvas elements with proper cleanup in useEffect
-
-### Tool Migration Pattern
-
-For each tool migration:
-
-1. Study the tool's implementation in `js/app.js` (not individual files)
-2. Identify associated submenu definitions and sound effects
-3. Create React component maintaining original behavior
-4. Preserve modifier key functionality and tool-specific features
-5. Test with original asset files to ensure compatibility
-
-### State Management Considerations
-
-Original uses global `KiddoPaint.Current` object. In React migration:
-
-- Convert to Context API or state management solution
-- Maintain compatibility with canvas layer system
-- Preserve undo/redo and local storage functionality
+- Convert three-method pattern to React event handlers with hooks
+- Convert global `KiddoPaint.Current` object to Context API or state management
+- Maintain compatibility with existing assets and sounds

@@ -1,0 +1,17 @@
+# Feature: Build app using original source files in js/, instead of monolithic app.js
+
+To familiarize yourself with this project, please read the following
+`README.md` and any docs it references, especially these:
+
+- CLAUDE.md -- our workflow process.
+- CLAUDE-OLD-PROJ.md -- architecture of previous JS-only version of this app
+  (may help understand original JS files).
+- doc/doc-philosophy.md -- how I like to structure our technical
+  documentation.
+- doc/* -- tech docs for User and Maintainers.
+
+Feature description: As a software developer in this codebase, I can easily
+add features by editing the modular JS files in the js/ dir, rather than
+editing the large, unwieldy, monolithic JS file js/app.js. The app is built
+from the modular JS files, rather than app.js. 
+

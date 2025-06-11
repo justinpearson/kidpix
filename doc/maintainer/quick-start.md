@@ -67,11 +67,16 @@ yarn dev
 # Open http://localhost:5173/
 ```
 
+**Available Development Endpoints:**
+
+- `http://localhost:5173/` - Original app using modular JS files (main entry point)
+
 The development server includes:
 
 - Hot module replacement (HMR) for instant updates
 - TypeScript compilation with error reporting
 - Source maps for debugging
+- Direct serving of individual JS files for easier debugging
 
 ### 4. Verify Your Setup
 
@@ -106,15 +111,26 @@ src/
 └── App.tsx          # Main application component
 ```
 
-**Legacy JavaScript (preserved for reference):**
+**Legacy JavaScript Structure:**
 
 ```
 js/
-├── init/            # Original initialization code
-├── tools/           # Original drawing tools
-├── brushes/         # Original brush generators
-└── app.js           # Concatenated legacy code (DO NOT EDIT)
+├── init/            # Original initialization code (kiddopaint.js, submenus.js)
+├── util/            # Core utilities (display, colors, caching, filters)
+├── tools/           # Drawing tools (pencil, brush, eraser, effects)
+├── textures/        # Fill pattern generators
+├── submenus/        # UI submenu definitions for tool options
+├── brushes/         # Brush pattern generators
+├── builders/        # Complex shape builders (arrows, roads, rails)
+├── stamps/          # Stamp and alphabet systems
+└── sounds/          # Audio system and sound library
 ```
+
+**Important Notes:**
+
+- The main application now loads individual modular files for easier development
+- Individual files in `js/` directories are the primary source code
+- Files are loaded in specific order via `<script>` tags in `index.html`
 
 ### Making Changes
 
@@ -126,11 +142,12 @@ js/
 4. Use TypeScript for type safety
 5. Pre-commit hooks automatically run linting and formatting
 
-#### For Legacy Code Reference:
+#### For JavaScript Development:
 
-- **NEVER edit `js/app.js`** directly
-- Use legacy code as reference for porting to React
-- Original build process preserved but not used for new development
+- Edit individual files in `js/` subdirectories (init, util, tools, etc.)
+- Changes are automatically picked up by the dev server
+- Files are loaded in specific order: init → util → tools → textures → submenus → brushes → builders → stamps → sounds
+- Use this codebase as foundation for porting to React
 
 ### Git Workflow
 

@@ -46,6 +46,10 @@ yarn build && yarn test && yarn lint
 
 # 3. Start developing
 yarn dev
+# Access points:
+# - http://localhost:5173/ - React/TypeScript version
+# - http://localhost:5173/kidpix.html - Original app (monolithic)
+# - http://localhost:5173/kidpix-orig.html - Original app (modular)
 ```
 
 ### VS Code Recommended Extensions
@@ -182,6 +186,78 @@ export const useCanvas = ({ width, height }: UseCanvasOptions) => {
 
   return { canvasRef, draw };
 };
+```
+
+## Working with Legacy JavaScript
+
+### Modifying Individual JS Files
+
+The project now supports both monolithic and modular approaches for the legacy JavaScript code:
+
+```bash
+# Edit individual JS files in their respective directories
+js/
+├── init/kiddopaint.js      # Core initialization
+├── util/colors.js          # Color utilities
+├── tools/pencil.js         # Pencil tool
+├── brushes/bubbles.js      # Bubble brush
+└── ...
+```
+
+**Development Workflow:**
+
+1. Edit the specific JS file you need to change
+2. Test using `kidpix-orig.html` (loads modular files)
+3. Verify behavior matches `kidpix.html` (loads concatenated `app.js`)
+4. Files are loaded in dependency order automatically
+
+**Load Order (matches original build.sh):**
+
+1. `js/init/*` - Core setup and namespaces
+2. `js/util/*` - Utility functions and helpers
+3. `js/tools/*` - Drawing tools
+4. `js/textures/*` - Pattern generators
+5. `js/submenus/*` - UI submenu definitions
+6. `js/brushes/*` - Brush generators
+7. `js/builders/*` - Complex shape builders
+8. `js/stamps/*` - Stamp and alphabet systems
+9. `js/sounds/*` - Audio system
+
+### Example: Adding a New Tool
+
+```javascript
+// js/tools/newtool.js
+KiddoPaint.Tools.NewTool = function () {
+  this.mousedown = function (ev) {
+    // Tool initialization
+    KiddoPaint.Display.saveUndo();
+  };
+
+  this.mousemove = function (ev) {
+    // Drawing logic
+    if (KiddoPaint.Current.modified) {
+      // Shift key behavior
+    }
+  };
+
+  this.mouseup = function (ev) {
+    // Finish drawing
+    KiddoPaint.Display.saveMain();
+  };
+};
+```
+
+```javascript
+// js/submenus/newtool.js
+KiddoPaint.Submenu.newtool = [
+  {
+    name: "Option 1",
+    imgSrc: "src/assets/img/tool-option-1.png",
+    handler: function () {
+      // Configure tool option
+    },
+  },
+];
 ```
 
 ## Working with Canvas

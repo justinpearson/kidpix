@@ -29,12 +29,12 @@ Kid Pix is a playful digital painting program that recreates the magic of the cl
 ### Using Kid Pix Locally
 
 1. Download or clone this repository
-2. Start a local web server in the project directory:
-   - **Python 3**: `python -m http.server 8000`
-   - **Python 2**: `python -m SimpleHTTPServer 8000`
-   - **Node.js**: `npx http-server`
-   - **PHP**: `php -S localhost:8000`
-3. Open your browser and go to `http://localhost:8000`
+2. Install dependencies and start the development server:
+   ```bash
+   yarn install
+   yarn dev
+   ```
+3. Open your browser and go to `http://localhost:5173`
 4. Kid Pix will load and you can start creating!
 
 _Note: You need a web server because the app loads JavaScript modules and audio files that browsers block when opening files directly._

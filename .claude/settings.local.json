@@ -9,7 +9,9 @@
       "WebFetch(domain:docs.anthropic.com)",
       "Bash(gh pr view:*)",
       "Bash(gh pr checks:*)",
-      "Bash(git grep:*)"
+      "Bash(git grep:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   }

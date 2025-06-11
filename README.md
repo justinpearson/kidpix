@@ -45,7 +45,7 @@ yarn install
 
 # Start development server
 yarn dev
-# Open http://localhost:5173/
+# Open http://localhost:5173/ (serves the modular JS version)
 
 # Run tests
 yarn test              # Unit tests
@@ -99,15 +99,14 @@ Instructions for Mac.
 (On local laptop -- no internet connection required!)
 
 - cd into kidpix dir
-- python3 -m http.server
-- open localhost:8000 in browser
+- yarn dev
+- open localhost:5173 in browser
 
 ### How to Change Code (OLD)
 
 - cd into kidpix dir
-- change code as desired
-- run ./build.sh
-- HARD-REFRESH BROWSER
+- change code in js/ directory as desired
+- Vite will auto-reload the browser with changes
 - important: if changed assets (like png stamp packs) may need to clear browser cache:
   - can tell if you hover over an asset in Elements inspector pane to get a preview, and you'll see it's the old one
   - chrome settings > search for cache > delete browing history & files from last hour
