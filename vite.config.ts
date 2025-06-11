@@ -9,8 +9,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "index.html",
-        kidpix: "kidpix.html",
-        kidpixOrig: "kidpix-orig.html",
       },
     },
   },
