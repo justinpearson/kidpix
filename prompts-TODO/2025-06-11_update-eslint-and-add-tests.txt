@@ -1,0 +1,40 @@
+Date: 2025-06-11
+Priority: Medium
+Status: TODO
+
+# Update ESLint Config and Add Tests for JS Files
+
+## Background
+After migrating from monolithic app.js to modular JS files in js/ directory, we need to:
+
+1. Update ESLint configuration to lint the JS files (currently they're ignored via js/**/* in eslint.config.js)
+2. Add testing for the JS files since they are now the primary source code
+
+## Tasks
+
+### ESLint Configuration
+- Remove `js/**/*` from the ignores array in eslint.config.js
+- Add a configuration block for JavaScript files (*.js) with appropriate rules
+- Consider adding browser globals for the JS files since they use DOM APIs
+- Test that linting works: `yarn lint`
+
+### Testing Strategy
+- Decide on testing approach for the legacy JS codebase:
+  - Unit tests for individual tools/brushes/utilities?
+  - Integration tests for canvas drawing operations?
+  - Visual regression tests for drawing outputs?
+- Consider test framework compatibility with the existing KiddoPaint namespace structure
+- May need to refactor some JS code to be more testable (extract pure functions, reduce global state dependencies)
+
+### Implementation Notes
+- The JS files use a global KiddoPaint namespace and directly manipulate DOM/canvas
+- Many functions depend on canvas context and global state
+- Consider starting with utility functions (js/util/*) as they may be most testable
+- Tools and brushes might need integration-style tests with actual canvas elements
+
+## Acceptance Criteria
+- [ ] JS files in js/ directory are being linted by ESLint
+- [ ] No new linting errors introduced
+- [ ] Basic test framework is set up for JS files
+- [ ] At least a few example tests written (perhaps for utility functions)
+- [ ] Documentation updated on how to run JS tests
