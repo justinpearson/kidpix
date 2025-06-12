@@ -1,0 +1,34 @@
+# Feature: Plan our migration to React / Typescript
+
+> i'd like to migrate this JS-based codebase to react + typescript, using modern web dev best practices (small incremental changes, unit tests, e2e tests, code coverage tools, modular architecture). Can you propose a plan for this? Don't do anything yet, i just want to talk about it.
+
+
+...
+
+
+This is a very nice project plan! Expand on this plan, writing it into a set of markdown files in prompt-TODO/js-to-react-ts-migration/ as follows:
+
+- overview.md
+- phase-1-foundation-and-tooling.md
+- phase-2-add-typescript-declarations.md
+- etc
+
+I am not familiar with these technologies (react, typescript, jest, playwright, linters, vite), so I need this project plan to also serve as a learning resource / tutorial for me.
+
+Therefore, in each phase-X markdown file, include an overview paragraph, individual steps, and a section for background / context. The background / context section is important to help me learn these technologies. For example, you wrote:
+
+  Phase 2: Gradual Type Safety (Weeks 3-4)
+
+  1. Add TypeScript declarations
+    - Create .d.ts files for existing JS modules
+    - Define interfaces for KiddoPaint namespace
+    - Add type safety without changing runtime code
+
+I want you to explain in detail things like: what is a .d.ts file, example of what its structure looks like, how you go about writing one from an existing JS module, what an 'interface' looks like in code, how it's enforced, what basic type safety looks like, where I can learn more (links to official docs), etc.
+
+Add table of contents to each markdown file, and cross-link between them. The goal is to make this plan a comprehensive report that I can use to uplevel my technical skills as we implement it!
+
+...
+
+Looks great! Let's use mkdocs to build a nice static site for our docs.
+

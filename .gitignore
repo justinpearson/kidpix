@@ -35,3 +35,6 @@ test-results/
 # Temporary files for PR creation
 pr-title.txt
 pr-body.txt
+
+# MkDocs build output
+site/
