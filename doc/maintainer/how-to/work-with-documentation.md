@@ -122,7 +122,7 @@ function example() {
 ```
 ````
 
-[Link to other page](../other-page.md)
+[Link to other page](../quick-start.md)
 [External link](https://example.com)
 
 ````
