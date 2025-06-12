@@ -1,4 +1,7 @@
-misc.txt
+misc.txt -- CLAUDE: DO NOT IMPLEMENT FEATURES FROM THIS FILE!!
+
+
+
 
 # Feature: write test files for the individual JS files in js/ dir.
 
