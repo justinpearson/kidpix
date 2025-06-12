@@ -1,0 +1,33 @@
+# Feature request: Get CI passing so docs can deploy to Github Pages
+
+Let's make a new branch fix-ci-deploy-docs to clean up and address the following issues (in separate commits):
+
+1. **Disable e2e tests in CI**: disable e2e tests for now in github CI, to speed up CI. 
+- but let's still keep the yarn commands to run them locally. and remember to run them locally as part of our normal development process. we'll re-enable them later, after we begin our react/ts migration.
+- verify this fixes the "Deploy to Github Pages" github action. (is there a way to trigger that action manually?)
+
+2. **Merge dependabot version bumps**: evaluate and consider merging these branches:
+- origin/dependabot/npm_and_yarn/vite-5.4.19
+- upstream/dependabot/npm_and_yarn/brace-expansion-2.0.2
+
+3. **Upstream feature**: evaluate and consider pulling in from upstream:
+- 99c67f3 (upstream/main, upstream/HEAD)
+
+4. **Misc branch cleanup**: delete these unused git branches in local and remote:
+- origin/plan-react-migration
+- plan-react-migration
+- origin/remove-react-implementation, remove-react-implementation
+- configure-ai-tools
+- origin/add-claude-github-actions-1749304860243, origin/add-claude-github-actions-1749304860197
+- addDocs
+- origin/hiliteSubtool, hiliteSubtool
+
+5. **Misc doc fixes**:
+- In the page http://127.0.0.1:8000/kidpix/user/quick-start/#quick-start-kid-pix-user-guide, under "The main toolbar on the left contains these essential tools:", instead of emojis, use the actualy pictures from the app, similar to how we do it in http://127.0.0.1:8000/kidpix/user/how-to/use-wacky-brushes/ .
+
+6. **Update doc nav structure**:
+- Replace the current nav structure with a simpler one:
+- Currently there is a "top nav" (User Guide, Maintainer Guide, Philosophy, each with twirl-downs) and a "left nav" for each selected top-nav item. That is too confusing.
+- Desired: Move the top nav into the left nav. The left-nav shows everything, mimicing the actual directory structure of doc/. And the left nav shows the current page's headers too.
+
+
