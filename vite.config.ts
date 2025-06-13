@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [],
   base: process.env.NODE_ENV === "production" ? "/kidpix/" : "/",
-  publicDir: ".",
+  publicDir: false, // Don't copy files automatically, they're already referenced
   build: {
     rollupOptions: {
       input: {
