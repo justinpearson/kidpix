@@ -11,14 +11,15 @@ site_dir: site
 
 nav:
   - Home: index.md
-  - User Guide:
+  - Philosophy: doc-philosophy.md
+  - User:
     - Quick Start: user/quick-start.md
     - Use Cases: user/use-cases.md
     - How To:
       - Save Your Artwork: user/how-to/save-your-artwork.md
       - Use Wacky Brushes: user/how-to/use-wacky-brushes.md
       - View Documentation: user/how-to/view-documentation.md
-  - Maintainer Guide:
+  - Maintainer:
     - Quick Start: maintainer/quick-start.md
     - How To:
       - Add New Tool: maintainer/how-to/add-new-tool.md
@@ -37,7 +38,9 @@ nav:
         - Phase 4 - Tool Migration: maintainer/explanations/js-to-react-ts-migration/phase-4-tool-migration.md
         - Phase 5 - Advanced Features: maintainer/explanations/js-to-react-ts-migration/phase-5-advanced-features.md
         - Phase 6 - Polish & Optimization: maintainer/explanations/js-to-react-ts-migration/phase-6-polish-optimization.md
-  - Philosophy: doc-philosophy.md
+
+theme:
+  name: readthedocs
 
 markdown_extensions:
   - toc:
