@@ -38,3 +38,6 @@ pr-body.txt
 
 # MkDocs build output
 site/
+
+# misc
+tmp/
