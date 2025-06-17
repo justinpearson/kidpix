@@ -19,14 +19,38 @@ export default tseslint.config(
       ...js.configs.recommended.rules,
     },
   },
+  // JavaScript test files (module mode for imports)
+  {
+    files: ["js/**/*.test.js", "js/**/*.spec.js"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "module",
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
+    },
+    plugins: {
+      import: importPlugin,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      "no-unused-vars": "warn",
+      "import/no-unresolved": "off",
+    },
+  },
   // KidPix JavaScript files (script mode for globals)
   {
     files: ["js/**/*.js"],
+    ignores: ["js/**/*.test.js", "js/**/*.spec.js"],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "script",
       globals: {
         ...globals.browser,
+        // Node.js globals for export bridge
+        module: "readonly",
+        exports: "readonly",
         // Main KidPix namespace
         KiddoPaint: "writable",
         // Canvas elements and contexts
@@ -45,17 +69,17 @@ export default tseslint.config(
         trimmed: "writable",
         sourceX: "writable",
         sourceY: "writable",
-        // Utility functions
-        getRandomInt: "readonly",
-        getRandomFloat: "readonly",
-        clamp: "readonly",
-        randn_bm: "readonly",
-        ziggurat: "readonly",
-        boxmuller: "readonly",
+        // Utility functions (mark as writable to avoid redeclare warnings)
+        getRandomInt: "writable",
+        getRandomFloat: "writable",
+        clamp: "writable",
+        randn_bm: "writable",
+        ziggurat: "writable",
+        boxmuller: "writable",
         trimCanvas2: "readonly",
         trimCanvas3: "readonly",
         trimAndFlattenCanvas: "readonly",
-        flattenImage: "readonly",
+        flattenImage: "writable",
         makeComposite: "readonly",
         jitter: "writable",
       },

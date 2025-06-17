@@ -666,3 +666,29 @@ function getOffset(obj) {
     top: offsetTop,
   };
 }
+
+/* --- allow Node/Vitest to import without touching browser behavior --- */
+if (typeof module !== "undefined" && typeof module.exports !== "undefined") {
+  module.exports = {
+    distanceBetween,
+    angleBetween,
+    angleBetweenRad,
+    clamp,
+    lerp,
+    invlerp,
+    remap,
+    rgbToHsl,
+    hslToRgb,
+    ziggurat,
+    randn_bm,
+    guil,
+    colorsEqual,
+    colorNearWhite,
+    getCubicBezierXYatPercent,
+    CubicN,
+    getRandomFloat,
+    getRandomInt,
+    getRandomLetter,
+    srng,
+  };
+}

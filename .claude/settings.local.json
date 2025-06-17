@@ -18,7 +18,8 @@
       "Bash(gh pr list:*)",
       "Bash(grep:*)",
       "Bash(yarn list:*)",
-      "Bash(yarn lint:*)"
+      "Bash(yarn lint:*)",
+      "Bash(yarn test:*)"
     ],
     "deny": []
   }
