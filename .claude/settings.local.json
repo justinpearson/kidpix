@@ -17,7 +17,11 @@
       "Bash(gh run list:*)",
       "Bash(gh pr list:*)",
       "Bash(grep:*)",
-      "Bash(yarn list:*)"
+      "Bash(yarn list:*)",
+      "Bash(yarn lint:*)",
+      "Bash(yarn test:*)",
+      "Bash(yarn test:coverage:*)",
+      "Bash(yarn test:e2e:*)"
     ],
     "deny": []
   }

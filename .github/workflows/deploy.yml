@@ -38,6 +38,9 @@ jobs:
       - name: Run unit tests
         run: yarn test --run
 
+      - name: Run tests with coverage
+        run: yarn test:coverage
+
       # Temporarily disabled e2e tests in CI for faster builds
       # Keep yarn test:e2e command available for local development
       # - name: Install Playwright browsers

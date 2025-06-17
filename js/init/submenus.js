@@ -67,8 +67,8 @@ function show_generic_submenu(subtoolbar) {
     }
 
     // click handler
-    let localFRef = buttonDetail.handler;
-    let wrappedHandler = function (e) {
+    const localFRef = buttonDetail.handler;
+    const wrappedHandler = function (e) {
       // disable all red outlines for subtool
       for (
         var j = 0,

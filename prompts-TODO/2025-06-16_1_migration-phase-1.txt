@@ -1,0 +1,9 @@
+# Feature request: Implement "Phase 1" of our React/Typescript migration
+
+Read these two docs:
+
+- doc/maintainer/explanations/js-to-react-ts-migration/overview.md
+- doc/maintainer/explanations/js-to-react-ts-migration/phase-1-foundation-and-tooling.md
+
+Then implement phase-1-foundation-and-tooling.md .
+

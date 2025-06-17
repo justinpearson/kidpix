@@ -54,6 +54,10 @@ git commit -m "feat(ci): set up GitHub Actions for deployment"
 git commit -m "feat(tooling): set up entire tech stack"
 ```
 
+## Commit and PR Workflow
+
+- Always write commit messages to a file, to avoid newline errors. same with PR descriptions and PR titles.
+
 ## Development Commands
 
 ### Development Server
@@ -198,6 +202,19 @@ Testing framework is configured but not yet adapted for JavaScript files:
 - Focus on utility functions first (most testable)
 - Consider integration tests for tool interactions
 - Test canvas rendering functionality
+
+### Coverage Thresholds (TODO: Increase as tests are added)
+
+**Current Status (2025-06-17)**: Very low coverage thresholds set to allow CI to pass:
+
+- Lines: 1% (currently 1.76%)
+- Functions: 10% (currently 14.96%)
+- Branches: 20% (currently 25%)
+- Statements: 1% (currently 1.76%)
+
+**Target Goals**: 70% lines/functions/statements, 60% branches
+
+⚠️ **IMPORTANT**: These thresholds should be gradually increased as we add more comprehensive tests to the JavaScript codebase. See `vitest.config.ts` for current configuration.
 
 ## File Organization
 
