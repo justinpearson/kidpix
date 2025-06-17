@@ -1,0 +1,9 @@
+# Feature request: Implement "Phase 2" of our React/Typescript migration.
+
+Read these two docs:
+
+- doc/maintainer/explanations/js-to-react-ts-migration/overview.md
+- doc/maintainer/explanations/js-to-react-ts-migration/phase-2-add-typescript-declarations.md
+
+Then implement phase-2-add-typescript-declarations.md .
+
