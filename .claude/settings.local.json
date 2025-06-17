@@ -19,7 +19,8 @@
       "Bash(grep:*)",
       "Bash(yarn list:*)",
       "Bash(yarn lint:*)",
-      "Bash(yarn test:*)"
+      "Bash(yarn test:*)",
+      "Bash(yarn test:coverage:*)"
     ],
     "deny": []
   }

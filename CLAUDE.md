@@ -54,6 +54,10 @@ git commit -m "feat(ci): set up GitHub Actions for deployment"
 git commit -m "feat(tooling): set up entire tech stack"
 ```
 
+## Commit and PR Workflow
+
+- Always write commit messages to a file, to avoid newline errors. same with PR descriptions and PR titles.
+
 ## Development Commands
 
 ### Development Server
