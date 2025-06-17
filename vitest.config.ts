@@ -24,10 +24,12 @@ export default defineConfig({
       ],
       include: ["js/**/*.js", "src/**/*.{js,ts,tsx}"],
       all: true,
-      lines: 70,
-      functions: 70,
-      branches: 60,
-      statements: 70,
+      thresholds: {
+        lines: 70,
+        functions: 70,
+        branches: 60,
+        statements: 70,
+      },
     },
   },
 });
