@@ -292,7 +292,7 @@ KiddoPaint.Sounds.Library.playKey = function (key) {
   ) {
     var s = KiddoPaint.Sounds.Library.english[key];
     if (s) {
-      let a = new Audio(s);
+      const a = new Audio(s);
       a.play();
     }
   }

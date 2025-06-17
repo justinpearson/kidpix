@@ -70,7 +70,7 @@ KiddoPaint.Display.clearBeforeSaveMain = function () {
 
 KiddoPaint.Display.saveMainGco = function (op) {
   if (KiddoPaint.Display.saveUndo()) {
-    let prevGco = KiddoPaint.Display.main_context.globalCompositeOperation;
+    const prevGco = KiddoPaint.Display.main_context.globalCompositeOperation;
     KiddoPaint.Display.main_context.globalCompositeOperation = op;
     KiddoPaint.Display.main_context.drawImage(KiddoPaint.Display.canvas, 0, 0);
     KiddoPaint.Display.main_context.globalCompositeOperation = prevGco;
@@ -80,7 +80,7 @@ KiddoPaint.Display.saveMainGco = function (op) {
 };
 
 KiddoPaint.Display.saveMainGcoSkipUndo = function (op) {
-  let prevGco = KiddoPaint.Display.main_context.globalCompositeOperation;
+  const prevGco = KiddoPaint.Display.main_context.globalCompositeOperation;
   KiddoPaint.Display.main_context.globalCompositeOperation = op;
   KiddoPaint.Display.main_context.drawImage(KiddoPaint.Display.canvas, 0, 0);
   KiddoPaint.Display.main_context.globalCompositeOperation = prevGco;
