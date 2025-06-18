@@ -1,292 +1,293 @@
-KiddoPaint.Submenu.pencil = [{
-    name: 'Size 1',
-    imgSrc: './src/assets/img/tool-submenu-pencil-size-1.png',
+KiddoPaint.Submenu.pencil = [
+  {
+    name: "Size 1",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-1.png",
     handler: function () {
-        KiddoPaint.Tools.Pencil.size = 1;
-    }
-},
-{
-    name: 'Size 5',
-    imgSrc: './src/assets/img/tool-submenu-pencil-size-2.png',
+      KiddoPaint.Tools.Pencil.size = 1;
+    },
+  },
+  {
+    name: "Size 5",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-2.png",
     handler: function () {
-        KiddoPaint.Tools.Pencil.size = 5;
-    }
-},
-{
-    name: 'Size 10',
-    imgSrc: './src/assets/img/tool-submenu-pencil-size-3.png',
+      KiddoPaint.Tools.Pencil.size = 5;
+    },
+  },
+  {
+    name: "Size 10",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-3.png",
     handler: function () {
-        KiddoPaint.Tools.Pencil.size = 9;
-    }
-},
-{
-    name: 'Size 25',
-    imgSrc: './src/assets/img/tool-submenu-pencil-size-4.png',
+      KiddoPaint.Tools.Pencil.size = 9;
+    },
+  },
+  {
+    name: "Size 25",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-4.png",
     handler: function () {
-        KiddoPaint.Tools.Pencil.size = 13;
-    }
-},
-{
-    name: 'Size 100',
-    imgSrc: './src/assets/img/tool-submenu-pencil-size-5.png',
+      KiddoPaint.Tools.Pencil.size = 13;
+    },
+  },
+  {
+    name: "Size 100",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-5.png",
     handler: function () {
-        KiddoPaint.Tools.Pencil.size = 17;
-    }
-},
-{
-    name: 'Size 100',
-    imgSrc: './src/assets/img/tool-submenu-pencil-size-6.png',
+      KiddoPaint.Tools.Pencil.size = 17;
+    },
+  },
+  {
+    name: "Size 100",
+    imgSrc: "./src/assets/img/tool-submenu-pencil-size-6.png",
     handler: function () {
-        KiddoPaint.Tools.Pencil.size = 25;
-    }
-},
+      KiddoPaint.Tools.Pencil.size = 25;
+    },
+  },
 
-{
-    name: 'spacer',
+  {
+    name: "spacer",
     invisible: true,
-    handler: true
-},
+    handler: true,
+  },
 
-{
-    name: 'Solid',
+  {
+    name: "Solid",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Solid)
+      return makeIcon(KiddoPaint.Textures.Solid);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Solid(color);
-        }
-    }
-},
-{
-    name: 'Partial 1',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Solid(color);
+      };
+    },
+  },
+  {
+    name: "Partial 1",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Partial1);
+      return makeIcon(KiddoPaint.Textures.Partial1);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Partial1(color);
-        }
-    }
-},
-{
-    name: 'Partial 2',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Partial1(color);
+      };
+    },
+  },
+  {
+    name: "Partial 2",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Partial2);
+      return makeIcon(KiddoPaint.Textures.Partial2);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Partial2(color);
-        }
-    }
-},
-{
-    name: 'Partial 3',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Partial2(color);
+      };
+    },
+  },
+  {
+    name: "Partial 3",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Partial3);
+      return makeIcon(KiddoPaint.Textures.Partial3);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Partial3(color);
-        }
-    }
-},
-{
-    name: 'Partial Artifact',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Partial3(color);
+      };
+    },
+  },
+  {
+    name: "Partial Artifact",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.PartialArtifactAlias);
+      return makeIcon(KiddoPaint.Textures.PartialArtifactAlias);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.PartialArtifactAlias(color);
-        }
-    }
-},
-{
-    name: 'Speckles',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.PartialArtifactAlias(color);
+      };
+    },
+  },
+  {
+    name: "Speckles",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Speckles);
+      return makeIcon(KiddoPaint.Textures.Speckles);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Speckles(color);
-        }
-    }
-},
-{
-    name: 'Stripes',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Speckles(color);
+      };
+    },
+  },
+  {
+    name: "Stripes",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Stripes);
+      return makeIcon(KiddoPaint.Textures.Stripes);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Stripes(color);
-        }
-    }
-},
-{
-    name: 'Thatch',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Stripes(color);
+      };
+    },
+  },
+  {
+    name: "Thatch",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Thatch);
+      return makeIcon(KiddoPaint.Textures.Thatch);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Thatch(color);
-        }
-    }
-},
-{
-    name: 'Shingles',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Thatch(color);
+      };
+    },
+  },
+  {
+    name: "Shingles",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Shingles);
+      return makeIcon(KiddoPaint.Textures.Shingles);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Shingles(color);
-        }
-    }
-},
-{
-    name: 'Bubbles',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Shingles(color);
+      };
+    },
+  },
+  {
+    name: "Bubbles",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Bubbles);
+      return makeIcon(KiddoPaint.Textures.Bubbles);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Bubbles(color);
-        }
-    }
-},
-{
-    name: 'Diamond',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Bubbles(color);
+      };
+    },
+  },
+  {
+    name: "Diamond",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Diamond);
+      return makeIcon(KiddoPaint.Textures.Diamond);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Diamond(color);
-        }
-    }
-},
-{
-    name: 'Ribbon',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Diamond(color);
+      };
+    },
+  },
+  {
+    name: "Ribbon",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Ribbon);
+      return makeIcon(KiddoPaint.Textures.Ribbon);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Ribbon(color);
-        }
-    }
-},
-{
-    name: 'Sand',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Ribbon(color);
+      };
+    },
+  },
+  {
+    name: "Sand",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Sand);
+      return makeIcon(KiddoPaint.Textures.Sand);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Sand(color);
-        }
-    }
-},
-{
-    name: 'Brick',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Sand(color);
+      };
+    },
+  },
+  {
+    name: "Brick",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Brick);
+      return makeIcon(KiddoPaint.Textures.Brick);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Brick(color);
-        }
-    }
-},
-{
-    name: 'Chevron',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Brick(color);
+      };
+    },
+  },
+  {
+    name: "Chevron",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Chevron);
+      return makeIcon(KiddoPaint.Textures.Chevron);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Chevron(color);
-        }
-    }
-},
-{
-    name: 'Stairs',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Chevron(color);
+      };
+    },
+  },
+  {
+    name: "Stairs",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Stairs);
+      return makeIcon(KiddoPaint.Textures.Stairs);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Stairs(color);
-        }
-    }
-},
-{
-    name: 'Cross',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Stairs(color);
+      };
+    },
+  },
+  {
+    name: "Cross",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Cross);
+      return makeIcon(KiddoPaint.Textures.Cross);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Cross(color);
-        }
-    }
-},
-{
-    name: 'Diagonal Brick',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Cross(color);
+      };
+    },
+  },
+  {
+    name: "Diagonal Brick",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.DiagBrick);
+      return makeIcon(KiddoPaint.Textures.DiagBrick);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.DiagBrick(color);
-        }
-    }
-},
-{
-    name: 'Corner Stair',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.DiagBrick(color);
+      };
+    },
+  },
+  {
+    name: "Corner Stair",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.CornerStair);
+      return makeIcon(KiddoPaint.Textures.CornerStair);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.CornerStair(color);
-        }
-    }
-},
-{
-    name: 'Houndstooth',
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.CornerStair(color);
+      };
+    },
+  },
+  {
+    name: "Houndstooth",
     imgJs: function () {
-        return makeIcon(KiddoPaint.Textures.Houndstooth)
+      return makeIcon(KiddoPaint.Textures.Houndstooth);
     },
     handler: function () {
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            return KiddoPaint.Textures.Houndstooth(color);
-        }
-    }
-},
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        return KiddoPaint.Textures.Houndstooth(color);
+      };
+    },
+  },
 
-{
-    name: 'Rainbow',
-    imgSrc: './src/assets/img/tool-unknown.png',
+  {
+    name: "Rainbow",
+    imgSrc: "./src/assets/img/tool-unknown.png",
     handler: function () {
-        var hue = 0;
-        KiddoPaint.Tools.Pencil.texture = function (color) {
-            if (KiddoPaint.Current.modifiedMeta) {
-                return KiddoPaint.Textures.Rainbow();
-            } else if (KiddoPaint.Current.modifiedAlt) {
-                return KiddoPaint.Textures.RSolid();
-            } else {
-                hue++;
-                if (hue >= 360) hue = 0;
-                return KiddoPaint.Textures.HueSolid(hue);
-            }
+      var hue = 0;
+      KiddoPaint.Tools.Pencil.texture = function (color) {
+        if (KiddoPaint.Current.modifiedMeta) {
+          return KiddoPaint.Textures.Rainbow();
+        } else if (KiddoPaint.Current.modifiedAlt) {
+          return KiddoPaint.Textures.RSolid();
+        } else {
+          hue++;
+          if (hue >= 360) hue = 0;
+          return KiddoPaint.Textures.HueSolid(hue);
         }
-    }
-},
-    /*
+      };
+    },
+  },
+  /*
     {
         name: 'Rainbow 3',
         imgSrc: './src/assets/img/tool-unknown.png',

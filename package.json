@@ -17,6 +17,9 @@
     "test:e2e:report": "playwright show-report",
     "preview": "vite preview",
     "prepare": "husky",
+    "type-check": "tsc -p tsconfig.app.json --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+    "types:generate": "tsc --declaration --emitDeclarationOnly --outDir types/generated",
     "docs:dev": "mkdocs serve",
     "docs:build": "mkdocs build"
   },
@@ -51,8 +54,8 @@
     "*.{js,ts,tsx}": [
       "eslint --fix"
     ],
-    "*.{js,jsx,ts,tsx,json,css,md}": [
-      "prettier --write"
+    "*.{js,jsx,ts,tsx,json,css}": [
+      "prettier --check"
     ]
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"

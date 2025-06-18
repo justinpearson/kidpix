@@ -21,7 +21,10 @@
       "Bash(yarn lint:*)",
       "Bash(yarn test:*)",
       "Bash(yarn test:coverage:*)",
-      "Bash(yarn test:e2e:*)"
+      "Bash(yarn test:e2e:*)",
+      "Bash(cat:*)",
+      "Bash(yarn format)",
+      "Bash(yarn format:*)"
     ],
     "deny": []
   }

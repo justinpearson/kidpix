@@ -30,10 +30,11 @@ Kid Pix is a playful digital painting program that recreates the magic of the cl
 
 1. Download or clone this repository
 2. Install dependencies and start the development server:
-   ```bash
-   yarn install
-   yarn dev
-   ```
+
+```bash
+yarn install
+yarn dev
+```
 3. Open your browser and go to `http://localhost:5173`
 4. Kid Pix will load and you can start creating!
 

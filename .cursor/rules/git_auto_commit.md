@@ -1,13 +1,17 @@
 ---
 description: Git Auto Commit Rule
-globs: 
+globs:
 alwaysApply: false
 ---
+
 ## Description
+
 This rule ensures that after Cursor IDE automatically performs changes from Git commits, the modified files are automatically committed back to Git using the conventional commit format. This maintains a clear and consistent commit history that explains what changes were made and why.
 
 ## Rule
+
 After Cursor IDE performs automatic changes:
+
 1. All modified files MUST be automatically committed
 2. Commit messages MUST follow the conventional commit format
 3. Commit messages MUST include:
@@ -18,6 +22,7 @@ After Cursor IDE performs automatic changes:
 4. The commit message MUST reference the original prompts used to generate the changes
 
 ## Implementation
+
 - The Cursor IDE will:
   - Track all files modified by automatic changes
   - Generate a conventional commit message based on the changes
@@ -26,13 +31,16 @@ After Cursor IDE performs automatic changes:
   - Handle any potential merge conflicts or errors
 
 ## Benefits
+
 - Maintains clear and consistent commit history
 - Provides traceability between prompts and code changes
 - Follows industry-standard commit conventions
 - Automates the commit process for better workflow efficiency
 
 ## Examples
+
 ✅ Correct Commit Message:
+
 ```
 feat(ide): implement automatic code formatting
 
@@ -46,6 +54,7 @@ Changes were generated based on the following prompts:
 ```
 
 ❌ Incorrect Commit Message:
+
 ```
 Updated some files
 
@@ -54,6 +63,7 @@ Updated some files
 ```
 
 ## Conventional Commit Types
+
 - feat: New feature
 - fix: Bug fix
 - docs: Documentation changes

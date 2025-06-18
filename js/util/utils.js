@@ -1,9 +1,23 @@
+// @ts-check
+
+/**
+ * Calculate distance between two events with custom coordinates
+ * @param {KiddoPaint.KiddoEvent} ev1 - First event
+ * @param {KiddoPaint.KiddoEvent} ev2 - Second event
+ * @returns {number} Distance between the two points
+ */
 function distanceBetween(ev1, ev2) {
   var deltaxsq = (ev2._x - ev1._x) * (ev2._x - ev1._x);
   var deltaysq = (ev2._y - ev1._y) * (ev2._y - ev1._y);
   return Math.sqrt(deltaxsq + deltaysq);
 }
 
+/**
+ * Calculate angle between two events
+ * @param {KiddoPaint.KiddoEvent} ev1 - First event
+ * @param {KiddoPaint.KiddoEvent} ev2 - Second event
+ * @returns {number} Angle in radians
+ */
 function angleBetween(ev1, ev2) {
   var y = ev2._y - ev1._y;
   var x = ev2._x - ev1._x;

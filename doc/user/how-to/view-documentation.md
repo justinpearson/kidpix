@@ -37,10 +37,10 @@ If you encounter bugs or problems with KidPix:
 1. **Check existing issues** at [GitHub Issues](https://github.com/justinpearson/kidpix/issues)
 2. **Search the documentation** to see if your question is already answered
 3. **Create a new issue** with:
-   - Clear description of the problem
-   - Steps to reproduce the issue
-   - Browser and operating system information
-   - Screenshots if helpful
+    - Clear description of the problem
+    - Steps to reproduce the issue
+    - Browser and operating system information
+    - Screenshots if helpful
 
 ### Feature Requests
 
@@ -49,9 +49,9 @@ To suggest new features or improvements:
 1. **Check existing feature requests** in [GitHub Issues](https://github.com/justinpearson/kidpix/issues)
 2. **Create a new issue** with the "enhancement" label
 3. **Describe your idea** including:
-   - What you'd like to see added
-   - Why it would be useful
-   - How you imagine it working
+    - What you'd like to see added
+    - Why it would be useful
+    - How you imagine it working
 
 ### Documentation Issues
 
@@ -60,9 +60,9 @@ Found a problem with the documentation itself?
 1. **Documentation issues** can be reported at [GitHub Issues](https://github.com/justinpearson/kidpix/issues)
 2. **Label your issue** with "documentation"
 3. **Be specific** about:
-   - Which page has the problem
-   - What's unclear or incorrect
-   - Suggestions for improvement
+    - Which page has the problem
+    - What's unclear or incorrect
+    - Suggestions for improvement
 
 ## Community
 
