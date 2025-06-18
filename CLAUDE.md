@@ -56,7 +56,9 @@ git commit -m "feat(tooling): set up entire tech stack"
 
 ## Commit and PR Workflow
 
-- Always write commit messages to a file, to avoid newline errors. same with PR descriptions and PR titles.
+- Always write commit messages to a file, to avoid newline errors. same with PR descriptions. remove the files after a successful commit.
+- After finishing a feature and moving its feature-request file to prompts-DONE, offer to create a pull request (PR)
+- Always delete pr-body.txt after you submit the PR, so we don't use the old one by accident.
 
 ## Development Commands
 
