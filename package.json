@@ -17,6 +17,9 @@
     "test:e2e:report": "playwright show-report",
     "preview": "vite preview",
     "prepare": "husky",
+    "type-check": "tsc -p tsconfig.app.json --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+    "types:generate": "tsc --declaration --emitDeclarationOnly --outDir types/generated",
     "docs:dev": "mkdocs serve",
     "docs:build": "mkdocs build"
   },
