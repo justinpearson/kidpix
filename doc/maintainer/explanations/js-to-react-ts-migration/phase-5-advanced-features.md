@@ -2198,26 +2198,27 @@ useEffect(() => {
 
 1. **Commit advanced features**:
 
-   ```bash
-   git add src/brushes/ src/audio/ src/textures/ src/animation/
-   git commit -m "feat(advanced): implement brush generators, sound system, textures, and animations"
-   ```
+```bash
+git add src/brushes/ src/audio/ src/textures/ src/animation/
+git commit -m "feat(advanced): implement brush generators, sound system, textures, and animations"
+```
 
 2. **Performance optimization**:
 
-   ```bash
-   # Run performance tests
-   yarn test --testNamePattern="performance"
+```bash
+# Run performance tests
+yarn test --testNamePattern="performance"
 
-   # Profile brush generation
-   yarn test src/brushes/ --coverage
-   ```
+# Profile brush generation
+yarn test src/brushes/ --coverage
+```
 
 3. **Integration testing**:
-   ```bash
-   # Test all advanced features together
-   yarn playwright test tests/e2e/advanced-tools.spec.ts
-   ```
+
+```bash
+# Test all advanced features together
+yarn playwright test tests/e2e/advanced-tools.spec.ts
+```
 
 **Continue to**: [Phase 6: Polish & Optimization](./phase-6-polish-optimization.md)
 

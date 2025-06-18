@@ -1909,25 +1909,25 @@ useEffect(() => {
 
 1. **Commit completed basic tools**:
 
-   ```bash
-   git add src/tools/ src/hooks/useTool.ts
-   git commit -m "feat(tools): implement basic drawing tools with React architecture"
-   ```
+```bash
+git add src/tools/ src/hooks/useTool.ts
+git commit -m "feat(tools): implement basic drawing tools with React architecture"
+```
 
 2. **Set up tool testing pipeline**:
 
-   ```bash
-   # Run all tool tests
-   yarn test src/tools/
+```bash
+# Run all tool tests
+yarn test src/tools/
 
-   # Run performance tests
-   yarn test --testNamePattern="performance"
-   ```
+# Run performance tests
+yarn test --testNamePattern="performance"
+```
 
 3. **Continue with advanced tools**:
-   - Wacky brushes (Phase 5)
-   - Special effects tools
-   - Complex shape builders
+    - Wacky brushes (Phase 5)
+    - Special effects tools
+    - Complex shape builders
 
 **Continue to**: [Phase 5: Advanced Features](./phase-5-advanced-features.md)
 

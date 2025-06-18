@@ -2636,19 +2636,19 @@ After completing Phase 6, your KidPix application should achieve:
 
 1. **Production deployment**:
 
-   ```bash
-   git add .
-   git commit -m "feat(production): complete PWA implementation with accessibility and monitoring"
-   git push origin main
-   ```
+```bash
+git add .
+git commit -m "feat(production): complete PWA implementation with accessibility and monitoring"
+git push origin main
+```
 
 2. **Launch monitoring**:
 
-   ```bash
-   # Set up error tracking
-   # Configure performance monitoring
-   # Enable user analytics
-   ```
+```bash
+# Set up error tracking
+# Configure performance monitoring
+# Enable user analytics
+```
 
 3. **Celebrate!** 🎉 You've successfully migrated KidPix to a modern React + TypeScript PWA!
 

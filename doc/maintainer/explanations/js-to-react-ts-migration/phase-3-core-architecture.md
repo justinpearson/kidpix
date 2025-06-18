@@ -1351,21 +1351,21 @@ useEffect(() => {
 
 1. **Commit the React foundation**:
 
-   ```bash
-   git add src/ package.json vite.config.ts
-   git commit -m "feat(react): establish React foundation with Context API and canvas system"
-   ```
+```bash
+git add src/ package.json vite.config.ts
+git commit -m "feat(react): establish React foundation with Context API and canvas system"
+```
 
 2. **Test the dual entry system**:
 
-   - Verify both JavaScript and React versions work
-   - Test state management and canvas setup
-   - Ensure no conflicts between versions
+    - Verify both JavaScript and React versions work
+    - Test state management and canvas setup
+    - Ensure no conflicts between versions
 
 3. **Prepare for Phase 4**:
-   - Plan tool conversion strategy
-   - Study existing JavaScript tools
-   - Design React tool interfaces
+    - Plan tool conversion strategy
+    - Study existing JavaScript tools
+    - Design React tool interfaces
 
 **Continue to**: [Phase 4: Tool Migration](./phase-4-tool-migration.md)
 

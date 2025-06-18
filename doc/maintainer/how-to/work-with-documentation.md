@@ -64,28 +64,28 @@ The site navigation mirrors the directory structure and is defined in `mkdocs.ym
 
 1. **Create the markdown file** in the appropriate directory:
 
-   ```bash
-   # User documentation
-   touch doc/user/how-to/new-feature.md
+```bash
+# User documentation
+touch doc/user/how-to/new-feature.md
 
-   # Maintainer documentation
-   touch doc/maintainer/explanations/new-concept.md
-   ```
+# Maintainer documentation
+touch doc/maintainer/explanations/new-concept.md
+```
 
 2. **Add to navigation** in `mkdocs.yml`:
 
-   ```yaml
-   nav:
-     - User Guide:
-         - How To:
-             - New Feature: user/how-to/new-feature.md
-   ```
+```yaml
+nav:
+  - User Guide:
+      - How To:
+          - New Feature: user/how-to/new-feature.md
+```
 
 3. **Write content** using standard Markdown with:
-   - Clear headings (`#`, `##`, `###`)
-   - Code blocks with language specification
-   - Internal links to other documentation pages
-   - External links where helpful
+    - Clear headings (`#`, `##`, `###`)
+    - Code blocks with language specification
+    - Internal links to other documentation pages
+    - External links where helpful
 
 ### Writing Guidelines
 
