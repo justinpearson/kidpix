@@ -54,7 +54,7 @@
     "*.{js,ts,tsx}": [
       "eslint --fix"
     ],
-    "*.{js,jsx,ts,tsx,json,css,md}": [
+    "*.{js,jsx,ts,tsx,json,css}": [
       "prettier --check"
     ]
   },
