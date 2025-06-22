@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, forwardRef } from "react";
+import { useRef, useEffect, forwardRef } from "react";
 import { useKidPix, KidPixState } from "../../contexts/KidPixContext";
 
 interface CanvasLayerProps {

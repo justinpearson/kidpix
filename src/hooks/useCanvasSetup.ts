@@ -2,7 +2,7 @@ import { useEffect, RefObject } from "react";
 import { KidPixAction } from "../contexts/KidPixContext";
 
 export const useCanvasSetup = (
-  containerRef: RefObject<HTMLDivElement>,
+  containerRef: RefObject<HTMLDivElement | null>,
   dispatch: React.Dispatch<KidPixAction>,
 ) => {
   useEffect(() => {
