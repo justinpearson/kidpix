@@ -1,0 +1,158 @@
+.kidpix-app {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.kidpix-header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.kidpix-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.kidpix-main {
+  flex: 1;
+  display: flex;
+  background-color: #f0f0f0;
+}
+
+.kidpix-sidebar {
+  width: 200px;
+  background-color: #e0e0e0;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.kidpix-canvas-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Toolbar styles */
+.toolbar {
+  margin-bottom: 2rem;
+}
+
+.toolbar h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.tool-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.tool-button:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.tool-button.active {
+  background-color: #4a90e2;
+  color: white;
+  border-color: #357abd;
+}
+
+.tool-icon {
+  font-size: 1.2rem;
+}
+
+.tool-name {
+  font-size: 0.9rem;
+}
+
+/* Color palette styles */
+.color-palette h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.color-button {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.color-button:hover {
+  border-color: #999;
+  transform: scale(1.1);
+}
+
+.color-button.active {
+  border-color: #4a90e2;
+  border-width: 3px;
+  transform: scale(1.1);
+}
+
+.current-color {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.current-color label {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.current-color-display {
+  width: 100%;
+  height: 30px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.current-color input[type="color"] {
+  width: 100%;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Canvas container styles */
+.canvas-container {
+  border: 2px solid #333;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.canvas-container canvas {
+  display: block;
+}

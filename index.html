@@ -178,6 +178,11 @@
   </head>
 
   <body onload="init_kiddo_paint();">
+    <!-- React version -->
+    <div id="react-root" style="display: none;"></div>
+
+    <!-- Original JavaScript version (default for now) -->
+    <div id="js-root">
     <div id="container">
       <div id="toolbar">
         <div id="mainbar">
@@ -383,5 +388,19 @@
         </div>
       </div>
     </div>
+    </div>
+
+    <!-- Toggle script -->
+    <script>
+      // Simple version toggle (temporary)
+      const useReact = new URLSearchParams(window.location.search).has("react");
+      if (useReact) {
+        document.getElementById("js-root").style.display = "none";
+        document.getElementById("react-root").style.display = "block";
+      }
+    </script>
+
+    <!-- React version entry -->
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
