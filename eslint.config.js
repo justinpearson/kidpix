@@ -99,16 +99,36 @@ export default tseslint.config(
       "import/no-unresolved": "off",
     },
   },
-  // TypeScript configuration
+  // TypeScript configuration (non-test files)
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
+    ignores: ["**/*.test.{ts,tsx}", "**/test-setup.ts"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
       parserOptions: {
         project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    plugins: {},
+    rules: {},
+  },
+  // TypeScript test files (without project mode)
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ["**/*.test.{ts,tsx}", "**/test-setup.ts"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: {
+        ...globals.browser,
+        describe: "readonly",
+        it: "readonly",
+        expect: "readonly",
+        vi: "readonly",
+        beforeEach: "readonly",
+        afterEach: "readonly",
       },
     },
     plugins: {},
