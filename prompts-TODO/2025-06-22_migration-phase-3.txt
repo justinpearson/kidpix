@@ -1,0 +1,16 @@
+# Feature request: Implement "Phase 3" of our React/Typescript migration.
+
+Read these two docs:
+
+- doc/maintainer/explanations/js-to-react-ts-migration/overview.md
+- doc/maintainer/explanations/js-to-react-ts-migration/phase-3-core-architecture.md
+
+Then implement phase-3-core-architecture.md .
+
+Don't forget:
+
+1. explain and propose your next actions to me. Remember, this is an educational exercise for me, so I want to be able to talk with you about what you're about to do and ask questions about it.
+
+2. make intermediate commits.
+
+Let's go!
