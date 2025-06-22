@@ -11,12 +11,13 @@ interface CanvasLayerProps {
 }
 
 export const CanvasLayer = forwardRef<HTMLCanvasElement, CanvasLayerProps>(
-  ({ name, width, height, zIndex, className, interactive = false }) => {
+  ({ name, width, height, zIndex, className, interactive = false }, ref) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const { dispatch } = useKidPix();
 
     useEffect(() => {
-      const canvas = canvasRef.current;
+      const canvas =
+        ref && typeof ref !== "function" ? ref.current : canvasRef.current;
       if (!canvas) return;
 
       // Register canvas with context
@@ -32,11 +33,11 @@ export const CanvasLayer = forwardRef<HTMLCanvasElement, CanvasLayerProps>(
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
       }
-    }, [name, dispatch]);
+    }, [name, dispatch, ref]);
 
     return (
       <canvas
-        ref={canvasRef}
+        ref={ref || canvasRef}
         width={width}
         height={height}
         className={className}
