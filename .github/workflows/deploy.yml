@@ -52,6 +52,14 @@ jobs:
       - name: Build application
         run: yarn build
 
+      - name: Download documentation artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/download-artifact@v4
+        with:
+          name: documentation
+          path: ./dist/docs/
+        continue-on-error: true
+
       - name: Setup Pages
         if: github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v4

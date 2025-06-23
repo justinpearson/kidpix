@@ -1,7 +1,7 @@
 site_name: KidPix Documentation
 site_description: Documentation for the KidPix drawing application
 site_author: KidPix Project
-site_url: https://justinpearson.github.io/kidpix
+site_url: https://justinpearson.github.io/kidpix/docs
 
 repo_name: justinpearson/kidpix
 repo_url: https://github.com/justinpearson/kidpix
