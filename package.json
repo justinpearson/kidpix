@@ -15,6 +15,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report",
+    "screenshot": "node scripts/screenshot-capture.js",
     "preview": "vite preview",
     "prepare": "husky",
     "type-check": "tsc -p tsconfig.app.json --noEmit",
