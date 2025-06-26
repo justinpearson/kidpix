@@ -33,13 +33,11 @@ playwright-report/
 test-results/
 coverage/
 
-# Temporary files for PR creation
-pr-title.txt
-pr-body.txt
-commit-message.txt
-
 # MkDocs build output
 site/
+
+# Python virtual environments
+.venv/
 
 # misc
 tmp/
