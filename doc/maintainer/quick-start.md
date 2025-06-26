@@ -33,6 +33,7 @@ Before you begin, make sure you understand what Kid Pix is by reading the [user 
 - [Node.js](https://nodejs.org/) v18 or higher
 - [Yarn](https://yarnpkg.com/) package manager
 - [Git](https://git-scm.com/)
+- [Python](https://www.python.org/) v3.8 or higher (for documentation building)
 - Modern IDE with TypeScript support (VS Code recommended)
 
 ## Development Environment Setup
@@ -47,11 +48,20 @@ cd kidpix
 ### 2. Install Dependencies
 
 ```bash
+# Install Node.js dependencies
 yarn install
+
+# Install Python dependencies for documentation
+# (Optional but recommended: create a virtual environment first)
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+python3 -m pip install -r requirements.txt
 ```
 
 This installs:
 
+**JavaScript Dependencies:**
 - **React 19** - UI framework
 - **TypeScript** - Type safety and developer experience
 - **Vite** - Fast build tool with HMR
@@ -59,6 +69,9 @@ This installs:
 - **Playwright** - Browser automation for e2e tests
 - **ESLint + Prettier** - Code quality and formatting
 - **Husky** - Git hooks for automated quality checks
+
+**Python Dependencies:**
+- **MkDocs** - Documentation site generator
 
 ### 3. Start Development Server
 

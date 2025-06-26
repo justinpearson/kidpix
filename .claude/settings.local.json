@@ -24,7 +24,8 @@
       "Bash(yarn test:e2e:*)",
       "Bash(cat:*)",
       "Bash(yarn format)",
-      "Bash(yarn format:*)"
+      "Bash(yarn format:*)",
+      "Bash(mkdocs build:*)"
     ],
     "deny": []
   }
