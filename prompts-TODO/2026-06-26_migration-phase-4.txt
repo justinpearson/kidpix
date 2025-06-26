@@ -1,0 +1,18 @@
+# Feature request: Implement "Phase 4" of our React/Typescript migration.
+
+Read these two docs:
+
+- doc/maintainer/explanations/js-to-react-ts-migration/overview.md
+- doc/maintainer/explanations/js-to-react-ts-migration/phase-4-tool-migration.md
+
+Then start to implement phase-4-tool-migration.md .
+
+This is a big one, so remember to make incremental commits, and take frequent pauses to tell me what you're doing.
+
+Don't forget:
+
+1. explain and propose your next actions to me. Remember, this is an educational exercise for me, so I want to be able to talk with you about what you're about to do and ask questions about it.
+
+2. make intermediate commits.
+
+Let's go!
