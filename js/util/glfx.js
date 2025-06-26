@@ -5,7 +5,7 @@
  * Copyright 2011 Evan Wallace
  * Released under the MIT license
  */
-var fx = (function () {
+window.fx = (function () {
   function q(a, d, c) {
     return Math.max(a, Math.min(d, c));
   }

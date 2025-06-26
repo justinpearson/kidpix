@@ -1,20 +1,7 @@
 // Kiddo Paint Applications
-var KiddoPaint = {};
-KiddoPaint.Tools = {};
-KiddoPaint.Tools.Toolbox = {};
-KiddoPaint.Textures = {};
-KiddoPaint.Brushes = {};
-KiddoPaint.Builders = {};
-KiddoPaint.Stamps = {};
-KiddoPaint.Sounds = {};
-KiddoPaint.Display = {};
-KiddoPaint.Colors = {};
-KiddoPaint.Current = {};
-KiddoPaint.Cache = {};
-KiddoPaint.Alphabet = {};
-KiddoPaint.Sprite = {};
+// Use global KiddoPaint object initialized in main entry file
 
-function init_kiddo_paint() {
+window.init_kiddo_paint = function init_kiddo_paint() {
   document.addEventListener(
     "contextmenu",
     function (e) {
@@ -34,43 +21,43 @@ function init_kiddo_paint() {
 
     var container = canvas.parentNode;
 
-    bnimCanvas = document.createElement("canvas");
+    window.bnimCanvas = document.createElement("canvas");
     bnimCanvas.id = "bnimCanvas";
     bnimCanvas.width = canvas.width;
     bnimCanvas.height = canvas.height;
     bnimCanvas.className = "pixelated";
     container.appendChild(bnimCanvas);
-    bnimContext = bnimCanvas.getContext("2d");
+    window.bnimContext = bnimCanvas.getContext("2d");
     bnimContext.imageSmoothingEnabled = false;
     bnimContext.clearRect(0, 0, canvas.width, canvas.height);
 
-    animCanvas = document.createElement("canvas");
+    window.animCanvas = document.createElement("canvas");
     animCanvas.id = "animCanvas";
     animCanvas.width = canvas.width;
     animCanvas.height = canvas.height;
     animCanvas.className = "pixelated";
     container.appendChild(animCanvas);
-    animContext = animCanvas.getContext("2d");
+    window.animContext = animCanvas.getContext("2d");
     animContext.imageSmoothingEnabled = false;
     animContext.clearRect(0, 0, canvas.width, canvas.height);
 
-    previewCanvas = document.createElement("canvas");
+    window.previewCanvas = document.createElement("canvas");
     previewCanvas.id = "previewCanvas";
     previewCanvas.width = canvas.width;
     previewCanvas.height = canvas.height;
     previewCanvas.className = "pixelated";
     container.appendChild(previewCanvas);
-    previewContext = previewCanvas.getContext("2d");
+    window.previewContext = previewCanvas.getContext("2d");
     previewContext.imageSmoothingEnabled = false;
     previewContext.clearRect(0, 0, canvas.width, canvas.height);
 
-    tmpCanvas = document.createElement("canvas");
+    window.tmpCanvas = document.createElement("canvas");
     tmpCanvas.id = "tmpCanvas";
     tmpCanvas.width = canvas.width;
     tmpCanvas.height = canvas.height;
     tmpCanvas.className = "pixelated";
     container.appendChild(tmpCanvas);
-    tmpContext = tmpCanvas.getContext("2d");
+    window.tmpContext = tmpCanvas.getContext("2d");
     tmpContext.imageSmoothingEnabled = false;
     tmpContext.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -129,7 +116,7 @@ function init_kiddo_defaults() {
   reset_ranges();
 }
 
-function reset_ranges() {
+window.reset_ranges = function reset_ranges() {
   KiddoPaint.Current.multiplier = 1;
   KiddoPaint.Current.modifiedRange = 0;
   KiddoPaint.Current.modifiedAltRange = 0;
