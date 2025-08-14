@@ -30,6 +30,10 @@
   - [Bundle Analysis](#bundle-analysis)
   - [Code Splitting](#code-splitting)
   - [Canvas Performance](#canvas-performance)
+- [Claude Code Development Workflow](#claude-code-development-workflow)
+  - [Browser Error Monitoring](#browser-error-monitoring)
+  - [Error Monitoring Setup](#error-monitoring-setup)
+  - [Usage and Best Practices](#usage-and-best-practices)
 
 ## Setting Up Development Environment
 
@@ -721,3 +725,175 @@ const useAnimation = () => {
   return { startAnimation, stopAnimation };
 };
 ```
+
+## Claude Code Development Workflow
+
+### Browser Error Monitoring
+
+This project includes a sophisticated error monitoring setup specifically designed for Claude Code AI-assisted development. Browser runtime errors are automatically captured and displayed in the Vite dev server terminal with timestamps and full stack traces. If Claude Code is running `yarn dev`, then it will be able to automatically detect browser console errors, report them, and hopefully fix them :).
+
+**⚠️ CRITICAL: Claude Code must run the dev server (`yarn dev`) in its own background bash shell. Human developers should NOT run `yarn dev` in their own terminal because then Claude Code won't be able to view the browser console errors.**
+
+### Error Monitoring Setup
+
+#### Technology Stack
+
+- **Plugin**: `vite-plugin-terminal@1.3.0`
+- **Configuration**: Dual output to browser console and terminal
+- **Error Handlers**: Custom JavaScript error handlers in `index.html`
+- **Timestamps**: Local time format for human readability
+
+#### Implementation Details
+
+```typescript
+// vite.config.ts
+import Terminal from "vite-plugin-terminal";
+
+export default defineConfig({
+  plugins: [
+    Terminal({
+      output: ["terminal", "console"], // Show in both places
+    }),
+  ],
+});
+```
+
+```javascript
+// index.html - Error handling script
+import { terminal } from "virtual:terminal";
+
+// Capture uncaught exceptions
+window.addEventListener("error", function (event) {
+  const timestamp = new Date().toLocaleString();
+  const errorMsg = `🚨 [${timestamp}] Runtime Error: ${event.message}...`;
+  terminal.error(errorMsg);
+});
+
+// Capture promise rejections
+window.addEventListener("unhandledrejection", function (event) {
+  const timestamp = new Date().toLocaleString();
+  const errorMsg = `🚨 [${timestamp}] Unhandled Promise Rejection: ${event.reason}...`;
+  terminal.error(errorMsg);
+});
+
+// Override console.error
+console.error = function (...args) {
+  originalConsoleError.apply(console, arguments);
+  if (!args[0]?.toString().includes("🚨")) {
+    const timestamp = new Date().toLocaleString();
+    terminal.error(`🚨 [${timestamp}] Console Error:`, ...args);
+  }
+};
+```
+
+#### Version Compatibility
+
+⚠️ **Important**: This project uses Vite 6.3.5 instead of the latest 7.x for compatibility reasons:
+
+- **Security**: Vite 6.3.5 was chosen to address esbuild security vulnerabilities
+- **Plugin Compatibility**: `vite-plugin-terminal` has [known issues](https://github.com/patak-dev/vite-plugin-terminal/issues/34) with Vite 7.x
+- **Workaround**: If Vite 7.x is required, implement a custom WebSocket-based error reporting solution
+
+### Usage and Best Practices
+
+#### Starting Claude Code Session
+
+**✅ CORRECT: Claude Code starts the dev server**
+
+```bash
+# Claude Code runs this in background bash shell
+yarn dev
+
+# Expected output in Claude's terminal:
+# VITE v6.3.5  ready in 75 ms
+# ➜  Local:   http://localhost:5173/
+# » 🧪 Terminal plugin test - this should appear in the terminal
+```
+
+**❌ INCORRECT: Human runs their own dev server**
+
+```bash
+# DON'T DO THIS - breaks error monitoring
+# Human in their own terminal:
+yarn dev  # <- This prevents Claude from seeing errors
+```
+
+**Why this matters:**
+
+- Claude Code needs to run `yarn dev` in its own background bash shell
+- Claude uses the `BashOutput` tool to read terminal output from its own shell
+- If human runs the dev server separately, Claude cannot access that terminal output
+- Error monitoring completely fails if Claude doesn't control the dev server process
+
+#### Error Monitoring Workflow
+
+1. **Claude Code**: Starts `yarn dev` in background bash shell
+2. **Human Developer**: Opens browser to http://localhost:5173/ and interacts with application
+3. **Browser**: Generates runtime errors during interaction
+4. **Error Handlers**: Capture errors and send to Claude's terminal via plugin
+5. **Claude Code**: Uses `BashOutput` tool to read new terminal output from its own shell
+6. **Coordination**: Both parties reference timestamps for debugging
+
+#### Example Error Output
+
+```
+🚨 [8/14/2025, 6:09:37 AM] Runtime Error: Uncaught ReferenceError: distanceBetween is not defined
+   at http://localhost:5173/js/init/kiddopaint.js:586:14
+   Stack: ReferenceError: distanceBetween is not defined
+    at common_ev_proc (http://localhost:5173/js/init/kiddopaint.js:586:14)
+    at HTMLCanvasElement.ev_canvas (http://localhost:5173/js/init/kiddopaint.js:577:3)
+```
+
+#### Critical Limitations and Pitfalls
+
+⚠️ **BashOutput Tool Behavior**: Claude Code's `BashOutput` tool has important limitations:
+
+**How It Works:**
+
+- Only shows **NEW** output since last check
+- Once checked, previous output is "consumed" and unavailable
+- Output timestamps help identify fresh vs cached errors
+
+**Potential Issues:**
+
+- **Wrong Dev Server**: Human running their own `yarn dev` breaks everything
+- **Timing Problems**: Claude checking before errors occur misses them
+- **Premature Clearing**: Accidental checks can clear error history
+- **Sync Issues**: Claude may see old cached errors instead of current ones
+- **Lost Context**: Previous error context disappears after each `BashOutput` call
+
+**Best Practices:**
+
+1. **Claude Controls Dev Server**: Claude must run `yarn dev` in background - humans should never run it
+2. **Coordinate Timing**: Human should signal when new errors are triggered
+3. **Check Systematically**: Claude should only check output when expecting new errors
+4. **Use Timestamps**: Compare error timestamps to check timing in terminal output
+5. **Communicate Status**: Both parties should be explicit about which errors are being discussed
+6. **Browser Backup**: Human can reference browser console for complete error history
+7. **Sequential Workflow**: Process one set of errors at a time to avoid confusion
+
+#### Debugging Session Example
+
+```bash
+# ✅ CORRECT workflow:
+Claude: [starts yarn dev in background]
+Human: "I'm going to trigger some errors now"
+Human: [moves mouse in app]
+Human: "Ok, I triggered some errors at 6:09:37 AM"
+Claude: [calls BashOutput to see errors from that time]
+Claude: "I can see the distanceBetween error at 6:09:37 AM. Let me examine..."
+
+# ❌ INCORRECT workflow:
+Human: [runs own yarn dev in separate terminal]
+Human: "I'm seeing errors in my terminal"
+Claude: [calls BashOutput on its own shell]
+Claude: "I don't see any errors" # <- Problem: Claude can't see human's terminal
+```
+
+#### Benefits of This Setup
+
+- **Real-time Debugging**: Immediate visibility into runtime errors
+- **Detailed Stack Traces**: Complete error context with file locations
+- **Timestamped History**: Coordinate debugging sessions effectively
+- **AI-Human Collaboration**: Seamless workflow for AI-assisted development
+- **No Manual Checking**: Eliminates need to manually check browser console
