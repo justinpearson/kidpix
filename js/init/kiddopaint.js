@@ -88,7 +88,7 @@ window.init_kiddo_paint = function init_kiddo_paint() {
     init_subtool_bars();
     init_color_selector();
   }
-}
+};
 
 function init_kiddo_defaults() {
   KiddoPaint.Current.color = KiddoPaint.Colors.currentPalette()[0];
@@ -125,7 +125,7 @@ window.reset_ranges = function reset_ranges() {
   KiddoPaint.Current.velToggle = false;
   KiddoPaint.Current.modifiedMeta = false;
   KiddoPaint.Current.modifiedTilde = false;
-}
+};
 
 function init_listeners(canvas) {
   canvas.addEventListener("mousedown", ev_canvas);

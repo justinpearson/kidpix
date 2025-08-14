@@ -95,4 +95,4 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
 
     genericsubmenu.appendChild(button);
   }
-}
+};

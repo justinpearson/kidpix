@@ -62,6 +62,7 @@ python3 -m pip install -r requirements.txt
 This installs:
 
 **JavaScript Dependencies:**
+
 - **React 19** - UI framework
 - **TypeScript** - Type safety and developer experience
 - **Vite** - Fast build tool with HMR
@@ -71,6 +72,7 @@ This installs:
 - **Husky** - Git hooks for automated quality checks
 
 **Python Dependencies:**
+
 - **MkDocs** - Documentation site generator
 
 ### 3. Start Development Server

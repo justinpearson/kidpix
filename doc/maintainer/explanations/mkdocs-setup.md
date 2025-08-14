@@ -195,12 +195,12 @@ jobs:
 
 1. **Trigger**: Push to main branch with doc changes
 2. **Build Job**:
-    - Install Python and MkDocs
-    - Run `mkdocs build --strict` (fails on warnings)
-    - Upload built site as artifact
+   - Install Python and MkDocs
+   - Run `mkdocs build --strict` (fails on warnings)
+   - Upload built site as artifact
 3. **Deploy Job**:
-    - Deploy artifact to GitHub Pages
-    - Update live site at `https://justinpearson.github.io/kidpix/`
+   - Deploy artifact to GitHub Pages
+   - Update live site at `https://justinpearson.github.io/kidpix/`
 
 ### GitHub Pages Configuration
 

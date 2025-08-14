@@ -1925,9 +1925,9 @@ yarn test --testNamePattern="performance"
 ```
 
 3. **Continue with advanced tools**:
-    - Wacky brushes (Phase 5)
-    - Special effects tools
-    - Complex shape builders
+   - Wacky brushes (Phase 5)
+   - Special effects tools
+   - Complex shape builders
 
 **Continue to**: [Phase 5: Advanced Features](./phase-5-advanced-features.md)
 

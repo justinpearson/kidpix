@@ -616,14 +616,14 @@ git commit -m "feat(tooling): set up ESLint, Prettier, Husky, and testing infras
 
 2. **Test the complete workflow**:
 
-    - Make a small change to a JS file
-    - Ensure pre-commit hooks run
-    - Push to GitHub and verify CI runs
+   - Make a small change to a JS file
+   - Ensure pre-commit hooks run
+   - Push to GitHub and verify CI runs
 
 3. **Prepare for Phase 2**:
-    - Review TypeScript basics
-    - Understand declaration files concept
-    - Plan which utilities to type first
+   - Review TypeScript basics
+   - Understand declaration files concept
+   - Plan which utilities to type first
 
 **Continue to**: [Phase 2: Add TypeScript Declarations](./phase-2-add-typescript-declarations.md)
 

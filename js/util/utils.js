@@ -180,7 +180,7 @@ window.makeIcon = function makeIcon(texture) {
   contextIcon.closePath();
 
   return canvasIcon.toDataURL();
-}
+};
 
 function makeCircleIcon(texture) {
   var canvasIcon = document.createElement("canvas");
