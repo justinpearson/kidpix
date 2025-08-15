@@ -14,3 +14,6 @@ function fisherYatesArrayShuffle(array) {
     array[randomnumber] = temp;
   }
 }
+
+// Expose for global access
+window.fisherYatesArrayShuffle = fisherYatesArrayShuffle;

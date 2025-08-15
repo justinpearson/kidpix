@@ -217,3 +217,7 @@ var trimAndFlattenCanvas = (function () {
     return copy;
   };
 })();
+
+// Expose functions for global access
+window.trimAndFlattenCanvas = trimAndFlattenCanvas;
+window.trimCanvas3 = trimCanvas3;

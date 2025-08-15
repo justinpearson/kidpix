@@ -9,6 +9,7 @@ KiddoPaint.Tools.Toolbox.Astroid = function () {
   // http://mathworld.wolfram.com/Astroid.html
   this.drawAstroid = function (pt1, pt2, pt3) {
     var interval = 37 * KiddoPaint.Current.scaling;
+    var seg1deltax, seg1deltay, seg2deltax, seg2deltay; // Declare variables to avoid global assignment
 
     seg1deltax = (pt2.x - pt1.x) / interval;
     seg1deltay = (pt2.y - pt1.y) / interval;

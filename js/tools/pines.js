@@ -1,5 +1,6 @@
 KiddoPaint.Tools.Toolbox.Pines = function () {
   var tool = this;
+  var jitterx, jittery; // Declare variables to avoid global assignment
   this.isDown = false;
   this.previousEv = null;
   this.texture = function () {

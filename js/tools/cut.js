@@ -1,5 +1,6 @@
 KiddoPaint.Tools.Toolbox.Cut = function () {
   var tool = this;
+  var sizex, sizey; // Declare variables to avoid global assignment
   this.isDown = false;
   this.length = 50;
   this.width = 50;

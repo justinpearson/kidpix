@@ -5,6 +5,7 @@ KiddoPaint.Brushes.FollowingSine = function (color1, step) {
 
   var canvasBrush = document.createElement("canvas");
   var size = 33 * KiddoPaint.Current.scaling;
+  var x, y; // Declare variables to avoid global assignment
   canvasBrush.width = size * 2;
   canvasBrush.height = size * 2;
   var contextBrush = canvasBrush.getContext("2d");
