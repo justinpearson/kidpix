@@ -1,6 +1,6 @@
 KiddoPaint.Submenu = {};
 
-function show_generic_submenu(subtoolbar) {
+window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
   if (!KiddoPaint.Submenu[subtoolbar]) {
     return;
   }

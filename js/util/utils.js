@@ -164,7 +164,9 @@ function extractSprite(img, size, col, row, offset) {
   return canvasIcon;
 }
 
-function makeIcon(texture) {
+window.distanceBetween = distanceBetween;
+
+window.makeIcon = function makeIcon(texture) {
   var canvasIcon = document.createElement("canvas");
   canvasIcon.width = 50;
   canvasIcon.height = 50;

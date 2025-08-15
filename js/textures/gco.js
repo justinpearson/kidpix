@@ -72,7 +72,7 @@ var colorSphere = function () {
 };
 
 // HSV (1978) = H: Hue / S: Saturation / V: Value
-Color = {};
+window.Color = {};
 Color.HSV_RGB = function (o) {
   var H = o.H / 360,
     S = o.S / 100,

@@ -17,7 +17,7 @@
   } else {
     factory(root);
   }
-})(this, function (exports) {
+})(typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : this, function (exports) {
   function Node(obj, dimension, parent) {
     this.obj = obj;
     this.left = null;

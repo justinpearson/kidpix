@@ -62,13 +62,26 @@ yarn preview
 ## Tech Stack
 
 - **Framework**: React 18 with TypeScript
-- **Build Tool**: Vite 5.4.9 with HMR
+- **Build Tool**: Vite 6.3.5 with HMR
 - **Testing**: Vitest (unit) + Playwright (e2e)
 - **Code Quality**: ESLint + Prettier with pre-commit hooks
 - **Package Manager**: Yarn 1.22.22
 - **Deployment**: GitHub Actions → GitHub Pages
+- **Claude Code Integration**: Browser error monitoring with vite-plugin-terminal allows Claude Code to view browser console errors
+
+### Claude Code Development Features
+
+This project includes special features for AI-assisted development using Claude Code:
+
+- **Real-time Error Monitoring**: Browser runtime errors appear directly in the terminal
+- **Timestamped Debugging**: Local timestamps help coordinate debugging sessions
+- **Full Stack Traces**: Complete error context with file locations and line numbers
+
+**⚠️ CRITICAL for Claude Code Users**: For Claude Code to view the browser console errors, it must run the dev server (`yarn dev`) in its own background bash shell. Human developers should NOT run their own `yarn dev` in a separate terminal (which is not visible to Claude Code).
 
 For detailed development information, see [Maintainer Documentation](doc/maintainer/).
+
+**Note for AI Agents**: Read `CLAUDE.md` for complete development workflow guidance including error monitoring setup and limitations.
 
 ## Legacy Information
 

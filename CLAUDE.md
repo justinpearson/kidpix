@@ -9,10 +9,11 @@ This is a modular JavaScript implementation of the classic 1989 Kid Pix drawing 
 ## Technology Stack
 
 - **Runtime**: Modular JavaScript (ES5/ES6) loaded via script tags
-- **Build Tool**: Vite 5.4.9 for development server and asset serving
+- **Build Tool**: Vite 6.3.5 for development server and asset serving
 - **Package Manager**: Yarn 1.22.22
 - **Linting**: ESLint 9 (currently configured for TypeScript, needs update for JS)
 - **Testing**: Vitest and Playwright configured but not yet used for JS files
+- **Error Monitoring**: vite-plugin-terminal for browser console errors in Claude Code development
 
 ## CRITICAL COMMIT WORKFLOW
 
@@ -91,6 +92,70 @@ yarn lint
 yarn preview
 # Preview the built application locally
 ```
+
+## Claude Code Development Workflow
+
+### Browser Error Monitoring Setup
+
+To facilitate development with Claude Code, this project is configured with `vite-plugin-terminal` to display browser runtime errors directly in the Vite dev server terminal; this makes browser console errors visible to Claude Code when it runs `yarn dev` in its own sub-shell.
+
+- **NOTE FOR CLAUDE CODE**: If claude code is running the local dev server in a sub-shell (ie, `yarn dev`), claude code should remember to frequently check its stdout / stderr for browser console errors, and compare the errors' timestamps with the current time to ensure it doesn't get confused by reading old errors.
+
+#### Setup Details
+
+- **Plugin**: `vite-plugin-terminal@1.3.0`
+- **Configuration**: Outputs to both browser console and terminal
+- **Error Handlers**: Captures uncaught exceptions, unhandled promise rejections, and console errors
+- **Location**: Error handling script in `index.html` imports from `virtual:terminal`
+- **Timestamps**: Local time format for human readability
+
+#### Usage for Claude Code
+
+1. **Start Development Server**: Claude Code runs `yarn dev` in background bash shell
+2. **Error Monitoring**: Runtime errors appear in terminal with full stack traces
+3. **Real-time Debugging**: Errors visible immediately as user interacts with browser
+4. **Error Format**: Shows file location, line numbers, complete stack traces, and timestamps
+
+Example error output:
+
+```
+🚨 [8/14/2025, 6:09:37 AM] Runtime Error: Uncaught ReferenceError: distanceBetween is not defined
+   at http://localhost:5173/js/init/kiddopaint.js:586:14
+   Stack: ReferenceError: distanceBetween is not defined
+    at common_ev_proc (http://localhost:5173/js/init/kiddopaint.js:586:14)
+    at HTMLCanvasElement.ev_canvas (http://localhost:5173/js/init/kiddopaint.js:577:3)
+```
+
+#### Important Limitations and Pitfalls
+
+⚠️ **BashOutput Tool Behavior**: Claude Code's `BashOutput` tool only shows **NEW** output since the last check. Once checked, previous output is "consumed" and won't appear again.
+
+**Potential Issues:**
+
+- **Timing Sync Problems**: If Claude checks for errors before user triggers them, may miss errors
+- **Accidental Clearing**: Checking output prematurely can clear error history
+- **Old vs New Confusion**: Claude might see old cached errors instead of current ones
+- **Lost Context**: Previous error context disappears after each check
+
+**Best Practices:**
+
+- **Coordinate Timing**: User should signal when they've triggered new errors
+- **Check Systematically**: Claude should only check output when expecting new errors
+- **Use Timestamps**: Local timestamps help identify fresh errors vs cached ones
+- **Communicate Status**: Both parties should be clear about what errors are being discussed
+- **Use Browser Console as Backup**: User can always reference browser console for full error history
+
+#### Version Compatibility
+
+⚠️ **Important**: We use Vite 6.3.5 (not the latest 7.x) for security reasons and plugin compatibility. The `vite-plugin-terminal` has [known compatibility issues](https://github.com/patak-dev/vite-plugin-terminal/issues/34) with Vite 7.x. If you need Vite 7.x, consider implementing a custom error monitoring solution.
+
+#### Workflow Benefits
+
+- **Immediate Error Visibility**: No need to manually check browser console
+- **Detailed Stack Traces**: Full error context with file locations
+- **Continuous Monitoring**: Errors appear in real-time during development
+- **Timestamped History**: Local timestamps help coordinate debugging sessions
+- **Claude Code Integration**: Seamless debugging workflow for AI-assisted development
 
 ## Architecture Overview
 
