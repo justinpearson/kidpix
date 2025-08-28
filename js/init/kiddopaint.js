@@ -12,7 +12,7 @@ window.init_kiddo_paint = function init_kiddo_paint() {
 
   var canvas = document.getElementById("kiddopaint");
   if (canvas.getContext) {
-    var ctx = canvas.getContext("2d");
+    var ctx = canvas.getContext("2d", { willReadFrequently: true });
     // sets proper offset due to css canvas positioning and kiddopaint buttons
     canvas.width = canvas.width;
     canvas.height = canvas.height;

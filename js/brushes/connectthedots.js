@@ -3,7 +3,7 @@ KiddoPaint.Brushes.ConnectTheDots = function (color1, step) {
 
   var canvasBrush = document.createElement("canvas");
   canvasBrush.width = canvasBrush.height = 150;
-  var contextBrush = canvasBrush.getContext("2d");
+  var contextBrush = canvasBrush.getContext("2d", { willReadFrequently: true });
 
   contextBrush.font = "16px sans-serif";
   contextBrush.textBaseline = "middle";
