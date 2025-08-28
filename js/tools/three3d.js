@@ -6,6 +6,7 @@ KiddoPaint.Tools.Toolbox.ThreeDBrush = function () {
   };
   this.previousEv = null;
   this.spacing = 3;
+  this.soundduring = function () {};
   this.texture = function () {
     const shadecolor = colorNearWhite(color2json(KiddoPaint.Current.color))
       ? "black"
@@ -52,6 +53,7 @@ KiddoPaint.Tools.Toolbox.ThreeDBrush = function () {
           tool.size() / 2,
           tool.size() / 2,
         );
+        tool.soundduring();
       } else {
         bresenham(
           tool.previousEv._x,
@@ -74,6 +76,7 @@ KiddoPaint.Tools.Toolbox.ThreeDBrush = function () {
               tool.size() / 2,
               tool.size() / 2,
             );
+            tool.soundduring();
           },
         );
       }
