@@ -18,6 +18,9 @@ const JumbleFx = {
   THRESHOLD: "threshold",
 };
 
+// Expose JumbleFx to global scope for access from other modules
+window.JumbleFx = JumbleFx;
+
 KiddoPaint.Tools.Toolbox.WholeCanvasEffect = function () {
   var tool = this;
   this.isDown = false;

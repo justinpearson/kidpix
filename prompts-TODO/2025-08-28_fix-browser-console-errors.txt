@@ -1,0 +1,18 @@
+Feature: fix browser console errors.
+
+In a previous PR ( "Add AI tooling to take screenshots and view browser
+console #23", https://github.com/justinpearson/kidpix/pull/23 ) we added the
+ability for an AI agent to view the app's browser console while a human uses
+the app (on the local dev server).
+
+Now I want to use that functionality to do a quick smoke-test of the app,
+fixing any browser console errors that arise while I click around.
+
+The goal is to address glaring bugs, to get the app to a usable and deployable
+state.
+
+Specifically, we're going to have the agent start the dev server, then I will
+click around and see what breaks, and ask the agent to fix it. Repeat until
+the app has no browser errors and basically works.
+
+Ready?

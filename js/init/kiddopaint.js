@@ -12,7 +12,7 @@ window.init_kiddo_paint = function init_kiddo_paint() {
 
   var canvas = document.getElementById("kiddopaint");
   if (canvas.getContext) {
-    var ctx = canvas.getContext("2d");
+    var ctx = canvas.getContext("2d", { willReadFrequently: true });
     // sets proper offset due to css canvas positioning and kiddopaint buttons
     canvas.width = canvas.width;
     canvas.height = canvas.height;
@@ -88,13 +88,17 @@ window.init_kiddo_paint = function init_kiddo_paint() {
     init_subtool_bars();
     init_color_selector();
   }
-}
+};
 
 function init_kiddo_defaults() {
   KiddoPaint.Current.color = KiddoPaint.Colors.currentPalette()[0];
   KiddoPaint.Current.altColor = KiddoPaint.Colors.currentPalette()[0];
   KiddoPaint.Current.terColor = KiddoPaint.Colors.currentPalette()[0];
   KiddoPaint.Current.tool = KiddoPaint.Tools.Pencil;
+
+  // Highlight the initially selected tool
+  highlightSelectedTool("pencil");
+
   KiddoPaint.Current.globalAlpha = 1.0;
   KiddoPaint.Current.scaling = 1;
   KiddoPaint.Display.step = 0;
@@ -125,7 +129,7 @@ window.reset_ranges = function reset_ranges() {
   KiddoPaint.Current.velToggle = false;
   KiddoPaint.Current.modifiedMeta = false;
   KiddoPaint.Current.modifiedTilde = false;
-}
+};
 
 function init_listeners(canvas) {
   canvas.addEventListener("mousedown", ev_canvas);
@@ -358,6 +362,21 @@ function init_tool_bar() {
     KiddoPaint.Current.tool = KiddoPaint.Tools.Pencil;
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-pencil");
+
+    // Highlight default pencil subtools
+    setTimeout(function () {
+      var buttons = document
+        .getElementById("genericsubmenu")
+        .getElementsByTagName("button");
+      // Highlight first size button (Size 1)
+      if (buttons[0]) {
+        buttons[0].style = "border-color:red; border-width: 5px";
+      }
+      // Highlight Solid texture button (after spacer, so around index 7)
+      if (buttons[7]) {
+        buttons[7].style = "border-color:red; border-width: 5px";
+      }
+    }, 0);
   });
 
   document.getElementById("line").addEventListener("mousedown", function () {
@@ -367,6 +386,21 @@ function init_tool_bar() {
     KiddoPaint.Current.tool = KiddoPaint.Tools.Line;
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
+
+    // Highlight default line subtools
+    setTimeout(function () {
+      var buttons = document
+        .getElementById("genericsubmenu")
+        .getElementsByTagName("button");
+      // Highlight default size (Size 5, index 1)
+      if (buttons[1]) {
+        buttons[1].style = "border-color:red; border-width: 5px";
+      }
+      // Highlight default texture (Solid, index 7 - first after spacer)
+      if (buttons[7]) {
+        buttons[7].style = "border-color:red; border-width: 5px";
+      }
+    }, 0);
   });
 
   document.getElementById("square").addEventListener("mousedown", function () {
@@ -376,6 +410,17 @@ function init_tool_bar() {
     KiddoPaint.Current.tool = KiddoPaint.Tools.Square;
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
+
+    // Highlight default square subtools
+    setTimeout(function () {
+      var buttons = document
+        .getElementById("genericsubmenu")
+        .getElementsByTagName("button");
+      // Highlight default texture (None, index 0)
+      if (buttons[0]) {
+        buttons[0].style = "border-color:red; border-width: 5px";
+      }
+    }, 0);
   });
 
   document.getElementById("circle").addEventListener("mousedown", function () {
@@ -385,6 +430,17 @@ function init_tool_bar() {
     KiddoPaint.Current.tool = KiddoPaint.Tools.Circle;
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
+
+    // Highlight default circle subtools
+    setTimeout(function () {
+      var buttons = document
+        .getElementById("genericsubmenu")
+        .getElementsByTagName("button");
+      // Highlight default texture (None, index 0)
+      if (buttons[0]) {
+        buttons[0].style = "border-color:red; border-width: 5px";
+      }
+    }, 0);
   });
 
   document.getElementById("brush").addEventListener("mousedown", function () {
@@ -393,6 +449,17 @@ function init_tool_bar() {
     reset_ranges();
     show_generic_submenu("wackybrush");
     KiddoPaint.Submenu.wackybrush[0].handler();
+
+    // Highlight default wacky brush subtool
+    setTimeout(function () {
+      var buttons = document
+        .getElementById("genericsubmenu")
+        .getElementsByTagName("button");
+      // Highlight first brush (index 0)
+      if (buttons[0]) {
+        buttons[0].style = "border-color:red; border-width: 5px";
+      }
+    }, 0);
   });
 
   document.getElementById("stamp").addEventListener("mousedown", function () {
@@ -432,6 +499,17 @@ function init_tool_bar() {
     KiddoPaint.Current.tool = KiddoPaint.Tools.Flood;
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-bucket");
+
+    // Highlight default flood subtools
+    setTimeout(function () {
+      var buttons = document
+        .getElementById("genericsubmenu")
+        .getElementsByTagName("button");
+      // Highlight default texture (Solid, index 0)
+      if (buttons[0]) {
+        buttons[0].style = "border-color:red; border-width: 5px";
+      }
+    }, 0);
   });
 
   document.getElementById("eraser").addEventListener("mousedown", function () {
@@ -441,6 +519,17 @@ function init_tool_bar() {
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
     show_generic_submenu("eraser");
+
+    // Highlight default eraser subtool
+    setTimeout(function () {
+      var buttons = document
+        .getElementById("genericsubmenu")
+        .getElementsByTagName("button");
+      // Highlight first size (index 0)
+      if (buttons[0]) {
+        buttons[0].style = "border-color:red; border-width: 5px";
+      }
+    }, 0);
   });
 
   document.getElementById("truck").addEventListener("mousedown", function () {
@@ -450,6 +539,17 @@ function init_tool_bar() {
     KiddoPaint.Current.tool = KiddoPaint.Tools.Cut;
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
+
+    // Highlight default truck subtool
+    setTimeout(function () {
+      var buttons = document
+        .getElementById("genericsubmenu")
+        .getElementsByTagName("button");
+      // Highlight first size (index 0)
+      if (buttons[0]) {
+        buttons[0].style = "border-color:red; border-width: 5px";
+      }
+    }, 0);
   });
 
   document.getElementById("undo").addEventListener("mousedown", function () {
@@ -483,6 +583,17 @@ function init_tool_bar() {
     KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
     KiddoPaint.Tools.WholeCanvasEffect.effect = JumbleFx.INVERT;
     KiddoPaint.Current.tool = KiddoPaint.Tools.WholeCanvasEffect;
+
+    // Highlight default mixer subtool
+    setTimeout(function () {
+      var buttons = document
+        .getElementById("genericsubmenu")
+        .getElementsByTagName("button");
+      // Highlight first effect (index 0)
+      if (buttons[0]) {
+        buttons[0].style = "border-color:red; border-width: 5px";
+      }
+    }, 0);
   });
 }
 
@@ -519,6 +630,21 @@ function init_pencil_subtoolbar() {
   show_generic_submenu("pencil");
   KiddoPaint.Display.canvas.classList = "";
   KiddoPaint.Display.canvas.classList.add("cursor-pencil");
+
+  // Highlight default subtools with red outline
+  setTimeout(function () {
+    var buttons = document
+      .getElementById("genericsubmenu")
+      .getElementsByTagName("button");
+    // Highlight first size button (Size 1)
+    if (buttons[0]) {
+      buttons[0].style = "border-color:red; border-width: 5px";
+    }
+    // Highlight Solid texture button (after spacer, so around index 7)
+    if (buttons[7]) {
+      buttons[7].style = "border-color:red; border-width: 5px";
+    }
+  }, 0);
 }
 
 function init_alphabet_subtoolbar() {

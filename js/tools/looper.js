@@ -6,6 +6,7 @@ KiddoPaint.Tools.Toolbox.Looper = function () {
   this.lstep = 0;
   this.lincr = 0.15;
   this.previousCoord = null;
+  this.soundduring = function () {};
   this.stroke = function () {
     return KiddoPaint.Textures.Solid(
       KiddoPaint.Current.modifiedMeta
@@ -40,6 +41,7 @@ KiddoPaint.Tools.Toolbox.Looper = function () {
       KiddoPaint.Display.context.stroke();
       KiddoPaint.Display.context.closePath();
 
+      tool.soundduring();
       tool.lstep += tool.lincr;
 
       tool.previousCoord = {

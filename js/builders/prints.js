@@ -5,7 +5,7 @@ KiddoPaint.Builders.Prints = function (color1, print, angle) {
   var canvasBrush = document.createElement("canvas");
   canvasBrush.width = 150 * KiddoPaint.Current.scaling;
   canvasBrush.height = 150 * KiddoPaint.Current.scaling;
-  var contextBrush = canvasBrush.getContext("2d");
+  var contextBrush = canvasBrush.getContext("2d", { willReadFrequently: true });
 
   contextBrush.save();
   contextBrush.translate(

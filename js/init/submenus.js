@@ -69,24 +69,51 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
     // click handler
     const localFRef = buttonDetail.handler;
     const wrappedHandler = function (e) {
-      // disable all red outlines for subtool
-      for (
-        var j = 0,
-          len = document
-            .getElementById("genericsubmenu")
-            .getElementsByTagName("button").length;
-        j < len;
-        j++
-      ) {
-        var b = document
-          .getElementById("genericsubmenu")
-          .getElementsByTagName("button")[j];
-        console.log("j=", j, ", b=", b);
-        b.style = "";
+      // For multi-selection tools like line, only clear selections in the same category
+      // Find the spacer to determine if we're in size section (before) or texture section (after)
+      var buttons = document
+        .getElementById("genericsubmenu")
+        .getElementsByTagName("button");
+      var clickedButtonIndex = Array.prototype.indexOf.call(
+        buttons,
+        e.target.parentNode,
+      );
+      var spacerIndex = -1;
+
+      // Find spacer button (invisible button that separates categories)
+      for (var k = 0; k < buttons.length; k++) {
+        if (buttons[k].className.includes("invisible")) {
+          spacerIndex = k;
+          break;
+        }
       }
+
+      if (spacerIndex >= 0) {
+        // Multi-selection mode: only clear buttons in the same section
+        var startIndex, endIndex;
+        if (clickedButtonIndex < spacerIndex) {
+          // Size section (before spacer)
+          startIndex = 0;
+          endIndex = spacerIndex;
+        } else {
+          // Texture section (after spacer)
+          startIndex = spacerIndex + 1;
+          endIndex = buttons.length;
+        }
+
+        // Clear only buttons in the same section
+        for (var j = startIndex; j < endIndex; j++) {
+          buttons[j].style = "";
+        }
+      } else {
+        // Single-selection mode: clear all (for tools that don't have categories)
+        for (var j = 0; j < buttons.length; j++) {
+          buttons[j].style = "";
+        }
+      }
+
       // Set clicked-subtool's outline to red:
       e.target.parentNode.style = "border-color:red; border-width: 5px";
-      // TODO: mult buttons in submenu may be selected at once, eg, pencil's thickness + pattern.
       KiddoPaint.Sounds.submenuoption();
       localFRef(e);
     };
@@ -95,4 +122,4 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
 
     genericsubmenu.appendChild(button);
   }
-}
+};

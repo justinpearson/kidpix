@@ -157,14 +157,16 @@ function extractSprite(img, size, col, row, offset) {
   var contextIcon = canvasIcon.getContext("2d");
   contextIcon.imageSmoothingEnabled = false;
 
-  sourceX = offset + col * size;
-  sourceY = offset + row * size;
+  var sourceX = offset + col * size;
+  var sourceY = offset + row * size;
   contextIcon.drawImage(img, sourceX, sourceY, size, size, 0, 0, size, size);
 
   return canvasIcon;
 }
 
 window.distanceBetween = distanceBetween;
+window.angleBetween = angleBetween;
+window.angleBetweenRad = angleBetweenRad;
 
 window.makeIcon = function makeIcon(texture) {
   var canvasIcon = document.createElement("canvas");
@@ -180,9 +182,9 @@ window.makeIcon = function makeIcon(texture) {
   contextIcon.closePath();
 
   return canvasIcon.toDataURL();
-}
+};
 
-function makeCircleIcon(texture) {
+window.makeCircleIcon = function makeCircleIcon(texture) {
   var canvasIcon = document.createElement("canvas");
   canvasIcon.width = 50;
   canvasIcon.height = 50;
@@ -197,7 +199,25 @@ function makeCircleIcon(texture) {
   contextIcon.closePath();
 
   return canvasIcon.toDataURL();
-}
+};
+
+// Expose utility functions for global access (updated)
+window.srng = srng;
+window.color2json = color2json;
+window.scaleImageDataCanvasAPIPixelated = scaleImageDataCanvasAPIPixelated;
+window.extractSprite = extractSprite;
+window.colorsEqual = colorsEqual;
+window.flattenImage = flattenImage;
+window.remap = remap;
+window.getRandomFloat = getRandomFloat;
+window.scaleImageData = scaleImageData;
+window.colorNearWhite = colorNearWhite;
+window.bresenham = bresenham;
+window.guil = guil;
+window.clamp = clamp;
+window.rgbToHsl = rgbToHsl;
+window.hslToRgb = hslToRgb;
+window.getRandomInt = getRandomInt;
 
 function guil(R, r, m, theta, p, Q, m2, n) {
   var x =
@@ -706,5 +726,6 @@ if (typeof module !== "undefined" && typeof module.exports !== "undefined") {
     getRandomInt,
     getRandomLetter,
     srng,
+    flattenImage,
   };
 }

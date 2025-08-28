@@ -148,6 +148,8 @@ KiddoPaint.Submenu.wackybrush = [
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.ThreeDBrush;
+      KiddoPaint.Tools.ThreeDBrush.soundduring =
+        KiddoPaint.Sounds.brushrollingdots;
     },
   },
   {
@@ -334,6 +336,7 @@ KiddoPaint.Submenu.wackybrush = [
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Looper;
+      KiddoPaint.Tools.Looper.soundduring = KiddoPaint.Sounds.brushrollingdots;
     },
   },
   /*

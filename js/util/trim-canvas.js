@@ -3,7 +3,9 @@
 function trimCanvas(c) {
   if (c.width == 0 || c.height == 0) return c;
   var ctx = c.getContext("2d"),
-    copy = document.createElement("canvas").getContext("2d"),
+    copy = document
+      .createElement("canvas")
+      .getContext("2d", { willReadFrequently: true }),
     pixels = ctx.getImageData(0, 0, c.width, c.height),
     l = pixels.data.length,
     i,
@@ -161,7 +163,7 @@ var trimCanvas3 = (function () {
 
     var trimmed = ctx.getImageData(left, top, right - left, bottom - top);
     var copy = canvas.ownerDocument.createElement("canvas");
-    var copyCtx = copy.getContext("2d");
+    var copyCtx = copy.getContext("2d", { willReadFrequently: true });
     copy.width = trimmed.width;
     copy.height = trimmed.height;
     copyCtx.putImageData(trimmed, 0, 0);
@@ -207,7 +209,7 @@ var trimAndFlattenCanvas = (function () {
 
     var trimmed = ctx.getImageData(left, top, right - left, bottom - top);
     var copy = canvas.ownerDocument.createElement("canvas");
-    var copyCtx = copy.getContext("2d");
+    var copyCtx = copy.getContext("2d", { willReadFrequently: true });
     copy.width = trimmed.width;
     copy.height = trimmed.height;
 
@@ -217,3 +219,7 @@ var trimAndFlattenCanvas = (function () {
     return copy;
   };
 })();
+
+// Expose functions for global access
+window.trimAndFlattenCanvas = trimAndFlattenCanvas;
+window.trimCanvas3 = trimCanvas3;

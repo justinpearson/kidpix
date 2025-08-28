@@ -35,6 +35,7 @@ Kid Pix is a playful digital painting program that recreates the magic of the cl
 yarn install
 yarn dev
 ```
+
 3. Open your browser and go to `http://localhost:5173`
 4. Kid Pix will load and you can start creating!
 

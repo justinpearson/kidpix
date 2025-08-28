@@ -46,7 +46,7 @@ KiddoPaint.Sprite.prevPage = function () {
   }
 };
 
-function init_sprites_submenu() {
+window.init_sprites_submenu = function init_sprites_submenu() {
   const sheet = KiddoPaint.Sprite.sheets[KiddoPaint.Sprite.sheetPage];
   const maxcols = 15;
 
@@ -105,4 +105,4 @@ function init_sprites_submenu() {
       show_generic_submenu("sprites");
     },
   });
-}
+};

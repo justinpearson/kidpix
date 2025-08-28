@@ -82,10 +82,10 @@ nav:
 ```
 
 3. **Write content** using standard Markdown with:
-    - Clear headings (`#`, `##`, `###`)
-    - Code blocks with language specification
-    - Internal links to other documentation pages
-    - External links where helpful
+   - Clear headings (`#`, `##`, `###`)
+   - Code blocks with language specification
+   - Internal links to other documentation pages
+   - External links where helpful
 
 ### Writing Guidelines
 
