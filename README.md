@@ -56,6 +56,11 @@ yarn build
 
 # Preview production build
 yarn preview
+
+# Build and serve documentation
+python3 -m pip install mkdocs  # One-time setup
+yarn docs:build               # Build docs
+yarn docs:dev                 # Serve docs locally at http://127.0.0.1:8000
 ```
 
 ## Tech Stack
