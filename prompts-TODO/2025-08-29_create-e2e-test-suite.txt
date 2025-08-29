@@ -1,0 +1,30 @@
+Let's write a nice suite of end-to-end tests that use Playwright.
+
+1. For simplicity, one e2e test file (.spec.ts) per tool -- pencil.spec.ts, line.spec.ts, etc.
+
+2. But also want to test cross-tool behavior, and that certain behavior holds for ALL tools, like:
+
+Select the tool.
+  It should become highlighted, and its sub-tools should appear.
+Select a sub-tool.
+  (If the tool has multiple sets of sub-tools (eg, Pencil has "size" sub-tools and "texture" sub-tools), select one sub-tool from each set.)
+  The sub-tool(s) should become highlighted.
+With that sub-tool selected, click in the middle of the canvas.
+  There shouldn't be any console errors.
+Then drag a short line in the middle of the canvas.
+  There shouldn't be any console errors.
+Click a different tool, then click back to the original tool.
+  The original sub-tools should still be highlighted.
+
+
+3. Configure playwright so that when running the tests in a automated / headless fashion:
+  - no sounds play.
+  - headless.
+  - show test results in terminal, as text. NOT in a web browser via a (blocking) web server running in the background.
+
+4. Let's also add some yarn scripts in package.json for running the unit / e2e tests in various ways, like:
+  - generate & display code coverage
+  - show last e2e test run without running all tests again
+  - headed or headless
+    - e2e headless tests: do NOT play sounds when they run, that is distracting
+
