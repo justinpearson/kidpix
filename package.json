@@ -9,6 +9,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint",
     "format": "prettier --write .",
+    "test": "vitest run",
     "test:unit": "vitest",
     "test:unit:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
