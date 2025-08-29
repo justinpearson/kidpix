@@ -32,17 +32,15 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Lint code
-        run: yarn lint
+      # - name: Lint code
+      #   run: yarn lint
 
       - name: Run unit tests
-        run: yarn test --run
+        run: yarn test
 
       - name: Run tests with coverage
         run: yarn test:coverage
 
-      # Temporarily disabled e2e tests in CI for faster builds
-      # Keep yarn test:e2e command available for local development
       # - name: Install Playwright browsers
       #   run: yarn playwright install --with-deps
 

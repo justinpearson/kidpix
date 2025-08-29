@@ -47,16 +47,20 @@ yarn install
 yarn dev
 # Open http://localhost:5173/ (serves the modular JS version)
 
-# Run tests
-yarn test              # Unit tests
+# Run tests (see Testing section below for details)
+yarn test:unit         # Unit tests
 yarn test:e2e          # End-to-end tests
-yarn test:ui           # Interactive test UI
 
 # Build for production
 yarn build
 
 # Preview production build
 yarn preview
+
+# Build and serve documentation
+python3 -m pip install mkdocs  # One-time setup
+yarn docs:build               # Build docs
+yarn docs:dev                 # Serve docs locally at http://127.0.0.1:8000
 ```
 
 ## Tech Stack
@@ -82,6 +86,40 @@ This project includes special features for AI-assisted development using Claude 
 For detailed development information, see [Maintainer Documentation](doc/maintainer/).
 
 **Note for AI Agents**: Read `CLAUDE.md` for complete development workflow guidance including error monitoring setup and limitations.
+
+## Testing
+
+This project includes comprehensive testing with both unit tests (Vitest) and end-to-end tests (Playwright).
+
+### Test Commands
+
+| Command                        | Description                        | When to Use                                                   |
+| ------------------------------ | ---------------------------------- | ------------------------------------------------------------- |
+| `yarn test:unit`               | Run unit tests in watch mode       | Development - automatically reruns tests when code changes    |
+| `yarn test:unit:ui`            | Open interactive unit test UI      | Development - visual test runner with filtering and debugging |
+| `yarn test:coverage`           | Generate unit test coverage report | CI/validation - see what code is tested                       |
+| `yarn test:coverage:ui`        | Interactive coverage report        | Development - visual coverage exploration                     |
+| `yarn test:e2e`                | Run all e2e tests headlessly       | CI/validation - fast, automated testing                       |
+| `yarn test:e2e:headed`         | Run e2e tests with browser visible | Debugging - see what the tests are doing                      |
+| `yarn test:e2e:ui`             | Open Playwright test UI            | Development - interactive test running and debugging          |
+| `yarn test:e2e:single`         | Run specific test file             | Debugging - focus on one test suite                           |
+| `yarn test:e2e:showlastreport` | View last test report              | Post-test - detailed results and screenshots                  |
+
+### UI vs Headed vs Headless
+
+- **`--ui`**: Opens an interactive graphical interface for selecting, running, and debugging tests
+- **`--headed`**: Runs tests with browser windows visible (you can watch them execute)
+- **`--headless`** (default): Runs tests in background without opening browser windows (fastest)
+
+### E2E Test Architecture
+
+Our end-to-end tests use a **per-tool architecture** where each drawing tool has its own test file:
+
+- `pencil.spec.ts`, `line.spec.ts`, `wacky-brush.spec.ts`, etc. - Individual tool tests
+- `tool-switching.spec.ts`, `canvas-functionality.spec.ts` - Integration tests
+- `shared/` - Common test utilities and fixtures
+
+This enables parallel test execution and focused debugging. See [Testing Guide](doc/maintainer/testing-guide.md) for detailed information.
 
 ## Legacy Information
 

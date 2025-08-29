@@ -26,6 +26,7 @@ nav:
           - Development Tasks: maintainer/how-to/development-tasks.md
           - Troubleshooting: maintainer/how-to/troubleshooting.md
           - Work with Documentation: maintainer/how-to/work-with-documentation.md
+      - Testing Guide: maintainer/testing-guide.md
       - Explanations:
           - Architecture Overview: maintainer/explanations/architecture-overview.md
           - Technology Decisions: maintainer/explanations/technology-decisions.md

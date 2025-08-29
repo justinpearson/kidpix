@@ -10,6 +10,14 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:5173",
     trace: "on-first-retry",
+    // Disable audio to prevent sounds during testing
+    launchOptions: {
+      args: [
+        "--mute-audio",
+        "--disable-audio-output",
+        "--autoplay-policy=no-user-gesture-required",
+      ],
+    },
   },
 
   projects: [
