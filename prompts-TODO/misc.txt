@@ -1,12 +1,34 @@
-misc.txt -- CLAUDE: DO NOT IMPLEMENT FEATURES FROM THIS FILE!!
+misc.txt -- random notes / feature ideas.
 
+CLAUDE: DO NOT IMPLEMENT FEATURES FROM THIS FILE!!
+
+Once groomed / well-formed, move to backlog.txt.
+
+
+## TODO
+
+- simplify quick-start -- it cur has too much heavy detail / impl details. Make a more comprehensive User Manual, more spec-like / requirements.txt type thing, and see if CC can generate tests to ensure product requirements hold.
+
+- fix bug: e2e tests make sounds. they should be silent when running.
+
+
+- Ensure there is test coverage of the following:
+  - when app starts, it looks like 
+  - every button makes a certain noise when you click on it.
+  - (almost) every tool make a certain noise when you click, drag, and release it.
+
+  - when the app starts:
+      1. it looks like kidpix/tests/kidpix-app-startup.png
+      2. selected tool: pencil
+      3. selected thickness: 0 (thinnest line)
+      4. selected pattern: 0 (solid)
+
+
+==========================================================
 
 
 
 # Feature: write test files for the individual JS files in js/ dir.
-
-
-
 
 
 # Feature: Migrate plain-JS files to our new React / Typescript tech stack.
