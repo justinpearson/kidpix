@@ -14,17 +14,24 @@
 - [Troubleshooting](#troubleshooting)
 - [Next Steps](#next-steps)
 
+## TODO
+
+- simplify quick-start, and make a more comprehensive User Manual to base e2e tests on
+
 ## What is Kid Pix?
 
-Kid Pix is a playful digital painting program that recreates the magic of the classic 1989 Kid Pix software. It's designed for creative expression with whimsical tools, sound effects, and delightful surprises. Whether you're 8 or 80, Kid Pix encourages experimentation and fun over precision.
+Kid Pix is a fun digital painting program from 1989. Due to version 1.0 being generously released to the public domain, it was re-implemented in 2021 in HTML / Javascript by GitHub user vikrum, [here](https://github.com/vikrum/kidpix/) and hosted at <https://kidpix.app>, under the name "JS Kid Pix". I forked this version to make minor customizations for my kids, and also to practice software development
+
+1.0 was released in Nov 1989 into the _(Q: what to call my version of it?)_ is a playful digital painting program that recreates the magic of the classic 1989 Kid Pix software. It's designed for creative expression with whimsical tools, sound effects, and delightful surprises. Whether you're 8 or 80, Kid Pix encourages experimentation and fun over precision.
 
 ## Getting Started
 
-### Using Kid Pix Online
+The current repo (https://github.com/justinpearson/kidpix) is deployed via Github Pages here:
 
-1. Open your web browser and go to [kidpix.app](https://kidpix.app)
-2. The Kid Pix canvas will load automatically
-3. Start clicking on tools and drawing!
+- Main app: https://justinpearson.github.io/kidpix/app.html
+- Documentation: https://justinpearson.github.io/kidpix/docs.html
+
+This project is a fork of Vikrum's Javascript re-implementation of the original 1989 KidPix 1.0, which he hosts at https://kidpix.app .
 
 ### Using Kid Pix Locally
 
@@ -39,9 +46,9 @@ yarn dev
 3. Open your browser and go to `http://localhost:5173`
 4. Kid Pix will load and you can start creating!
 
-_Note: You need a web server because the app loads JavaScript modules and audio files that browsers block when opening files directly._
+_Note: You need a web server, not just open index.html in a browser, because the app loads JavaScript modules and audio files that browsers block when opening files directly._
 
-## Basic Tools
+## Tools
 
 The main toolbar on the left contains these essential tools:
 
@@ -60,22 +67,21 @@ The main toolbar on the left contains these essential tools:
 - ![Undo Guy](assets/kp-m_39.png) **Undo Guy** - Undo your last actions (up to 30 steps)
 - ![Redo Guy](assets/kp-m_40.png) **Redo Guy** - Redo your last undone actions
 
+Click a tool to select it; the currently-selected tool is outlined in red (except for Save, Undo, and Redo, which are not "real" tools, in that they perform a single action when clicked, and cannot be selected).
+
+Of the "real" tools (not Save, Undo, or Redo), clicking a tool selects it, and loads its subtools into the subtool bar across the top of the screen. For example, clicking the Pencil reveals subtools for "thickness" and "pattern". Different tools have different subtools. The currently-selected subtool(s) are indicated via a red outline.
+
+For convenience,
+
+## Colors
+
+- Large colored square in the upper-left is the currently-selected color.
+- The smaller colored squares are a _color palette_.
+- The arrows **← →** change to different color palettes (8 in total).
+
 ## Pro Tips
 
-- **Hold Shift** while using most tools to make them bigger
-- **Try modifier keys** (Alt, Ctrl, Cmd) with tools for hidden features
-- **Listen for sounds** - each tool has delightful audio feedback
+- **Hold Shift** while using most tools to make them bigger.
+- **Try modifier keys** (Alt, Ctrl, Cmd) with tools for hidden features.
+- **Listen for sounds** - each tool has delightful audio feedback.
 - **Experiment freely** - there's no wrong way to use Kid Pix!
-
-## Color Palette
-
-- Click the **colored square** at the bottom left to see your current color
-- Click any color in the palette below to select it
-- Use the **← →** arrows to browse different color palettes
-
-## Next Steps
-
-- Try every tool at least once - they're all different!
-- Explore the sub-menus that appear when you select certain tools
-- Create something and save it to share with friends
-- Check out the how-to guides for specific techniques
