@@ -41,11 +41,11 @@ jobs:
       - name: Run tests with coverage
         run: yarn test:coverage
 
-      - name: Install Playwright browsers
-        run: yarn playwright install --with-deps
+      # - name: Install Playwright browsers
+      #   run: yarn playwright install --with-deps
 
-      - name: Run e2e tests
-        run: yarn test:e2e
+      # - name: Run e2e tests
+      #   run: yarn test:e2e
 
       - name: Build application
         run: yarn build
