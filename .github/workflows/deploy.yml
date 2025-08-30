@@ -1,11 +1,12 @@
 name: Deploy to GitHub Pages
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
+# jpp - temp disable for other workflow development
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
+#   workflow_dispatch:
 
 permissions:
   contents: read
