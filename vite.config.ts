@@ -10,7 +10,8 @@ export default defineConfig({
       output: ["terminal", "console"],
     }),
   ],
-  base: process.env.NODE_ENV === "production" ? "/kidpix/" : "/",
+  // base: process.env.NODE_ENV === "production" ? "/kidpix/" : "/", // OLD
+  base: '/kidpix/', // NEW, TESTING
   publicDir: false, // Don't copy files automatically, they're already referenced
   server: {
     port: 5173,
