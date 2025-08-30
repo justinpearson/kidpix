@@ -217,37 +217,37 @@ emj {
 
 .cursor-bucket {
   cursor:
-    url(/img/cursor-fill-bucket.png) 14 16,
+    url(../img/cursor-fill-bucket.png) 14 16,
     auto;
 }
 
 .cursor-guy-smile {
   cursor:
-    url(/img/cursor-guy-smile.png) 8 8,
+    url(../img/cursor-guy-smile.png) 8 8,
     auto;
 }
 
 .cursor-guy-wow {
   cursor:
-    url(/img/cursor-guy-wow.png) 8 8,
+    url(../img/cursor-guy-wow.png) 8 8,
     auto;
 }
 
 .cursor-paint-brush {
   cursor:
-    url(/img/cursor-paint-brush.png) 16 16,
+    url(../img/cursor-paint-brush.png) 16 16,
     auto;
 }
 
 .cursor-pencil {
   cursor:
-    url(/img/cursor-pencil.png) 7 16,
+    url(../img/cursor-pencil.png) 7 16,
     auto;
 }
 
 .cursor-tnt {
   cursor:
-    url(/img/cursor-tnt-anim.gif) 4 7,
+    url(../img/cursor-tnt-anim.gif) 4 7,
     auto;
 }
 

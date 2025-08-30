@@ -1,18 +1,19 @@
 name: Build Documentation
 
-on:
-  push:
-    branches: [main]
-    paths:
-      - "doc/**"
-      - "mkdocs.yml"
-      - ".github/workflows/docs.yml"
-  pull_request:
-    branches: [main]
-    paths:
-      - "doc/**"
-      - "mkdocs.yml"
-      - ".github/workflows/docs.yml"
+# jpp - temp disable for other workflow development
+# on:
+#   push:
+#     branches: [main]
+#     paths:
+#       - "doc/**"
+#       - "mkdocs.yml"
+#       - ".github/workflows/docs.yml"
+#   pull_request:
+#     branches: [main]
+#     paths:
+#       - "doc/**"
+#       - "mkdocs.yml"
+#       - ".github/workflows/docs.yml"
 
 permissions:
   contents: read

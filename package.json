@@ -3,10 +3,28 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "comments": {
+    "dev:app": "Visit http://localhost:5173/kidpix/ (vite runs with base=/kidpix/)",
+    "dev:docs": "Visit http://localhost:8000/ (mkdocs live server, no subpath)",
+    "build:site": "Build app into dist/ and docs into dist/docs/",
+    "preview:site": "Serve dist/ at http://localhost:8080/kidpix/ and /kidpix/docs/"
+  },  
   "scripts": {
-    "dev": "vite & echo $! > .vite.pid",
-    "dev-stop": "kill $(cat .vite.pid 2>/dev/null) 2>/dev/null && rm -f .vite.pid || true",
-    "build": "tsc -b && vite build",
+
+
+    "dev:app": "vite",                            
+    "dev:docs": "mkdocs serve -a 127.0.0.1:8000", 
+    "build": "vite build",
+    "docs:build": "mkdocs build --site-dir dist/docs",
+    "build:site": "yarn build && yarn docs:build",
+    "preview:site": "http-server dist",            
+
+    "dev:OLD": "vite & echo $! > .vite.pid",
+    "dev-stop:OLD": "kill $(cat .vite.pid 2>/dev/null) 2>/dev/null && rm -f .vite.pid || true",
+    "docs:dev:OLD": "mkdocs serve",
+    "build:OLD": "tsc -b && vite build",
+    "docs:build:OLD": "mkdocs build",
+
     "lint": "eslint",
     "format": "prettier --write .",
     "test": "vitest run",
@@ -24,9 +42,7 @@
     "prepare": "husky",
     "type-check": "tsc -p tsconfig.app.json --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
-    "types:generate": "tsc --declaration --emitDeclarationOnly --outDir types/generated",
-    "docs:dev": "mkdocs serve",
-    "docs:build": "mkdocs build"
+    "types:generate": "tsc --declaration --emitDeclarationOnly --outDir types/generated"
   },
   "dependencies": {},
   "devDependencies": {

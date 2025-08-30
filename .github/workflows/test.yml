@@ -1,9 +1,10 @@
 name: Comprehensive Testing
 
-on:
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
+# jpp - temp disable for other workflow development
+# on:
+#   pull_request:
+#     branches: [main]
+#   workflow_dispatch:
 
 jobs:
   test:
