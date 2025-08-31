@@ -653,7 +653,7 @@ function init_alphabet_subtoolbar() {
     var alphaButton = alphaselect[i];
     alphaButton.addEventListener("mousedown", function (ev) {
       reset_ranges();
-      src = ev.srcElement || ev.target;
+      var src = ev.srcElement || ev.target;
       // if button has no child, it's a blank button -> do nothing.
       if (src.firstChild == null) {
         console.log("empty button, no-op.");
