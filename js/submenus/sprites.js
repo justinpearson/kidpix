@@ -2,16 +2,16 @@ KiddoPaint.Submenu.sprites = [];
 
 KiddoPaint.Sprite.sheetPage = 0;
 KiddoPaint.Sprite.sheets = [
-  "./src/assets/img/kidpix-spritesheet-0.png",
-  "./src/assets/img/kidpix-spritesheet-0b.png",
-  "./src/assets/img/kidpix-spritesheet-1.png",
-  "./src/assets/img/kidpix-spritesheet-2.png",
-  "./src/assets/img/kidpix-spritesheet-3.png",
-  "./src/assets/img/kidpix-spritesheet-4.png",
-  "./src/assets/img/kidpix-spritesheet-5.png",
-  "./src/assets/img/kidpix-spritesheet-6.png",
-  "./src/assets/img/kidpix-spritesheet-7.png",
-  "./src/assets/img/kidpix-spritesheet-8.png",
+  "img/kidpix-spritesheet-0.png",
+  "img/kidpix-spritesheet-0b.png",
+  "img/kidpix-spritesheet-1.png",
+  "img/kidpix-spritesheet-2.png",
+  "img/kidpix-spritesheet-3.png",
+  "img/kidpix-spritesheet-4.png",
+  "img/kidpix-spritesheet-5.png",
+  "img/kidpix-spritesheet-6.png",
+  "img/kidpix-spritesheet-7.png",
+  "img/kidpix-spritesheet-8.png",
 ];
 
 KiddoPaint.Sprite.nextSprite = function () {

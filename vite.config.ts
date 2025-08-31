@@ -11,8 +11,8 @@ export default defineConfig({
     }),
   ],
   // base: process.env.NODE_ENV === "production" ? "/kidpix/" : "/", // OLD
-  base: '/kidpix/', // NEW, TESTING
-  publicDir: false, // Don't copy files automatically, they're already referenced
+  base: process.env.NODE_ENV === "production" ? "/kidpix/" : "/",
+  publicDir: "src/assets", // Copy src/assets to build output
   server: {
     port: 5173,
     open: true,

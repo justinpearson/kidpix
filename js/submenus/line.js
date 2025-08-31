@@ -1,42 +1,42 @@
 KiddoPaint.Submenu.line = [
   {
     name: "Size 1",
-    imgSrc: "./src/assets/img/pw1.png",
+    imgSrc: "img/pw1.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 1;
     },
   },
   {
     name: "Size 5",
-    imgSrc: "./src/assets/img/pw2.png",
+    imgSrc: "img/pw2.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 5;
     },
   },
   {
     name: "Size 10",
-    imgSrc: "./src/assets/img/pw3.png",
+    imgSrc: "img/pw3.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 9;
     },
   },
   {
     name: "Size 25",
-    imgSrc: "./src/assets/img/pw4.png",
+    imgSrc: "img/pw4.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 13;
     },
   },
   {
     name: "Size 100",
-    imgSrc: "./src/assets/img/pw5.png",
+    imgSrc: "img/pw5.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 17;
     },
   },
   {
     name: "Size 100",
-    imgSrc: "./src/assets/img/pw6.png",
+    imgSrc: "img/pw6.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 25;
     },
@@ -292,7 +292,7 @@ KiddoPaint.Submenu.line = [
   },
   {
     name: "Rainbow",
-    imgSrc: "./src/assets/img/tool-unknown.png",
+    imgSrc: "img/tool-unknown.png",
     handler: function () {
       KiddoPaint.Tools.Line.stomp = false;
       KiddoPaint.Tools.Line.texture = function () {
