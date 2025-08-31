@@ -234,7 +234,7 @@ KiddoPaint.Submenu.circle = [
   },
   {
     name: "Texture ?",
-    imgSrc: "img/tool-unknown.png",
+    imgSrc: "img/rainbow-icon.png",
     handler: function () {
       KiddoPaint.Tools.Circle.texture = function (start, end) {
         return KiddoPaint.Textures.RainbowGrad(start, end);

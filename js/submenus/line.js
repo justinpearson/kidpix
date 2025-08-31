@@ -292,7 +292,7 @@ KiddoPaint.Submenu.line = [
   },
   {
     name: "Rainbow",
-    imgSrc: "img/tool-unknown.png",
+    imgSrc: "img/rainbow-icon.png",
     handler: function () {
       KiddoPaint.Tools.Line.stomp = false;
       KiddoPaint.Tools.Line.texture = function () {

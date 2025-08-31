@@ -271,7 +271,7 @@ KiddoPaint.Submenu.pencil = [
 
   {
     name: "Rainbow",
-    imgSrc: "img/tool-unknown.png",
+    imgSrc: "img/rainbow-icon.png",
     handler: function () {
       var hue = 0;
       KiddoPaint.Tools.Pencil.texture = function (color) {
