@@ -1,35 +1,10 @@
 backlog
 
 
-- Change "size" -> "thickness" naming in code: 
-  - the basic drawing tools (pencil, line, oval, rectangle) have a sub-tool called "size" to specify the thickness of the line. I think "thickness" would be more descriptive. Update the code to use the terminology "thickness" instead of "size".
-
-- Add thickness subtool for Circle & Square
-  - How hard would it be to add a "size" (aka thickness) sub-tool to Circle and Square tools, like we have for Pencil and Line? It would be nice for consistency if the user could pick the thickness of the circle / square.
 
 
-- Rename "Circle" / "Square" to "Oval" / "Rectangle" in code
-  - The UI has tools Oval and Rectangle, but in the code, they're called Circle and Square. For consistency with the UI, rename the code to use the terminology 'oval' and 'rectangle'.
 
-- Consistent naming of "Pencil"
-  - the 'pencil' tool should be called 'pencil' in the files and the code, not 'pen' or 'wacky pencil' or anything like that.
-  - eg: 
-    - rename 'pixelpencil.js' to just pencil.js
-    - rename 'Wacky Pencil' to just 'Pencil' in hovertext, docs, comments, etc.
-    - do you see any problems with this? like name collisions with some existing Pencil / pencil?
 
-- Simplify tool names, eg, "The Undo Guy" -> "Undo"
-  - Rename these tools:
-    - In the UI:
-      - Wacky Pencil -> Pencil
-      - Oval -> Circle
-      - Wacky Brush -> Brush
-      - Electric Mixer -> Mixer
-      - Rubber Stamps -> Stamp
-      - Moving Van -> Truck
-      - The Undo Guy -> Undo
-      - The Redo Guy -> Redo
-    - Also update docs accordingly: README, docs/*
 
 
 - Remove most modifier keys
@@ -48,8 +23,6 @@ backlog
 
 
 
-- "Rainbow" texture
-  - in the pen, line, etc tools, the last texture is called "Rainbow", but its icon is a question mark (./src/assets/img/tool-unknown.png). Replace with /Users/justin/Projects/KidPix/kidpix/rainbow-icon.png
 
 - Remember last tool, subtool, color
   - save last selected color palette & color, load on page-load time.
@@ -57,26 +30,8 @@ backlog
   - each tool should remember the last sub-tool(s) that were selected, and load them when you click on the tool.
 
 
-- Remove Rubber Stamp's alternative stamps 
-  - "Kid Pix Sticker 1", etc that show up sometimes. That is confusing. Remove it.
 
-
-- Remove Text's dangling empty subtools
-  - The "Text" tool has 3 sub-tools: letters, numbers, and symbols. 
-  - Currently, for easy implementation, each sub-tool list is the same length (30 I think), which is dictated by the longest sub-tool list (symbols). But that results in empty squares for the other sub-tool lists.
-  - Improve this implementation so that each sub-tool list doesn't have those empty squares. That is, for each sub-tool, the number of squares should equal the number of sub-tools.
-
-
-- Add Search Bar to Stamp
-  - problem: in the "Stamp" tool, it's very hard to find the stamp i want. There are ~10 pages, with ~8 rows per page, with ~10 stamps per row.
-  - solution: add a search bar for stamps that filters down the list of stamps. Each stamp will need to be named.
-  - consider moving from "stamp sheets" to individual png files, for simplicity. If there's too many network reqs as a result, maybe there's some way to zip / bundle them at build-time.
 
 - Add color picker
   - to make it easier to match colors, add a little eyedropper color picker under the color palette left-bar.
 
-- Update Credits
-  - Change the "github" icon's link to point to https://github.com/justinpearson/kidpix, and change the "twitter" icon to be a "wireframe globe" icon that points to https://justinppearson.com/ .
-
-- Default color palette
-  - Change the default color palette at page-load time to be index 0 -- the one with all the primary colors.
