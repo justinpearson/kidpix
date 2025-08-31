@@ -234,7 +234,7 @@ KiddoPaint.Submenu.square = [
   },
   {
     name: "Texture ?",
-    imgSrc: "./src/assets/img/tool-unknown.png",
+    imgSrc: "img/tool-unknown.png",
     handler: function () {
       KiddoPaint.Tools.Square.texture = function (start, end) {
         return KiddoPaint.Textures.RainbowGrad(start, end);

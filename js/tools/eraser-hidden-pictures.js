@@ -1,18 +1,18 @@
 KiddoPaint.Tools.Toolbox.EraserHiddenPicture = function () {
   var tool = this;
   this.hiddenPictures = [
-    "./src/assets/img/kp-h-bear.png",
-    "./src/assets/img/kp-h-bison.png",
-    "./src/assets/img/kp-h-corn.png",
-    "./src/assets/img/kp-h-eye.png",
-    "./src/assets/img/kp-h-fox.png",
-    "./src/assets/img/kp-h-horse.png",
-    "./src/assets/img/kp-h-hummingbird.png",
-    "./src/assets/img/kp-h-ladybug.png",
-    "./src/assets/img/kp-h-lion.png",
-    "./src/assets/img/kp-h-magnet.png",
-    "./src/assets/img/kp-h-moth.png",
-    "./src/assets/img/kp-h-octopus.png",
+    "img/kp-h-bear.png",
+    "img/kp-h-bison.png",
+    "img/kp-h-corn.png",
+    "img/kp-h-eye.png",
+    "img/kp-h-fox.png",
+    "img/kp-h-horse.png",
+    "img/kp-h-hummingbird.png",
+    "img/kp-h-ladybug.png",
+    "img/kp-h-lion.png",
+    "img/kp-h-magnet.png",
+    "img/kp-h-moth.png",
+    "img/kp-h-octopus.png",
   ];
   this.isDown = false;
   this.size = 32;
