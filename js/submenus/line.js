@@ -1,41 +1,41 @@
 KiddoPaint.Submenu.line = [
   {
-    name: "Size 1",
+    name: "Thickness 1",
     imgSrc: "img/pw1.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 1;
     },
   },
   {
-    name: "Size 5",
+    name: "Thickness 5",
     imgSrc: "img/pw2.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 5;
     },
   },
   {
-    name: "Size 10",
+    name: "Thickness 10",
     imgSrc: "img/pw3.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 9;
     },
   },
   {
-    name: "Size 25",
+    name: "Thickness 25",
     imgSrc: "img/pw4.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 13;
     },
   },
   {
-    name: "Size 100",
+    name: "Thickness 100",
     imgSrc: "img/pw5.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 17;
     },
   },
   {
-    name: "Size 100",
+    name: "Thickness 100",
     imgSrc: "img/pw6.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 25;
