@@ -27,7 +27,9 @@
       "Bash(yarn format:*)",
       "Bash(mkdocs build:*)",
       "Bash(npx playwright test:*)",
-      "Bash(yarn dev)"
+      "Bash(yarn dev)",
+      "Bash(git add:*)",
+      "Bash(yarn docs:build:*)"
     ],
     "deny": []
   }
