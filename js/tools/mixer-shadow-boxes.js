@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.WackyMixerShadowBoxes = function () {
+KiddoPaint.Tools.Toolbox.MixerShadowBoxes = function () {
   var tool = this;
   this.isDown = false;
   this.animInterval = 50;
@@ -71,5 +71,5 @@ KiddoPaint.Tools.Toolbox.WackyMixerShadowBoxes = function () {
     }
   };
 };
-KiddoPaint.Tools.WackyMixerShadowBoxes =
-  new KiddoPaint.Tools.Toolbox.WackyMixerShadowBoxes();
+KiddoPaint.Tools.MixerShadowBoxes =
+  new KiddoPaint.Tools.Toolbox.MixerShadowBoxes();

@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.ElectricMixerPip = function () {
+KiddoPaint.Tools.Toolbox.MixerPip = function () {
   var tool = this;
   this.isDown = false;
 
@@ -28,9 +28,8 @@ KiddoPaint.Tools.Toolbox.ElectricMixerPip = function () {
         height: KiddoPaint.Display.canvas.width / 5.0,
       };
       KiddoPaint.Current.tool = KiddoPaint.Tools.Placer;
-      KiddoPaint.Tools.Placer.prevTool = KiddoPaint.Tools.ElectricMixerPip;
+      KiddoPaint.Tools.Placer.prevTool = KiddoPaint.Tools.MixerPip;
     }
   };
 };
-KiddoPaint.Tools.ElectricMixerPip =
-  new KiddoPaint.Tools.Toolbox.ElectricMixerPip();
+KiddoPaint.Tools.MixerPip = new KiddoPaint.Tools.Toolbox.MixerPip();

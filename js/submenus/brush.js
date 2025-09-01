@@ -1,4 +1,4 @@
-KiddoPaint.Submenu.wackybrush = [
+KiddoPaint.Submenu.brush = [
   {
     name: "Leaky Pen",
     imgSrc: "img/tool-menu-wacky-brush-70.png",

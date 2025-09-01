@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.WackyMixerWallpaper = function () {
+KiddoPaint.Tools.Toolbox.MixerWallpaper = function () {
   var tool = this;
   this.isDown = false;
   this.animInterval = 50;
@@ -78,5 +78,4 @@ KiddoPaint.Tools.Toolbox.WackyMixerWallpaper = function () {
     }
   };
 };
-KiddoPaint.Tools.WackyMixerWallpaper =
-  new KiddoPaint.Tools.Toolbox.WackyMixerWallpaper();
+KiddoPaint.Tools.MixerWallpaper = new KiddoPaint.Tools.Toolbox.MixerWallpaper();

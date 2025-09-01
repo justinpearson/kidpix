@@ -464,10 +464,10 @@ function init_tool_bar() {
     highlightSelectedTool("brush");
     KiddoPaint.Sounds.mainmenu();
     reset_ranges();
-    show_generic_submenu("wackybrush");
-    KiddoPaint.Submenu.wackybrush[0].handler();
+    show_generic_submenu("brush");
+    KiddoPaint.Submenu.brush[0].handler();
 
-    // Highlight default wacky brush subtool
+    // Highlight default brush subtool
     setTimeout(function () {
       var buttons = document
         .getElementById("genericsubmenu")

@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.ElectricMixerInvert = function () {
+KiddoPaint.Tools.Toolbox.MixerInverter = function () {
   var tool = this;
   this.isDown = false;
   this.leftside = {};
@@ -72,5 +72,4 @@ KiddoPaint.Tools.Toolbox.ElectricMixerInvert = function () {
     }
   };
 };
-KiddoPaint.Tools.ElectricMixerInvert =
-  new KiddoPaint.Tools.Toolbox.ElectricMixerInvert();
+KiddoPaint.Tools.MixerInverter = new KiddoPaint.Tools.Toolbox.MixerInverter();

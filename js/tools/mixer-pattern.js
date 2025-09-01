@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.WackyMixerPattern = function () {
+KiddoPaint.Tools.Toolbox.MixerPattern = function () {
   var tool = this;
   this.patternImages = [
     "img/kidpix-mixer-pattern-206.png",
@@ -51,5 +51,4 @@ KiddoPaint.Tools.Toolbox.WackyMixerPattern = function () {
   this.mousemove = function (ev) {};
   this.mouseup = function (ev) {};
 };
-KiddoPaint.Tools.WackyMixerPattern =
-  new KiddoPaint.Tools.Toolbox.WackyMixerPattern();
+KiddoPaint.Tools.MixerPattern = new KiddoPaint.Tools.Toolbox.MixerPattern();

@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.WackyMixerCheckerboard = function () {
+KiddoPaint.Tools.Toolbox.MixerCheckerboard = function () {
   var tool = this;
 
   this.mousedown = function (ev) {
@@ -17,5 +17,5 @@ KiddoPaint.Tools.Toolbox.WackyMixerCheckerboard = function () {
 
   this.mouseup = function (ev) {};
 };
-KiddoPaint.Tools.WackyMixerCheckerboard =
-  new KiddoPaint.Tools.Toolbox.WackyMixerCheckerboard();
+KiddoPaint.Tools.MixerCheckerboard =
+  new KiddoPaint.Tools.Toolbox.MixerCheckerboard();
