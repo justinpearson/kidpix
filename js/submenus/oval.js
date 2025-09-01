@@ -1,5 +1,54 @@
 KiddoPaint.Submenu.oval = [
   {
+    name: "Thickness 1",
+    imgSrc: "img/pw1.png",
+    handler: function () {
+      KiddoPaint.Tools.Oval.thickness = 1;
+    },
+  },
+  {
+    name: "Thickness 2",
+    imgSrc: "img/pw2.png",
+    handler: function () {
+      KiddoPaint.Tools.Oval.thickness = 2;
+    },
+  },
+  {
+    name: "Thickness 3",
+    imgSrc: "img/pw3.png",
+    handler: function () {
+      KiddoPaint.Tools.Oval.thickness = 3;
+    },
+  },
+  {
+    name: "Thickness 5",
+    imgSrc: "img/pw4.png",
+    handler: function () {
+      KiddoPaint.Tools.Oval.thickness = 5;
+    },
+  },
+  {
+    name: "Thickness 8",
+    imgSrc: "img/pw5.png",
+    handler: function () {
+      KiddoPaint.Tools.Oval.thickness = 8;
+    },
+  },
+  {
+    name: "Thickness 12",
+    imgSrc: "img/pw6.png",
+    handler: function () {
+      KiddoPaint.Tools.Oval.thickness = 12;
+    },
+  },
+
+  {
+    name: "spacer",
+    invisible: true,
+    handler: true,
+  },
+
+  {
     name: "Texture 1",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.None);
