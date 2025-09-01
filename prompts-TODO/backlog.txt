@@ -1,40 +1,16 @@
 backlog
 
 
-- Change "size" -> "thickness" naming in code: 
-  - the basic drawing tools (pencil, line, oval, rectangle) have a sub-tool called "size" to specify the thickness of the line. I think "thickness" would be more descriptive. Update the code to use the terminology "thickness" instead of "size".
 
-- Add thickness subtool for Circle & Square
-  - How hard would it be to add a "size" (aka thickness) sub-tool to Circle and Square tools, like we have for Pencil and Line? It would be nice for consistency if the user could pick the thickness of the circle / square.
+- The "Paint Can" tool is named "Flood" in the code (eg, KiddoPaint.Tools.Flood). Let's make the code match the UI by renaming the flood-based terms to paint-can everywhere in the code. When we're done, there should be no "flood" in the codebase. Let's start by finding all instances of "flood" and drafting a plan for how to rename these instances.
 
 
-- Rename "Circle" / "Square" to "Oval" / "Rectangle" in code
-  - The UI has tools Oval and Rectangle, but in the code, they're called Circle and Square. For consistency with the UI, rename the code to use the terminology 'oval' and 'rectangle'.
 
-- Consistent naming of "Pencil"
-  - the 'pencil' tool should be called 'pencil' in the files and the code, not 'pen' or 'wacky pencil' or anything like that.
-  - eg: 
-    - rename 'pixelpencil.js' to just pencil.js
-    - rename 'Wacky Pencil' to just 'Pencil' in hovertext, docs, comments, etc.
-    - do you see any problems with this? like name collisions with some existing Pencil / pencil?
+- Consider what to do with modifier keys
 
-- Simplify tool names, eg, "The Undo Guy" -> "Undo"
-  - Rename these tools:
-    - In the UI:
-      - Wacky Pencil -> Pencil
-      - Oval -> Circle
-      - Wacky Brush -> Brush
-      - Electric Mixer -> Mixer
-      - Rubber Stamps -> Stamp
-      - Moving Van -> Truck
-      - The Undo Guy -> Undo
-      - The Redo Guy -> Redo
-    - Also update docs accordingly: README, docs/*
-
-
-- Remove most modifier keys
-  - Review the code to see how modifier keys like SHIFT, CTRL, META, ALT are used.
   - For simplicity for small children, I feel that most of the modifier-key functionality should be removed.
+  - Maybe also remove keyboard shortcuts too, see kiddopaint.js line 200 "document.onkeydown = function checkKey(e) { ..."
+  - Review the code to see how modifier keys like SHIFT, CTRL, META, ALT are used.
   - but for circle, i like:
     - no modifier keys: 2 pts are opposite sides of circle
     - shift: first click is center of circle
@@ -46,10 +22,68 @@ backlog
       - currently, holding 'shift' achieves this. just move that logic to happen when 'ctrl' is held, not 'shift'. 
   - line: maybe we should have some mod key to snap to 45-deg angles, or smt.
 
+  - options:
+    - remove all code that checks modifiedCtrl etc -- kind of a shame to lose some of those cute features / options
+    - disable all keyboard shortcuts for now, at a high level, can consider adding them back later.
 
 
-- "Rainbow" texture
-  - in the pen, line, etc tools, the last texture is called "Rainbow", but its icon is a question mark (./src/assets/img/tool-unknown.png). Replace with /Users/justin/Projects/KidPix/kidpix/rainbow-icon.png
+modifier key usage:
+
+
+  Functions triggered by Command key (modifiedCtrl) on macOS:
+
+  Main Uses:
+  1. Secret stickers: Shows stickers submenu when Cmd+clicking Rubber Stamps
+  2. Scroll wheel range: Command+scroll adjusts modifiedCtrlRange (-100 to +100)
+
+  Drawing Effects:
+  3. Pentagon brush: Uses different pentagon vs. sine wave pattern
+  4. Sprite placer: 3x size multiplier when placing sprites5. Square tool: Disables stroke outline (fill only)
+  6. Circle tool: Disables stroke outline (fill only)
+  7. Astroid tool: Alternating colors between current and alt color
+  8. 3D tool: Changes texture to speckles
+  9. Texture (Stripes): Changes stripe pattern dimensions
+  10. Whole canvas dither effect: Uses Bayer dithering with threshold
+  11. Cut/Truck tool: Uses command range for size scaling
+  12. Stamp tool: Uses command range for hue shifting
+
+
+
+  Functions triggered by Control key (keyCode 17) on macOS:
+
+  Brush Effects:
+  - Pies brush: Adds stroke outline
+  - Circles brush: Changes to random circles
+  - Connect-the-dots & Twirly brushes: Uses cycling colors instead of current color
+  - Pentagon brush: Uses cycling colors
+  - Following Sine brush: Uses cycling colors
+  - Triangles brush: Changes triangle type
+  - Animal tracks brush: Changes from paw prints (🐾) to footprints (👣)
+  - Spray brush: Adds transparency/alpha effects
+
+  Drawing Tools:
+  - Pencil Rainbow texture: Activates full rainbow mode
+  - Circle tool: Creates perfect circles from center point (vs. ellipses from corner)
+  - Astroid tool: Uses random colors for stroke
+  - Scribble tool: Increases jitter from 10 to 25
+
+  Advanced Tools:
+  - Stamp tool: Modifier for stamp behavior
+  - Sprite placer: Modifier for sprite placement
+  - Cut/Truck tool: Disables preview mode, goes straight to cutting
+  - TNT tool: Hidden feature to block completion
+  - Shadow boxes mixer: Uses random colors for shadows
+  - Dither effect: Changes to Atkinson dithering
+  - Guilloche tool: Enables fill rectangles
+  - 3D tool: Changes texture to sand
+  - Looper tool: Uses random colors instead of current color
+
+
+  TODO: investigate usage of shift & alt/option
+
+
+
+
 
 - Remember last tool, subtool, color
   - save last selected color palette & color, load on page-load time.
@@ -57,26 +91,8 @@ backlog
   - each tool should remember the last sub-tool(s) that were selected, and load them when you click on the tool.
 
 
-- Remove Rubber Stamp's alternative stamps 
-  - "Kid Pix Sticker 1", etc that show up sometimes. That is confusing. Remove it.
 
-
-- Remove Text's dangling empty subtools
-  - The "Text" tool has 3 sub-tools: letters, numbers, and symbols. 
-  - Currently, for easy implementation, each sub-tool list is the same length (30 I think), which is dictated by the longest sub-tool list (symbols). But that results in empty squares for the other sub-tool lists.
-  - Improve this implementation so that each sub-tool list doesn't have those empty squares. That is, for each sub-tool, the number of squares should equal the number of sub-tools.
-
-
-- Add Search Bar to Stamp
-  - problem: in the "Stamp" tool, it's very hard to find the stamp i want. There are ~10 pages, with ~8 rows per page, with ~10 stamps per row.
-  - solution: add a search bar for stamps that filters down the list of stamps. Each stamp will need to be named.
-  - consider moving from "stamp sheets" to individual png files, for simplicity. If there's too many network reqs as a result, maybe there's some way to zip / bundle them at build-time.
 
 - Add color picker
   - to make it easier to match colors, add a little eyedropper color picker under the color palette left-bar.
 
-- Update Credits
-  - Change the "github" icon's link to point to https://github.com/justinpearson/kidpix, and change the "twitter" icon to be a "wireframe globe" icon that points to https://justinppearson.com/ .
-
-- Default color palette
-  - Change the default color palette at page-load time to be index 0 -- the one with all the primary colors.

@@ -94,7 +94,7 @@ KiddoPaint.Textures.PartialArtifactAlias = function (color1) {
 };
 
 KiddoPaint.Textures.RSolid = function () {
-  color1 = KiddoPaint.Colors.randomAllColor();
+  var color1 = KiddoPaint.Colors.randomAllColor();
   //color1 = KiddoPaint.Colors.randomColor();
   return KiddoPaint.Textures.Solid(color1);
 };

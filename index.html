@@ -42,7 +42,7 @@
       window.KiddoPaint.Colors = {};
       window.KiddoPaint.Current = {};
       window.KiddoPaint.Cache = {};
-      window.KiddoPaint.Alphabet = {};
+      window.KiddoPaint.Text = {};
       window.KiddoPaint.Sprite = {};
     </script>
 
@@ -105,7 +105,7 @@
             <button class="tool" id="save" title="Save">
               <img src="./src/assets/img/kp-m_27.png" class="pixelated" />
             </button>
-            <button class="tool" id="pencil" title="Wacky Pencil">
+            <button class="tool" id="pencil" title="Pencil">
               <img
                 src="./src/assets/img/kp-m_28.png"
                 class="pixelated"
@@ -129,7 +129,7 @@
                 height="48"
               />
             </button>
-            <button class="tool" id="circle" title="Oval">
+            <button class="tool" id="circle" title="Circle">
               <img
                 src="./src/assets/img/kp-m_31.png"
                 class="pixelated"
@@ -137,7 +137,7 @@
                 height="48"
               />
             </button>
-            <button class="tool" id="brush" title="Wacky Brush">
+            <button class="tool" id="brush" title="Brush">
               <img
                 src="./src/assets/img/kp-m_32.png"
                 class="pixelated"
@@ -145,7 +145,7 @@
                 height="48"
               />
             </button>
-            <button class="tool" id="jumble" title="Electric Mixer">
+            <button class="tool" id="jumble" title="Mixer">
               <img
                 src="./src/assets/img/kp-m_33.png"
                 class="pixelated"
@@ -169,7 +169,7 @@
                 height="48"
               />
             </button>
-            <button class="tool" id="alphabet" title="Text">
+            <button class="tool" id="text" title="Text">
               <img
                 src="./src/assets/img/kp-m_36.png"
                 class="pixelated"
@@ -177,7 +177,7 @@
                 height="48"
               />
             </button>
-            <button class="tool" id="stamp" title="Rubber Stamps">
+            <button class="tool" id="stamp" title="Stamp">
               <img
                 src="./src/assets/img/kp-m_37.png"
                 class="pixelated"
@@ -185,7 +185,7 @@
                 height="48"
               />
             </button>
-            <button class="tool" id="truck" title="Moving Van">
+            <button class="tool" id="truck" title="Truck">
               <img
                 src="./src/assets/img/kp-m_38.png"
                 class="pixelated"
@@ -193,7 +193,7 @@
                 height="48"
               />
             </button>
-            <button class="tool" id="undo" title="The Undo Guy">
+            <button class="tool" id="undo" title="Undo">
               <img
                 src="./src/assets/img/kp-m_39.png"
                 class="pixelated"
@@ -201,7 +201,7 @@
                 height="48"
               />
             </button>
-            <button class="tool" id="redo" title="The Redo Guy">
+            <button class="tool" id="redo" title="Redo">
               <img
                 src="./src/assets/img/kp-m_40.png"
                 class="pixelated"
@@ -238,17 +238,23 @@
             <br />
             <div>
               <button class="colornav">
-                <a href="https://github.com/vikrum/" target="_blank"
+                <a
+                  href="https://github.com/justinpearson/kidpix"
+                  target="_blank"
                   ><img
                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMGMtNi42MjYgMC0xMiA1LjM3My0xMiAxMiAwIDUuMzAyIDMuNDM4IDkuOCA4LjIwNyAxMS4zODcuNTk5LjExMS43OTMtLjI2MS43OTMtLjU3N3YtMi4yMzRjLTMuMzM4LjcyNi00LjAzMy0xLjQxNi00LjAzMy0xLjQxNi0uNTQ2LTEuMzg3LTEuMzMzLTEuNzU2LTEuMzMzLTEuNzU2LTEuMDg5LS43NDUuMDgzLS43MjkuMDgzLS43MjkgMS4yMDUuMDg0IDEuODM5IDEuMjM3IDEuODM5IDEuMjM3IDEuMDcgMS44MzQgMi44MDcgMS4zMDQgMy40OTIuOTk3LjEwNy0uNzc1LjQxOC0xLjMwNS43NjItMS42MDQtMi42NjUtLjMwNS01LjQ2Ny0xLjMzNC01LjQ2Ny01LjkzMSAwLTEuMzExLjQ2OS0yLjM4MSAxLjIzNi0zLjIyMS0uMTI0LS4zMDMtLjUzNS0xLjUyNC4xMTctMy4xNzYgMCAwIDEuMDA4LS4zMjIgMy4zMDEgMS4yMy45NTctLjI2NiAxLjk4My0uMzk5IDMuMDAzLS40MDQgMS4wMi4wMDUgMi4wNDcuMTM4IDMuMDA2LjQwNCAyLjI5MS0xLjU1MiAzLjI5Ny0xLjIzIDMuMjk3LTEuMjMuNjUzIDEuNjUzLjI0MiAyLjg3NC4xMTggMy4xNzYuNzcuODQgMS4yMzUgMS45MTEgMS4yMzUgMy4yMjEgMCA0LjYwOS0yLjgwNyA1LjYyNC01LjQ3OSA1LjkyMS40My4zNzIuODIzIDEuMTAyLjgyMyAyLjIyMnYzLjI5M2MwIC4zMTkuMTkyLjY5NC44MDEuNTc2IDQuNzY1LTEuNTg5IDguMTk5LTYuMDg2IDguMTk5LTExLjM4NiAwLTYuNjI3LTUuMzczLTEyLTEyLTEyeiIvPjwvc3ZnPg=="
                     class="github"
                 /></a></button
               ><button class="colornav">
-                <a
-                  href="https://twitter.com/vikrum5000/status/1423014244644122627"
-                  target="_blank"
+                <a href="https://justinppearson.com/" target="_blank"
                   ><img
-                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNC41NTdjLS44ODMuMzkyLTEuODMyLjY1Ni0yLjgyOC43NzUgMS4wMTctLjYwOSAxLjc5OC0xLjU3NCAyLjE2NS0yLjcyNC0uOTUxLjU2NC0yLjAwNS45NzQtMy4xMjcgMS4xOTUtLjg5Ny0uOTU3LTIuMTc4LTEuNTU1LTMuNTk0LTEuNTU1LTMuMTc5IDAtNS41MTUgMi45NjYtNC43OTcgNi4wNDUtNC4wOTEtLjIwNS03LjcxOS0yLjE2NS0xMC4xNDgtNS4xNDQtMS4yOSAyLjIxMy0uNjY5IDUuMTA4IDEuNTIzIDYuNTc0LS44MDYtLjAyNi0xLjU2Ni0uMjQ3LTIuMjI5LS42MTYtLjA1NCAyLjI4MSAxLjU4MSA0LjQxNSAzLjk0OSA0Ljg5LS42OTMuMTg4LTEuNDUyLjIzMi0yLjIyNC4wODQuNjI2IDEuOTU2IDIuNDQ0IDMuMzc5IDQuNiAzLjQxOS0yLjA3IDEuNjIzLTQuNjc4IDIuMzQ4LTcuMjkgMi4wNCAyLjE3OSAxLjM5NyA0Ljc2OCAyLjIxMiA3LjU0OCAyLjIxMiA5LjE0MiAwIDE0LjMwNy03LjcyMSAxMy45OTUtMTQuNjQ2Ljk2Mi0uNjk1IDEuNzk3LTEuNTYyIDIuNDU3LTIuNTQ5eiIvPjwvc3ZnPg=="
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxsaW5lIHgxPSIyIiB5MT0iMTIiIHgyPSIyMiIgeTI9IjEyIi8+PGxpbmUgeDE9IjEyIiB5MT0iMiIgeDI9IjEyIiB5Mj0iMjIiLz48cGF0aCBkPSJNMTIgMmMtMyAwLTUuNSA0LjUtNS41IDEwczIuNSAxMCA1LjUgMTAiLz48cGF0aCBkPSJNMTIgMmMzIDAgNS41IDQuNSA1LjUgMTBzLTIuNSAxMC01LjUgMTAiLz48L3N2Zz4="
+                    class="github"
+                /></a></button
+              ><button class="colornav">
+                <a href="/docs/" target="_blank"
+                  ><img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIj48cGF0aCBkPSJNMTQgMmwtNiAwYy0xIDAtMiAxLTIgMnYxNmMwIDEgMSAyIDIgMmgxMmMxIDAgMi0xIDItMlY4bC02LTZ6Ii8+PHBvbHlsaW5lIHBvaW50cz0iMTQsMiAxNCw4IDIwLDgiLz48bGluZSB4MT0iMTYiIHkxPSIxMyIgeDI9IjgiIHkyPSIxMyIvPjxsaW5lIHgxPSIxNiIgeTE9IjE3IiB4Mj0iOCIgeTI9IjE3Ii8+PC9zdmc+"
                     class="github"
                 /></a>
               </button>
@@ -258,38 +264,38 @@
         <div id="hcontainer">
           <div id="subtoolbars" class="subtoolbar">
             <div id="genericsubmenu" class="hidden"></div>
-            <div id="alphabettoolbar" class="hidden">
-              <button class="tool alphabet" id="xal0"></button>
-              <button class="tool alphabet" id="xal1"></button>
-              <button class="tool alphabet" id="xal2"></button>
-              <button class="tool alphabet" id="xal3"></button>
-              <button class="tool alphabet" id="xal4"></button>
-              <button class="tool alphabet" id="xal5"></button>
-              <button class="tool alphabet" id="xal6"></button>
-              <button class="tool alphabet" id="xal7"></button>
-              <button class="tool alphabet" id="xal8"></button>
-              <button class="tool alphabet" id="xal9"></button>
-              <button class="tool alphabet" id="xal10"></button>
-              <button class="tool alphabet" id="xal11"></button>
-              <button class="tool alphabet" id="xal12"></button>
-              <button class="tool alphabet" id="xal13"></button>
-              <button class="tool alphabet" id="xal14"></button>
-              <button class="tool alphabet" id="xal15"></button>
-              <button class="tool alphabet" id="xal16"></button>
-              <button class="tool alphabet" id="xal17"></button>
-              <button class="tool alphabet" id="xal18"></button>
-              <button class="tool alphabet" id="xal19"></button>
-              <button class="tool alphabet" id="xal20"></button>
-              <button class="tool alphabet" id="xal21"></button>
-              <button class="tool alphabet" id="xal22"></button>
-              <button class="tool alphabet" id="xal23"></button>
-              <button class="tool alphabet" id="xal24"></button>
-              <button class="tool alphabet" id="xal25"></button>
-              <button class="tool alphabet" id="xal26"></button>
-              <button class="tool alphabet" id="xal27"></button>
-              <button class="tool alphabet" id="xal28"></button>
-              <button class="tool alphabet" id="xal29"></button>
-              <button class="tool alphabet" id="alnext">
+            <div id="texttoolbar" class="hidden">
+              <button class="tool text" id="xal0"></button>
+              <button class="tool text" id="xal1"></button>
+              <button class="tool text" id="xal2"></button>
+              <button class="tool text" id="xal3"></button>
+              <button class="tool text" id="xal4"></button>
+              <button class="tool text" id="xal5"></button>
+              <button class="tool text" id="xal6"></button>
+              <button class="tool text" id="xal7"></button>
+              <button class="tool text" id="xal8"></button>
+              <button class="tool text" id="xal9"></button>
+              <button class="tool text" id="xal10"></button>
+              <button class="tool text" id="xal11"></button>
+              <button class="tool text" id="xal12"></button>
+              <button class="tool text" id="xal13"></button>
+              <button class="tool text" id="xal14"></button>
+              <button class="tool text" id="xal15"></button>
+              <button class="tool text" id="xal16"></button>
+              <button class="tool text" id="xal17"></button>
+              <button class="tool text" id="xal18"></button>
+              <button class="tool text" id="xal19"></button>
+              <button class="tool text" id="xal20"></button>
+              <button class="tool text" id="xal21"></button>
+              <button class="tool text" id="xal22"></button>
+              <button class="tool text" id="xal23"></button>
+              <button class="tool text" id="xal24"></button>
+              <button class="tool text" id="xal25"></button>
+              <button class="tool text" id="xal26"></button>
+              <button class="tool text" id="xal27"></button>
+              <button class="tool text" id="xal28"></button>
+              <button class="tool text" id="xal29"></button>
+              <button class="tool text" id="alnext">
                 <h1>↪</h1>
               </button>
             </div>

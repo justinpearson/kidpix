@@ -109,7 +109,7 @@ function init_kiddo_defaults() {
   KiddoPaint.Current.modifiedMeta = false;
   KiddoPaint.Current.modifiedTilde = false;
   KiddoPaint.Current.velToggle = false;
-  KiddoPaint.Alphabet.page = 1;
+  KiddoPaint.Text.page = 1;
   KiddoPaint.Stamps.page = 0;
   KiddoPaint.Sprite.page = 0;
   KiddoPaint.Current.multiplier = 1;
@@ -198,67 +198,84 @@ function init_listeners(canvas) {
   );
   canvas.addEventListener("drop", image_upload);
 
-  document.onkeydown = function checkKey(e) {
-    if (e.keyCode == 16) {
-      KiddoPaint.Current.scaling = 2;
-      KiddoPaint.Current.modified = true;
-    } else if (e.keyCode == 91 || e.keyCode == 93) {
-      KiddoPaint.Current.modifiedCtrl = true;
-    } else if (e.keyCode == 18) {
-      KiddoPaint.Current.modifiedAlt = true;
-    } else if (e.keyCode == 17) {
-      KiddoPaint.Current.modifiedMeta = true;
-    } else if (e.keyCode == 192) {
-      KiddoPaint.Current.modifiedTilde = true;
-    } else if (e.keyCode == 78) {
-      // n
-      var c = KiddoPaint.Colors.nextAllColor();
-      // keep them in sync
-      KiddoPaint.Current.color = c;
-      KiddoPaint.Current.altColor = c;
-      KiddoPaint.Current.terColor = c;
-      document.getElementById("currentColor").style = "background-color: " + c;
-    } else if (e.keyCode == 67) {
-      // c
-      KiddoPaint.Colors.nextPalette();
-      set_colors_to_current_palette();
-    } else if (e.keyCode == 82) {
-      // r
-      var c = KiddoPaint.Colors.randomAllColor();
-      KiddoPaint.Current.color = c;
-      document.getElementById("currentColor").style = "background-color: " + c;
-      KiddoPaint.Current.altColor = KiddoPaint.Colors.randomAllColor();
-      KiddoPaint.Current.terColor = KiddoPaint.Colors.randomAllColor();
-    } else if (e.keyCode == 83) {
-      save_to_file();
-    } else if (e.keyCode > 48 && e.keyCode < 58) {
-      KiddoPaint.Current.multiplier = e.keyCode - 48;
-    } else if (e.keyCode == 32) {
-      e.stopPropagation();
-      e.preventDefault();
-      KiddoPaint.Current.modifiedToggle = !KiddoPaint.Current.modifiedToggle;
-    } else if (e.keyCode == 86) {
-      KiddoPaint.Current.velToggle = !KiddoPaint.Current.velToggle;
-    } else if (e.ctrlKey && e.key === "z") {
-      KiddoPaint.Sounds.mainmenu();
-      KiddoPaint.Sounds.oops();
-      KiddoPaint.Display.undo(!KiddoPaint.Current.modifiedAlt);
-    }
-  };
-  document.onkeyup = function checkKey(e) {
-    if (e.keyCode == 16) {
-      KiddoPaint.Current.scaling = 1;
-      KiddoPaint.Current.modified = false;
-    } else if (e.keyCode == 91 || e.keyCode == 93) {
-      KiddoPaint.Current.modifiedCtrl = false;
-    } else if (e.keyCode == 17) {
-      KiddoPaint.Current.modifiedMeta = false;
-    } else if (e.keyCode == 192) {
-      KiddoPaint.Current.modifiedTilde = false;
-    } else if (e.keyCode == 18) {
-      KiddoPaint.Current.modifiedAlt = false;
-    }
-  };
+  // Keyboard shortcuts disabled for maximum simplicity
+  // All core drawing functionality remains available through UI buttons
+  // document.onkeydown = function checkKey(e) {
+  //   if (e.keyCode == 16) {
+  //     // Shift key
+  //     KiddoPaint.Current.scaling = 2;
+  //     KiddoPaint.Current.modified = true;
+  //   } else if (e.keyCode == 91 || e.keyCode == 93) {
+  //     // Left/Right Command key (⌘) on Mac
+  //     KiddoPaint.Current.modifiedCtrl = true;
+  //   } else if (e.keyCode == 18) {
+  //     // Alt/Option key
+  //     KiddoPaint.Current.modifiedAlt = true;
+  //   } else if (e.keyCode == 17) {
+  //     // Control key (actual Ctrl)
+  //     KiddoPaint.Current.modifiedMeta = true;
+  //   } else if (e.keyCode == 192) {
+  //     // Tilde key (~)
+  //     KiddoPaint.Current.modifiedTilde = true;
+  //   } else if (e.keyCode == 78) {
+  //     // 'n' key - cycle to next color
+  //     var c = KiddoPaint.Colors.nextAllColor();
+  //     // keep them in sync
+  //     KiddoPaint.Current.color = c;
+  //     KiddoPaint.Current.altColor = c;
+  //     KiddoPaint.Current.terColor = c;
+  //     document.getElementById("currentColor").style = "background-color: " + c;
+  //   } else if (e.keyCode == 67) {
+  //     // 'c' key - cycle to next color palette
+  //     KiddoPaint.Colors.nextPalette();
+  //     set_colors_to_current_palette();
+  //   } else if (e.keyCode == 82) {
+  //     // 'r' key - randomize colors
+  //     var c = KiddoPaint.Colors.randomAllColor();
+  //     KiddoPaint.Current.color = c;
+  //     document.getElementById("currentColor").style = "background-color: " + c;
+  //     KiddoPaint.Current.altColor = KiddoPaint.Colors.randomAllColor();
+  //     KiddoPaint.Current.terColor = KiddoPaint.Colors.randomAllColor();
+  //   } else if (e.keyCode == 83) {
+  //     // 's' key - save to file
+  //     save_to_file();
+  //   } else if (e.keyCode > 48 && e.keyCode < 58) {
+  //     // Number keys 1-9 - set multiplier
+  //     KiddoPaint.Current.multiplier = e.keyCode - 48;
+  //   } else if (e.keyCode == 32) {
+  //     // Spacebar - toggle modified state
+  //     e.stopPropagation();
+  //     e.preventDefault();
+  //     KiddoPaint.Current.modifiedToggle = !KiddoPaint.Current.modifiedToggle;
+  //   } else if (e.keyCode == 86) {
+  //     // 'v' key - toggle velocity state
+  //     KiddoPaint.Current.velToggle = !KiddoPaint.Current.velToggle;
+  //   } else if (e.ctrlKey && e.key === "z") {
+  //     // Ctrl+Z or Cmd+Z - undo
+  //     KiddoPaint.Sounds.mainmenu();
+  //     KiddoPaint.Sounds.oops();
+  //     KiddoPaint.Display.undo(!KiddoPaint.Current.modifiedAlt);
+  //   }
+  // };
+  // document.onkeyup = function checkKey(e) {
+  //   if (e.keyCode == 16) {
+  //     // Shift key released - reset scaling and modified state
+  //     KiddoPaint.Current.scaling = 1;
+  //     KiddoPaint.Current.modified = false;
+  //   } else if (e.keyCode == 91 || e.keyCode == 93) {
+  //     // Left/Right Command key (⌘) released on Mac
+  //     KiddoPaint.Current.modifiedCtrl = false;
+  //   } else if (e.keyCode == 17) {
+  //     // Control key (actual Ctrl) released
+  //     KiddoPaint.Current.modifiedMeta = false;
+  //   } else if (e.keyCode == 192) {
+  //     // Tilde key (~) released
+  //     KiddoPaint.Current.modifiedTilde = false;
+  //   } else if (e.keyCode == 18) {
+  //     // Alt/Option key released
+  //     KiddoPaint.Current.modifiedAlt = false;
+  //   }
+  // };
 }
 
 function colorSelect(e) {
@@ -339,7 +356,7 @@ function highlightSelectedTool(selectedToolId) {
   document.getElementById("circle").style = "";
   document.getElementById("brush").style = "";
   document.getElementById("stamp").style = "";
-  document.getElementById("alphabet").style = "";
+  document.getElementById("text").style = "";
   document.getElementById("flood").style = "";
   document.getElementById("eraser").style = "";
   document.getElementById("truck").style = "";
@@ -406,8 +423,8 @@ function init_tool_bar() {
   document.getElementById("square").addEventListener("mousedown", function () {
     highlightSelectedTool("square");
     KiddoPaint.Sounds.mainmenu();
-    show_generic_submenu("square");
-    KiddoPaint.Current.tool = KiddoPaint.Tools.Square;
+    show_generic_submenu("rectangle");
+    KiddoPaint.Current.tool = KiddoPaint.Tools.Rectangle;
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
 
@@ -416,9 +433,13 @@ function init_tool_bar() {
       var buttons = document
         .getElementById("genericsubmenu")
         .getElementsByTagName("button");
-      // Highlight default texture (None, index 0)
-      if (buttons[0]) {
-        buttons[0].style = "border-color:red; border-width: 5px";
+      // Highlight default thickness (Thickness 2, index 1)
+      if (buttons[1]) {
+        buttons[1].style = "border-color:red; border-width: 5px";
+      }
+      // Highlight default texture (None, index 7 after thickness controls)
+      if (buttons[7]) {
+        buttons[7].style = "border-color:red; border-width: 5px";
       }
     }, 0);
   });
@@ -426,8 +447,8 @@ function init_tool_bar() {
   document.getElementById("circle").addEventListener("mousedown", function () {
     highlightSelectedTool("circle");
     KiddoPaint.Sounds.mainmenu();
-    show_generic_submenu("circle");
-    KiddoPaint.Current.tool = KiddoPaint.Tools.Circle;
+    show_generic_submenu("oval");
+    KiddoPaint.Current.tool = KiddoPaint.Tools.Oval;
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
 
@@ -436,9 +457,13 @@ function init_tool_bar() {
       var buttons = document
         .getElementById("genericsubmenu")
         .getElementsByTagName("button");
-      // Highlight default texture (None, index 0)
-      if (buttons[0]) {
-        buttons[0].style = "border-color:red; border-width: 5px";
+      // Highlight default thickness (Thickness 2, index 1)
+      if (buttons[1]) {
+        buttons[1].style = "border-color:red; border-width: 5px";
+      }
+      // Highlight default texture (None, index 7 after thickness controls)
+      if (buttons[7]) {
+        buttons[7].style = "border-color:red; border-width: 5px";
       }
     }, 0);
   });
@@ -447,10 +472,10 @@ function init_tool_bar() {
     highlightSelectedTool("brush");
     KiddoPaint.Sounds.mainmenu();
     reset_ranges();
-    show_generic_submenu("wackybrush");
-    KiddoPaint.Submenu.wackybrush[0].handler();
+    show_generic_submenu("brush");
+    KiddoPaint.Submenu.brush[0].handler();
 
-    // Highlight default wacky brush subtool
+    // Highlight default brush subtool
     setTimeout(function () {
       var buttons = document
         .getElementById("genericsubmenu")
@@ -478,19 +503,17 @@ function init_tool_bar() {
     }
   });
 
-  document
-    .getElementById("alphabet")
-    .addEventListener("mousedown", function () {
-      highlightSelectedTool("alphabet");
-      KiddoPaint.Sounds.mainmenu();
-      init_alphabet_bar("character" + KiddoPaint.Alphabet.page);
-      show_sub_toolbar("alphabettoolbar");
-      KiddoPaint.Tools.Stamp.useColor = true;
-      KiddoPaint.Current.tool = KiddoPaint.Tools.Stamp;
-      KiddoPaint.Stamps.currentFace = KiddoPaint.Alphabet.english.face;
-      KiddoPaint.Display.canvas.classList = "";
-      KiddoPaint.Display.canvas.classList.add("cursor-none");
-    });
+  document.getElementById("text").addEventListener("mousedown", function () {
+    highlightSelectedTool("text");
+    KiddoPaint.Sounds.mainmenu();
+    init_text_bar("character" + KiddoPaint.Text.page);
+    show_sub_toolbar("texttoolbar");
+    KiddoPaint.Tools.Stamp.useColor = true;
+    KiddoPaint.Current.tool = KiddoPaint.Tools.Stamp;
+    KiddoPaint.Stamps.currentFace = KiddoPaint.Text.english.face;
+    KiddoPaint.Display.canvas.classList = "";
+    KiddoPaint.Display.canvas.classList.add("cursor-none");
+  });
 
   document.getElementById("flood").addEventListener("mousedown", function () {
     highlightSelectedTool("flood");
@@ -565,8 +588,8 @@ function init_tool_bar() {
 
   document.getElementById("alnext").addEventListener("mousedown", function () {
     KiddoPaint.Sounds.submenuoption();
-    KiddoPaint.Alphabet.nextPage();
-    init_alphabet_bar("character" + KiddoPaint.Alphabet.page);
+    KiddoPaint.Text.nextPage();
+    init_text_bar("character" + KiddoPaint.Text.page);
   });
 
   //    document.getElementById('stnext').addEventListener('mousedown', function(e) {
@@ -597,32 +620,34 @@ function init_tool_bar() {
   });
 }
 
-function init_alphabet_bar(alphabetgroup) {
-  var alphabettoolbar = KiddoPaint.Alphabet.english[alphabetgroup].letters;
+function init_text_bar(textgroup) {
+  var texttoolbar = KiddoPaint.Text.english[textgroup].letters;
   // first letter / number / symbol is selected when the bar is created:
-  KiddoPaint.Tools.Stamp.stamp = alphabettoolbar[0];
-  // clear out old buttons:
+  KiddoPaint.Tools.Stamp.stamp = texttoolbar[0];
+  // clear out old buttons and hide all initially:
   var alphaselect = document.querySelectorAll('*[id^="xal"]');
   for (var i = 0; i < alphaselect.length; i++) {
     var b = alphaselect[i];
-    // first letter is highlighted:
-    if (i == 0) {
-      b.style = "border-color:red; border-width: 5px";
-    } else {
-      b.style = "";
-    }
+    b.style = "display: none;"; // Hide all buttons initially
     b.removeAllChildren();
   }
-  // add new buttons:
-  for (var i = 0; i < alphabettoolbar.length; i++) {
-    var buttonValue = "<h1>" + alphabettoolbar[i] + "</h1>";
-    document.getElementById("xal" + i).innerHTML = buttonValue;
+  // add new buttons and show only the ones we need:
+  for (var i = 0; i < texttoolbar.length; i++) {
+    var buttonValue = "<h1>" + texttoolbar[i] + "</h1>";
+    var button = document.getElementById("xal" + i);
+    button.innerHTML = buttonValue;
+    // Show this button and apply appropriate styling
+    if (i == 0) {
+      button.style = "display: block; border-color:red; border-width: 5px";
+    } else {
+      button.style = "display: block;";
+    }
   }
 }
 
 function init_subtool_bars() {
   init_pencil_subtoolbar();
-  init_alphabet_subtoolbar();
+  init_text_subtoolbar();
 }
 
 function init_pencil_subtoolbar() {
@@ -647,13 +672,13 @@ function init_pencil_subtoolbar() {
   }, 0);
 }
 
-function init_alphabet_subtoolbar() {
+function init_text_subtoolbar() {
   var alphaselect = document.querySelectorAll('*[id^="xal"]');
   for (var i = 0; i < alphaselect.length; i++) {
     var alphaButton = alphaselect[i];
     alphaButton.addEventListener("mousedown", function (ev) {
       reset_ranges();
-      src = ev.srcElement || ev.target;
+      var src = ev.srcElement || ev.target;
       // if button has no child, it's a blank button -> do nothing.
       if (src.firstChild == null) {
         console.log("empty button, no-op.");
@@ -664,7 +689,10 @@ function init_alphabet_subtoolbar() {
       const alphaselect2 = document.querySelectorAll('*[id^="xal"]');
       for (var j = 0; j < alphaselect2.length; j++) {
         var b = alphaselect2[j];
-        b.style = "";
+        // Only reset styling for visible buttons (those with content)
+        if (b.firstChild != null) {
+          b.style = "display: block;";
+        }
       }
       src.parentNode.style = "border-color:red; border-width: 5px";
     });

@@ -70,10 +70,10 @@ test.describe("Tool Switching and Persistence Tests", () => {
     assertNoConsoleErrors(consoleErrors, "tool state persistence");
   });
 
-  test("wacky brush subtool persistence", async ({ page }) => {
+  test("brush subtool persistence", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 
-    // Select Wacky Brush and choose Tree brush (index 5)
+    // Select Brush and choose Tree brush (index 5)
     await selectTool(page, "brush");
     await selectSubtool(page, 5);
 
@@ -82,7 +82,7 @@ test.describe("Tool Switching and Persistence Tests", () => {
     await selectTool(page, "jumble");
     await selectTool(page, "flood");
 
-    // Switch back to Wacky Brush - Tree should still be selected
+    // Switch back to Brush - Tree should still be selected
     await selectTool(page, "brush");
     const brushSubtools = await getSubtools(page);
     await expect(brushSubtools.nth(5)).toHaveCSS(

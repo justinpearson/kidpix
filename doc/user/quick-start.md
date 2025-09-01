@@ -53,19 +53,19 @@ _Note: You need a web server, not just open index.html in a browser, because the
 The main toolbar on the left contains these essential tools:
 
 - ![Save](assets/kp-m_27.png) **Save** - Download your artwork
-- ![Wacky Pencil](assets/kp-m_28.png) **Wacky Pencil** - Draw lines with various pencil sizes
+- ![Pencil](assets/kp-m_28.png) **Pencil** - Draw lines with various pencil sizes
 - ![Line](assets/kp-m_29.png) **Line** - Draw straight lines
 - ![Rectangle](assets/kp-m_30.png) **Rectangle** - Draw rectangles and squares
-- ![Oval](assets/kp-m_31.png) **Oval** - Draw circles and ovals
-- ![Wacky Brush](assets/kp-m_32.png) **Wacky Brush** - Access dozens of creative brushes
-- ![Electric Mixer](assets/kp-m_33.png) **Electric Mixer** - Apply wild visual effects
+- ![Circle](assets/kp-m_31.png) **Circle** - Draw circles and ovals
+- ![Brush](assets/kp-m_32.png) **Brush** - Access dozens of creative brushes
+- ![Mixer](assets/kp-m_33.png) **Mixer** - Apply wild visual effects
 - ![Paint Can](assets/kp-m_34.png) **Paint Can** - Fill areas with color or patterns
 - ![Eraser](assets/kp-m_35.png) **Eraser** - Remove parts of your drawing (with fun effects!)
 - ![Text](assets/kp-m_36.png) **Text** - Add letters and numbers with sounds
-- ![Rubber Stamps](assets/kp-m_37.png) **Rubber Stamps** - Place pre-made graphics
-- ![Moving Van](assets/kp-m_38.png) **Moving Van** - Move parts of your drawing around
-- ![Undo Guy](assets/kp-m_39.png) **Undo Guy** - Undo your last actions (up to 30 steps)
-- ![Redo Guy](assets/kp-m_40.png) **Redo Guy** - Redo your last undone actions
+- ![Stamp](assets/kp-m_37.png) **Stamp** - Place pre-made graphics
+- ![Truck](assets/kp-m_38.png) **Truck** - Move parts of your drawing around
+- ![Undo](assets/kp-m_39.png) **Undo** - Undo your last actions (up to 30 steps)
+- ![Redo](assets/kp-m_40.png) **Redo** - Redo your last undone actions
 
 Click a tool to select it; the currently-selected tool is outlined in red (except for Save, Undo, and Redo, which are not "real" tools, in that they perform a single action when clicked, and cannot be selected).
 

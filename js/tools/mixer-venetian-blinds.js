@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.WackyMixerVenetianBlinds = function () {
+KiddoPaint.Tools.Toolbox.MixerVenetianBlinds = function () {
   var tool = this;
   this.isDown = false;
   this.animInterval = 100;
@@ -73,5 +73,5 @@ KiddoPaint.Tools.Toolbox.WackyMixerVenetianBlinds = function () {
     }
   };
 };
-KiddoPaint.Tools.WackyMixerVenetianBlinds =
-  new KiddoPaint.Tools.Toolbox.WackyMixerVenetianBlinds();
+KiddoPaint.Tools.MixerVenetianBlinds =
+  new KiddoPaint.Tools.Toolbox.MixerVenetianBlinds();

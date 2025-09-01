@@ -119,7 +119,7 @@ KiddoPaint.Tools.Toolbox.ToolName = function () {
 
 **Special Tools**
 
-- Complex interactions (Moving Van, Eraser variants)
+- Complex interactions (Truck, Eraser variants)
 - Multi-step operations with state management
 - Custom UI behaviors
 

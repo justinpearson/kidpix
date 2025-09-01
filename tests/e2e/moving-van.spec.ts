@@ -15,7 +15,7 @@ import { getToolDefinition } from "./shared/test-fixtures";
 const TOOL_ID = "truck";
 const toolDef = getToolDefinition(TOOL_ID)!;
 
-test.describe("Moving Van Tool Tests", () => {
+test.describe("Truck Tool Tests", () => {
   test.beforeEach(async ({ page }) => {
     await initializeKidPix(page);
   });

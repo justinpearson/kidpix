@@ -5,7 +5,7 @@ KiddoPaint.Submenu.jumble = [
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
-      KiddoPaint.Current.tool = KiddoPaint.Tools.ElectricMixerInvert;
+      KiddoPaint.Current.tool = KiddoPaint.Tools.MixerInverter;
     },
   },
   {
@@ -36,7 +36,7 @@ KiddoPaint.Submenu.jumble = [
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
-      KiddoPaint.Current.tool = KiddoPaint.Tools.WackyMixerCheckerboard;
+      KiddoPaint.Current.tool = KiddoPaint.Tools.MixerCheckerboard;
     },
   },
   {
@@ -45,7 +45,7 @@ KiddoPaint.Submenu.jumble = [
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
-      KiddoPaint.Current.tool = KiddoPaint.Tools.WackyMixerWallpaper;
+      KiddoPaint.Current.tool = KiddoPaint.Tools.MixerWallpaper;
     },
   },
   {
@@ -54,7 +54,7 @@ KiddoPaint.Submenu.jumble = [
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
-      KiddoPaint.Current.tool = KiddoPaint.Tools.WackyMixerVenetianBlinds;
+      KiddoPaint.Current.tool = KiddoPaint.Tools.MixerVenetianBlinds;
     },
   },
   {
@@ -70,7 +70,7 @@ KiddoPaint.Submenu.jumble = [
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
-      KiddoPaint.Current.tool = KiddoPaint.Tools.WackyMixerShadowBoxes;
+      KiddoPaint.Current.tool = KiddoPaint.Tools.MixerShadowBoxes;
     },
   },
   {
@@ -93,7 +93,7 @@ KiddoPaint.Submenu.jumble = [
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
-      KiddoPaint.Current.tool = KiddoPaint.Tools.ElectricMixerPip;
+      KiddoPaint.Current.tool = KiddoPaint.Tools.MixerPip;
     },
   },
   {
@@ -109,7 +109,7 @@ KiddoPaint.Submenu.jumble = [
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
-      KiddoPaint.Current.tool = KiddoPaint.Tools.WackyMixerPattern;
+      KiddoPaint.Current.tool = KiddoPaint.Tools.MixerPattern;
     },
   },
   {

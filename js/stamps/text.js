@@ -1,4 +1,4 @@
-KiddoPaint.Alphabet.english = {
+KiddoPaint.Text.english = {
   face: "sans-serif",
   pages: 3,
   character1: {
@@ -97,7 +97,7 @@ KiddoPaint.Alphabet.english = {
   },
 };
 
-KiddoPaint.Alphabet.wingdings = {
+KiddoPaint.Text.wingdings = {
   face: "sans-serif",
   pages: 4,
   character1: {
@@ -280,22 +280,20 @@ KiddoPaint.Alphabet.wingdings = {
   },
 };
 
-KiddoPaint.Alphabet.nextPage = function () {
-  KiddoPaint.Alphabet.page += 1;
-  if (KiddoPaint.Alphabet.page > KiddoPaint.Alphabet.english.pages) {
-    KiddoPaint.Alphabet.page = 1;
+KiddoPaint.Text.nextPage = function () {
+  KiddoPaint.Text.page += 1;
+  if (KiddoPaint.Text.page > KiddoPaint.Text.english.pages) {
+    KiddoPaint.Text.page = 1;
   }
 };
 
-KiddoPaint.Alphabet.nextWingding = (function (page) {
+KiddoPaint.Text.nextWingding = (function (page) {
   var idx = 0;
   return function (page) {
-    if (
-      idx >= KiddoPaint.Alphabet.wingdings["character" + page].letters.length
-    ) {
+    if (idx >= KiddoPaint.Text.wingdings["character" + page].letters.length) {
       idx = 0;
     }
-    var ret = KiddoPaint.Alphabet.wingdings["character" + page].letters[idx];
+    var ret = KiddoPaint.Text.wingdings["character" + page].letters[idx];
     idx += 1;
     return ret;
   };

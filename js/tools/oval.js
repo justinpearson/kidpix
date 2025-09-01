@@ -1,7 +1,8 @@
-KiddoPaint.Tools.Toolbox.Circle = function () {
+KiddoPaint.Tools.Toolbox.Oval = function () {
   var tool = this;
   this.isDown = false;
   this.size = 1;
+  this.thickness = 2;
   this.stomp = true;
   this.startEv = null;
   this.texture = function () {
@@ -25,7 +26,7 @@ KiddoPaint.Tools.Toolbox.Circle = function () {
       KiddoPaint.Display.context.beginPath();
       KiddoPaint.Display.context.fillStyle = tool.texture(tool.startEv, ev);
       KiddoPaint.Display.context.strokeStyle = tool.stroke();
-      KiddoPaint.Display.context.lineWidth = 1.5;
+      KiddoPaint.Display.context.lineWidth = tool.thickness;
       if (KiddoPaint.Current.modifiedMeta) {
         KiddoPaint.Display.context.arc(
           tool.startEv._x,
@@ -38,18 +39,6 @@ KiddoPaint.Tools.Toolbox.Circle = function () {
           2 * Math.PI,
         );
       } else if (KiddoPaint.Current.modified) {
-        const sizex = Math.abs(ev._x - tool.startEv._x);
-        const sizey = Math.abs(ev._y - tool.startEv._y);
-        KiddoPaint.Display.context.ellipse(
-          (ev._x + tool.startEv._x) / 2.0,
-          (ev._y + tool.startEv._y) / 2.0,
-          sizex,
-          sizey,
-          0,
-          0,
-          2 * Math.PI,
-        );
-      } else {
         KiddoPaint.Display.context.arc(
           (ev._x + tool.startEv._x) / 2.0,
           (ev._y + tool.startEv._y) / 2.0,
@@ -58,6 +47,18 @@ KiddoPaint.Tools.Toolbox.Circle = function () {
               _x: tool.startEv._x,
               _y: tool.startEv._y,
             }),
+          0,
+          2 * Math.PI,
+        );
+      } else {
+        const sizex = Math.abs(ev._x - tool.startEv._x);
+        const sizey = Math.abs(ev._y - tool.startEv._y);
+        KiddoPaint.Display.context.ellipse(
+          (ev._x + tool.startEv._x) / 2.0,
+          (ev._y + tool.startEv._y) / 2.0,
+          sizex,
+          sizey,
+          0,
           0,
           2 * Math.PI,
         );
@@ -79,4 +80,4 @@ KiddoPaint.Tools.Toolbox.Circle = function () {
     }
   };
 };
-KiddoPaint.Tools.Circle = new KiddoPaint.Tools.Toolbox.Circle();
+KiddoPaint.Tools.Oval = new KiddoPaint.Tools.Toolbox.Oval();

@@ -14,7 +14,7 @@ import { WACKY_BRUSH_SUBTOOLS } from "./shared/test-fixtures";
 
 const TOOL_ID = "brush";
 
-test.describe("Wacky Brush Tool Tests", () => {
+test.describe("Brush Tool Tests", () => {
   test.beforeEach(async ({ page }) => {
     await initializeKidPix(page);
   });

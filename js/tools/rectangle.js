@@ -1,7 +1,8 @@
-KiddoPaint.Tools.Toolbox.Square = function () {
+KiddoPaint.Tools.Toolbox.Rectangle = function () {
   var tool = this;
   this.isDown = false;
   this.size = 1;
+  this.thickness = 2;
   this.startEv = null;
   this.texture = function () {
     return KiddoPaint.Textures.None();
@@ -33,7 +34,7 @@ KiddoPaint.Tools.Toolbox.Square = function () {
 
       if (!KiddoPaint.Current.modifiedCtrl) {
         ctx.strokeStyle = tool.stroke();
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = tool.thickness;
         ctx.strokeRect(tool.startEv._x, tool.startEv._y, sizex, sizey);
       }
       ctx.fillStyle = tool.texture(tool.startEv, ev);
@@ -51,4 +52,4 @@ KiddoPaint.Tools.Toolbox.Square = function () {
     }
   };
 };
-KiddoPaint.Tools.Square = new KiddoPaint.Tools.Toolbox.Square();
+KiddoPaint.Tools.Rectangle = new KiddoPaint.Tools.Toolbox.Rectangle();

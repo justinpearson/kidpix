@@ -29,7 +29,7 @@ import "../js/tools/animbrush.js";
 import "../js/tools/astroid.js";
 import "../js/tools/bezfollow.js";
 import "../js/tools/brush.js";
-import "../js/tools/circle.js";
+import "../js/tools/oval.js";
 import "../js/tools/composite.js";
 import "../js/tools/contours.js";
 import "../js/tools/cut.js";
@@ -51,7 +51,7 @@ import "../js/tools/magnify.js";
 import "../js/tools/maze.js";
 import "../js/tools/partialfx.js";
 import "../js/tools/pines.js";
-import "../js/tools/pixelpencil.js";
+import "../js/tools/pencil.js";
 import "../js/tools/placer.js";
 import "../js/tools/plainbrush.js";
 import "../js/tools/scribble.js";
@@ -60,18 +60,18 @@ import "../js/tools/smoothpen.js";
 import "../js/tools/smudge.js";
 import "../js/tools/spiral.js";
 import "../js/tools/spriteplacer.js";
-import "../js/tools/square.js";
+import "../js/tools/rectangle.js";
 import "../js/tools/stamp.js";
 import "../js/tools/three3d.js";
 import "../js/tools/tnt.js";
 import "../js/tools/trees.js";
-import "../js/tools/wacky-mixer-checkerboard.js";
-import "../js/tools/wacky-mixer-inverter.js";
-import "../js/tools/wacky-mixer-pattern.js";
-import "../js/tools/wacky-mixer-pip.js";
-import "../js/tools/wacky-mixer-shadow-boxes.js";
-import "../js/tools/wacky-mixer-venetian-blinds.js";
-import "../js/tools/wacky-mixer-wallpaper.js";
+import "../js/tools/mixer-checkerboard.js";
+import "../js/tools/mixer-inverter.js";
+import "../js/tools/mixer-pattern.js";
+import "../js/tools/mixer-pip.js";
+import "../js/tools/mixer-shadow-boxes.js";
+import "../js/tools/mixer-venetian-blinds.js";
+import "../js/tools/mixer-wallpaper.js";
 import "../js/tools/wholefx.js";
 
 // js/textures/*
@@ -80,7 +80,7 @@ import "../js/textures/textures.js";
 
 // js/submenus/*
 import "../js/submenus/brush.js";
-import "../js/submenus/circle.js";
+import "../js/submenus/oval.js";
 import "../js/submenus/eraser.js";
 import "../js/submenus/flood.js";
 import "../js/submenus/jumble.js";
@@ -88,7 +88,7 @@ import "../js/submenus/line.js";
 import "../js/submenus/pencil.js";
 import "../js/submenus/spray.js";
 import "../js/submenus/sprites.js";
-import "../js/submenus/square.js";
+import "../js/submenus/rectangle.js";
 import "../js/submenus/stickers.js";
 import "../js/submenus/truck.js";
 
@@ -121,7 +121,7 @@ import "../js/builders/rail.js";
 import "../js/builders/road.js";
 
 // js/stamps/*
-import "../js/stamps/alphabet.js";
+import "../js/stamps/text.js";
 import "../js/stamps/stamps.js";
 
 // js/sounds/*

@@ -1,0 +1,87 @@
+
+I'd like to implement the following features. Let's talk about them. We don't have to implement them in the order below, feel free to propose a new order. I wrote them a bit tersely; see if you understand the intent of each one, and ask me if you need clarification to be confident in your understanding. Investigate the level of effort of each one. Then let's talk about an implementation strategy.
+
+
+- Feature 1: Update Credits
+  - Change the "github" icon's link to point to https://github.com/justinpearson/kidpix, and change the "twitter" icon to be a "wireframe globe" icon that points to https://justinppearson.com/ .
+
+- Feature 2: Add button to docs
+  - should link to docs/ from main kidpix app site, via a tiny "books" button near the existing credits icons
+  - docs: https://justinpearson.github.io/kidpix/docs/
+  - app: https://justinpearson.github.io/kidpix/
+
+- Feature 3: Default color palette
+  - Change the default color palette at page-load time to be index 0 -- the one with all the primary colors.
+
+- Feature 4: "Rainbow" texture
+  - in the pen, line, etc tools, the last texture is called "Rainbow", but its icon is a question mark (./src/assets/img/tool-unknown.png). Replace with /Users/justin/Projects/KidPix/kidpix/rainbow-icon.png (you can move it to the appropriate place).
+
+
+- Feature 5: Remove Rubber Stamp's alternative stamps 
+  - "Kid Pix Sticker 1", etc. Not sure what makes them show up, but it is confusing. Remove it.
+
+- Feature 6: Remove Text's dangling empty subtools
+  - The "Text" tool has 3 sub-tools: letters, numbers, and symbols. 
+  - Currently, for easy implementation, each sub-tool list is the same length (30 I think), which is dictated by the longest sub-tool list (symbols). But that results in empty squares for the other sub-tool lists.
+  - Improve this implementation so that each sub-tool list doesn't have those empty squares. That is, for each sub-tool, the number of squares should equal the number of sub-tools.
+
+- Feature 7: Change "size" -> "thickness" naming in code: 
+  - the basic drawing tools (pencil, line, oval, rectangle) have a sub-tool called "size" to specify the thickness of the line. I think "thickness" would be more descriptive. Update the code to use the terminology "thickness" instead of "size".
+
+- Feature 8: Add thickness subtool for Circle & Square
+  - How hard would it be to add a "size" (aka thickness) sub-tool to Circle and Square tools, like we have for Pencil and Line? It would be nice for consistency if the user could pick the thickness of the circle / square.
+
+- Feature 9: Rename "Circle" / "Square" to "Oval" / "Rectangle" in code
+  - The UI has tools Oval and Rectangle, but in the code, they're called Circle and Square. For consistency with the UI, rename the code to use the terminology 'oval' and 'rectangle'.
+
+- Feature 10: Consistent naming of "Pencil"
+  - the 'pencil' tool should be called 'pencil' in the files and the code, not 'pen' or 'wacky pencil' or anything like that.
+  - eg: 
+    - rename 'pixelpencil.js' to just pencil.js
+    - rename 'Wacky Pencil' to just 'Pencil' in hovertext, docs, comments, etc.
+    - do you see any problems with this? like name collisions with some existing Pencil / pencil?
+
+- Feature 11: Simplify tool names, eg, "The Undo Guy" -> "Undo"
+  - Rename these tools:
+    - In the UI:
+      - Wacky Pencil -> Pencil
+      - Oval -> Circle
+      - Wacky Brush -> Brush
+      - Electric Mixer -> Mixer
+      - Rubber Stamps -> Stamp
+      - Moving Van -> Truck
+      - The Undo Guy -> Undo
+      - The Redo Guy -> Redo
+    - Also update docs accordingly: README, docs/*
+
+
+
+
+
+Proposed Implementation Order
+
+I recommend this sequence to minimize conflicts and build momentum:
+
+Phase 1: Quick Wins (30 minutes)
+
+1. Feature 3: Default color palette (1 line change)
+2. Feature 4: Rainbow texture icon (move file + 1 line)
+3. Feature 1: Update credits (HTML links)
+4. Feature 2: Add docs button
+
+Phase 2: Cleanup (45 minutes)
+
+5. Feature 5: Remove Rubber Stamp alternatives
+6. Feature 11: Simplify tool names (HTML + docs)
+
+Phase 3: Structural Changes (90+ minutes)
+
+7. Feature 10: Consistent Pencil naming (file renames, references)
+8. Feature 9: Circle/Square → Oval/Rectangle naming
+9. Feature 7: Size → Thickness terminology
+
+Phase 4: Complex Features (2+ hours)
+
+10. Feature 8: Add thickness to Circle/Square tools
+11. Feature 6: Fix Text tool empty squares
+

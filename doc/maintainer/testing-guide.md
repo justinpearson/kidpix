@@ -11,17 +11,17 @@ tests/e2e/
 ├── shared/
 │   ├── tool-helpers.ts      # Common test utilities and functions
 │   └── test-fixtures.ts     # Tool definitions and test data
-├── pencil.spec.ts           # Wacky Pencil tool tests
+├── pencil.spec.ts           # Pencil tool tests
 ├── line.spec.ts             # Line tool tests
-├── wacky-brush.spec.ts      # All 25+ Wacky Brush subtools
-├── electric-mixer.spec.ts   # Electric Mixer effects + Venetian Blinds
+├── wacky-brush.spec.ts      # All 25+ Brush subtools
+├── electric-mixer.spec.ts   # Mixer effects + Venetian Blinds
 ├── rectangle.spec.ts        # Rectangle tool tests
-├── oval.spec.ts             # Oval tool tests
+├── oval.spec.ts             # Circle tool tests
 ├── paint-can.spec.ts        # Paint Can tool tests
 ├── eraser.spec.ts           # Eraser tool tests
 ├── text.spec.ts             # Text/Alphabet tool tests
-├── stamps.spec.ts           # Rubber Stamps tool tests
-├── moving-van.spec.ts       # Moving Van tool tests
+├── stamps.spec.ts           # Stamp tool tests
+├── moving-van.spec.ts       # Truck tool tests
 ├── tool-switching.spec.ts   # Cross-tool integration tests
 └── canvas-functionality.spec.ts # Canvas system tests
 ```
@@ -56,7 +56,7 @@ Each drawing tool has its own comprehensive test file covering:
 ✅ **Canvas Interaction**: Drawing on canvas works without errors
 ✅ **Tool Persistence**: Subtool selections persist when switching tools
 ✅ **Multi-Set Tools**: Tools like Pencil/Line with size + texture options work correctly
-✅ **Regression Prevention**: Specific bug fixes (e.g., Venetian Blinds, Wacky Brush subtools)
+✅ **Regression Prevention**: Specific bug fixes (e.g., Venetian Blinds, Brush subtools)
 
 ## Common Test Patterns
 
