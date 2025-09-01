@@ -2,6 +2,7 @@ KiddoPaint.Tools.Toolbox.Rectangle = function () {
   var tool = this;
   this.isDown = false;
   this.size = 1;
+  this.thickness = 1.5;
   this.startEv = null;
   this.texture = function () {
     return KiddoPaint.Textures.None();
@@ -33,7 +34,7 @@ KiddoPaint.Tools.Toolbox.Rectangle = function () {
 
       if (!KiddoPaint.Current.modifiedCtrl) {
         ctx.strokeStyle = tool.stroke();
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = tool.thickness;
         ctx.strokeRect(tool.startEv._x, tool.startEv._y, sizex, sizey);
       }
       ctx.fillStyle = tool.texture(tool.startEv, ev);

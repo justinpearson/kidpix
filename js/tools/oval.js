@@ -2,6 +2,7 @@ KiddoPaint.Tools.Toolbox.Oval = function () {
   var tool = this;
   this.isDown = false;
   this.size = 1;
+  this.thickness = 1.5;
   this.stomp = true;
   this.startEv = null;
   this.texture = function () {
@@ -25,7 +26,7 @@ KiddoPaint.Tools.Toolbox.Oval = function () {
       KiddoPaint.Display.context.beginPath();
       KiddoPaint.Display.context.fillStyle = tool.texture(tool.startEv, ev);
       KiddoPaint.Display.context.strokeStyle = tool.stroke();
-      KiddoPaint.Display.context.lineWidth = 1.5;
+      KiddoPaint.Display.context.lineWidth = tool.thickness;
       if (KiddoPaint.Current.modifiedMeta) {
         KiddoPaint.Display.context.arc(
           tool.startEv._x,
