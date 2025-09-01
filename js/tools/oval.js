@@ -38,18 +38,6 @@ KiddoPaint.Tools.Toolbox.Oval = function () {
           2 * Math.PI,
         );
       } else if (KiddoPaint.Current.modified) {
-        const sizex = Math.abs(ev._x - tool.startEv._x);
-        const sizey = Math.abs(ev._y - tool.startEv._y);
-        KiddoPaint.Display.context.ellipse(
-          (ev._x + tool.startEv._x) / 2.0,
-          (ev._y + tool.startEv._y) / 2.0,
-          sizex,
-          sizey,
-          0,
-          0,
-          2 * Math.PI,
-        );
-      } else {
         KiddoPaint.Display.context.arc(
           (ev._x + tool.startEv._x) / 2.0,
           (ev._y + tool.startEv._y) / 2.0,
@@ -58,6 +46,18 @@ KiddoPaint.Tools.Toolbox.Oval = function () {
               _x: tool.startEv._x,
               _y: tool.startEv._y,
             }),
+          0,
+          2 * Math.PI,
+        );
+      } else {
+        const sizex = Math.abs(ev._x - tool.startEv._x);
+        const sizey = Math.abs(ev._y - tool.startEv._y);
+        KiddoPaint.Display.context.ellipse(
+          (ev._x + tool.startEv._x) / 2.0,
+          (ev._y + tool.startEv._y) / 2.0,
+          sizex,
+          sizey,
+          0,
           0,
           2 * Math.PI,
         );
