@@ -433,9 +433,13 @@ function init_tool_bar() {
       var buttons = document
         .getElementById("genericsubmenu")
         .getElementsByTagName("button");
-      // Highlight default texture (None, index 0)
-      if (buttons[0]) {
-        buttons[0].style = "border-color:red; border-width: 5px";
+      // Highlight default thickness (Thickness 2, index 1)
+      if (buttons[1]) {
+        buttons[1].style = "border-color:red; border-width: 5px";
+      }
+      // Highlight default texture (None, index 7 after thickness controls)
+      if (buttons[7]) {
+        buttons[7].style = "border-color:red; border-width: 5px";
       }
     }, 0);
   });
@@ -453,9 +457,13 @@ function init_tool_bar() {
       var buttons = document
         .getElementById("genericsubmenu")
         .getElementsByTagName("button");
-      // Highlight default texture (None, index 0)
-      if (buttons[0]) {
-        buttons[0].style = "border-color:red; border-width: 5px";
+      // Highlight default thickness (Thickness 2, index 1)
+      if (buttons[1]) {
+        buttons[1].style = "border-color:red; border-width: 5px";
+      }
+      // Highlight default texture (None, index 7 after thickness controls)
+      if (buttons[7]) {
+        buttons[7].style = "border-color:red; border-width: 5px";
       }
     }, 0);
   });
@@ -618,22 +626,24 @@ function init_alphabet_bar(alphabetgroup) {
   var alphabettoolbar = KiddoPaint.Alphabet.english[alphabetgroup].letters;
   // first letter / number / symbol is selected when the bar is created:
   KiddoPaint.Tools.Stamp.stamp = alphabettoolbar[0];
-  // clear out old buttons:
+  // clear out old buttons and hide all initially:
   var alphaselect = document.querySelectorAll('*[id^="xal"]');
   for (var i = 0; i < alphaselect.length; i++) {
     var b = alphaselect[i];
-    // first letter is highlighted:
-    if (i == 0) {
-      b.style = "border-color:red; border-width: 5px";
-    } else {
-      b.style = "";
-    }
+    b.style = "display: none;"; // Hide all buttons initially
     b.removeAllChildren();
   }
-  // add new buttons:
+  // add new buttons and show only the ones we need:
   for (var i = 0; i < alphabettoolbar.length; i++) {
     var buttonValue = "<h1>" + alphabettoolbar[i] + "</h1>";
-    document.getElementById("xal" + i).innerHTML = buttonValue;
+    var button = document.getElementById("xal" + i);
+    button.innerHTML = buttonValue;
+    // Show this button and apply appropriate styling
+    if (i == 0) {
+      button.style = "display: block; border-color:red; border-width: 5px";
+    } else {
+      button.style = "display: block;";
+    }
   }
 }
 
@@ -681,7 +691,10 @@ function init_alphabet_subtoolbar() {
       const alphaselect2 = document.querySelectorAll('*[id^="xal"]');
       for (var j = 0; j < alphaselect2.length; j++) {
         var b = alphaselect2[j];
-        b.style = "";
+        // Only reset styling for visible buttons (those with content)
+        if (b.firstChild != null) {
+          b.style = "display: block;";
+        }
       }
       src.parentNode.style = "border-color:red; border-width: 5px";
     });

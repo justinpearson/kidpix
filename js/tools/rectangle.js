@@ -2,7 +2,7 @@ KiddoPaint.Tools.Toolbox.Rectangle = function () {
   var tool = this;
   this.isDown = false;
   this.size = 1;
-  this.thickness = 1.5;
+  this.thickness = 2;
   this.startEv = null;
   this.texture = function () {
     return KiddoPaint.Textures.None();
