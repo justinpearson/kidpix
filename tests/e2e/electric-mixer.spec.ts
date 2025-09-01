@@ -13,7 +13,7 @@ import {
 
 const TOOL_ID = "jumble";
 
-test.describe("Electric Mixer Tool Tests", () => {
+test.describe("Mixer Tool Tests", () => {
   test.beforeEach(async ({ page }) => {
     await initializeKidPix(page);
   });

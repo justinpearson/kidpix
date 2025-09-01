@@ -15,7 +15,7 @@ import { getToolDefinition } from "./shared/test-fixtures";
 const TOOL_ID = "pencil";
 const toolDef = getToolDefinition(TOOL_ID)!;
 
-test.describe("Wacky Pencil Tool Tests", () => {
+test.describe("Pencil Tool Tests", () => {
   test.beforeEach(async ({ page }) => {
     await initializeKidPix(page);
   });

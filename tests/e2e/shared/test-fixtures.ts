@@ -6,7 +6,7 @@ import { ToolDefinition, WackyBrushSubtool } from "./tool-helpers";
 export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     id: "pencil",
-    name: "Wacky Pencil",
+    name: "Pencil",
     hasSubtools: true,
     hasMultipleSubtoolSets: true,
     defaultSubtoolIndices: [0], // first size (conservative)
@@ -30,7 +30,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   },
   {
     id: "circle",
-    name: "Oval",
+    name: "Circle",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,
     defaultSubtoolIndices: [0], // first texture
@@ -38,7 +38,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   },
   {
     id: "brush",
-    name: "Wacky Brush",
+    name: "Brush",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,
     defaultSubtoolIndices: [0], // first brush type
@@ -46,7 +46,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   },
   {
     id: "jumble",
-    name: "Electric Mixer",
+    name: "Mixer",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,
     defaultSubtoolIndices: [0], // first effect
@@ -78,7 +78,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   },
   {
     id: "stamp",
-    name: "Rubber Stamps",
+    name: "Stamp",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,
     defaultSubtoolIndices: [0], // first stamp
@@ -86,7 +86,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   },
   {
     id: "truck",
-    name: "Moving Van",
+    name: "Truck",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,
     defaultSubtoolIndices: [0], // first truck type

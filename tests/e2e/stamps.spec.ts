@@ -14,7 +14,7 @@ import { getToolDefinition } from "./shared/test-fixtures";
 const TOOL_ID = "stamp";
 const toolDef = getToolDefinition(TOOL_ID)!;
 
-test.describe("Rubber Stamps Tool Tests", () => {
+test.describe("Stamp Tool Tests", () => {
   test.beforeEach(async ({ page }) => {
     await initializeKidPix(page);
   });

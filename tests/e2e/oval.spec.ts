@@ -15,7 +15,7 @@ import { getToolDefinition } from "./shared/test-fixtures";
 const TOOL_ID = "circle";
 const toolDef = getToolDefinition(TOOL_ID)!;
 
-test.describe("Oval Tool Tests", () => {
+test.describe("Circle Tool Tests", () => {
   test.beforeEach(async ({ page }) => {
     await initializeKidPix(page);
   });
