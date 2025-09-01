@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.Square = function () {
+KiddoPaint.Tools.Toolbox.Rectangle = function () {
   var tool = this;
   this.isDown = false;
   this.size = 1;
@@ -51,4 +51,4 @@ KiddoPaint.Tools.Toolbox.Square = function () {
     }
   };
 };
-KiddoPaint.Tools.Square = new KiddoPaint.Tools.Toolbox.Square();
+KiddoPaint.Tools.Rectangle = new KiddoPaint.Tools.Toolbox.Rectangle();

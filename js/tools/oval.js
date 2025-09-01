@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.Circle = function () {
+KiddoPaint.Tools.Toolbox.Oval = function () {
   var tool = this;
   this.isDown = false;
   this.size = 1;
@@ -79,4 +79,4 @@ KiddoPaint.Tools.Toolbox.Circle = function () {
     }
   };
 };
-KiddoPaint.Tools.Circle = new KiddoPaint.Tools.Toolbox.Circle();
+KiddoPaint.Tools.Oval = new KiddoPaint.Tools.Toolbox.Oval();

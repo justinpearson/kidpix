@@ -423,8 +423,8 @@ function init_tool_bar() {
   document.getElementById("square").addEventListener("mousedown", function () {
     highlightSelectedTool("square");
     KiddoPaint.Sounds.mainmenu();
-    show_generic_submenu("square");
-    KiddoPaint.Current.tool = KiddoPaint.Tools.Square;
+    show_generic_submenu("rectangle");
+    KiddoPaint.Current.tool = KiddoPaint.Tools.Rectangle;
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
 
@@ -443,8 +443,8 @@ function init_tool_bar() {
   document.getElementById("circle").addEventListener("mousedown", function () {
     highlightSelectedTool("circle");
     KiddoPaint.Sounds.mainmenu();
-    show_generic_submenu("circle");
-    KiddoPaint.Current.tool = KiddoPaint.Tools.Circle;
+    show_generic_submenu("oval");
+    KiddoPaint.Current.tool = KiddoPaint.Tools.Oval;
     KiddoPaint.Display.canvas.classList = "";
     KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
 
