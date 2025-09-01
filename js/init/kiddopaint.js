@@ -109,7 +109,7 @@ function init_kiddo_defaults() {
   KiddoPaint.Current.modifiedMeta = false;
   KiddoPaint.Current.modifiedTilde = false;
   KiddoPaint.Current.velToggle = false;
-  KiddoPaint.Alphabet.page = 1;
+  KiddoPaint.Text.page = 1;
   KiddoPaint.Stamps.page = 0;
   KiddoPaint.Sprite.page = 0;
   KiddoPaint.Current.multiplier = 1;
@@ -356,7 +356,7 @@ function highlightSelectedTool(selectedToolId) {
   document.getElementById("circle").style = "";
   document.getElementById("brush").style = "";
   document.getElementById("stamp").style = "";
-  document.getElementById("alphabet").style = "";
+  document.getElementById("text").style = "";
   document.getElementById("flood").style = "";
   document.getElementById("eraser").style = "";
   document.getElementById("truck").style = "";
@@ -503,19 +503,17 @@ function init_tool_bar() {
     }
   });
 
-  document
-    .getElementById("alphabet")
-    .addEventListener("mousedown", function () {
-      highlightSelectedTool("alphabet");
-      KiddoPaint.Sounds.mainmenu();
-      init_alphabet_bar("character" + KiddoPaint.Alphabet.page);
-      show_sub_toolbar("alphabettoolbar");
-      KiddoPaint.Tools.Stamp.useColor = true;
-      KiddoPaint.Current.tool = KiddoPaint.Tools.Stamp;
-      KiddoPaint.Stamps.currentFace = KiddoPaint.Alphabet.english.face;
-      KiddoPaint.Display.canvas.classList = "";
-      KiddoPaint.Display.canvas.classList.add("cursor-none");
-    });
+  document.getElementById("text").addEventListener("mousedown", function () {
+    highlightSelectedTool("text");
+    KiddoPaint.Sounds.mainmenu();
+    init_text_bar("character" + KiddoPaint.Text.page);
+    show_sub_toolbar("texttoolbar");
+    KiddoPaint.Tools.Stamp.useColor = true;
+    KiddoPaint.Current.tool = KiddoPaint.Tools.Stamp;
+    KiddoPaint.Stamps.currentFace = KiddoPaint.Text.english.face;
+    KiddoPaint.Display.canvas.classList = "";
+    KiddoPaint.Display.canvas.classList.add("cursor-none");
+  });
 
   document.getElementById("flood").addEventListener("mousedown", function () {
     highlightSelectedTool("flood");
@@ -590,8 +588,8 @@ function init_tool_bar() {
 
   document.getElementById("alnext").addEventListener("mousedown", function () {
     KiddoPaint.Sounds.submenuoption();
-    KiddoPaint.Alphabet.nextPage();
-    init_alphabet_bar("character" + KiddoPaint.Alphabet.page);
+    KiddoPaint.Text.nextPage();
+    init_text_bar("character" + KiddoPaint.Text.page);
   });
 
   //    document.getElementById('stnext').addEventListener('mousedown', function(e) {
@@ -622,10 +620,10 @@ function init_tool_bar() {
   });
 }
 
-function init_alphabet_bar(alphabetgroup) {
-  var alphabettoolbar = KiddoPaint.Alphabet.english[alphabetgroup].letters;
+function init_text_bar(textgroup) {
+  var texttoolbar = KiddoPaint.Text.english[textgroup].letters;
   // first letter / number / symbol is selected when the bar is created:
-  KiddoPaint.Tools.Stamp.stamp = alphabettoolbar[0];
+  KiddoPaint.Tools.Stamp.stamp = texttoolbar[0];
   // clear out old buttons and hide all initially:
   var alphaselect = document.querySelectorAll('*[id^="xal"]');
   for (var i = 0; i < alphaselect.length; i++) {
@@ -634,8 +632,8 @@ function init_alphabet_bar(alphabetgroup) {
     b.removeAllChildren();
   }
   // add new buttons and show only the ones we need:
-  for (var i = 0; i < alphabettoolbar.length; i++) {
-    var buttonValue = "<h1>" + alphabettoolbar[i] + "</h1>";
+  for (var i = 0; i < texttoolbar.length; i++) {
+    var buttonValue = "<h1>" + texttoolbar[i] + "</h1>";
     var button = document.getElementById("xal" + i);
     button.innerHTML = buttonValue;
     // Show this button and apply appropriate styling
@@ -649,7 +647,7 @@ function init_alphabet_bar(alphabetgroup) {
 
 function init_subtool_bars() {
   init_pencil_subtoolbar();
-  init_alphabet_subtoolbar();
+  init_text_subtoolbar();
 }
 
 function init_pencil_subtoolbar() {
@@ -674,7 +672,7 @@ function init_pencil_subtoolbar() {
   }, 0);
 }
 
-function init_alphabet_subtoolbar() {
+function init_text_subtoolbar() {
   var alphaselect = document.querySelectorAll('*[id^="xal"]');
   for (var i = 0; i < alphaselect.length; i++) {
     var alphaButton = alphaselect[i];

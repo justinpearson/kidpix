@@ -121,7 +121,7 @@ import "../js/builders/rail.js";
 import "../js/builders/road.js";
 
 // js/stamps/*
-import "../js/stamps/alphabet.js";
+import "../js/stamps/text.js";
 import "../js/stamps/stamps.js";
 
 // js/sounds/*
