@@ -1,4 +1,4 @@
-// js/tools/pixelpencil.d.ts
+// js/tools/pencil.d.ts
 
 declare namespace KiddoPaint.Tools.Toolbox {
   class Pencil implements KiddoPaint.Tool {

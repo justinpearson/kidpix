@@ -51,7 +51,7 @@ import "../js/tools/magnify.js";
 import "../js/tools/maze.js";
 import "../js/tools/partialfx.js";
 import "../js/tools/pines.js";
-import "../js/tools/pixelpencil.js";
+import "../js/tools/pencil.js";
 import "../js/tools/placer.js";
 import "../js/tools/plainbrush.js";
 import "../js/tools/scribble.js";
