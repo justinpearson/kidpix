@@ -1,4 +1,4 @@
-# How to Use Wacky Brushes
+# How to Use Brushes
 
 ## Table of Contents
 
@@ -15,11 +15,11 @@
 
 ## Overview
 
-Wacky Brushes are the heart of Kid Pix's creative magic. Each brush creates unique patterns and effects that would be impossible with traditional drawing tools.
+Brushes are the heart of Kid Pix's creative magic. Each brush creates unique patterns and effects that would be impossible with traditional drawing tools.
 
 ## Accessing Brushes
 
-1. Click the **Wacky Brush** tool (paintbrush icon) in the main toolbar
+1. Click the **Brush** tool (paintbrush icon) in the main toolbar
 2. A submenu will appear showing different brush options
 3. Click any brush icon to select it
 4. Start drawing on the canvas
@@ -103,4 +103,4 @@ Wacky Brushes are the heart of Kid Pix's creative magic. Each brush creates uniq
 
 - **Brush not working**: Make sure you've selected a brush from the submenu first
 - **Effect too small**: Try holding Shift while drawing
-- **Want to start over**: Use the Undo Guy or clear the canvas with the Moving Van
+- **Want to start over**: Use the Undo or clear the canvas with the Truck
