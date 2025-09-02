@@ -101,7 +101,11 @@ export default tseslint.config(
   },
   // TypeScript configuration (non-test files)
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      "prettier",
+    ],
     files: ["**/*.{ts,tsx}"],
     ignores: ["**/*.test.{ts,tsx}", "**/test-setup.ts"],
     languageOptions: {
@@ -117,7 +121,11 @@ export default tseslint.config(
   },
   // TypeScript test files (without project mode)
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      "prettier",
+    ],
     files: ["**/*.test.{ts,tsx}", "**/test-setup.ts"],
     languageOptions: {
       ecmaVersion: 2020,
