@@ -1,0 +1,21 @@
+# Feature: Add color picker
+
+Git branch: add-color-picker
+
+Description: To make it easier to match colors, let's add a new "Color Picker" tool: When you click on the canvas, it sets the current color to whatever color you clicked on.
+
+Below, I've listed some "requirements" for it; let me know if you need clarification on any of them. Please express these requirements via an E2E test and use TDD when implementing the Color Picker.
+
+## Color Picker tool: Requirements
+
+1. WHEN the app loads, THEN there's a new "eyedropper" tool between Truck and Undo, whose icon is given by eyedropper-icon.png. (Feel free to move that icon file to the best place.)
+
+2. GIVEN that some other tool (eg, Pencil) is selected, WHEN the Color Picker is clicked, THEN Pencil becomes un-selected (no red outline) and Color Picker becomes selected (red outline).
+
+3. WHEN Color Picker is selected, THEN its sub-tool menu appears. It has a single subtool that's just the same eyedropper icon eyedropper-icon.png. This single subtool is always selected (eg, red outline).
+
+4. GIVEN that Color Picker is selected, WHEN another tool (eg, Pencil) is clicked, THEN Color Picker becomes un-selected (no red outline), and the new tool (eg, Pencil) becomes selected.
+
+5. WHEN the Color Picker is selected, THEN the cursor is a crosshair icon, like with the Oval / Rectangle tools.
+
+6. WHEN the Color Picker is selected, AND you click on the canvas, THEN the current color is set to whatever color on the canvas was just clicked, AND the current tool stays "Color Picker" -- that is, the Color Picker tool does NOT automatically switch to the previously-seleected tool after using it.

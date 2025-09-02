@@ -361,6 +361,7 @@ function highlightSelectedTool(selectedToolId) {
   document.getElementById("eraser").style = "";
   document.getElementById("truck").style = "";
   document.getElementById("jumble").style = "";
+  document.getElementById("colorpicker").style = "";
   // Highlight selected tool
   document.getElementById(selectedToolId).style =
     "border-color:red; border-width: 5px";
@@ -574,6 +575,28 @@ function init_tool_bar() {
       }
     }, 0);
   });
+
+  document
+    .getElementById("colorpicker")
+    .addEventListener("mousedown", function () {
+      highlightSelectedTool("colorpicker");
+      KiddoPaint.Sounds.mainmenu();
+      show_generic_submenu("colorpicker");
+      KiddoPaint.Current.tool = KiddoPaint.Tools.ColorPicker;
+      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
+
+      // Highlight default colorpicker subtool
+      setTimeout(function () {
+        var buttons = document
+          .getElementById("genericsubmenu")
+          .getElementsByTagName("button");
+        // Highlight the single eyedropper subtool (index 0)
+        if (buttons[0]) {
+          buttons[0].style = "border-color:red; border-width: 5px";
+        }
+      }, 0);
+    });
 
   document.getElementById("undo").addEventListener("mousedown", function () {
     KiddoPaint.Sounds.mainmenu();

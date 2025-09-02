@@ -36,21 +36,28 @@ If you are an AI agent, please read the "rules" files in `.cursor/rules`, and th
 ## Development Setup
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/justinpearson/kidpix.git
 cd kidpix
 
-# Install dependencies
+# 2. Install dependencies
 yarn install
 
-# Start development server
-yarn dev
-# Open http://localhost:5173/ (serves the modular JS version)
+# 3. Configure git hooks for code quality
+git config core.hooksPath .githooks
 
-# Run tests (see Testing section below for details)
+# 4. Run tests to verify setup
 yarn test:unit         # Unit tests
 yarn test:e2e          # End-to-end tests
 
+# 5. Start development server
+yarn dev
+# Open http://localhost:5173/ (serves the modular JS version)
+```
+
+### Additional Commands
+
+```bash
 # Build for production
 yarn build
 
@@ -68,7 +75,7 @@ yarn docs:dev                 # Serve docs locally at http://127.0.0.1:8000
 - **Framework**: React 18 with TypeScript
 - **Build Tool**: Vite 6.3.5 with HMR
 - **Testing**: Vitest (unit) + Playwright (e2e)
-- **Code Quality**: ESLint + Prettier with pre-commit hooks
+- **Code Quality**: ESLint + Prettier with git hooks (no Husky dependency)
 - **Package Manager**: Yarn 1.22.22
 - **Deployment**: GitHub Actions → GitHub Pages
 - **Claude Code Integration**: Browser error monitoring with vite-plugin-terminal allows Claude Code to view browser console errors
@@ -82,6 +89,15 @@ This project includes special features for AI-assisted development using Claude 
 - **Full Stack Traces**: Complete error context with file locations and line numbers
 
 **⚠️ CRITICAL for Claude Code Users**: For Claude Code to view the browser console errors, it must run the dev server (`yarn dev`) in its own background bash shell. Human developers should NOT run their own `yarn dev` in a separate terminal (which is not visible to Claude Code).
+
+### Git Hooks
+
+This project uses git hooks to ensure code quality:
+
+- **Pre-commit**: Runs ESLint and Prettier on staged files
+- **Commit-msg**: Validates commit message format using conventional commits
+
+The hooks are configured by running `git config core.hooksPath .githooks` (step 3 in Development Setup above).
 
 For detailed development information, see [Maintainer Documentation](doc/maintainer/).
 

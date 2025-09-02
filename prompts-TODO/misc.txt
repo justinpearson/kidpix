@@ -8,6 +8,7 @@ Once groomed / well-formed, move to backlog.txt.
 ## TODO
 
 
+
 - Add Search Bar to Stamp
   - problem: in the "Stamp" tool, it's very hard to find the stamp i want. There are ~10 pages, with ~8 rows per page, with ~10 stamps per row.
   - solution: add a search bar for stamps that filters down the list of stamps. Each stamp will need to be named.
@@ -121,6 +122,115 @@ modifier key usage:
 
   TODO: investigate usage of shift & alt/option
 
+
+
+
+
+====================================================
+
+
+simplify github actions / workflows
+
+
+want:
+
+- PR created / changed -> run tests
+- some way to on-demand trigger a "test deployment" of a PR's code, to see if it would work in production, that would automatically get torn down when the PR is merged or closed
+- deploy to production when the PR is merged
+
+
+
+
+===================================================
+
+understand / simplify / document yarn scripts in package.json
+
+prev problem:
+
+Help me with a weird problem with my yarn scripts. Basically, the site previews correctly with `yarn preview`, it deploys correctly to Github Pages when I merge a PR on github, but when I build the production assets with `yarn build:site` and view the `dist` directory with `yarn preview:site`, the site at http://127.0.0.1:8080 doesn't look right -- it looks like a different version of the site that is based on React / TS that I was prototyping a while ago.
+
+Here's some screenshots:
+
+- The site appears to deploy correctly to github pages, see: `/Users/justin/Projects/KidPix/kidpix/kidpix-production.png`
+- `yarn preview` runs the dev server locally, with no apparent errors: `/Users/justin/Projects/KidPix/kidpix/yarn preview.png`
+- However, the dist/ directory seems wrong, here's what `yarn preview:site` looks like: `/Users/justin/Projects/KidPix/kidpix/yarn preview-site.png`
+
+
+simplify yarn scripts
+
+run dev server w/ hot-reloading
+
+
+docs dev server
+app dev server
+
+build docs
+build app
+
+build then serve production site (app and docs)
+
+
+run linter
+
+
+tests
+- unit
+  - w fancy ui
+  - always compute coverage report
+- e2e
+  - default (text output)
+  - headed
+  - w fancy ui
+  - show report of last run
+
+
+
+
+
+
+
+
+cur:
+
+  "scripts": {
+    "dev:docs": "mkdocs serve -a 127.0.0.1:8000",
+    "build": "vite build",
+    "docs:build": "mkdocs build --site-dir dist/docs",
+    "build:site": "yarn build && yarn docs:build",
+    "build:preview": "NODE_ENV=development vite build",
+    "preview:site": "yarn build:preview && python3 -m http.server 8080 --directory dist",
+    "dev": "vite & echo $! > .vite.pid",
+    "dev-stop": "kill $(cat .vite.pid 2>/dev/null) 2>/dev/null && rm -f .vite.pid || true",
+    "docs:dev:OLD": "mkdocs serve",
+    "build:OLD": "tsc -b && vite build",
+    "docs:build:OLD": "mkdocs build",
+    "lint": "eslint",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:unit": "vitest",
+    "test:unit:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage:ui": "vitest --ui --coverage",
+    "test:e2e": "playwright test --reporter=line",
+    "test:e2e:headed": "playwright test --headed --reporter=line",
+    "test:e2e:ui": "playwright test --ui --reporter=line",
+    "test:e2e:single": "playwright test tests/e2e/pencil.spec.ts --project=chromium --workers=1 --reporter=line",
+    "test:e2e:showlastreport": "playwright show-report",
+    "screenshot": "node scripts/screenshot-capture.js",
+    "preview": "vite preview",
+    "type-check": "tsc -p tsconfig.app.json --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+    "types:generate": "tsc --declaration --emitDeclarationOnly --outDir types/generated"
+  },
+
+old:
+
+    "dev:app": "vite",                            // visit http://localhost:5173/kidpix/
+    "dev:docs": "mkdocs serve -a 127.0.0.1:8000", // visit http://localhost:8000/
+    "build": "vite build",
+    "docs:build": "mkdocs build --site-dir dist/docs",
+    "build:site": "yarn build && yarn docs:build",
+    "preview:site": "http-server dist",            // visit http://localhost:8080/kidpix/ and /kidpix/docs/
 
 
 
