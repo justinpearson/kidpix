@@ -1,4 +1,4 @@
-KiddoPaint.Tools.Toolbox.Flood = function () {
+KiddoPaint.Tools.Toolbox.PaintCan = function () {
   var tool = this;
   this.gcop = "destination-in";
   this.texture = function (color) {
@@ -14,7 +14,7 @@ KiddoPaint.Tools.Toolbox.Flood = function () {
   };
 
   this.canvasWideReplace = function (ev) {
-    KiddoPaint.Sounds.flood();
+    KiddoPaint.Sounds.paintcan();
     var x = ev._x;
     var y = ev._y;
 
@@ -73,7 +73,7 @@ KiddoPaint.Tools.Toolbox.Flood = function () {
   };
 
   this.boundedFill = function (ev) {
-    KiddoPaint.Sounds.flood();
+    KiddoPaint.Sounds.paintcan();
     var x = ev._x;
     var y = ev._y;
     var pixel_stack = [
@@ -209,4 +209,4 @@ KiddoPaint.Tools.Toolbox.Flood = function () {
   this.mousemove = function (ev) {};
   this.mouseup = function (ev) {};
 };
-KiddoPaint.Tools.Flood = new KiddoPaint.Tools.Toolbox.Flood();
+KiddoPaint.Tools.PaintCan = new KiddoPaint.Tools.Toolbox.PaintCan();

@@ -1,18 +1,6 @@
 backlog
 
 
-
-# Bug: Docs button has wrong link
-
-The "docs" button in lower-left of screen (under the github icon) incorrectly links to https://justinpearson.github.io/docs/ but it should be https://justinpearson.github.io/kidpix/docs/ .
-
-
-# Feature: Rename flood to paint-can.
-
-Description: The "Paint Can" tool is named "Flood" in the code (eg, KiddoPaint.Tools.Flood). Let's make the code match the UI by renaming the flood-based terms to paint-can everywhere in the code: PaintCan, paint_can, etc. When we're done, there should be no "flood" in the codebase. Let's start by finding all instances of "flood" and drafting a plan for how to rename these instances.
-
-
-
 # Feature: Remember last tool, subtool(s), color, color palette
 
 Description: basically, the current UI state should persist between page-reloads, to achieve the following user-friendly niceties:

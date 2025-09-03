@@ -29,7 +29,7 @@ KiddoPaint.Sounds.Library.pencil = [
   new Audio("sndmp3/kidpix-tool-pencil.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.stamp = [new Audio("sndmp3/stamp0.wav.mp3")];
-KiddoPaint.Sounds.Library.flood = [new Audio("sndmp3/flood0.wav.mp3")];
+KiddoPaint.Sounds.Library.paintcan = [new Audio("sndmp3/paintcan0.wav.mp3")];
 KiddoPaint.Sounds.Library.mainmenu = [
   new Audio("sndmp3/kidpix-menu-click-main-tools.wav.mp3"),
 ];
@@ -383,8 +383,8 @@ KiddoPaint.Sounds.circle = function () {
 KiddoPaint.Sounds.stamp = function () {
   KiddoPaint.Sounds.Library.playSingle("stamp");
 };
-KiddoPaint.Sounds.flood = function () {
-  KiddoPaint.Sounds.Library.playSingle("flood");
+KiddoPaint.Sounds.paintcan = function () {
+  KiddoPaint.Sounds.Library.playSingle("paintcan");
 };
 KiddoPaint.Sounds.mainmenu = function () {
   KiddoPaint.Sounds.Library.playSingle("mainmenu");

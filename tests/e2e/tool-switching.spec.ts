@@ -80,7 +80,7 @@ test.describe("Tool Switching and Persistence Tests", () => {
     // Switch to several other tools
     await selectTool(page, "pencil");
     await selectTool(page, "jumble");
-    await selectTool(page, "flood");
+    await selectTool(page, "paintcan");
 
     // Switch back to Brush - Tree should still be selected
     await selectTool(page, "brush");
@@ -181,7 +181,7 @@ test.describe("Tool Switching and Persistence Tests", () => {
       "line",
       "square",
       "circle",
-      "flood",
+      "paintcan",
     ];
 
     for (let round = 0; round < 3; round++) {

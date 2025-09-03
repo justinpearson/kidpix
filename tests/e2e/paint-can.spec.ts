@@ -11,7 +11,7 @@ import {
 } from "./shared/tool-helpers";
 import { getToolDefinition } from "./shared/test-fixtures";
 
-const TOOL_ID = "flood";
+const TOOL_ID = "paintcan";
 const toolDef = getToolDefinition(TOOL_ID)!;
 
 test.describe("Paint Can Tool Tests", () => {
