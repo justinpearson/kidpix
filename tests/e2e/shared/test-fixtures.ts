@@ -53,7 +53,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     alternateSubtoolIndices: [2], // different effect (avoiding index 1 which seems problematic)
   },
   {
-    id: "flood",
+    id: "paintcan",
     name: "Paint Can",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,

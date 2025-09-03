@@ -357,7 +357,7 @@ function highlightSelectedTool(selectedToolId) {
   document.getElementById("brush").style = "";
   document.getElementById("stamp").style = "";
   document.getElementById("text").style = "";
-  document.getElementById("flood").style = "";
+  document.getElementById("paintcan").style = "";
   document.getElementById("eraser").style = "";
   document.getElementById("truck").style = "";
   document.getElementById("jumble").style = "";
@@ -516,25 +516,27 @@ function init_tool_bar() {
     KiddoPaint.Display.canvas.classList.add("cursor-none");
   });
 
-  document.getElementById("flood").addEventListener("mousedown", function () {
-    highlightSelectedTool("flood");
-    KiddoPaint.Sounds.mainmenu();
-    show_generic_submenu("flood");
-    KiddoPaint.Current.tool = KiddoPaint.Tools.Flood;
-    KiddoPaint.Display.canvas.classList = "";
-    KiddoPaint.Display.canvas.classList.add("cursor-bucket");
+  document
+    .getElementById("paintcan")
+    .addEventListener("mousedown", function () {
+      highlightSelectedTool("paintcan");
+      KiddoPaint.Sounds.mainmenu();
+      show_generic_submenu("paintcan");
+      KiddoPaint.Current.tool = KiddoPaint.Tools.PaintCan;
+      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.classList.add("cursor-bucket");
 
-    // Highlight default flood subtools
-    setTimeout(function () {
-      var buttons = document
-        .getElementById("genericsubmenu")
-        .getElementsByTagName("button");
-      // Highlight default texture (Solid, index 0)
-      if (buttons[0]) {
-        buttons[0].style = "border-color:red; border-width: 5px";
-      }
-    }, 0);
-  });
+      // Highlight default paintcan subtools
+      setTimeout(function () {
+        var buttons = document
+          .getElementById("genericsubmenu")
+          .getElementsByTagName("button");
+        // Highlight default texture (Solid, index 0)
+        if (buttons[0]) {
+          buttons[0].style = "border-color:red; border-width: 5px";
+        }
+      }, 0);
+    });
 
   document.getElementById("eraser").addEventListener("mousedown", function () {
     highlightSelectedTool("eraser");
