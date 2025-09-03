@@ -1,9 +1,10 @@
 backlog
 
+Let's do this feature: 
+
 # Feature: Rename flood to paint-can.
 
-Description: The "Paint Can" tool is named "Flood" in the code (eg, KiddoPaint.Tools.Flood). Let's make the code match the UI by renaming the flood-based terms to paint-can everywhere in the code: PaintCan, paint_can, etc. When we're done, there should be no "flood" in the codebase. Let's start by finding all instances of "flood" and drafting a plan for how to rename these instances.
-
+Description: The "Paint Can" tool is named "Flood" in the code (eg, KiddoPaint.Tools.Flood). Let's change the code match the UI, by renaming the flood-based terms to paint-can everywhere in the code: PaintCan, paint_can, etc. Even rename assets like /Users/justin/Projects/KidPix/kidpix/src/assets/snd/flood0.wav. And obviously use `git mv` not `mv`. When we're done, there should be no "flood" in the codebase.
 
 
 # Feature: Remember last tool, subtool(s), color, color palette
