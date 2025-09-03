@@ -17,11 +17,11 @@ KiddoPaint.Sounds.Library.oops = [
   new Audio("snd/oops3.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.bubblepops = [
-  new Audio("snd/bubble-pop-2WAVSOUND.R_0004edd3.wav.mp3"),
-  new Audio("snd/bubble-pop-3WAVSOUND.R_0004fccd.wav.mp3"),
-  new Audio("snd/bubble-pop-4WAVSOUND.R_0004f480.wav.mp3"),
-  new Audio("snd/bubble-pop-WAVSOUND.R_00050452.wav.mp3"),
-  new Audio("snd/bubble-pop-WAVSOUND.R_000031f6.wav.mp3"),
+  new Audio("snd/misc/bubble-pop-1_XXX.mp3"),
+  new Audio("snd/misc/bubble-pop-2_XXX.mp3"),
+  new Audio("snd/misc/bubble-pop-3_XXX.mp3"),
+  new Audio("snd/misc/bubble-pop-4_XXX.mp3"),
+  new Audio("snd/misc/bubble-pop-5_XXX.mp3"),
 ];
 
 // single sounds
