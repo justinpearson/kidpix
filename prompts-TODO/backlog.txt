@@ -1,6 +1,12 @@
 backlog
 
 
+# Feature: ensure all tools make sounds
+
+- some tools, like the eraser, don't make sounds for some reason.
+- use TDD - make an e2e test that asserts that basically every click makes a noise.
+
+
 # Feature: Remember last tool, subtool(s), color, color palette
 
 Description: basically, the current UI state should persist between page-reloads, to achieve the following user-friendly niceties:
@@ -10,30 +16,4 @@ Description: basically, the current UI state should persist between page-reloads
 3. Note that different tools can have differnt indexes of "last sub-tool(s) used". The design must remember "last sub-tool(s) used" for EACH tool. 
 
 Not sure how best to implement this -- save this UI state to local browser storage?
-
-
-
-
-
-
-
-# Feature: Clean up audio files in snd/ and sndmp3/
-
-Why do we have .wav and .wav.mp3 files? Do we really need the wav's? What does the CODE use? Could we save some space by using the mp3's and deleting the wav's?
-
-	renamed:    src/assets/snd/flood0.wav -> src/assets/snd/paintcan0.wav
-	renamed:    src/assets/sndmp3/flood0.wav.mp3 -> src/assets/sndmp3/paintcan0.wav.mp3
-
-I want to organize the sound files in assets/snd/ and assets/sndmp3/. Rather than having you move these files yourself, please write a zsh shell script to do it. That way we can easily iterate on the script by resetting the sound files with `git checkout .`
-
-Here are the goals / requirements of this organization effort:
-
-1. all audio files live in the assets/snd/ dir -- we can delete the assets/sndmp3/ dir.
-2. the code only references the mp3 files, and not the .wav files.
-3. we can delete the wav files, as long as there's an mp3 equivalent.
-4. Currently the mp3 files are all dumped in 1 big flat dir. Also they have ridiculous long names like "electric-mixer-venetian-WAVSOUND.R_0001df56.wav.mp3". Rename & move the mp3's to have sensible names & dirs that match the tools. Can look at how the sound file used, to figure out which dir it should live in. Examples:
-	- example 1: kidpix-submenu-brush-tree.wav.mp3 moves to brush/tree.mp3
-	- example 2: electric-mixer-wallpaper-jitter-boingo-WAVSOUND.R_00024fcc.wav.mp3 moves to mixer/wallpaper-jitter-boingo.mp3
-	- note: the dir `english/` becomes `text/letters/` and `text/numbers/` and `text/symbols/` . 
-- if a sound file is used by multiple tools / effects, copy it into the corresponding dirs. I'm ok with the file duplication for the sake of undertandability.
 
