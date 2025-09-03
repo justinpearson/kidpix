@@ -16,7 +16,7 @@ Once groomed / well-formed, move to backlog.txt.
 
 
 - re-enable tests in CI workflows
-- clean up yarn scripts, there's too many and they're confusing. don't even need TS ones until we are actually using TS haha.
+- clean up yarn scripts, there's too many and they're confusing. don't even need TS ones until we are actually using TS haha. how about let's start by writing a section in the readme for "development workflow" that's oriented around when you'd actually use each yarn script as you build, test, and deploy a feature.
 - delete / remove old workflows out of github
 - finish migration 
 
