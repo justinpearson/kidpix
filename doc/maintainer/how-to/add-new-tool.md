@@ -97,7 +97,7 @@ Edit `js/sounds/sounds.js` to add sound effects:
 KiddoPaint.Sounds.Library.mytool = "snd/my-tool-sound.wav";
 ```
 
-Place sound files in both `snd/` (WAV) and `sndmp3/` (MP3) directories.
+Place sound files in the `snd/` directory.
 
 ## 5. Create Submenu (Optional)
 

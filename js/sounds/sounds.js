@@ -8,255 +8,253 @@ KiddoPaint.Sounds.Library.enabled = true;
 
 // array to randomize
 KiddoPaint.Sounds.Library.explosion = [
-  new Audio("sndmp3/kidpix-tool-eraser-tnt-explosion.wav.mp3"),
+  new Audio("snd/kidpix-tool-eraser-tnt-explosion.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.oops = [
-  new Audio("sndmp3/oops0.wav.mp3"),
-  new Audio("sndmp3/oops1.wav.mp3"),
-  new Audio("sndmp3/oops2.wav.mp3"),
-  new Audio("sndmp3/oops3.wav.mp3"),
+  new Audio("snd/oops0.wav.mp3"),
+  new Audio("snd/oops1.wav.mp3"),
+  new Audio("snd/oops2.wav.mp3"),
+  new Audio("snd/oops3.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.bubblepops = [
-  new Audio("sndmp3/bubble-pop-2WAVSOUND.R_0004edd3.wav.mp3"),
-  new Audio("sndmp3/bubble-pop-3WAVSOUND.R_0004fccd.wav.mp3"),
-  new Audio("sndmp3/bubble-pop-4WAVSOUND.R_0004f480.wav.mp3"),
-  new Audio("sndmp3/bubble-pop-WAVSOUND.R_00050452.wav.mp3"),
-  new Audio("sndmp3/bubble-pop-WAVSOUND.R_000031f6.wav.mp3"),
+  new Audio("snd/bubble-pop-2WAVSOUND.R_0004edd3.wav.mp3"),
+  new Audio("snd/bubble-pop-3WAVSOUND.R_0004fccd.wav.mp3"),
+  new Audio("snd/bubble-pop-4WAVSOUND.R_0004f480.wav.mp3"),
+  new Audio("snd/bubble-pop-WAVSOUND.R_00050452.wav.mp3"),
+  new Audio("snd/bubble-pop-WAVSOUND.R_000031f6.wav.mp3"),
 ];
 
 // single sounds
 KiddoPaint.Sounds.Library.pencil = [
-  new Audio("sndmp3/kidpix-tool-pencil.wav.mp3"),
+  new Audio("snd/kidpix-tool-pencil.wav.mp3"),
 ];
-KiddoPaint.Sounds.Library.stamp = [new Audio("sndmp3/stamp0.wav.mp3")];
-KiddoPaint.Sounds.Library.paintcan = [new Audio("sndmp3/paintcan0.wav.mp3")];
+KiddoPaint.Sounds.Library.stamp = [new Audio("snd/stamp0.wav.mp3")];
+KiddoPaint.Sounds.Library.paintcan = [new Audio("snd/paintcan0.wav.mp3")];
 KiddoPaint.Sounds.Library.mainmenu = [
-  new Audio("sndmp3/kidpix-menu-click-main-tools.wav.mp3"),
+  new Audio("snd/kidpix-menu-click-main-tools.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.submenucolor = [
-  new Audio("sndmp3/kidpix-menu-click-submenu-color.wav.mp3"),
+  new Audio("snd/kidpix-menu-click-submenu-color.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.submenuoption = [
-  new Audio("sndmp3/kidpix-menu-click-submenu-options.wav.mp3"),
+  new Audio("snd/kidpix-menu-click-submenu-options.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.box = [
-  new Audio("sndmp3/kidpix-tool-box-during-approx.wav.mp3"),
+  new Audio("snd/kidpix-tool-box-during-approx.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.circle = [
-  new Audio("sndmp3/kidpix-tool-circle-during-approx.wav.mp3"),
+  new Audio("snd/kidpix-tool-circle-during-approx.wav.mp3"),
 ];
 
-// KiddoPaint.Sounds.Library. = [new Audio('sndmp3/')];
+// KiddoPaint.Sounds.Library. = [new Audio('snd/')];
 
 KiddoPaint.Sounds.Library.eraserfade = [
-  new Audio("sndmp3/eraser-tool-fade-2WAVSOUND.R_0002f58b.wav.mp3"),
+  new Audio("snd/eraser-tool-fade-2WAVSOUND.R_0002f58b.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.doordingdong = [
-  new Audio("sndmp3/kidpix-eraser-doorbell-ding-dong.wav.mp3"),
+  new Audio("snd/kidpix-eraser-doorbell-ding-dong.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.doorcreak = [
-  new Audio("sndmp3/kidpix-eraser-doorbell-door-creak.wav.mp3"),
+  new Audio("snd/kidpix-eraser-doorbell-door-creak.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.doorwow = [
-  new Audio("sndmp3/kidpix-eraser-doorbell-wwoooowwww.wav.mp3"),
+  new Audio("snd/kidpix-eraser-doorbell-wwoooowwww.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushbubbly = [
-  new Audio("sndmp3/kidpix-submenu-brush-bubbly.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-bubbly.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushleakypen = [
-  new Audio("sndmp3/kidpix-submenu-brush-leaky-pen.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-leaky-pen.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushzigzag = [
-  new Audio("sndmp3/kidpix-submenu-brush-zigzag.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-zigzag.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushdots = [
-  new Audio("sndmp3/kidpix-submenu-brush-dots.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-dots.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushpies = [
-  new Audio("sndmp3/kidpix-submenu-brush-pies.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-pies.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushecho = [
-  new Audio("sndmp3/kidpix-submenu-brush-owl.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-owl.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushnorthern = [
-  new Audio("sndmp3/kidpix-submenu-brush-northern.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-northern.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushfuzzer = [
-  new Audio("sndmp3/kidpix-submenu-brush-fuzzer.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-fuzzer.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushzoom = [
-  new Audio("sndmp3/kidpix-submenu-brush-zoom.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-zoom.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushpines = [
-  new Audio("sndmp3/kidpix-submenu-brush-pines.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-pines.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushtwirly = [
-  new Audio("sndmp3/kidpix-submenu-brush-twirly.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-twirly.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushkaliediscope = [
-  new Audio("sndmp3/kidpix-submenu-brush-kaliediscope.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-kaliediscope.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushrollingdots = [
-  new Audio("sndmp3/kidpix-submenu-brush-rollingdots.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-rollingdots.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushinvert = [
-  new Audio("sndmp3/kidpix-submenu-brush-inverter.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-inverter.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushguil = [
-  new Audio("sndmp3/kidpix-submenu-brush-guilloche.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-guilloche.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushtree = [
-  new Audio("sndmp3/kidpix-submenu-brush-tree.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-tree.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushstars = [
-  new Audio("sndmp3/kidpix-submenu-brush-stars.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-stars.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushxos = [
-  new Audio("sndmp3/kidpix-submenu-brush-xos.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-xos.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushcards = [
-  new Audio("sndmp3/kidpix-submenu-brush-cards.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-cards.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushshapes = [
-  new Audio("sndmp3/kidpix-submenu-brush-shapes.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-shapes.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushprints = [
-  new Audio("sndmp3/kidpix-submenu-brush-prints.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-prints.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.brushspraypaint = [
-  new Audio("sndmp3/kidpix-submenu-brush-spraypaint.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-spraypaint.wav.mp3"),
 ];
 
 KiddoPaint.Sounds.Library.mixerwallpaper = [
   new Audio(
-    "sndmp3/electric-mixer-wallpaper-jitter-boingo-WAVSOUND.R_00024fcc.wav.mp3",
+    "snd/electric-mixer-wallpaper-jitter-boingo-WAVSOUND.R_00024fcc.wav.mp3",
   ),
 ];
 KiddoPaint.Sounds.Library.mixerinvert = [
   new Audio(
-    "sndmp3/electric-mixer-inverter-rolling-sound-WAVSOUND.R_0001fcfa.wav.mp3",
+    "snd/electric-mixer-inverter-rolling-sound-WAVSOUND.R_0001fcfa.wav.mp3",
   ),
 ];
 KiddoPaint.Sounds.Library.mixervenetian = [
-  new Audio("sndmp3/electric-mixer-venetian-WAVSOUND.R_0001df56.wav.mp3"),
+  new Audio("snd/electric-mixer-venetian-WAVSOUND.R_0001df56.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.mixershadowbox = [
-  new Audio("sndmp3/electric-mixer-shadow-boxes-WAVSOUND.R_0002a07a.wav.mp3"),
+  new Audio("snd/electric-mixer-shadow-boxes-WAVSOUND.R_0002a07a.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.mixerpip = [
-  new Audio(
-    "sndmp3/electric-mixer-pip-drum-crash-1WAVSOUND.R_0002d96e.wav.mp3",
-  ),
+  new Audio("snd/electric-mixer-pip-drum-crash-1WAVSOUND.R_0002d96e.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.mixerframe = [
-  new Audio("sndmp3/western-gun-shot-twirl-WAVSOUND.R_0005ed70.wav.mp3"),
+  new Audio("snd/western-gun-shot-twirl-WAVSOUND.R_0005ed70.wav.mp3"),
 ];
 
-KiddoPaint.Sounds.Library.unimpl = [new Audio("sndmp3/chord.wav.mp3")];
+KiddoPaint.Sounds.Library.unimpl = [new Audio("snd/chord.wav.mp3")];
 
 // multipart sounds; start, during, end
 KiddoPaint.Sounds.Library.line = [
-  new Audio("sndmp3/kidpix-tool-line-start.wav.mp3"),
-  new Audio("sndmp3/kidpix-tool-line-start.wav.mp3"),
-  new Audio("sndmp3/kidpix-tool-line-end.wav.mp3"),
+  new Audio("snd/kidpix-tool-line-start.wav.mp3"),
+  new Audio("snd/kidpix-tool-line-start.wav.mp3"),
+  new Audio("snd/kidpix-tool-line-end.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.truck = [
-  new Audio("sndmp3/kidpix-truck-truckin.wav.mp3"),
-  new Audio("sndmp3/kidpix-truck-truckin-go.wav.mp3"),
-  new Audio("sndmp3/kidpix-truck-skid.wav.mp3"),
+  new Audio("snd/kidpix-truck-truckin.wav.mp3"),
+  new Audio("snd/kidpix-truck-truckin-go.wav.mp3"),
+  new Audio("snd/kidpix-truck-skid.wav.mp3"),
 ];
 KiddoPaint.Sounds.Library.xy = [
-  new Audio("sndmp3/kidpix-submenu-brush-xy-start.wav.mp3"),
-  new Audio("sndmp3/kidpix-submenu-brush-xy-during.wav.mp3"),
-  new Audio("sndmp3/kidpix-submenu-brush-xy-end.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-xy-start.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-xy-during.wav.mp3"),
+  new Audio("snd/kidpix-submenu-brush-xy-end.wav.mp3"),
 ];
 
 KiddoPaint.Sounds.Library.english = {
-  A: "sndmp3/english/alpha-a-WAVSOUND.R_0007d8f2.wav.mp3",
-  B: "sndmp3/english/alpha-b-WAVSOUND.R_0007ee1f.wav.mp3",
-  C: "sndmp3/english/alpha-c-WAVSOUND.R_000803fc.wav.mp3",
-  D: "sndmp3/english/alpha-d-WAVSOUND.R_000815df.wav.mp3",
-  E: "sndmp3/english/alpha-e-WAVSOUND.R_00082fcc.wav.mp3",
-  F: "sndmp3/english/alpha-f-WAVSOUND.R_00084629.wav.mp3",
-  G: "sndmp3/english/alpha-g-WAVSOUND.R_000853d0.wav.mp3",
-  H: "sndmp3/english/alpha-h-WAVSOUND.R_00086213.wav.mp3",
-  I: "sndmp3/english/alpha-i-WAVSOUND.R_00087a00.wav.mp3",
-  J: "sndmp3/english/alpha-j-WAVSOUND.R_00088ced.wav.mp3",
-  K: "sndmp3/english/alpha-k-WAVSOUND.R_0008a72e.wav.mp3",
-  L: "sndmp3/english/alpha-l-WAVSOUND.R_0008bda3.wav.mp3",
-  M: "sndmp3/english/alpha-m-WAVSOUND.R_0008d0f8.wav.mp3",
-  N: "sndmp3/english/alpha-n-WAVSOUND.R_0008e695.wav.mp3",
-  O: "sndmp3/english/alpha-o-WAVSOUND.R_0008fcaa.wav.mp3",
-  P: "sndmp3/english/alpha-p-WAVSOUND.R_00091bdb.wav.mp3",
-  Q: "sndmp3/english/alpha-q-WAVSOUND.R_00092aee.wav.mp3",
-  R: "sndmp3/english/alpha-r-WAVSOUND.R_0009639f.wav.mp3",
-  S: "sndmp3/english/alpha-s-WAVSOUND.R_00097948.wav.mp3",
-  T: "sndmp3/english/alpha-t-WAVSOUND.R_00099085.wav.mp3",
-  U: "sndmp3/english/alpha-u-WAVSOUND.R_0009a406.wav.mp3",
-  V: "sndmp3/english/alpha-v-WAVSOUND.R_0009bbcf.wav.mp3",
-  W: "sndmp3/english/alpha-w-WAVSOUND.R_0009d8cc.wav.mp3",
-  X: "sndmp3/english/alpha-x-WAVSOUND.R_0009ff1d.wav.mp3",
-  Y: "sndmp3/english/alpha-y-WAVSOUND.R_000a177a.wav.mp3",
-  Z: "sndmp3/english/alpha-z-WAVSOUND.R_000a2fe7.wav.mp3",
-  0: "sndmp3/english/number-0-WAVSOUND.R_000a7832.wav.mp3",
-  1: "sndmp3/english/number-1-WAVSOUND.R_000a9f1f.wav.mp3",
-  2: "sndmp3/english/number-2-WAVSOUND.R_000ab58c.wav.mp3",
-  3: "sndmp3/english/number-3-WAVSOUND.R_000aca17.wav.mp3",
-  4: "sndmp3/english/number-4-WAVSOUND.R_000ae7a4.wav.mp3",
-  5: "sndmp3/english/number-5-WAVSOUND.R_000afbb1.wav.mp3",
-  6: "sndmp3/english/number-6-WAVSOUND.R_000b205a.wav.mp3",
-  7: "sndmp3/english/number-7-WAVSOUND.R_000b43e7.wav.mp3",
-  8: "sndmp3/english/number-8-WAVSOUND.002_000555ac.wav.mp3",
-  9: "sndmp3/english/number-9-WAVSOUND.R_000b7db1.wav.mp3",
+  A: "snd/english/alpha-a-WAVSOUND.R_0007d8f2.wav.mp3",
+  B: "snd/english/alpha-b-WAVSOUND.R_0007ee1f.wav.mp3",
+  C: "snd/english/alpha-c-WAVSOUND.R_000803fc.wav.mp3",
+  D: "snd/english/alpha-d-WAVSOUND.R_000815df.wav.mp3",
+  E: "snd/english/alpha-e-WAVSOUND.R_00082fcc.wav.mp3",
+  F: "snd/english/alpha-f-WAVSOUND.R_00084629.wav.mp3",
+  G: "snd/english/alpha-g-WAVSOUND.R_000853d0.wav.mp3",
+  H: "snd/english/alpha-h-WAVSOUND.R_00086213.wav.mp3",
+  I: "snd/english/alpha-i-WAVSOUND.R_00087a00.wav.mp3",
+  J: "snd/english/alpha-j-WAVSOUND.R_00088ced.wav.mp3",
+  K: "snd/english/alpha-k-WAVSOUND.R_0008a72e.wav.mp3",
+  L: "snd/english/alpha-l-WAVSOUND.R_0008bda3.wav.mp3",
+  M: "snd/english/alpha-m-WAVSOUND.R_0008d0f8.wav.mp3",
+  N: "snd/english/alpha-n-WAVSOUND.R_0008e695.wav.mp3",
+  O: "snd/english/alpha-o-WAVSOUND.R_0008fcaa.wav.mp3",
+  P: "snd/english/alpha-p-WAVSOUND.R_00091bdb.wav.mp3",
+  Q: "snd/english/alpha-q-WAVSOUND.R_00092aee.wav.mp3",
+  R: "snd/english/alpha-r-WAVSOUND.R_0009639f.wav.mp3",
+  S: "snd/english/alpha-s-WAVSOUND.R_00097948.wav.mp3",
+  T: "snd/english/alpha-t-WAVSOUND.R_00099085.wav.mp3",
+  U: "snd/english/alpha-u-WAVSOUND.R_0009a406.wav.mp3",
+  V: "snd/english/alpha-v-WAVSOUND.R_0009bbcf.wav.mp3",
+  W: "snd/english/alpha-w-WAVSOUND.R_0009d8cc.wav.mp3",
+  X: "snd/english/alpha-x-WAVSOUND.R_0009ff1d.wav.mp3",
+  Y: "snd/english/alpha-y-WAVSOUND.R_000a177a.wav.mp3",
+  Z: "snd/english/alpha-z-WAVSOUND.R_000a2fe7.wav.mp3",
+  0: "snd/english/number-0-WAVSOUND.R_000a7832.wav.mp3",
+  1: "snd/english/number-1-WAVSOUND.R_000a9f1f.wav.mp3",
+  2: "snd/english/number-2-WAVSOUND.R_000ab58c.wav.mp3",
+  3: "snd/english/number-3-WAVSOUND.R_000aca17.wav.mp3",
+  4: "snd/english/number-4-WAVSOUND.R_000ae7a4.wav.mp3",
+  5: "snd/english/number-5-WAVSOUND.R_000afbb1.wav.mp3",
+  6: "snd/english/number-6-WAVSOUND.R_000b205a.wav.mp3",
+  7: "snd/english/number-7-WAVSOUND.R_000b43e7.wav.mp3",
+  8: "snd/english/number-8-WAVSOUND.002_000555ac.wav.mp3",
+  9: "snd/english/number-9-WAVSOUND.R_000b7db1.wav.mp3",
 
-  10: "sndmp3/english/jcp - 10.m4a",
-  11: "sndmp3/english/jcp - 11.m4a",
-  12: "sndmp3/english/jcp - 12.m4a",
-  13: "sndmp3/english/jcp - 13.m4a",
-  14: "sndmp3/english/jcp - 14.m4a",
-  15: "sndmp3/english/jcp - 15.m4a",
-  16: "sndmp3/english/jcp - 16.m4a",
-  17: "sndmp3/english/jcp - 17.m4a",
-  18: "sndmp3/english/jcp - 18.m4a",
-  19: "sndmp3/english/jcp - 19.m4a",
-  20: "sndmp3/english/jcp - 20.m4a",
-  21: "sndmp3/english/jcp - 21.m4a",
-  22: "sndmp3/english/jcp - 22.m4a",
-  23: "sndmp3/english/jcp - 23.m4a",
-  24: "sndmp3/english/jcp - 24.m4a",
-  25: "sndmp3/english/jcp - 25.m4a",
+  10: "snd/english/jcp - 10.m4a",
+  11: "snd/english/jcp - 11.m4a",
+  12: "snd/english/jcp - 12.m4a",
+  13: "snd/english/jcp - 13.m4a",
+  14: "snd/english/jcp - 14.m4a",
+  15: "snd/english/jcp - 15.m4a",
+  16: "snd/english/jcp - 16.m4a",
+  17: "snd/english/jcp - 17.m4a",
+  18: "snd/english/jcp - 18.m4a",
+  19: "snd/english/jcp - 19.m4a",
+  20: "snd/english/jcp - 20.m4a",
+  21: "snd/english/jcp - 21.m4a",
+  22: "snd/english/jcp - 22.m4a",
+  23: "snd/english/jcp - 23.m4a",
+  24: "snd/english/jcp - 24.m4a",
+  25: "snd/english/jcp - 25.m4a",
 
-  _: "sndmp3/english/dp - underscore.m4a",
-  "*": "sndmp3/english/dp - star.m4a",
-  "/": "sndmp3/english/dp - slash.m4a",
-  "'": "sndmp3/english/dp - single quote.m4a",
-  ";": "sndmp3/english/dp - semicolon.m4a",
-  ")": "sndmp3/english/dp - right paren.m4a",
-  "]": "sndmp3/english/dp - right bracket.m4a",
-  "}": "sndmp3/english/dp - right brace.m4a",
-  "?": "sndmp3/english/dp - question mark.m4a",
-  "#": "sndmp3/english/dp - pound.m4a",
-  "+": "sndmp3/english/dp - plus.m4a",
-  "|": "sndmp3/english/dp - pipe.m4a",
-  ".": "sndmp3/english/dp - period.m4a",
-  "%": "sndmp3/english/dp - percent.m4a",
-  "<": "sndmp3/english/dp - less than.m4a",
-  "(": "sndmp3/english/dp - left paren.m4a",
-  "[": "sndmp3/english/dp - left bracket.m4a",
-  "{": "sndmp3/english/dp - left brace.m4a",
-  "-": "sndmp3/english/dp - hyphen.m4a",
-  ">": "sndmp3/english/dp - greater than.m4a",
-  "!": "sndmp3/english/dp - exclam pt.m4a",
-  "=": "sndmp3/english/dp - equals.m4a",
-  '"': "sndmp3/english/dp - double quote.m4a",
-  $: "sndmp3/english/dp - dollar.m4a",
-  ",": "sndmp3/english/dp - comma.m4a",
-  ":": "sndmp3/english/dp - colon.m4a",
-  "^": "sndmp3/english/dp - caret.m4a",
-  "`": "sndmp3/english/dp - backtick.m4a",
-  "\\": "sndmp3/english/dp - backslash.m4a",
-  "@": "sndmp3/english/dp - at.m4a",
-  "&": "sndmp3/english/dp - ampersand.m4a",
+  _: "snd/english/dp - underscore.m4a",
+  "*": "snd/english/dp - star.m4a",
+  "/": "snd/english/dp - slash.m4a",
+  "'": "snd/english/dp - single quote.m4a",
+  ";": "snd/english/dp - semicolon.m4a",
+  ")": "snd/english/dp - right paren.m4a",
+  "]": "snd/english/dp - right bracket.m4a",
+  "}": "snd/english/dp - right brace.m4a",
+  "?": "snd/english/dp - question mark.m4a",
+  "#": "snd/english/dp - pound.m4a",
+  "+": "snd/english/dp - plus.m4a",
+  "|": "snd/english/dp - pipe.m4a",
+  ".": "snd/english/dp - period.m4a",
+  "%": "snd/english/dp - percent.m4a",
+  "<": "snd/english/dp - less than.m4a",
+  "(": "snd/english/dp - left paren.m4a",
+  "[": "snd/english/dp - left bracket.m4a",
+  "{": "snd/english/dp - left brace.m4a",
+  "-": "snd/english/dp - hyphen.m4a",
+  ">": "snd/english/dp - greater than.m4a",
+  "!": "snd/english/dp - exclam pt.m4a",
+  "=": "snd/english/dp - equals.m4a",
+  '"': "snd/english/dp - double quote.m4a",
+  $: "snd/english/dp - dollar.m4a",
+  ",": "snd/english/dp - comma.m4a",
+  ":": "snd/english/dp - colon.m4a",
+  "^": "snd/english/dp - caret.m4a",
+  "`": "snd/english/dp - backtick.m4a",
+  "\\": "snd/english/dp - backslash.m4a",
+  "@": "snd/english/dp - at.m4a",
+  "&": "snd/english/dp - ampersand.m4a",
 };
 
 KiddoPaint.Sounds.Library.playRand = function (sound) {
