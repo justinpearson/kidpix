@@ -44,9 +44,9 @@ test.describe("Color Picker Tool Tests", () => {
     const colorPickerBox = await colorPicker.boundingBox();
     const undoBox = await undo.boundingBox();
 
-    // Assuming horizontal layout, color picker should be between truck and undo
-    expect(truckBox!.x).toBeLessThan(colorPickerBox!.x);
-    expect(colorPickerBox!.x).toBeLessThan(undoBox!.x);
+    // Assuming vertical layout, color picker should be between truck and undo
+    expect(truckBox!.y).toBeLessThan(colorPickerBox!.y);
+    expect(colorPickerBox!.y).toBeLessThan(undoBox!.y);
 
     assertNoConsoleErrors(consoleErrors, "eyedropper tool positioning");
   });
