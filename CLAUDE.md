@@ -177,7 +177,7 @@ KiddoPaint.Display = {}; // Multi-layer canvas management
 KiddoPaint.Colors = {}; // Color palette system
 KiddoPaint.Current = {}; // Application state
 KiddoPaint.Cache = {}; // Performance caching
-KiddoPaint.Alphabet = {}; // Letter/number stamps
+KiddoPaint.Text = {}; // Letter/number stamps
 KiddoPaint.Sprite = {}; // Sprite management
 ```
 
@@ -215,7 +215,7 @@ KiddoPaint.Tools.Toolbox.ToolName = function () {
 - `js/brushes/`: Brush pattern generators (circles, splatters, animations)
 - `js/textures/`: Fill pattern generators (stripes, speckles, gradients)
 - `js/builders/`: Complex shape builders (arrows, roads, rails)
-- `js/stamps/`: Stamp and alphabet systems
+- `js/stamps/`: Stamp and text systems
 - `js/submenus/`: UI submenu definitions for tool options
 - `js/sounds/`: Audio system and sound library
 - `js/util/`: Core utilities (display, colors, caching, filters)

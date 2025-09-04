@@ -19,7 +19,7 @@ tests/e2e/
 ├── oval.spec.ts             # Circle tool tests
 ├── paint-can.spec.ts        # Paint Can tool tests
 ├── eraser.spec.ts           # Eraser tool tests
-├── text.spec.ts             # Text/Alphabet tool tests
+├── text.spec.ts             # Text tool tests
 ├── stamps.spec.ts           # Stamp tool tests
 ├── moving-van.spec.ts       # Truck tool tests
 ├── tool-switching.spec.ts   # Cross-tool integration tests

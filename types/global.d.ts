@@ -70,7 +70,7 @@ declare const KiddoPaint: {
   };
   Colors: Record<string, unknown>;
   Cache: Record<string, unknown>;
-  Alphabet: Record<string, unknown>;
+  Text: Record<string, unknown>;
   Sprite: Record<string, unknown>;
 };
 

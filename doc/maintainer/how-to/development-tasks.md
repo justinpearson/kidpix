@@ -224,7 +224,7 @@ js/
 5. `js/submenus/*` - UI submenu definitions
 6. `js/brushes/*` - Brush generators
 7. `js/builders/*` - Complex shape builders
-8. `js/stamps/*` - Stamp and alphabet systems
+8. `js/stamps/*` - Stamp and text systems
 9. `js/sounds/*` - Audio system
 
 ### Example: Adding a New Tool

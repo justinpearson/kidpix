@@ -45,7 +45,7 @@ var KiddoPaint = {
   Colors: {}, // Color palette system
   Current: {}, // Application state
   Cache: {}, // Performance caching
-  Alphabet: {}, // Text/letter system
+  Text: {}, // Text/letter system
   Sprite: {}, // Sprite system
   Submenu: {}, // UI submenu definitions
 };
@@ -191,7 +191,7 @@ KiddoPaint.Sounds.Library = {
 - **Tool sounds** - Immediate feedback for actions
 - **Sequence sounds** - Multi-part audio (start/during/end)
 - **UI sounds** - Menu clicks and selections
-- **Alphabet sounds** - Letter pronunciation
+- **Text sounds** - Letter pronunciation
 
 ### Color Management
 

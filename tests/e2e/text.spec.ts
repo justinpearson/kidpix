@@ -11,7 +11,7 @@ import {
 } from "./shared/tool-helpers";
 import { getToolDefinition } from "./shared/test-fixtures";
 
-const TOOL_ID = "alphabet";
+const TOOL_ID = "text";
 const toolDef = getToolDefinition(TOOL_ID)!;
 
 test.describe("Text Tool Tests", () => {

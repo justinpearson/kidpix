@@ -69,7 +69,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     alternateSubtoolIndices: [1], // special eraser
   },
   {
-    id: "alphabet",
+    id: "text",
     name: "Text",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,

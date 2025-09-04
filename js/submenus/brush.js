@@ -363,7 +363,7 @@ KiddoPaint.Submenu.brush = [
       KiddoPaint.Tools.PlainBrush.texture = function () {
         return KiddoPaint.Builders.Prints(
           KiddoPaint.Current.color,
-          KiddoPaint.Alphabet.nextWingding(2),
+          KiddoPaint.Text.nextWingding(2),
         );
       };
     },
@@ -381,7 +381,7 @@ KiddoPaint.Submenu.brush = [
       KiddoPaint.Tools.PlainBrush.texture = function () {
         return KiddoPaint.Builders.Prints(
           KiddoPaint.Current.color,
-          KiddoPaint.Alphabet.nextWingding(1),
+          KiddoPaint.Text.nextWingding(1),
         );
       };
     },
@@ -399,7 +399,7 @@ KiddoPaint.Submenu.brush = [
       KiddoPaint.Tools.PlainBrush.texture = function () {
         return KiddoPaint.Builders.Prints(
           KiddoPaint.Current.color,
-          KiddoPaint.Alphabet.nextWingding(3),
+          KiddoPaint.Text.nextWingding(3),
         );
       };
     },
@@ -417,7 +417,7 @@ KiddoPaint.Submenu.brush = [
       KiddoPaint.Tools.PlainBrush.texture = function () {
         return KiddoPaint.Builders.Prints(
           KiddoPaint.Current.color,
-          KiddoPaint.Alphabet.nextWingding(4),
+          KiddoPaint.Text.nextWingding(4),
         );
       };
     },

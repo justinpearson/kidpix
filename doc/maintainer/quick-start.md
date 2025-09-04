@@ -137,7 +137,7 @@ js/
 ├── submenus/        # UI submenu definitions for tool options
 ├── brushes/         # Brush pattern generators
 ├── builders/        # Complex shape builders (arrows, roads, rails)
-├── stamps/          # Stamp and alphabet systems
+├── stamps/          # Stamp and text systems
 └── sounds/          # Audio system and sound library
 ```
 
