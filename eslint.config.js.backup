@@ -1,16 +1,10 @@
 import js from "@eslint/js";
 import globals from "globals";
+import tseslint from "typescript-eslint";
 import importPlugin from "eslint-plugin-import";
 
-export default [
-  // Global ignores
-  {
-    ignores: ["dist", "tests/e2e/**", "site/**", "**/*.{ts,tsx}"], // Ignore TypeScript files for now
-  },
-
-  // Base JavaScript configuration
-  js.configs.recommended,
-
+export default tseslint.config(
+  { ignores: ["dist", "tests/e2e/**", "site/**"] }, // Ignore site/ for now as it has external deps
   // Config files (need module mode)
   {
     files: ["*.config.{js,mjs}", "vite.config.{js,ts}"],
@@ -21,8 +15,10 @@ export default [
         ...globals.node,
       },
     },
+    rules: {
+      ...js.configs.recommended.rules,
+    },
   },
-
   // JavaScript test files (module mode for imports)
   {
     files: ["js/**/*.test.js", "js/**/*.spec.js"],
@@ -38,11 +34,11 @@ export default [
       import: importPlugin,
     },
     rules: {
+      ...js.configs.recommended.rules,
       "no-unused-vars": "warn",
       "import/no-unresolved": "off",
     },
   },
-
   // KidPix JavaScript files (script mode for globals)
   {
     files: ["js/**/*.js"],
@@ -86,13 +82,13 @@ export default [
         flattenImage: "writable",
         makeComposite: "readonly",
         jitter: "writable",
-        show_generic_submenu: "readonly",
       },
     },
     plugins: {
       import: importPlugin,
     },
     rules: {
+      ...js.configs.recommended.rules,
       "no-unused-vars": "warn",
       "no-undef": "warn", // Make this a warning for now
       "prefer-const": "warn",
@@ -103,4 +99,47 @@ export default [
       "import/no-unresolved": "off",
     },
   },
-];
+  // TypeScript configuration (non-test files)
+  {
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      "prettier",
+    ],
+    files: ["**/*.{ts,tsx}"],
+    ignores: ["**/*.test.{ts,tsx}", "**/test-setup.ts"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    plugins: {},
+    rules: {},
+  },
+  // TypeScript test files (without project mode)
+  {
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      "prettier",
+    ],
+    files: ["**/*.test.{ts,tsx}", "**/test-setup.ts"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: {
+        ...globals.browser,
+        describe: "readonly",
+        it: "readonly",
+        expect: "readonly",
+        vi: "readonly",
+        beforeEach: "readonly",
+        afterEach: "readonly",
+      },
+    },
+    plugins: {},
+    rules: {},
+  },
+);

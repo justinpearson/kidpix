@@ -180,7 +180,7 @@ window.fx = (function () {
     a.sort(function (a, b) {
       return a[0] - b[0];
     });
-    for (var c = 0; c < d; c++) this.xa.push(a[c][0]), this.ya.push(a[c][1]);
+    for (var c = 0; c < d; c++) (this.xa.push(a[c][0]), this.ya.push(a[c][1]));
     this.u[0] = 0;
     this.y2[0] = 0;
     for (c = 1; c < d - 1; ++c) {
@@ -1043,7 +1043,7 @@ window.fx = (function () {
           d != this.format ||
           f != this.type
         )
-          (this.width = b),
+          ((this.width = b),
             (this.height = c),
             (this.format = d),
             (this.type = f),
@@ -1058,7 +1058,7 @@ window.fx = (function () {
               this.format,
               this.type,
               null,
-            );
+            ));
       };
       b.prototype.drawTo = function (b) {
         a.framebuffer = a.framebuffer || a.createFramebuffer();

@@ -223,7 +223,7 @@ Licensed under MIT license (see "Smooth.js MIT license.txt")
     return CubicInterpolator;
   })(AbstractInterpolator);
 
-  (sin = Math.sin), (PI = Math.PI);
+  ((sin = Math.sin), (PI = Math.PI));
 
   sinc = function (x) {
     if (x === 0) {

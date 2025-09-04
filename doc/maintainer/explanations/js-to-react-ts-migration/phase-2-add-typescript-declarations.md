@@ -866,19 +866,15 @@ let handler;
 **Completed Steps**:
 
 1. ✅ **TypeScript Configuration**: Set up `tsconfig.json` with proper compiler options
-
    - [7fea2f3](https://github.com/justinpearson/kidpix/commit/7fea2f3) - Initial migration phase 2 setup
 
 2. ✅ **Type Declarations**: Created comprehensive `.d.ts` files for KiddoPaint JavaScript modules
-
    - [6864802](https://github.com/justinpearson/kidpix/commit/6864802) - Add TypeScript declarations for KiddoPaint JavaScript modules
 
 3. ✅ **Type Checking Scripts**: Added `type-check` and related scripts to `package.json`
-
    - [add6743](https://github.com/justinpearson/kidpix/commit/add6743) - Add TypeScript type checking scripts and specify tsconfig project
 
 4. ✅ **Gradual Typing**: Enabled TypeScript checking on `utils.js` with JSDoc comments
-
    - [b6775f5](https://github.com/justinpearson/kidpix/commit/b6775f5) - Enable TypeScript checking on utils.js with JSDoc comments
 
 5. ✅ **Feature Request Management**: Moved completed phase 2 request to `prompts-DONE/`
