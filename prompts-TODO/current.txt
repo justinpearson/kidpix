@@ -13,3 +13,44 @@ display.js:154 undo buffer empty, nothing to do
 I think we store the previous canvases in browser local-storage, which I'm assuming persists across page reloads, is that right? If so, maybe we simply need to store some additional state about the undo/redo pointer.
 
 Thoughts?
+
+
+
+-----------------------------------------------
+
+
+
+See my followup questions / notes delimited by << ... >> :
+
+
+  1. Storage limits: localStorage typically has a 5-10MB limit per domain. Canvas data URLs are base64-encoded, which increases size by ~33%.
+
+<< How can our code determine if we are hitting the localStorage limit? Can it check its "quota"? >>
+
+  4. Memory usage: All localStorage data is kept in memory, so 30 canvas images could use significant RAM.
+
+<< How much RAM? We are currently holding 30 canvases in the undo buffer, and performance seems ok. >>
+
+  Potential optimizations:
+  - Compression: Use JPEG with quality reduction (toDataURL('image/jpeg', 0.5)) instead of PNG
+
+
+<< I don't want to do that because in my experience, JPEG introduces weird artifacts that screw up some kidpix tools, eg, the Paint Can doesn't "fill" correctly in the presence of compression artifacts. >>
+
+
+  - Limit undo history: Keep fewer states in localStorage (maybe 10 instead of 30)
+
+<< I like this idea. So we'd keep 30 in RAM, but only 10 if you reload the page? >>
+
+  - Lazy loading: Only persist undo/redo when page is about to unload
+
+
+<< Explain. Would that event-triggered persistence work if I close the browser window with cmd-w ? >>
+
+
+  - IndexedDB: Use IndexedDB instead of localStorage for better performance with large data
+
+<< Explain. I'm not familiar with IndexedDB. >>
+
+
+
