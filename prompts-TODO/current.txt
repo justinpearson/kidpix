@@ -1,1 +1,42 @@
-( copy stories from backlog.txt into this file )
+# Feature: Remember last tool, subtool(s), color, color palette
+
+Git branch: remember-last-tool
+
+Description: The current UI state should persist between page-reloads, for a friendlier & seamless user experience across page-reloads.
+
+Specifically:
+
+Scenario 1. Undo and redo work across page reloads
+  Given I have drawn a line
+  When I reload the page
+  And I click undo
+  Then the line should be undone
+
+Scenario 2. Selected tool, subtools, color, and palette persist across page reloads
+  Given I have selected the Brush tool with the Tree subtool
+  And I have selected the first color palette (index 0)
+  And I have selected the last color in the palette (brown)
+  When I reload the page
+  Then those selections should still be active
+  And the defaults (Pencil tool, thickness 0, first color palette, black color) should not be active
+
+Scenario 3. Tool remembers the last selected subtools
+  Given I select the Pencil tool with Thickness 10 and Rainbow texture
+  And I select the Brush tool with the Tree subtool
+  When I switch back to the Pencil tool
+  Then the Pencil tool's subtools should still be Thickness 10 and Rainbow texture
+  When I switch to the Brush tool
+  Then the Brush tool's subtool should still be Tree
+
+
+Implementation Note: 
+
+1. Use test-driven development (TDD) for this, writing an e2e test for each scenario.
+
+2. Different tools can have differnt indexes of "last sub-tool(s) used". The design must remember "last sub-tool(s) used" for EACH tool. 
+
+3. Not sure how best to implement this -- save this UI state to local browser storage?
+
+
+---------------------------------------------------------
+
