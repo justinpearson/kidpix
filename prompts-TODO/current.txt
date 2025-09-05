@@ -1,0 +1,15 @@
+New feature: Make Undo / Redo work across page reloads
+
+Git branch: undo-across-page-reloads
+
+If I draw a line, then reload the page, then click undo, it should undo the line.
+
+However, when I do that currently, it doesn't undo the line, and the browser console says:
+
+```
+display.js:154 undo buffer empty, nothing to do
+```
+
+I think we store the previous canvases in browser local-storage, which I'm assuming persists across page reloads, is that right? If so, maybe we simply need to store some additional state about the undo/redo pointer.
+
+Thoughts?
