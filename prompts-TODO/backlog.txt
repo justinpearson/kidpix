@@ -85,7 +85,58 @@ Here are the currently available keyboard shortcuts (see `function checkKey` in 
 's' key - save to file
 'v' key - toggle velocity state (explain this one??)
 
-Moreover, kidpix supports modifier keys: holding down SHIFT / CMD / CTRL / ALT / META while clicking or dragging can modify a tool's behavior in fun ways. For example, in the Stamp tool, modifier keys change the stamp's size & orientation. We should add those modifier keys to the list of keyboard shortcuts, maybe with a short summary of how each one affects each tool. You'll have to look in the code for this (eg, usages of `KiddoPaint.Current.modifiedCtrl`) because TBH I myself don't know all the ways the modifier keys can be used!
+Moreover, kidpix supports modifier keys: holding down SHIFT / CMD / CTRL / ALT / META while clicking or dragging can modify a tool's behavior in fun ways. For example, in the Stamp tool, modifier keys change the stamp's size & orientation. We should add those modifier keys to the list of keyboard shortcuts, maybe with a short summary of how each one affects each tool. Here's an example for the Command and Control keys (for MacOS):
+
+  Functions triggered by Command key (modifiedCtrl) on macOS:
+
+  Main Uses:
+  1. Secret stickers: Shows stickers submenu when Cmd+clicking Rubber Stamps
+  2. Scroll wheel range: Command+scroll adjusts modifiedCtrlRange (-100 to +100)
+
+  Drawing Effects:
+  3. Pentagon brush: Uses different pentagon vs. sine wave pattern
+  4. Sprite placer: 3x size multiplier when placing sprites5. Square tool: Disables stroke outline (fill only)
+  6. Circle tool: Disables stroke outline (fill only)
+  7. Astroid tool: Alternating colors between current and alt color
+  8. 3D tool: Changes texture to speckles
+  9. Texture (Stripes): Changes stripe pattern dimensions
+  10. Whole canvas dither effect: Uses Bayer dithering with threshold
+  11. Cut/Truck tool: Uses command range for size scaling
+  12. Stamp tool: Uses command range for hue shifting
+
+
+
+  Functions triggered by Control key (keyCode 17) on macOS:
+
+  Brush Effects:
+  - Pies brush: Adds stroke outline
+  - Circles brush: Changes to random circles
+  - Connect-the-dots & Twirly brushes: Uses cycling colors instead of current color
+  - Pentagon brush: Uses cycling colors
+  - Following Sine brush: Uses cycling colors
+  - Triangles brush: Changes triangle type
+  - Animal tracks brush: Changes from paw prints (🐾) to footprints (👣)
+  - Spray brush: Adds transparency/alpha effects
+
+  Drawing Tools:
+  - Pencil Rainbow texture: Activates full rainbow mode
+  - Circle tool: Creates perfect circles from center point (vs. ellipses from corner)
+  - Astroid tool: Uses random colors for stroke
+  - Scribble tool: Increases jitter from 10 to 25
+
+  Advanced Tools:
+  - Stamp tool: Modifier for stamp behavior
+  - Sprite placer: Modifier for sprite placement
+  - Cut/Truck tool: Disables preview mode, goes straight to cutting
+  - TNT tool: Hidden feature to block completion
+  - Shadow boxes mixer: Uses random colors for shadows
+  - Dither effect: Changes to Atkinson dithering
+  - Guilloche tool: Enables fill rectangles
+  - 3D tool: Changes texture to sand
+  - Looper tool: Uses random colors instead of current color
+
+
+Please look in the code for how Shift and Alt/Option are used, and build similar reports for those modifier keys.
 
 
 
