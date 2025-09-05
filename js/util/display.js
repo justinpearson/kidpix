@@ -3,6 +3,56 @@ KiddoPaint.Display.redoData = [];
 KiddoPaint.Display.undoOn = true;
 KiddoPaint.Display.allowClearTmp = true;
 
+// Load undo/redo state from localStorage (limit to 10 most recent for page reloads)
+KiddoPaint.Display.loadUndoRedoFromLocalStorage = function () {
+  if (typeof Storage != "undefined") {
+    try {
+      const undoData = localStorage.getItem("kiddopaint_undo");
+      const redoData = localStorage.getItem("kiddopaint_redo");
+
+      if (undoData) {
+        const parsed = JSON.parse(undoData);
+        // Keep only the 10 most recent undo states to manage storage size
+        KiddoPaint.Display.undoData = parsed.slice(-10);
+      }
+      if (redoData) {
+        const parsed = JSON.parse(redoData);
+        // Keep only the 10 most recent redo states
+        KiddoPaint.Display.redoData = parsed.slice(-10);
+      }
+    } catch (e) {
+      console.log("Failed to load undo/redo state:", e);
+      // Reset to empty arrays on error
+      KiddoPaint.Display.undoData = [];
+      KiddoPaint.Display.redoData = [];
+    }
+  }
+};
+
+// Save undo/redo state to localStorage (limit to 10 most recent states)
+KiddoPaint.Display.saveUndoRedoToLocalStorage = function () {
+  if (typeof Storage != "undefined") {
+    try {
+      // Only persist the 10 most recent states to manage storage size
+      const undoToSave = KiddoPaint.Display.undoData.slice(-10);
+      const redoToSave = KiddoPaint.Display.redoData.slice(-10);
+
+      localStorage.setItem("kiddopaint_undo", JSON.stringify(undoToSave));
+      localStorage.setItem("kiddopaint_redo", JSON.stringify(redoToSave));
+    } catch (e) {
+      if (e.name === "QuotaExceededError") {
+        console.log(
+          "localStorage quota exceeded, clearing undo/redo persistence",
+        );
+        localStorage.removeItem("kiddopaint_undo");
+        localStorage.removeItem("kiddopaint_redo");
+      } else {
+        console.log("Failed to save undo/redo state:", e);
+      }
+    }
+  }
+};
+
 KiddoPaint.Display.clearAll = function () {
   // clearing anim is resp of callers
   KiddoPaint.Display.saveUndo();
@@ -124,6 +174,8 @@ KiddoPaint.Display.saveUndo = function () {
       KiddoPaint.Display.undoData.shift();
     }
     KiddoPaint.Display.redoData = [];
+    // Persist undo/redo state after modification
+    KiddoPaint.Display.saveUndoRedoToLocalStorage();
   }
   return KiddoPaint.Display.undoOn;
 };
@@ -150,6 +202,8 @@ KiddoPaint.Display.undo = function () {
       KiddoPaint.Display.main_canvas.toDataURL(),
     );
     KiddoPaint.Display.popAndLoad(KiddoPaint.Display.undoData);
+    // Persist state changes after undo operation
+    KiddoPaint.Display.saveUndoRedoToLocalStorage();
   } else {
     console.log("undo buffer empty, nothing to do");
   }
@@ -161,6 +215,8 @@ KiddoPaint.Display.redo = function () {
       KiddoPaint.Display.main_canvas.toDataURL(),
     );
     KiddoPaint.Display.popAndLoad(KiddoPaint.Display.redoData);
+    // Persist state changes after redo operation
+    KiddoPaint.Display.saveUndoRedoToLocalStorage();
   } else {
     console.log("redo buffer empty, nothing to do");
   }
@@ -169,6 +225,8 @@ KiddoPaint.Display.redo = function () {
 KiddoPaint.Display.clearLocalStorage = function () {
   if (typeof Storage != "undefined") {
     localStorage.removeItem("kiddopaint");
+    localStorage.removeItem("kiddopaint_undo");
+    localStorage.removeItem("kiddopaint_redo");
   }
 };
 

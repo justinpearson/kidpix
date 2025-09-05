@@ -13,6 +13,9 @@ KiddoPaint.Tools.Toolbox.Eraser = function () {
   };
 
   this.mousemove = function (ev) {
+    if (tool.isDown) {
+      KiddoPaint.Sounds.eraser();
+    }
     const currentSize = tool.size * KiddoPaint.Current.scaling;
     var ctx = tool.isDown
       ? KiddoPaint.Display.context

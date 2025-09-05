@@ -82,6 +82,14 @@ window.init_kiddo_paint = function init_kiddo_paint() {
 
     KiddoPaint.Display.loadFromLocalStorage();
 
+    // Load undo/redo state from localStorage (persistent across page reloads)
+    KiddoPaint.Display.loadUndoRedoFromLocalStorage();
+
+    // Add beforeunload listener for lazy persistence backup
+    window.addEventListener("beforeunload", function () {
+      KiddoPaint.Display.saveUndoRedoToLocalStorage();
+    });
+
     init_kiddo_defaults();
     init_listeners(tmpCanvas);
     init_tool_bar();
