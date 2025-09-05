@@ -8,6 +8,25 @@ Once groomed / well-formed, move to backlog.txt.
 ## TODO
 
 
+# Feature: ensure all tools make sounds
+
+- some tools, like the eraser, don't make sounds for some reason.
+- use TDD - make an e2e test that asserts that basically every click makes a noise.
+
+Notes:
+
+- brush tool
+  - 3D subtool is too quiet, what sounds is it supposed to play? consider changing to Pencil's sounds
+  - same w Connect The Dots subtool, Swirl, Rotating Dots, Inverter, The Looper
+
+example: at kidpix.app (the prev project), 
+
+https://kidpix.app/sndmp3/kidpix-submenu-brush-twirly.wav.mp3
+
+
+
+
+
 
 - Add Search Bar to Stamp
   - problem: in the "Stamp" tool, it's very hard to find the stamp i want. There are ~10 pages, with ~8 rows per page, with ~10 stamps per row.

@@ -1,19 +1,93 @@
 backlog
 
 
-# Feature: ensure all tools make sounds
+# Feature: Make Undo / Redo work across page reloads
 
-- some tools, like the eraser, don't make sounds for some reason.
-- use TDD - make an e2e test that asserts that basically every click makes a noise.
+Git branch: undo-across-page-reloads
+
+If I draw a line, then reload the page, then click undo, it should undo the line.
+
+However, when I do that currently, it doesn't undo the line, and the browser console says:
+
+```
+display.js:154 undo buffer empty, nothing to do
+```
+
+I think we store the previous canvases in browser local-storage, which I'm assuming persists across page reloads, is that right? If so, maybe we simply need to store some additional state about the undo/redo pointer.
+
+Thoughts?
+
+
+
 
 
 # Feature: Remember last tool, subtool(s), color, color palette
 
-Description: basically, the current UI state should persist between page-reloads, to achieve the following user-friendly niceties:
+Git branch: remember-last-tool
 
-1. page-reload shouldn't change the selected tool, subtools, color, & color palette.
-2. each tool should remember the "current" sub-tool(s) (ie, the last sub-tool(s) that were selected of that tool), and enable those sub-tool(s) when i click back to the tool.
-3. Note that different tools can have differnt indexes of "last sub-tool(s) used". The design must remember "last sub-tool(s) used" for EACH tool. 
+Description: The current UI state should persist between page-reloads, for a friendlier & seamless user experience across page-reloads.
+
+Specifically:
+
+1. page-reload shouldn't affect the undo / redo buffer: If I draw a line, then reload the page, then click undo, it should undo the line.
+
+2. page-reload shouldn't change the selected tool, subtools, color, & color palette.
+
+3. each tool should remember the "current" sub-tool(s) (ie, the last sub-tool(s) that were selected of that tool), and enable those sub-tool(s) when i click back to the tool.
+
+4. Note that different tools can have differnt indexes of "last sub-tool(s) used". The design must remember "last sub-tool(s) used" for EACH tool. 
 
 Not sure how best to implement this -- save this UI state to local browser storage?
+
+
+
+
+
+# Feature: Add "Settings" page
+
+Git branch: add-settings-page
+
+It'd be useful if kidpix could store user-specific settings, like:
+
+- keyboard shortcuts: enable / disable
+- undo / redo buffer: view / clear
+- usage stats / activity log / debug log
+- app's memory of the user's most-recently-selected tools, subtools, color, & palette: view / clear
+
+What are our options for this?
+
+Currently, AFAIK, the only user-specific data is the undo / redo buffer of images, which I believe are stored in the browser's local storage. Is this a suitable place for other user-specific settings too?
+
+(For debugging purposes, it would be convenient if this Settings page could display ALL the kidpix-related browser local storage.)
+
+And, random question, is browser local-storage cleared when I reload or hard-reload the page? That might affect our decision for how we implement this.
+
+Once we decide how to store these user settings, we can build a "Settings" page where the user can manage their settings (view & edit).
+
+Let's discuss!
+
+
+
+
+# Feature: Add keyboard shortcut setting
+
+Git branch: add-keyboard-shortcut-setting
+
+Many sites (like gmail.com) offer keyboard shortcuts for convenient keyboard-based navigation: 'c' for 'compose new message', 'j/k' for 'next/prev email message', etc. Typically, you enable / disable keyboard shortcuts in your account settings, and view them with '?' which displays the keyboard shortcuts in a small popup window. 
+
+Kidpix already supports some keyboard shortcuts -- see `function checkKey` in `js/init/kiddopaint.js`. However, in commit 4c1c60fb885f233ecdd77740be85d700eb227ddb we disabled them because they are confusing to little kids who mash the keyboard by accident. But now my kids are older and have better keyboard skills. So let's add back the keyboard shortcuts, behind an enable / disable setting, and add a popup window (when you type '?') that lists the available keyboard shortcuts.
+
+Here are the currently available keyboard shortcuts (see `function checkKey` in `js/init/kiddopaint.js`):
+
+'n' key - cycle to next color
+'c' key - cycle to next color palette
+'r' key - randomize colors
+'s' key - save to file
+'v' key - toggle velocity state (explain this one??)
+
+Moreover, kidpix supports modifier keys: holding down SHIFT / CMD / CTRL / ALT / META while clicking or dragging can modify a tool's behavior in fun ways. For example, in the Stamp tool, modifier keys change the stamp's size & orientation. We should add those modifier keys to the list of keyboard shortcuts, maybe with a short summary of how each one affects each tool. You'll have to look in the code for this (eg, usages of `KiddoPaint.Current.modifiedCtrl`) because TBH I myself don't know all the ways the modifier keys can be used!
+
+
+
+
 
