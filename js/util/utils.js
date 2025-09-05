@@ -207,6 +207,7 @@ window.color2json = color2json;
 window.scaleImageDataCanvasAPIPixelated = scaleImageDataCanvasAPIPixelated;
 window.extractSprite = extractSprite;
 window.colorsEqual = colorsEqual;
+window.makePatternFromImage = makePatternFromImage;
 window.flattenImage = flattenImage;
 window.remap = remap;
 window.getRandomFloat = getRandomFloat;
@@ -218,6 +219,7 @@ window.clamp = clamp;
 window.rgbToHsl = rgbToHsl;
 window.hslToRgb = hslToRgb;
 window.getRandomInt = getRandomInt;
+window.getRandomLetter = getRandomLetter;
 
 function guil(R, r, m, theta, p, Q, m2, n) {
   var x =
