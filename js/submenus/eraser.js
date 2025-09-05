@@ -118,7 +118,7 @@ KiddoPaint.Submenu.eraser = [
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Eraser;
-      KiddoPaint.Sounds.unimpl();
+      KiddoPaint.Sounds.todo();
     },
   },
   {
@@ -128,7 +128,7 @@ KiddoPaint.Submenu.eraser = [
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-crosshair");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Eraser;
-      KiddoPaint.Sounds.unimpl();
+      KiddoPaint.Sounds.todo();
     },
   },
   /*

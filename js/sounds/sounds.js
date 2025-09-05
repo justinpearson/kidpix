@@ -45,6 +45,7 @@ KiddoPaint.Sounds.Library.circle = [
 // KiddoPaint.Sounds.Library. = [new Audio('snd/')];
 
 KiddoPaint.Sounds.Library.eraserfade = [new Audio("snd/eraser/fade-2.mp3")];
+KiddoPaint.Sounds.Library.eraser = [new Audio("snd/eraser/eraser.mp3")];
 KiddoPaint.Sounds.Library.doordingdong = [
   new Audio("snd/eraser/doorbell-ding-dong.mp3"),
 ];
@@ -103,6 +104,7 @@ KiddoPaint.Sounds.Library.mixerframe = [
 ];
 
 KiddoPaint.Sounds.Library.unimpl = [new Audio("snd/misc/chord.mp3")];
+KiddoPaint.Sounds.Library.todo = [new Audio("snd/misc/todo.m4a")];
 
 // multipart sounds; start, during, end
 KiddoPaint.Sounds.Library.line = [
@@ -348,6 +350,9 @@ KiddoPaint.Sounds.submenuoption = function () {
 KiddoPaint.Sounds.unimpl = function () {
   KiddoPaint.Sounds.Library.playSingle("unimpl");
 };
+KiddoPaint.Sounds.todo = function () {
+  KiddoPaint.Sounds.Library.playSingle("todo");
+};
 KiddoPaint.Sounds.brushzigzag = function () {
   KiddoPaint.Sounds.Library.playSingle("brushzigzag");
 };
@@ -434,6 +439,9 @@ KiddoPaint.Sounds.mixerframe = function () {
 };
 KiddoPaint.Sounds.eraserfadea = function () {
   KiddoPaint.Sounds.Library.playSingle("eraserfade");
+};
+KiddoPaint.Sounds.eraser = function () {
+  KiddoPaint.Sounds.Library.playSingle("eraser");
 };
 KiddoPaint.Sounds.eraserfadeb = function () {
   KiddoPaint.Sounds.Library.playSingle("mixerpip");

@@ -34,6 +34,7 @@ KiddoPaint.Tools.Toolbox.EraserHiddenPicture = function () {
   this.mousemove = function (ev) {
     const currentSize = tool.size * KiddoPaint.Current.scaling;
     if (tool.isDown) {
+      KiddoPaint.Sounds.eraser();
       var ctx = KiddoPaint.Display.context;
       ctx.fillStyle = tool.hiddenPattern;
       ctx.fillRect(
