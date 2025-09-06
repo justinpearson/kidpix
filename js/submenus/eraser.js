@@ -22,7 +22,7 @@ KiddoPaint.Submenu.eraser = [
     },
   },
   {
-    name: "Eraser",
+    name: "Eraser Square 10",
     imgSrc: "img/tool-submenu-eraser-180.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
@@ -33,7 +33,7 @@ KiddoPaint.Submenu.eraser = [
     },
   },
   {
-    name: "Eraser",
+    name: "Eraser Square 2",
     imgSrc: "img/tool-submenu-eraser-181.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";

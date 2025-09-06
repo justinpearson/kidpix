@@ -49,7 +49,7 @@ KiddoPaint.Submenu.oval = [
   },
 
   {
-    name: "Texture 1",
+    name: "None",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.None);
     },
@@ -60,7 +60,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 1",
+    name: "Solid",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Solid);
     },
@@ -71,7 +71,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 2",
+    name: "Partial1",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Partial1);
     },
@@ -82,7 +82,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 3",
+    name: "Partial2",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Partial2);
     },
@@ -93,7 +93,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 4",
+    name: "Partial3",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Partial3);
     },
@@ -104,7 +104,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 6",
+    name: "PartialArtifactAlias",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.PartialArtifactAlias);
     },
@@ -117,7 +117,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Speckles",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Speckles);
     },
@@ -128,7 +128,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Speckles",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Stripes);
     },
@@ -139,7 +139,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Speckles",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Thatch);
     },
@@ -150,7 +150,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Speckles",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Shingles);
     },
@@ -161,7 +161,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 8",
+    name: "Bubbles",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Bubbles);
     },
@@ -172,7 +172,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 9",
+    name: "Diamond",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Diamond);
     },
@@ -183,7 +183,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 9",
+    name: "Diamond",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Ribbon);
     },
@@ -194,7 +194,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 10",
+    name: "Sand",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Sand);
     },
@@ -205,7 +205,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Brick);
     },
@@ -216,7 +216,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Chevron);
     },
@@ -227,7 +227,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Stairs);
     },
@@ -238,7 +238,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Cross);
     },
@@ -249,7 +249,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.DiagBrick);
     },
@@ -260,7 +260,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 12",
+    name: "CornerStair",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.CornerStair);
     },
@@ -271,7 +271,7 @@ KiddoPaint.Submenu.oval = [
     },
   },
   {
-    name: "Texture 13",
+    name: "Houndstooth",
     imgJs: function () {
       return makeCircleIcon(KiddoPaint.Textures.Houndstooth);
     },
