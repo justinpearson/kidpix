@@ -442,7 +442,7 @@ function init_tool_bar() {
       var buttons = document
         .getElementById("genericsubmenu")
         .getElementsByTagName("button");
-      // Highlight default thickness (Thickness 2, index 1)
+      // Highlight default thickness (index 1)
       if (buttons[1]) {
         buttons[1].style = "border-color:red; border-width: 5px";
       }
@@ -466,7 +466,7 @@ function init_tool_bar() {
       var buttons = document
         .getElementById("genericsubmenu")
         .getElementsByTagName("button");
-      // Highlight default thickness (Thickness 2, index 1)
+      // Highlight default thickness (index 1)
       if (buttons[1]) {
         buttons[1].style = "border-color:red; border-width: 5px";
       }

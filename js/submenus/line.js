@@ -14,28 +14,28 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Thickness 10",
+    name: "Thickness 9",
     imgSrc: "img/line/pw3.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 9;
     },
   },
   {
-    name: "Thickness 25",
+    name: "Thickness 13",
     imgSrc: "img/line/pw4.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 13;
     },
   },
   {
-    name: "Thickness 100",
+    name: "Thickness 17",
     imgSrc: "img/line/pw5.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 17;
     },
   },
   {
-    name: "Thickness 100",
+    name: "Thickness 25",
     imgSrc: "img/line/pw6.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 25;
@@ -49,7 +49,7 @@ KiddoPaint.Submenu.line = [
   },
 
   {
-    name: "Texture 1",
+    name: "Solid",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Solid);
     },
@@ -61,7 +61,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 2",
+    name: "Partial1",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Partial1);
     },
@@ -73,7 +73,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 3",
+    name: "Partial2",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Partial2);
     },
@@ -85,7 +85,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 4",
+    name: "Partial3",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Partial3);
     },
@@ -97,7 +97,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 6",
+    name: "PartialArtifactAlias",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.PartialArtifactAlias);
     },
@@ -111,7 +111,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Speckles",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Speckles);
     },
@@ -123,7 +123,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Stripes",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Stripes);
     },
@@ -135,7 +135,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Thatch",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Thatch);
     },
@@ -147,7 +147,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Shingles",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Shingles);
     },
@@ -159,7 +159,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 8",
+    name: "Bubbles",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Bubbles);
     },
@@ -171,7 +171,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 9",
+    name: "Diamond",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Diamond);
     },
@@ -183,7 +183,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 9",
+    name: "Ribbon",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Ribbon);
     },
@@ -195,7 +195,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 10",
+    name: "Sand",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Sand);
     },
@@ -207,7 +207,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Brick);
     },
@@ -219,7 +219,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Chevron",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Chevron);
     },
@@ -231,7 +231,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Stairs",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Stairs);
     },
@@ -243,7 +243,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Cross",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Cross);
     },
@@ -255,7 +255,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 11",
+    name: "DiagBrick",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.DiagBrick);
     },
@@ -267,7 +267,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 12",
+    name: "CornerStair",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.CornerStair);
     },
@@ -279,7 +279,7 @@ KiddoPaint.Submenu.line = [
     },
   },
   {
-    name: "Texture 13",
+    name: "Houndstooth",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Houndstooth);
     },

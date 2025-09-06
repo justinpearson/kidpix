@@ -14,28 +14,28 @@ KiddoPaint.Submenu.pencil = [
     },
   },
   {
-    name: "Thickness 10",
+    name: "Thickness 9",
     imgSrc: "img/pencil/tool-submenu-pencil-size-3.png",
     handler: function () {
       KiddoPaint.Tools.Pencil.size = 9;
     },
   },
   {
-    name: "Thickness 25",
+    name: "Thickness 13",
     imgSrc: "img/pencil/tool-submenu-pencil-size-4.png",
     handler: function () {
       KiddoPaint.Tools.Pencil.size = 13;
     },
   },
   {
-    name: "Thickness 100",
+    name: "Thickness 17",
     imgSrc: "img/pencil/tool-submenu-pencil-size-5.png",
     handler: function () {
       KiddoPaint.Tools.Pencil.size = 17;
     },
   },
   {
-    name: "Thickness 100",
+    name: "Thickness 25",
     imgSrc: "img/pencil/tool-submenu-pencil-size-6.png",
     handler: function () {
       KiddoPaint.Tools.Pencil.size = 25;
@@ -60,7 +60,7 @@ KiddoPaint.Submenu.pencil = [
     },
   },
   {
-    name: "Partial 1",
+    name: "Partial1",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Partial1);
     },
@@ -71,7 +71,7 @@ KiddoPaint.Submenu.pencil = [
     },
   },
   {
-    name: "Partial 2",
+    name: "Partial2",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Partial2);
     },
@@ -82,7 +82,7 @@ KiddoPaint.Submenu.pencil = [
     },
   },
   {
-    name: "Partial 3",
+    name: "Partial3",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Partial3);
     },
@@ -93,7 +93,7 @@ KiddoPaint.Submenu.pencil = [
     },
   },
   {
-    name: "Partial Artifact",
+    name: "PartialArtifactAlias",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.PartialArtifactAlias);
     },
@@ -236,7 +236,7 @@ KiddoPaint.Submenu.pencil = [
     },
   },
   {
-    name: "Diagonal Brick",
+    name: "DiagBrick",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.DiagBrick);
     },
@@ -247,7 +247,7 @@ KiddoPaint.Submenu.pencil = [
     },
   },
   {
-    name: "Corner Stair",
+    name: "CornerStair",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.CornerStair);
     },
