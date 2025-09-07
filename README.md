@@ -101,6 +101,40 @@ yarn docs:build               # Build docs
 yarn docs:dev                 # Serve docs locally at http://127.0.0.1:8000
 ```
 
+## Releasing
+
+GitHub releases:
+
+https://github.com/justinpearson/kidpix/releases
+
+To create a new release, 3 options:
+
+```bash
+# For bug fixes
+yarn release:patch
+
+# For new features
+yarn release:minor
+
+# For breaking changes
+yarn release:major
+```
+
+this runs, eg, `npm version minor && git push origin --tags` from package.json, which basically creates a git tag named `v1.0.0` and pushes it, which gets picked up by the github workflow `kidpix/.github/workflows/release.yml`, which builds the app, tarballs the `dist/` folder, and publishes it to github at <https://github.com/justinpearson/kidpix/releases> .
+
+
+### Release manually
+
+(change the version number from the examples below -- do not use 1.0.0)
+
+1. Build app: `yarn build`
+2. Tarball the `dist/` folder: `tar -czf kidpix-v1.0.0.tar.gz -C dist .`
+3. Create github release manually (will create the git tag automatically): `gh release create v1.0.0 kidpix-v1.0.0.tar.gz --title "Justin's KidPix fork v1.0.0 - First Release" --notes "# Justin's KidPix v1.0.0 - Classic ...`
+  - (Will push the tag, but github is smart enough not to redundantly trigger the workflow.)
+4. View new release, eg, <https://github.com/justinpearson/kidpix/releases/tag/v1.0.0>
+
+
+
 ## Tech Stack
 
 - **Framework**: React 18 with TypeScript
