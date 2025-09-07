@@ -36,7 +36,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: pip install -r requirements.txt
       - run: pip install mkdocs
-      - run: yarn build:site # must run: Vite -> dist/, MkDocs -> dist/docs
+      - run: yarn build:github-pages:site # must run: Vite -> dist/, MkDocs -> dist/docs
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

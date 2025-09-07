@@ -12,8 +12,10 @@
   "scripts": {
     "dev:docs": "mkdocs serve -a 127.0.0.1:8000",
     "build": "vite build",
+    "build:github-pages": "VITE_GITHUB_PAGES=true vite build",
     "docs:build": "mkdocs build --site-dir dist/docs",
     "build:site": "yarn build && yarn docs:build",
+    "build:github-pages:site": "yarn build:github-pages && yarn docs:build",
     "build:preview": "NODE_ENV=development vite build",
     "preview:site": "yarn build:preview && python3 -m http.server 8080 --directory dist",
     "dev": "vite & echo $! > .vite.pid",
