@@ -29,7 +29,8 @@
       "Bash(npx playwright test:*)",
       "Bash(yarn dev)",
       "Bash(git add:*)",
-      "Bash(yarn docs:build:*)"
+      "Bash(yarn docs:build:*)",
+      "WebFetch(domain:docs.github.com)"
     ],
     "deny": []
   }
