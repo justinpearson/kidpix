@@ -1,7 +1,7 @@
 KiddoPaint.Submenu.jumble = [
   {
     name: "Invert",
-    imgSrc: "img/tool-submenu-wacky-mixer-164.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-164.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -10,7 +10,7 @@ KiddoPaint.Submenu.jumble = [
   },
   {
     name: "Raindrops",
-    imgSrc: "img/tool-submenu-wacky-mixer-165.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-165.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -32,7 +32,7 @@ KiddoPaint.Submenu.jumble = [
   },
   {
     name: "Checkerboard",
-    imgSrc: "img/tool-submenu-wacky-mixer-166.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-166.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -41,7 +41,7 @@ KiddoPaint.Submenu.jumble = [
   },
   {
     name: "Wallpaper",
-    imgSrc: "img/tool-submenu-wacky-mixer-167.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-167.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -50,7 +50,7 @@ KiddoPaint.Submenu.jumble = [
   },
   {
     name: "Venetian Blinds",
-    imgSrc: "img/tool-submenu-wacky-mixer-168.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-168.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -59,14 +59,14 @@ KiddoPaint.Submenu.jumble = [
   },
   {
     name: "The Outliner",
-    imgSrc: "img/tool-submenu-wacky-mixer-169.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-169.png",
     handler: function () {
       KiddoPaint.Sounds.unimpl();
     },
   },
   {
     name: "Shadow Boxes",
-    imgSrc: "img/tool-submenu-wacky-mixer-170.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-170.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -75,21 +75,21 @@ KiddoPaint.Submenu.jumble = [
   },
   {
     name: "Zoom In",
-    imgSrc: "img/tool-submenu-wacky-mixer-171.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-171.png",
     handler: function () {
       KiddoPaint.Sounds.unimpl();
     },
   },
   {
     name: "Broken Glass",
-    imgSrc: "img/tool-submenu-wacky-mixer-172.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-172.png",
     handler: function () {
       KiddoPaint.Sounds.unimpl();
     },
   },
   {
     name: "Picture In A Picture",
-    imgSrc: "img/tool-submenu-wacky-mixer-173.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-173.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -98,14 +98,14 @@ KiddoPaint.Submenu.jumble = [
   },
   {
     name: "The Highlighter",
-    imgSrc: "img/tool-submenu-wacky-mixer-174.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-174.png",
     handler: function () {
       KiddoPaint.Sounds.unimpl();
     },
   },
   {
     name: "Pattern Maker",
-    imgSrc: "img/tool-submenu-wacky-mixer-175.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-175.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
@@ -114,7 +114,7 @@ KiddoPaint.Submenu.jumble = [
   },
   {
     name: "Wrap Around",
-    imgSrc: "img/tool-submenu-wacky-mixer-176.png",
+    imgSrc: "img/mixer/tool-submenu-wacky-mixer-176.png",
     handler: function () {
       KiddoPaint.Sounds.unimpl();
     },
@@ -122,7 +122,7 @@ KiddoPaint.Submenu.jumble = [
   /*
 {
     name: 'Snow Flakes And Rain Drops',
-    imgSrc: 'img/tool-submenu-wacky-mixer-177.png',
+    imgSrc: 'img/mixer/tool-submenu-wacky-mixer-177.png',
     handler: function() {}
 },
 */

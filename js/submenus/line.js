@@ -1,42 +1,42 @@
 KiddoPaint.Submenu.line = [
   {
     name: "Thickness 1",
-    imgSrc: "img/pw1.png",
+    imgSrc: "img/line/pw1.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 1;
     },
   },
   {
     name: "Thickness 5",
-    imgSrc: "img/pw2.png",
+    imgSrc: "img/line/pw2.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 5;
     },
   },
   {
     name: "Thickness 10",
-    imgSrc: "img/pw3.png",
+    imgSrc: "img/line/pw3.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 9;
     },
   },
   {
     name: "Thickness 25",
-    imgSrc: "img/pw4.png",
+    imgSrc: "img/line/pw4.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 13;
     },
   },
   {
     name: "Thickness 100",
-    imgSrc: "img/pw5.png",
+    imgSrc: "img/line/pw5.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 17;
     },
   },
   {
     name: "Thickness 100",
-    imgSrc: "img/pw6.png",
+    imgSrc: "img/line/pw6.png",
     handler: function () {
       KiddoPaint.Tools.Line.size = 25;
     },
@@ -292,7 +292,7 @@ KiddoPaint.Submenu.line = [
   },
   {
     name: "Rainbow",
-    imgSrc: "img/rainbow-icon.png",
+    imgSrc: "img/patterns/rainbow-icon.png",
     handler: function () {
       KiddoPaint.Tools.Line.stomp = false;
       KiddoPaint.Tools.Line.texture = function () {

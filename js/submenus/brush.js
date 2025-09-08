@@ -1,7 +1,7 @@
 KiddoPaint.Submenu.brush = [
   {
     name: "Leaky Pen",
-    imgSrc: "img/tool-menu-wacky-brush-70.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-70.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -18,7 +18,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Zig Zag",
-    imgSrc: "img/tool-menu-wacky-brush-71.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-71.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -27,7 +27,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Dots",
-    imgSrc: "img/tool-menu-wacky-brush-72.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-72.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -44,7 +44,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Bubbly",
-    imgSrc: "img/tool-menu-wacky-brush-73.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-73.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -58,7 +58,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Pies",
-    imgSrc: "img/tool-menu-wacky-brush-74.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-74.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -73,7 +73,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Echoes",
-    imgSrc: "img/tool-menu-wacky-brush-75.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-75.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -88,7 +88,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Northern Lights",
-    imgSrc: "img/tool-menu-wacky-brush-76.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-76.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -97,7 +97,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Fuzzer",
-    imgSrc: "img/tool-menu-wacky-brush-77.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-77.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-none");
@@ -106,7 +106,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Magnifying Glass",
-    imgSrc: "img/tool-menu-wacky-brush-78.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-78.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -115,7 +115,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Spray Paint",
-    imgSrc: "img/tool-menu-wacky-brush-79.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-79.png",
     handler: function (e) {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -134,7 +134,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Pine Needles",
-    imgSrc: "img/tool-menu-wacky-brush-80.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-80.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -143,7 +143,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "3-D",
-    imgSrc: "img/tool-menu-wacky-brush-81.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-81.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -154,7 +154,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Kaliediscope",
-    imgSrc: "img/tool-menu-wacky-brush-82.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-82.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -164,7 +164,7 @@ KiddoPaint.Submenu.brush = [
   /*
 {
     name: 'Drippy Paint',
-    imgSrc: 'img/tool-menu-wacky-brush-83.png',
+    imgSrc: 'img/brush/tool-menu-wacky-brush-83.png',
     handler: function() {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add('cursor-paint-brush');
@@ -174,7 +174,7 @@ KiddoPaint.Submenu.brush = [
 */
   {
     name: "Connect The Dots",
-    imgSrc: "img/tool-menu-wacky-brush-84.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-84.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -195,7 +195,7 @@ KiddoPaint.Submenu.brush = [
   /*
 {
     name: 'Alphabet Line',
-    imgSrc: 'img/tool-menu-wacky-brush-85.png',
+    imgSrc: 'img/brush/tool-menu-wacky-brush-85.png',
     handler: function() {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add('cursor-paint-brush');
@@ -205,7 +205,7 @@ KiddoPaint.Submenu.brush = [
 */
   {
     name: "Swirl",
-    imgSrc: "img/tool-menu-wacky-brush-86.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-86.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -225,7 +225,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Rotating Dots",
-    imgSrc: "img/br12.png",
+    imgSrc: "img/brush/br12.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -253,7 +253,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Inverter",
-    imgSrc: "img/tool-menu-wacky-brush-87.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-87.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -262,7 +262,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Geometry",
-    imgSrc: "img/tool-menu-wacky-brush-88.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-88.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -271,7 +271,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "XY to XY",
-    imgSrc: "img/br16.png",
+    imgSrc: "img/brush/br16.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -280,7 +280,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Tree",
-    imgSrc: "img/tool-menu-wacky-brush-89.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-89.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -290,7 +290,7 @@ KiddoPaint.Submenu.brush = [
   /*
 {
     name: 'Caterpillars',
-    imgSrc: 'img/tool-menu-wacky-brush-90.png',
+    imgSrc: 'img/brush/tool-menu-wacky-brush-90.png',
     handler: function() {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add('cursor-paint-brush');
@@ -300,7 +300,7 @@ KiddoPaint.Submenu.brush = [
 */
   {
     name: "Splatter Paint",
-    imgSrc: "img/tool-menu-wacky-brush-91.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-91.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -317,7 +317,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Starburst",
-    imgSrc: "img/br-starburst.png",
+    imgSrc: "img/brush/br-starburst.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -331,7 +331,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "The Looper",
-    imgSrc: "img/tool-menu-wacky-brush-92.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-92.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -342,7 +342,7 @@ KiddoPaint.Submenu.brush = [
   /*
 {
     name: 'Roll The Dice',
-    imgSrc: 'img/tool-menu-wacky-brush-93.png',
+    imgSrc: 'img/brush/tool-menu-wacky-brush-93.png',
     handler: function() {
         KiddoPaint.Display.canvas.classList = "";
         KiddoPaint.Display.canvas.classList.add('cursor-paint-brush');
@@ -352,7 +352,7 @@ KiddoPaint.Submenu.brush = [
 */
   {
     name: "A Galaxy of Stars",
-    imgSrc: "img/tool-menu-wacky-brush-94.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-94.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -370,7 +370,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Lots of Hugs and Xs",
-    imgSrc: "img/tool-menu-wacky-brush-95.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-95.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -388,7 +388,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "A Full Deck of Cards",
-    imgSrc: "img/tool-menu-wacky-brush-96.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-96.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
@@ -406,7 +406,7 @@ KiddoPaint.Submenu.brush = [
   },
   {
     name: "Shapes and More Shapes",
-    imgSrc: "img/tool-menu-wacky-brush-97.png",
+    imgSrc: "img/brush/tool-menu-wacky-brush-97.png",
     handler: function () {
       KiddoPaint.Display.canvas.classList = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");

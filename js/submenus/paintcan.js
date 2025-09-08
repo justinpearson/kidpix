@@ -243,7 +243,7 @@ KiddoPaint.Submenu.paintcan = [
   },
   {
     name: "Texture ?",
-    imgSrc: "img/rainbow-icon.png",
+    imgSrc: "img/patterns/rainbow-icon.png",
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "source-atop";
       KiddoPaint.Tools.PaintCan.texture = function () {

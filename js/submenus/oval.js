@@ -1,42 +1,42 @@
 KiddoPaint.Submenu.oval = [
   {
     name: "Thickness 1",
-    imgSrc: "img/pw1.png",
+    imgSrc: "img/line/pw1.png",
     handler: function () {
       KiddoPaint.Tools.Oval.thickness = 1;
     },
   },
   {
     name: "Thickness 2",
-    imgSrc: "img/pw2.png",
+    imgSrc: "img/line/pw2.png",
     handler: function () {
       KiddoPaint.Tools.Oval.thickness = 2;
     },
   },
   {
     name: "Thickness 3",
-    imgSrc: "img/pw3.png",
+    imgSrc: "img/line/pw3.png",
     handler: function () {
       KiddoPaint.Tools.Oval.thickness = 3;
     },
   },
   {
     name: "Thickness 5",
-    imgSrc: "img/pw4.png",
+    imgSrc: "img/line/pw4.png",
     handler: function () {
       KiddoPaint.Tools.Oval.thickness = 5;
     },
   },
   {
     name: "Thickness 8",
-    imgSrc: "img/pw5.png",
+    imgSrc: "img/line/pw5.png",
     handler: function () {
       KiddoPaint.Tools.Oval.thickness = 8;
     },
   },
   {
     name: "Thickness 12",
-    imgSrc: "img/pw6.png",
+    imgSrc: "img/line/pw6.png",
     handler: function () {
       KiddoPaint.Tools.Oval.thickness = 12;
     },
@@ -283,7 +283,7 @@ KiddoPaint.Submenu.oval = [
   },
   {
     name: "Texture ?",
-    imgSrc: "img/rainbow-icon.png",
+    imgSrc: "img/patterns/rainbow-icon.png",
     handler: function () {
       KiddoPaint.Tools.Oval.texture = function (start, end) {
         return KiddoPaint.Textures.RainbowGrad(start, end);
