@@ -1,60 +1,94 @@
-# KidPix React/Typescript
+# Justin's Kid Pix
+
+**PLAY HERE: https://justinpearson.github.io/kidpix/**
+
+The "Kid Pix" computer drawing program for kids (the public domain version from 1989), forked from vikrum's Javascript re-implementation [here](https://github.com/vikrum/kidpix), with some customizations on top, like:
+
+- Multi-undo / redo (works across page reloads!)
+- Color-picker tool
+- [Docs](https://justinpearson.github.io/kidpix/docs/), for both [Users](https://justinpearson.github.io/kidpix/docs/user/quick-start/) and [Software Maintainers](https://justinpearson.github.io/kidpix/docs/maintainer/quick-start/)
+- Automatic deployment via Github Pages
+- Expanded "numbers" and "symbols" stamps
+- Code cleanup, misc bug fixes
+
+TODO: pic here
+
+## Background
+
+Kid Pix is a 1989 computer drawing program for kids that features fun
+tools and wacky sounds -- who can forget the undo button's "Oh No!"??
+
+In 2021, GitHub user vikrum re-implemented the Kid Pix Public Domain Version 1.0 in HTML / Javascript
+(https://github.com/vikrum/kidpix), hosting it at www.kidpix.app. Very cool!
+
+I forked that project in 2024 in order to implement custom "features"
+requested by my kids, and to practice technical skills like:
+
+- migrating JS codebase to modern React / TypeScript tech stack
+- automated testing / TDD
+- CI / CD
+- devops: deployment, monitoring, alerting
+- AI-assisted coding tools (VS Code Copilot, Cursor, Claude Code)
+- Best practices for developing software with AI agents
+
+The following sections decribe how to play this version of Kid Pix, how to download it / play it without an internet connection (useful for long car rides ;), and how to tweak the code.
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Quick Start](#quick-start)
-  - [Prerequisites](#prerequisites)
-  - [Development Setup](#development-setup)
-  - [Tech Stack](#tech-stack)
-- [Legacy Information](#legacy-information)
-  - [One-time Install (OLD)](#one-time-install-old)
-  - [How to Play (OLD)](#how-to-play-old)
-  - [How to Change Code (OLD)](#how-to-change-code-old)
-- [Original Documentation](#original-documentation)
-  - [Original README](#original-readme)
-  - [Vite README](#vite-readme)
+TODO: REGENERATE
 
-## Overview
+## How to Play
 
-The 1989 KidPix drawing app, from vikrum's www.kidpix.app (Kid Pix 1.0 HTML/JS implementation, https://github.com/vikrum/kidpix), ported to React / TypeScript, to learn software best-practices. See below for vikrum's original readme and vite's template readme.
+Just browse to **<https://justinpearson.github.io/kidpix/>** !!
 
-Goal: Port Vikrum's KidPix app into a modern, scalable, production-ready software + infra stack. Let's learn React / TypeScript, web dev, automated testing, CI / CD, deployment, and monitoring / alerting.
+## How to Play Offline
 
-Also, let's use this project to learn AI-assisted coding tools (VS Code Copilot, Cursor, Claude Code).
+1. From an internet-enabled computer, to go the Releases page <https://github.com/justinpearson/kidpix/releases> and download the latest release's zipfile, eg, `kidpix-v1.0.0.zip`.
 
-If you are an AI agent, please read the "rules" files in `.cursor/rules`, and the AI-generated summary file `CLAUDE.md`, for guidance on how you should act. Then, read the feature requests in `prompts-TODO/`, and implement the oldest one, putting your changes into logical git commits, and submitting a PR (for details, see `.cursor/rules/feature_workflow.md`). After merging, move completed feature-request files into `prompts-DONE/`.
+2. Transfer this zipfile to the target computer and unzip it.
 
-## Quick Start
+3. On the target computer, open a terminal, `cd` into the app's folder, and run a local webserver via `python -m http.server` or `npx serve .`
 
-## Prerequisites
+4. Browse to <http://localhost:8000/>
 
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- [Yarn](https://yarnpkg.com/) package manager
-- [Git](https://git-scm.com/)
+## How to Change the Code
 
-## Development Setup
+1. Clone the code
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/justinpearson/kidpix.git
-cd kidpix
+- Clone the repo with `git clone https://github.com/justinpearson/kidpix.git`
+  - If you get error 'command not found: git', you need to install git, easiest with: `xcode-select --install`
 
-# 2. Install dependencies
-yarn install
+2. **Install dependencies:**
 
-# 4. Run tests to verify setup
-yarn test:unit         # Unit tests
-yarn test:e2e          # End-to-end tests
+- Go into your new kidpix dir: `cd kidpix`
+- Install required packages: `yarn install`
+  - If you get error 'command not found: yarn', you need to install yarn (a package manager for Javascript packages), as follows:
+    - Install NodeJS: `brew install node`
+      - If you get error 'command not found: brew', you need to install Homebrew following instructions at <https://brew.sh/>.
+    - Install yarn: `npm install -g corepack`
+- (OPTIONAL) If you want to view the docs, you need to install the `mkdocs` Python package.
 
-# 5. Start development server
-yarn dev
-# Open http://localhost:5173/ (serves the modular JS version)
+run the tests
+
+build the docs
+
+build the app
+
+run the app
+
+TODO: SORT THIS:
+
 ```
+1. Configure git hooks (TODO: explain. basically get the linter / formatter to run before committing and pushing): `git config core.hooksPath .githooks`
 
-### Additional Commands
+Run tests to verify setup:
+yarn test:unit         # Unit tests
+yarn test:e2e          # End-to-end tests  # maybe don't do these since they'll
 
-```bash
+Start development server
+yarn dev
+Open http://localhost:5173/ (serves the modular JS version)
+
 # Build for production
 yarn build
 
