@@ -1,1 +1,48 @@
-( copy stories from backlog.txt into this file )
+# Feature: Support github releases
+
+Git branch: support-github-releases
+
+Description: Add yarn commands and a github workflow that creates a github "release" of the dist/ directory tarball, so that users can easily download and run the built app.
+
+One simple way would be to add the dist/ directory to git, but that seems like poor practice. So I'm wondering if github's "releases" feature offers a way to host a zipfile of the dist/ directory?
+
+https://github.com/justinpearson/kidpix/releases/new
+
+What are our options for distributing "releases" of the kidpix app? (I don't even know really what a "release" is.)
+
+----------------------------------------------------------
+
+
+⏺ GitHub releases are perfect for distributing built applications! Here are your options:
+
+  GitHub Releases (Recommended)
+
+  GitHub releases let you:
+  - Create a tagged version of your code (e.g., v1.0.0)
+  - Attach up to 1000 files per release (each under 2GB)
+  - Provide a zip of your dist/ folder for easy download
+  - Include release notes describing changes
+  - Notify users when new versions are available
+
+  Workflow:
+  1. Build your app (yarn build creates dist/)
+  2. Zip the dist/ folder locally
+  3. Create a release on GitHub and attach the zip
+  4. Users download the zip and open index.html in a browser
+
+  Other Distribution Options
+
+  - GitHub Pages: Host the built app live at username.github.io/repo-name
+  - Netlify/Vercel: Free hosting with automatic builds from your repo
+  - NPM package: If you want to distribute as a library
+  - Electron: Package as a desktop app
+
+  Automated Release Workflow
+
+  You could automate this with GitHub Actions:
+  - Trigger on tag push (e.g., git tag v1.0.0 && git push --tags)
+  - Build the app
+  - Create release with built files automatically attached
+
+  Would you like me to help you create your first release with a zipped dist/ folder, or set up automated releases?
+
