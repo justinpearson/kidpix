@@ -11,7 +11,7 @@ export default defineConfig({
     }),
   ],
   // base: process.env.NODE_ENV === "production" ? "/kidpix/" : "/", // OLD
-  base: process.env.NODE_ENV === "production" ? "/kidpix/" : "/",
+  base: process.env.VITE_GITHUB_PAGES === "true" ? "/kidpix/" : "/",
   publicDir: "src/assets", // Copy src/assets to build output
   server: {
     port: 5173,

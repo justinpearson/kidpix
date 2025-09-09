@@ -1,0 +1,65 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build application
+        run: yarn build
+
+      - name: Create release archive
+        run: tar -czf kidpix-${{ github.ref_name }}.tar.gz -C dist .
+
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: kidpix-${{ github.ref_name }}.tar.gz
+          name: "Justin's KidPix fork ${{ github.ref_name }} - Release"
+          body: |
+            # Justin's KidPix ${{ github.ref_name }} - Classic Drawing App
+
+            Automated release of my fork of vikrum's HTML/JS re-implementation of the public-domain 1989 Kid Pix program.
+
+            ## Features
+            - 🎨 All original drawing tools (pencil, brush, paint bucket, etc.)  
+            - 🖼️ Wacky brushes with animated effects
+            - 🎵 Original sound effects for each tool
+            - 🎯 Stamps and text tools
+            - 🌈 Multi-layer canvas system
+            - 💾 Save/load functionality
+
+            ## How to Run
+            1. Download the `kidpix-${{ github.ref_name }}.tar.gz` file below
+            2. Extract the archive to a folder
+            3. Run a local web server in the extracted folder (e.g., `python -m http.server` or `npx serve .`)
+            4. Open the served URL in your browser
+            5. Start drawing!
+
+            Enjoy creating digital masterpieces! 🎨
+          draft: false
+          prerelease: false
