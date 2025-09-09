@@ -1,42 +1,42 @@
 KiddoPaint.Submenu.pencil = [
   {
     name: "Thickness 1",
-    imgSrc: "img/tool-submenu-pencil-size-1.png",
+    imgSrc: "img/pencil/tool-submenu-pencil-size-1.png",
     handler: function () {
       KiddoPaint.Tools.Pencil.size = 1;
     },
   },
   {
     name: "Thickness 5",
-    imgSrc: "img/tool-submenu-pencil-size-2.png",
+    imgSrc: "img/pencil/tool-submenu-pencil-size-2.png",
     handler: function () {
       KiddoPaint.Tools.Pencil.size = 5;
     },
   },
   {
     name: "Thickness 10",
-    imgSrc: "img/tool-submenu-pencil-size-3.png",
+    imgSrc: "img/pencil/tool-submenu-pencil-size-3.png",
     handler: function () {
       KiddoPaint.Tools.Pencil.size = 9;
     },
   },
   {
     name: "Thickness 25",
-    imgSrc: "img/tool-submenu-pencil-size-4.png",
+    imgSrc: "img/pencil/tool-submenu-pencil-size-4.png",
     handler: function () {
       KiddoPaint.Tools.Pencil.size = 13;
     },
   },
   {
     name: "Thickness 100",
-    imgSrc: "img/tool-submenu-pencil-size-5.png",
+    imgSrc: "img/pencil/tool-submenu-pencil-size-5.png",
     handler: function () {
       KiddoPaint.Tools.Pencil.size = 17;
     },
   },
   {
     name: "Thickness 100",
-    imgSrc: "img/tool-submenu-pencil-size-6.png",
+    imgSrc: "img/pencil/tool-submenu-pencil-size-6.png",
     handler: function () {
       KiddoPaint.Tools.Pencil.size = 25;
     },
@@ -271,7 +271,7 @@ KiddoPaint.Submenu.pencil = [
 
   {
     name: "Rainbow",
-    imgSrc: "img/rainbow-icon.png",
+    imgSrc: "img/patterns/rainbow-icon.png",
     handler: function () {
       var hue = 0;
       KiddoPaint.Tools.Pencil.texture = function (color) {
@@ -290,7 +290,7 @@ KiddoPaint.Submenu.pencil = [
   /*
     {
         name: 'Rainbow 3',
-        imgSrc: 'img/tool-unknown.png',
+        imgSrc: 'img/patterns/tool-unknown.png',
         handler: function() {
             KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
             KiddoPaint.Tools.PlainBrush.reset();
