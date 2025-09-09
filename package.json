@@ -21,8 +21,6 @@
     "docs:dev:OLD": "mkdocs serve",
     "build:OLD": "tsc -b && vite build",
     "docs:build:OLD": "mkdocs build",
-    "lint": "eslint",
-    "format": "prettier --write .",
     "test": "vitest run",
     "test:unit": "vitest",
     "test:unit:ui": "vitest --ui",
@@ -41,9 +39,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@eslint/js": "^9.13.0",
     "@playwright/test": "^1.52.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -55,29 +50,14 @@
     "@vitejs/plugin-react": "^4.5.2",
     "@vitest/coverage-v8": "^3.2.3",
     "@vitest/ui": "3.2.3",
-    "eslint": "^9.13.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-node": "^11.1.0",
     "globals": "^15.11.0",
     "jsdom": "^26.1.0",
-    "lint-staged": "^16.1.0",
-    "prettier": "^3.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "typescript": "~5.6.2",
-    "typescript-eslint": "^8.10.0",
     "vite": "^6.3.5",
     "vite-plugin-terminal": "^1.3.0",
     "vitest": "3.2.3"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix"
-    ],
-    "*.{js,jsx,ts,tsx,json,css}": [
-      "prettier --check"
-    ]
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
