@@ -2,10 +2,11 @@
 
 **PLAY HERE: https://justinpearson.github.io/kidpix/**
 
-The "Kid Pix" computer drawing program for kids (the public domain version from 1989), forked from vikrum's Javascript re-implementation [here](https://github.com/vikrum/kidpix), with some customizations on top, like:
+The "Kid Pix" computer drawing program for kids (the public domain version from 1989), forked from vikrum's Javascript re-implementation [here](https://github.com/vikrum/kidpix), with some customizations like:
 
 - Multi-undo / redo (works across page reloads!)
-- Color-picker tool
+- Highlight currently-selected tool / subtool
+- New color-picker tool
 - [Docs](https://justinpearson.github.io/kidpix/docs/), for both [Users](https://justinpearson.github.io/kidpix/docs/user/quick-start/) and [Software Maintainers](https://justinpearson.github.io/kidpix/docs/maintainer/quick-start/)
 - Automatic deployment via Github Pages
 - Expanded "numbers" and "symbols" stamps
@@ -31,7 +32,11 @@ requested by my kids, and to practice technical skills like:
 - AI-assisted coding tools (VS Code Copilot, Cursor, Claude Code)
 - Best practices for developing software with AI agents
 
-The following sections decribe how to play this version of Kid Pix, how to download it / play it without an internet connection (useful for long car rides ;), and how to tweak the code.
+The following sections decribe:
+
+- how to play this version of Kid Pix on the web
+- how to download it / play it without an internet connection (useful for long car rides ;)
+- how to tweak the code
 
 ## Table of Contents
 
@@ -43,9 +48,9 @@ Just browse to **<https://justinpearson.github.io/kidpix/>** !!
 
 ## How to Play Offline
 
-1. From an internet-enabled computer, to go the Releases page <https://github.com/justinpearson/kidpix/releases> and download the latest release's zipfile, eg, `kidpix-v1.0.0.zip`.
+1. From an internet-enabled computer, to go the Releases page <https://github.com/justinpearson/kidpix/releases> and download the latest release's tarball, eg, `kidpix-v1.0.0.tar.gz`.
 
-2. Transfer this zipfile to the target computer and unzip it.
+2. Transfer this tarball to the target computer and unzip it.
 
 3. On the target computer, open a terminal, `cd` into the app's folder, and run a local webserver via `python -m http.server` or `npx serve .`
 
@@ -53,12 +58,12 @@ Just browse to **<https://justinpearson.github.io/kidpix/>** !!
 
 ## How to Change the Code
 
-1. Clone the code
+**1. Clone the code:**
 
-- Clone the repo with `git clone https://github.com/justinpearson/kidpix.git`
-  - If you get error 'command not found: git', you need to install git, easiest with: `xcode-select --install`
+- `git clone https://github.com/justinpearson/kidpix.git`
+- If you get error 'command not found: git', you need to install git, easiest with: `xcode-select --install`
 
-2. **Install dependencies:**
+**2. Install dependencies:**
 
 - Go into your new kidpix dir: `cd kidpix`
 - Install required packages: `yarn install`
@@ -66,40 +71,42 @@ Just browse to **<https://justinpearson.github.io/kidpix/>** !!
     - Install NodeJS: `brew install node`
       - If you get error 'command not found: brew', you need to install Homebrew following instructions at <https://brew.sh/>.
     - Install yarn: `npm install -g corepack`
-- (OPTIONAL) If you want to view the docs, you need to install the `mkdocs` Python package.
+- (OPTIONAL) If you want to view the docs, you need to install the `mkdocs` Python package with `python -m pip install mkdocs`.
 
-run the tests
+**3. Run the app locally**
 
-build the docs
+- Start development server: `yarn dev`
+- The app should open automatically at <http://localhost:5173/>
+- The browser updates upon code changes, thanks to Vite
 
-build the app
+**3. Run the tests**
 
-run the app
-
-TODO: SORT THIS:
-
+```bash
+yarn test:unit
+yarn test:e2e
 ```
-1. Configure git hooks (TODO: explain. basically get the linter / formatter to run before committing and pushing): `git config core.hooksPath .githooks`
 
-Run tests to verify setup:
-yarn test:unit         # Unit tests
-yarn test:e2e          # End-to-end tests  # maybe don't do these since they'll
+**4. Build & view the docs**
 
-Start development server
-yarn dev
-Open http://localhost:5173/ (serves the modular JS version)
+- Use `mkdocs` to build the docs: `yarn docs:build`
+- Serve the docs: `yarn dev:docs`
+- Docs URL:
+  - Local: <http://127.0.0.1:8000/kidpix/docs/>
+  - Note: deployed docs: <https://justinpearson.github.io/kidpix/docs/>
 
-# Build for production
-yarn build
+**5. Build & view the app**
 
-# Preview production build
-yarn preview
+- Build for production: `yarn build`
+- Preview production build: `yarn preview`
 
-# Build and serve documentation
-python3 -m pip install mkdocs  # One-time setup
-yarn docs:build               # Build docs
-yarn docs:dev                 # Serve docs locally at http://127.0.0.1:8000
-```
+## For AI Agents
+
+If you are an AI agent, please read the "rules" files in `.cursor/rules`, and
+the AI-generated summary file `CLAUDE.md`, for guidance on how you should
+act. Then, read the feature requests in `prompts-TODO/`, and implement the
+oldest one (or `current.txt`), putting your changes into logical git commits, and submitting a
+PR (for details, see `.cursor/rules/feature_workflow.md`). After merging,
+move completed feature-request files into `prompts-DONE/`.
 
 ## Releasing
 
@@ -122,7 +129,6 @@ yarn release:major
 
 this runs, eg, `npm version minor && git push origin --tags` from package.json, which basically creates a git tag named `v1.0.0` and pushes it, which gets picked up by the github workflow `kidpix/.github/workflows/release.yml`, which builds the app, tarballs the `dist/` folder, and publishes it to github at <https://github.com/justinpearson/kidpix/releases> .
 
-
 ### Release manually
 
 (change the version number from the examples below -- do not use 1.0.0)
@@ -130,10 +136,10 @@ this runs, eg, `npm version minor && git push origin --tags` from package.json, 
 1. Build app: `yarn build`
 2. Tarball the `dist/` folder: `tar -czf kidpix-v1.0.0.tar.gz -C dist .`
 3. Create github release manually (will create the git tag automatically): `gh release create v1.0.0 kidpix-v1.0.0.tar.gz --title "Justin's KidPix fork v1.0.0 - First Release" --notes "# Justin's KidPix v1.0.0 - Classic ...`
-  - (Will push the tag, but github is smart enough not to redundantly trigger the workflow.)
+
+- (Will push the tag, but github is smart enough not to redundantly trigger the workflow.)
+
 4. View new release, eg, <https://github.com/justinpearson/kidpix/releases/tag/v1.0.0>
-
-
 
 ## Tech Stack
 
@@ -216,9 +222,9 @@ Instructions for Mac.
   - `brew install node` -- to get npm
 - install my kidpix fork:
   - option 1: git clone https://github.com/justinpearson/kidpix.git
-  - option 2: download zipfile from https://github.com/justinpearson/kidpix
-    - if zipfile: you'll also be able to make code local code changes, but not push them to back to the git repo.
-  - cd kidpix (or kidpix-main if used zipfile)
+  - option 2: download tarball from https://github.com/justinpearson/kidpix
+    - if tarball: you'll also be able to make code local code changes, but not push them to back to the git repo.
+  - cd kidpix (or kidpix-main if used tarball)
   - `./build.sh`
     - if error: `js-beautify.js - "No such file or directory"` - need to 'npm install' :
     - npm install
