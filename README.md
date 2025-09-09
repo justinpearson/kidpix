@@ -43,9 +43,6 @@ cd kidpix
 # 2. Install dependencies
 yarn install
 
-# 3. Configure git hooks for code quality
-git config core.hooksPath .githooks
-
 # 4. Run tests to verify setup
 yarn test:unit         # Unit tests
 yarn test:e2e          # End-to-end tests
