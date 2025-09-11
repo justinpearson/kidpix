@@ -311,6 +311,12 @@ function set_colors_to_current_palette() {
     var color = pal[buttonid];
     button.style = "background-color:" + color;
   }
+  
+  // Update palette name display
+  var paletteNameElement = document.getElementById("palette-name");
+  if (paletteNameElement) {
+    paletteNameElement.textContent = KiddoPaint.Colors.currentPaletteName();
+  }
 }
 
 function init_color_selector() {
