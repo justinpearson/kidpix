@@ -11,6 +11,7 @@ lerna-debug.log*
 
 node_modules
 dist
+dist-gh
 dist-ssr
 *.local
 
@@ -44,3 +45,4 @@ site/
 tmp/
 .vite.pid
 
+.playwright-mcp

@@ -3,26 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "comments": {
-    "dev:app": "Visit http://localhost:5173/kidpix/ (vite runs with base=/kidpix/)",
-    "dev:docs": "Visit http://localhost:8000/ (mkdocs live server, no subpath)",
-    "build:site": "Build app into dist/ and docs into dist/docs/",
-    "preview:site": "Serve dist/ at http://localhost:8080/kidpix/ and /kidpix/docs/"
-  },
   "scripts": {
-    "dev:docs": "mkdocs serve -a 127.0.0.1:8000",
-    "build": "vite build",
-    "build:github-pages": "VITE_GITHUB_PAGES=true vite build",
-    "docs:build": "mkdocs build --site-dir dist/docs",
-    "build:site": "yarn build && yarn docs:build",
-    "build:github-pages:site": "yarn build:github-pages && yarn docs:build",
-    "build:preview": "NODE_ENV=development vite build",
-    "preview:site": "yarn build:preview && python3 -m http.server 8080 --directory dist",
-    "dev": "vite & echo $! > .vite.pid",
-    "dev-stop": "kill $(cat .vite.pid 2>/dev/null) 2>/dev/null && rm -f .vite.pid || true",
-    "docs:dev:OLD": "mkdocs serve",
-    "build:OLD": "tsc -b && vite build",
-    "docs:build:OLD": "mkdocs build",
+    "dev-app": "vite dev & echo $! > .vite.pid",
+    "dev-app-stop": "kill $(cat .vite.pid 2>/dev/null) 2>/dev/null && rm -f .vite.pid || true",
+    "dev-docs": "mkdocs serve",
+
+    "build": "vite build --outDir dist --base=/ && mkdocs build --site-dir dist/docs && vite build --outDir dist-gh/kidpix --base=/kidpix/ && mkdocs build --site-dir dist-gh/kidpix/docs",
+    "preview-release": "python3 -m http.server 8080 --directory dist",
+    "preview-github-pages": "echo \"WARNING: SERVING APP AT http://localhost:8080/kidpix/ , NOTE THE /kidpix/ !! \" && python3 -m http.server 8080 --directory dist-gh",
+
     "test": "vitest run",
     "test:unit": "vitest",
     "test:unit:ui": "vitest --ui",
@@ -33,14 +22,12 @@
     "test:e2e:ui": "playwright test --ui --reporter=line",
     "test:e2e:single": "playwright test tests/e2e/pencil.spec.ts --project=chromium --workers=1 --reporter=line",
     "test:e2e:showlastreport": "playwright show-report",
-    "screenshot": "node scripts/screenshot-capture.js",
+
     "release:patch": "npm version patch && git push origin --tags",
     "release:minor": "npm version minor && git push origin --tags",
     "release:major": "npm version major && git push origin --tags",
-    "preview": "vite preview",
-    "type-check": "tsc -p tsconfig.app.json --noEmit",
-    "type-check:watch": "tsc --noEmit --watch",
-    "types:generate": "tsc --declaration --emitDeclarationOnly --outDir types/generated"
+    
+    "screenshot": "node scripts/screenshot-capture.js",
   },
   "dependencies": {},
   "devDependencies": {
