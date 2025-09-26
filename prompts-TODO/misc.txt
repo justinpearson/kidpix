@@ -6,6 +6,47 @@ Once groomed / well-formed, move to backlog.txt.
 
 
 ===============================================================
+Bug: releases don't work, eg, kidpix-v1.0.0.zip
+===============================================================
+
+```
+√ 2025-09-21 7:19:34 tmp  % cd /Users/justin/Downloads/kidpix-v1.0.0
+√ 2025-09-21 15:32:02 kidpix-v1.0.0  % ls
+assets    css   img   index.html  snd   static
+√ 2025-09-21 15:32:02 kidpix-v1.0.0  % p3 -m http.server
+Serving HTTP on :: port 8000 (http://[::]:8000/) ...
+::1 - - [21/Sep/2025 15:32:14] "GET / HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] code 404, message File not found
+::1 - - [21/Sep/2025 15:32:14] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [21/Sep/2025 15:32:14] "GET /css/kidpix.css HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] code 404, message File not found
+::1 - - [21/Sep/2025 15:32:14] "GET /kidpix/assets/main-BtFJm_MT.js HTTP/1.1" 404 -
+::1 - - [21/Sep/2025 15:32:14] code 404, message File not found
+::1 - - [21/Sep/2025 15:32:14] "GET /kidpix/assets/main-BwliJ-KA.css HTTP/1.1" 404 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_27.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_28.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_29.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_30.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_31.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_34.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_33.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_32.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_35.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_36.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/eyedropper-icon.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_40.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_39.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_37.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kp-m_38.png HTTP/1.1" 200 -
+::1 - - [21/Sep/2025 15:32:14] "GET /img/kidpix.png HTTP/1.1" 200 -
+^C
+Keyboard interrupt received, exiting.
+√ 2025-09-21 15:32:19 kidpix-v1.0.0  % pwd
+kidpix/tmp/kidpix-v1.0.0/ or smt
+```
+
+
+===============================================================
 Feature: ensure all tools make sounds
 ===============================================================
 
