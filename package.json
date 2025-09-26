@@ -1,17 +1,15 @@
 {
   "name": "kidpix-jpp",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev-app": "vite dev & echo $! > .vite.pid",
     "dev-app-stop": "kill $(cat .vite.pid 2>/dev/null) 2>/dev/null && rm -f .vite.pid || true",
     "dev-docs": "mkdocs serve",
-
     "build": "vite build --outDir dist --base=/ && mkdocs build --site-dir dist/docs && vite build --outDir dist-gh --base=/kidpix/ && mkdocs build --site-dir dist-gh/docs",
     "preview-release": "python3 -m http.server 8080 --directory dist",
     "preview-github-pages": "echo \"WARNING: SERVING APP AT http://localhost:8080/kidpix/ , NOTE THE /kidpix/ !! \" && python3 -m http.server 8080 --directory dist-gh",
-
     "test": "vitest run",
     "test:unit": "vitest",
     "test:unit:ui": "vitest --ui",
@@ -22,11 +20,9 @@
     "test:e2e:ui": "playwright test --ui --reporter=line",
     "test:e2e:single": "playwright test tests/e2e/pencil.spec.ts --project=chromium --workers=1 --reporter=line",
     "test:e2e:showlastreport": "playwright show-report",
-
     "release:patch": "npm version patch && git push origin --tags",
     "release:minor": "npm version minor && git push origin --tags",
     "release:major": "npm version major && git push origin --tags",
-    
     "screenshot": "node scripts/screenshot-capture.js"
   },
   "dependencies": {},
