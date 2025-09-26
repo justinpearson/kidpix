@@ -19,11 +19,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "yarn"
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Set up Python for MkDocs
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install MkDocs
+        run: pip install mkdocs
 
       - name: Build application
         run: yarn build
