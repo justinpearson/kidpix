@@ -27,7 +27,7 @@
     "release:minor": "npm version minor && git push origin --tags",
     "release:major": "npm version major && git push origin --tags",
     
-    "screenshot": "node scripts/screenshot-capture.js",
+    "screenshot": "node scripts/screenshot-capture.js"
   },
   "dependencies": {},
   "devDependencies": {
