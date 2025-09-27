@@ -29,7 +29,9 @@
       "Bash(npx playwright test:*)",
       "Bash(yarn dev)",
       "Bash(yarn docs:build:*)",
-      "WebFetch(domain:docs.github.com)"
+      "WebFetch(domain:docs.github.com)",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_console_messages"
     ],
     "deny": []
   }
