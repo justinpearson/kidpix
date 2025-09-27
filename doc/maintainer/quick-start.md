@@ -263,7 +263,7 @@ yarn preview        # Test production build locally
 
 ## Next Steps
 
-- Read the [maintainer how-to guides](how-to/) for specific development tasks
-- Review the [architecture explanations](explanations/) for deeper understanding
+- Read the [maintainer how-to guides](how-to/development-tasks.md) for specific development tasks
+- Review the [architecture explanations](explanations/architecture-overview.md) for deeper understanding
 - Check the development patterns in `CLAUDE.md`
 - Review the testing strategy in this documentation

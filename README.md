@@ -40,7 +40,27 @@ The following sections decribe:
 
 ## Table of Contents
 
-TODO: REGENERATE
+- [Background](#background)
+- [How to Play](#how-to-play)
+- [How to Play Offline](#how-to-play-offline)
+- [How to Change the Code](#how-to-change-the-code)
+- [For AI Agents](#for-ai-agents)
+- [Releasing](#releasing)
+  - [Release manually](#release-manually)
+- [Tech Stack](#tech-stack)
+  - [Claude Code Development Features](#claude-code-development-features)
+  - [Git Hooks](#git-hooks)
+- [Testing](#testing)
+  - [Test Commands](#test-commands)
+  - [UI vs Headed vs Headless](#ui-vs-headed-vs-headless)
+  - [E2E Test Architecture](#e2e-test-architecture)
+- [Legacy Information](#legacy-information)
+  - [One-time Install (OLD)](#one-time-install-old)
+  - [How to Play (OLD)](#how-to-play-old)
+  - [How to Change Code (OLD)](#how-to-change-code-old)
+- [Original Documentation](#original-documentation)
+  - [Original README](#original-readme)
+  - [Vite README](#vite-readme)
 
 ## How to Play
 
@@ -71,11 +91,11 @@ Just browse to **<https://justinpearson.github.io/kidpix/>** !!
     - Install NodeJS: `brew install node`
       - If you get error 'command not found: brew', you need to install Homebrew following instructions at <https://brew.sh/>.
     - Install yarn: `npm install -g corepack`
-- (OPTIONAL) If you want to view the docs, you need to install the `mkdocs` Python package with `python -m pip install mkdocs`.
+- (OPTIONAL) If you want to view the docs, you need to install the Python dependencies: `python3 -m pip install -r requirements.txt`
 
 **3. Run the app locally**
 
-- Start development server: `yarn dev`
+- Start development server: `yarn dev-app`
 - The app should open automatically at <http://localhost:5173/>
 - The browser updates upon code changes, thanks to Vite
 
@@ -88,8 +108,7 @@ yarn test:e2e
 
 **4. Build & view the docs**
 
-- Use `mkdocs` to build the docs: `yarn docs:build`
-- Serve the docs: `yarn dev:docs`
+- Serve the docs: `yarn dev-docs`
 - Docs URL:
   - Local: <http://127.0.0.1:8000/kidpix/docs/>
   - Note: deployed docs: <https://justinpearson.github.io/kidpix/docs/>
@@ -143,13 +162,17 @@ this runs, eg, `npm version minor && git push origin --tags` from package.json, 
 
 ## Tech Stack
 
-- **Framework**: React 18 with TypeScript
-- **Build Tool**: Vite 6.3.5 with HMR
-- **Testing**: Vitest (unit) + Playwright (e2e)
-- **Code Quality**: ESLint + Prettier with git hooks (no Husky dependency)
+**Current Implementation:**
+- **Runtime**: Modular JavaScript (ES5/ES6) loaded via script tags
+- **Build Tool**: Vite 6.3.5 for development server and asset serving
 - **Package Manager**: Yarn 1.22.22
+- **Testing**: Vitest (unit) + Playwright (e2e) configured but not yet used for JS files
 - **Deployment**: GitHub Actions → GitHub Pages
 - **Claude Code Integration**: Browser error monitoring with vite-plugin-terminal allows Claude Code to view browser console errors
+
+**Future Migration Target:**
+- **Framework**: React 18 with TypeScript
+- **Code Quality**: ESLint + Prettier with git hooks (no Husky dependency)
 
 ### Claude Code Development Features
 
@@ -237,7 +260,7 @@ Instructions for Mac.
 (On local laptop -- no internet connection required!)
 
 - cd into kidpix dir
-- yarn dev
+- yarn dev-app
 - open localhost:5173 in browser
 
 ### How to Change Code (OLD)
