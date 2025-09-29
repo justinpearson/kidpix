@@ -12,6 +12,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+dist-gh/
 *.local
 
 # Editor directories and files
@@ -44,3 +45,4 @@ site/
 tmp/
 .vite.pid
 
+.playwright-mcp/
