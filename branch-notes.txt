@@ -1,0 +1,49 @@
+# Branch: name-stamps
+
+**GitHub Issue**: #49 - Add Search Bar to Stamp Tool
+**Issue URL**: https://github.com/justinpearson/kidpix/issues/49
+
+## Current Status
+
+**Phase**: Manual stamp naming review (foundation work)
+
+### Completed ✅
+- Created stamp spritesheet infrastructure (10 PNG files in `util/`)
+- Generated initial `stamp-names.json` with 1,172 stamp entries
+- Built `stamp-verification.html` tool for visual verification
+- Created multiple naming iterations (v2, v3, v4 JSON files)
+- Updated CLAUDE.md with extensive documentation
+- Created GitHub issue to track the full feature
+
+### In Progress 🚧
+- **Manual review of stamp names** using verification tool at http://localhost:8000/util/stamp-verification.html
+- Progress saved in browser localStorage (persists across sessions)
+- Exporting incrementally as v2, v3, v4 JSON files
+
+### Next Steps 📋
+1. Complete manual stamp name review
+2. Finalize stamp names JSON file
+3. Integrate stamp names into codebase
+4. Implement search UI in Stamp tool
+5. Add filtering logic
+6. Test and create PR
+
+## How to Resume Work
+
+```bash
+# Start local server
+python3 -m http.server
+
+# Open verification tool
+open http://localhost:8000/util/stamp-verification.html
+
+# Your progress will auto-load from localStorage
+# Edit stamp names, click "Export as JSON" when ready to save
+```
+
+## Related Files
+- `util/stamp-verification.html` - Manual review tool (uses localStorage)
+- `util/stamp-names.json` - Current stamp names (base version)
+- `util/stamp-names-v*.json` - Naming iteration history
+- `util/kidpix-spritesheet-*.png` - Stamp sprite sheets (0-8)
+- `prompts-TODO/misc.txt` - Original feature notes (lines 30-36)
