@@ -206,84 +206,98 @@ function init_listeners(canvas) {
   );
   canvas.addEventListener("drop", image_upload);
 
-  // Keyboard shortcuts disabled for maximum simplicity
-  // All core drawing functionality remains available through UI buttons
-  // document.onkeydown = function checkKey(e) {
-  //   if (e.keyCode == 16) {
-  //     // Shift key
-  //     KiddoPaint.Current.scaling = 2;
-  //     KiddoPaint.Current.modified = true;
-  //   } else if (e.keyCode == 91 || e.keyCode == 93) {
-  //     // Left/Right Command key (⌘) on Mac
-  //     KiddoPaint.Current.modifiedCtrl = true;
-  //   } else if (e.keyCode == 18) {
-  //     // Alt/Option key
-  //     KiddoPaint.Current.modifiedAlt = true;
-  //   } else if (e.keyCode == 17) {
-  //     // Control key (actual Ctrl)
-  //     KiddoPaint.Current.modifiedMeta = true;
-  //   } else if (e.keyCode == 192) {
-  //     // Tilde key (~)
-  //     KiddoPaint.Current.modifiedTilde = true;
-  //   } else if (e.keyCode == 78) {
-  //     // 'n' key - cycle to next color
-  //     var c = KiddoPaint.Colors.nextAllColor();
-  //     // keep them in sync
-  //     KiddoPaint.Current.color = c;
-  //     KiddoPaint.Current.altColor = c;
-  //     KiddoPaint.Current.terColor = c;
-  //     document.getElementById("currentColor").style = "background-color: " + c;
-  //   } else if (e.keyCode == 67) {
-  //     // 'c' key - cycle to next color palette
-  //     KiddoPaint.Colors.nextPalette();
-  //     set_colors_to_current_palette();
-  //   } else if (e.keyCode == 82) {
-  //     // 'r' key - randomize colors
-  //     var c = KiddoPaint.Colors.randomAllColor();
-  //     KiddoPaint.Current.color = c;
-  //     document.getElementById("currentColor").style = "background-color: " + c;
-  //     KiddoPaint.Current.altColor = KiddoPaint.Colors.randomAllColor();
-  //     KiddoPaint.Current.terColor = KiddoPaint.Colors.randomAllColor();
-  //   } else if (e.keyCode == 83) {
-  //     // 's' key - save to file
-  //     save_to_file();
-  //   } else if (e.keyCode > 48 && e.keyCode < 58) {
-  //     // Number keys 1-9 - set multiplier
-  //     KiddoPaint.Current.multiplier = e.keyCode - 48;
-  //   } else if (e.keyCode == 32) {
-  //     // Spacebar - toggle modified state
-  //     e.stopPropagation();
-  //     e.preventDefault();
-  //     KiddoPaint.Current.modifiedToggle = !KiddoPaint.Current.modifiedToggle;
-  //   } else if (e.keyCode == 86) {
-  //     // 'v' key - toggle velocity state
-  //     KiddoPaint.Current.velToggle = !KiddoPaint.Current.velToggle;
-  //   } else if (e.ctrlKey && e.key === "z") {
-  //     // Ctrl+Z or Cmd+Z - undo
-  //     KiddoPaint.Sounds.mainmenu();
-  //     KiddoPaint.Sounds.oops();
-  //     KiddoPaint.Display.undo(!KiddoPaint.Current.modifiedAlt);
-  //   }
-  // };
-  // document.onkeyup = function checkKey(e) {
-  //   if (e.keyCode == 16) {
-  //     // Shift key released - reset scaling and modified state
-  //     KiddoPaint.Current.scaling = 1;
-  //     KiddoPaint.Current.modified = false;
-  //   } else if (e.keyCode == 91 || e.keyCode == 93) {
-  //     // Left/Right Command key (⌘) released on Mac
-  //     KiddoPaint.Current.modifiedCtrl = false;
-  //   } else if (e.keyCode == 17) {
-  //     // Control key (actual Ctrl) released
-  //     KiddoPaint.Current.modifiedMeta = false;
-  //   } else if (e.keyCode == 192) {
-  //     // Tilde key (~) released
-  //     KiddoPaint.Current.modifiedTilde = false;
-  //   } else if (e.keyCode == 18) {
-  //     // Alt/Option key released
-  //     KiddoPaint.Current.modifiedAlt = false;
-  //   }
-  // };
+  // Keyboard shortcuts - modifier keys always work, single-key shortcuts only when enabled
+  document.onkeydown = function checkKey(e) {
+    // Modifier keys ALWAYS work regardless of keyboard shortcuts setting
+    if (e.keyCode == 16) {
+      // Shift key
+      KiddoPaint.Current.scaling = 2;
+      KiddoPaint.Current.modified = true;
+      return;
+    } else if (e.keyCode == 91 || e.keyCode == 93) {
+      // Left/Right Command key (⌘) on Mac
+      KiddoPaint.Current.modifiedCtrl = true;
+      return;
+    } else if (e.keyCode == 18) {
+      // Alt/Option key
+      KiddoPaint.Current.modifiedAlt = true;
+      return;
+    } else if (e.keyCode == 17) {
+      // Control key (actual Ctrl)
+      KiddoPaint.Current.modifiedMeta = true;
+      return;
+    } else if (e.keyCode == 192) {
+      // Tilde key (~)
+      KiddoPaint.Current.modifiedTilde = true;
+      return;
+    }
+
+    // Single-key shortcuts - only work when enabled
+    if (!KiddoPaint.Settings.isKeyboardShortcutsEnabled()) {
+      return; // Exit early if shortcuts disabled
+    }
+
+    if (e.keyCode == 78) {
+      // 'n' key - cycle to next color
+      var c = KiddoPaint.Colors.nextAllColor();
+      // keep them in sync
+      KiddoPaint.Current.color = c;
+      KiddoPaint.Current.altColor = c;
+      KiddoPaint.Current.terColor = c;
+      document.getElementById("currentColor").style = "background-color: " + c;
+    } else if (e.keyCode == 67) {
+      // 'c' key - cycle to next color palette
+      KiddoPaint.Colors.nextPalette();
+      set_colors_to_current_palette();
+    } else if (e.keyCode == 82) {
+      // 'r' key - randomize colors
+      var c = KiddoPaint.Colors.randomAllColor();
+      KiddoPaint.Current.color = c;
+      document.getElementById("currentColor").style = "background-color: " + c;
+      KiddoPaint.Current.altColor = KiddoPaint.Colors.randomAllColor();
+      KiddoPaint.Current.terColor = KiddoPaint.Colors.randomAllColor();
+    } else if (e.keyCode == 83) {
+      // 's' key - save to file
+      save_to_file();
+    } else if (e.keyCode > 48 && e.keyCode < 58) {
+      // Number keys 1-9 - set multiplier
+      KiddoPaint.Current.multiplier = e.keyCode - 48;
+    } else if (e.keyCode == 32) {
+      // Spacebar - toggle modified state
+      e.stopPropagation();
+      e.preventDefault();
+      KiddoPaint.Current.modifiedToggle = !KiddoPaint.Current.modifiedToggle;
+    } else if (e.keyCode == 86) {
+      // 'v' key - toggle velocity state
+      KiddoPaint.Current.velToggle = !KiddoPaint.Current.velToggle;
+    } else if (e.ctrlKey && e.key === "z") {
+      // Ctrl+Z or Cmd+Z - undo
+      KiddoPaint.Sounds.mainmenu();
+      KiddoPaint.Sounds.oops();
+      KiddoPaint.Display.undo(!KiddoPaint.Current.modifiedAlt);
+    }
+  };
+
+  // Modifier key release handlers - always work
+  document.onkeyup = function checkKey(e) {
+    if (e.keyCode == 16) {
+      // Shift key released - reset scaling and modified state
+      KiddoPaint.Current.scaling = 1;
+      KiddoPaint.Current.modified = false;
+    } else if (e.keyCode == 91 || e.keyCode == 93) {
+      // Left/Right Command key (⌘) released on Mac
+      KiddoPaint.Current.modifiedCtrl = false;
+    } else if (e.keyCode == 17) {
+      // Control key (actual Ctrl) released
+      KiddoPaint.Current.modifiedMeta = false;
+    } else if (e.keyCode == 192) {
+      // Tilde key (~) released
+      KiddoPaint.Current.modifiedTilde = false;
+    } else if (e.keyCode == 18) {
+      // Alt/Option key released
+      KiddoPaint.Current.modifiedAlt = false;
+    }
+  };
 }
 
 function colorSelect(e) {
