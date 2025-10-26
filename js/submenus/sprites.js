@@ -82,25 +82,43 @@ window.init_sprites_submenu = function init_sprites_submenu() {
     KiddoPaint.Submenu.sprites.push(individualSprite);
   }
 
+  // Row navigation (within current stamp pack)
   KiddoPaint.Submenu.sprites.push({
-    name: "Next Page",
-    emoji: "↪",
+    name: "prev row",
+    emoji: "⏪",
     handler: function (e) {
-      e.type == "contextmenu"
-        ? KiddoPaint.Sprite.prevPage()
-        : KiddoPaint.Sprite.nextPage();
+      KiddoPaint.Sprite.prevPage();
       init_sprites_submenu();
       show_generic_submenu("sprites");
     },
   });
 
   KiddoPaint.Submenu.sprites.push({
-    name: "Next Stamp Pack",
-    emoji: "➡️",
+    name: "next row",
+    emoji: "⏩",
     handler: function (e) {
-      e.type == "contextmenu"
-        ? KiddoPaint.Sprite.prevSprite()
-        : KiddoPaint.Sprite.nextSprite();
+      KiddoPaint.Sprite.nextPage();
+      init_sprites_submenu();
+      show_generic_submenu("sprites");
+    },
+  });
+
+  // Stamp pack navigation (between sprite sheets)
+  KiddoPaint.Submenu.sprites.push({
+    name: "prev stamp pack",
+    emoji: "⏮️",
+    handler: function (e) {
+      KiddoPaint.Sprite.prevSprite();
+      init_sprites_submenu();
+      show_generic_submenu("sprites");
+    },
+  });
+
+  KiddoPaint.Submenu.sprites.push({
+    name: "next stamp pack",
+    emoji: "⏭️",
+    handler: function (e) {
+      KiddoPaint.Sprite.nextSprite();
       init_sprites_submenu();
       show_generic_submenu("sprites");
     },
