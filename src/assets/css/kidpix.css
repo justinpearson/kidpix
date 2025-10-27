@@ -760,3 +760,245 @@ emj {
 .sprite-pos-14-7 {
   object-position: -448px -224px;
 }
+
+/* ================================================
+   Keyboard Shortcuts Help Popup
+   ================================================ */
+
+/* Modal overlay - semi-transparent backdrop */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  animation: fadeIn 0.15s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal content box */
+.modal-content {
+  background: #fff;
+  border: 5px solid #000;
+  border-radius: 8px;
+  padding: 0;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+/* Modal header */
+.modal-header {
+  background: linear-gradient(180deg, #4a90e2 0%, #2171d6 100%);
+  color: #fff;
+  padding: 16px 24px;
+  border-bottom: 3px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.75em;
+  font-weight: bold;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Close button */
+.close-btn {
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s;
+  font-weight: bold;
+  color: #000;
+}
+
+.close-btn:hover {
+  background: #ff6b6b;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.close-btn:active {
+  transform: scale(0.95);
+}
+
+/* Modal body */
+.modal-body {
+  padding: 24px;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* Shortcuts sections */
+.shortcuts-section,
+.modifiers-section {
+  margin-bottom: 28px;
+}
+
+.shortcuts-section:last-child,
+.modifiers-section:last-child {
+  margin-bottom: 0;
+}
+
+.shortcuts-section h3,
+.modifiers-section h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.3em;
+  color: #2171d6;
+  border-bottom: 3px solid #4a90e2;
+  padding-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Shortcuts list (definition list) */
+.shortcuts-list {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 16px;
+  align-items: center;
+}
+
+.shortcuts-list dt {
+  font-weight: normal;
+  margin: 0;
+  justify-self: start;
+}
+
+.shortcuts-list dd {
+  margin: 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Keyboard key badges */
+kbd {
+  display: inline-block;
+  padding: 4px 10px;
+  background: linear-gradient(180deg, #f9f9f9 0%, #e0e0e0 100%);
+  border: 2px solid #666;
+  border-radius: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 0.95em;
+  min-width: 28px;
+  text-align: center;
+  box-shadow:
+    0 2px 0 #999,
+    0 3px 3px rgba(0, 0, 0, 0.2);
+  color: #000;
+  margin-right: 4px;
+  position: relative;
+  top: -1px;
+}
+
+/* Modifier intro text */
+.modifier-intro {
+  margin: 0 0 16px 0;
+  color: #555;
+  font-style: italic;
+}
+
+/* Modifier note */
+.modifier-note {
+  margin: 16px 0 0 0;
+  color: #777;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+/* Disabled message styling */
+.disabled-message {
+  font-size: 1.1em;
+  color: #d63031;
+  background: #ffe5e5;
+  border: 3px solid #d63031;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 0 16px 0;
+  font-weight: 500;
+}
+
+.disabled-note {
+  color: #555;
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+/* Console instructions styling */
+.console-instructions {
+  background: #f5f5f5;
+  border: 2px solid #999;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 20px 0 0 0;
+}
+
+.console-instructions h4 {
+  margin: 0 0 12px 0;
+  font-size: 1.1em;
+  color: #2171d6;
+}
+
+.console-instructions p {
+  margin: 0 0 8px 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.console-instructions pre {
+  background: #2d2d2d;
+  color: #f8f8f8;
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 8px 0;
+  border: 1px solid #000;
+}
+
+.console-instructions code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.console-note {
+  font-size: 0.9em;
+  color: #666;
+  font-style: italic;
+  margin-top: 12px !important;
+}

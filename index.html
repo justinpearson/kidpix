@@ -313,5 +313,75 @@
 
     <!-- React version entry -->
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Keyboard Shortcuts Help Popup -->
+    <div id="keyboard-shortcuts-popup" class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Keyboard Shortcuts</h2>
+          <button class="close-btn" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <!-- Content shown when shortcuts are enabled -->
+          <div id="shortcuts-enabled-content">
+            <section class="shortcuts-section">
+              <h3>Single-Key Shortcuts</h3>
+              <dl class="shortcuts-list">
+                <dt><kbd>n</kbd></dt>
+                <dd>Cycle to next color</dd>
+                <dt><kbd>c</kbd></dt>
+                <dd>Cycle to next color palette</dd>
+                <dt><kbd>r</kbd></dt>
+                <dd>Randomize colors</dd>
+                <dt><kbd>s</kbd></dt>
+                <dd>Save drawing to file</dd>
+                <dt><kbd>v</kbd></dt>
+                <dd>Toggle velocity state</dd>
+                <dt><kbd>1-9</kbd></dt>
+                <dd>Set multiplier (1-9)</dd>
+                <dt><kbd>Space</kbd></dt>
+                <dd>Toggle modified state</dd>
+                <dt><kbd>?</kbd></dt>
+                <dd>Show/hide this help</dd>
+              </dl>
+            </section>
+            <section class="modifiers-section">
+              <h3>Modifier Keys</h3>
+              <p class="modifier-intro">Hold these keys while using tools for special effects:</p>
+              <dl class="shortcuts-list">
+                <dt><kbd>Shift</kbd></dt>
+                <dd>Enlarge effect, snap to grid, or constrain proportions</dd>
+                <dt><kbd>Cmd</kbd> / <kbd>Ctrl</kbd></dt>
+                <dd>Special effects and alternative behaviors</dd>
+                <dt><kbd>Alt</kbd></dt>
+                <dd>Additional variations</dd>
+                <dt><kbd>Ctrl</kbd></dt>
+                <dd>Advanced features</dd>
+              </dl>
+              <p class="modifier-note">See full modifier key documentation for details on each tool.</p>
+            </section>
+          </div>
+          <!-- Content shown when shortcuts are disabled -->
+          <div id="shortcuts-disabled-content" style="display: none;">
+            <p class="disabled-message">
+              Keyboard shortcuts are currently disabled. Enable them to use single-key shortcuts like <kbd>n</kbd>, <kbd>c</kbd>, <kbd>r</kbd>, <kbd>s</kbd>, and <kbd>v</kbd>.
+            </p>
+            <p class="disabled-note">
+              Note: Modifier keys (<kbd>Shift</kbd>, <kbd>Cmd</kbd>, <kbd>Ctrl</kbd>, <kbd>Alt</kbd>) work regardless of this setting.
+            </p>
+            <div class="console-instructions">
+              <h4>Enable/Disable Keyboard Shortcuts</h4>
+              <p>Open your browser's developer console and run:</p>
+              <pre><code>// Enable shortcuts
+KiddoPaint.Settings.setKeyboardShortcutsEnabled(true)
+
+// Disable shortcuts
+KiddoPaint.Settings.setKeyboardShortcutsEnabled(false)</code></pre>
+              <p class="console-note">Then reload the page for changes to take effect.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
