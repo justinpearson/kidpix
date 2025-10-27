@@ -16,6 +16,7 @@ import "../js/util/glfx.js";
 import "../js/util/html.js";
 import "../js/util/kdtree.js";
 import "../js/util/settings.js";
+import "../js/util/keyboard-help.js";
 import "../js/util/smoke.js";
 import "../js/util/smooth.js";
 import "../js/util/trim-canvas.js";

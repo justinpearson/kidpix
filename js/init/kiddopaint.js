@@ -232,6 +232,14 @@ function init_listeners(canvas) {
       return;
     }
 
+    // '?' key - Show keyboard shortcuts help (always works, even when shortcuts disabled)
+    if (e.keyCode === 191 && e.shiftKey) {
+      // '?' is Shift + '/' (keyCode 191)
+      e.preventDefault();
+      KiddoPaint.KeyboardHelp.toggle();
+      return;
+    }
+
     // Single-key shortcuts - only work when enabled
     if (!KiddoPaint.Settings.isKeyboardShortcutsEnabled()) {
       return; // Exit early if shortcuts disabled
