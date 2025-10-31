@@ -1,6 +1,6 @@
 KiddoPaint.Submenu.paintcan = [
   {
-    name: "Texture 1",
+    name: "Solid",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Solid);
     },
@@ -12,7 +12,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 2",
+    name: "Partial1",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Partial1);
     },
@@ -24,7 +24,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 3",
+    name: "Partial2",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Partial2);
     },
@@ -36,7 +36,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 4",
+    name: "Partial3",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Partial3);
     },
@@ -48,7 +48,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 6",
+    name: "PartialArtifactAlias",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.PartialArtifactAlias);
     },
@@ -62,7 +62,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Speckles",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Speckles);
     },
@@ -74,7 +74,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Speckles",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Stripes);
     },
@@ -86,7 +86,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Speckles",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Thatch);
     },
@@ -98,7 +98,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 7",
+    name: "Speckles",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Shingles);
     },
@@ -110,7 +110,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 8",
+    name: "Bubbles",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Bubbles);
     },
@@ -122,7 +122,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 9",
+    name: "Diamond",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Diamond);
     },
@@ -134,7 +134,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 9",
+    name: "Diamond",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Ribbon);
     },
@@ -146,7 +146,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 10",
+    name: "Sand",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Sand);
     },
@@ -158,7 +158,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Brick);
     },
@@ -170,7 +170,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Chevron);
     },
@@ -182,7 +182,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Stairs);
     },
@@ -194,7 +194,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Cross);
     },
@@ -206,7 +206,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 11",
+    name: "Brick",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.DiagBrick);
     },
@@ -218,7 +218,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 12",
+    name: "CornerStair",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.CornerStair);
     },
@@ -230,7 +230,7 @@ KiddoPaint.Submenu.paintcan = [
     },
   },
   {
-    name: "Texture 13",
+    name: "Houndstooth",
     imgJs: function () {
       return makeIcon(KiddoPaint.Textures.Houndstooth);
     },
