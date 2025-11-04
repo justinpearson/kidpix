@@ -414,3 +414,13 @@ After converstion to ES modules / ReactTS, use "bundled asset references" instea
 
 
 
+
+
+=============================================
+MISC
+=============================================
+
+- [ ] kidpix - Consider making some sort of microphone enabled search box for kid pics to allow people to dictate to an AI what they want drawn
+
+- [ ] kidpix - Search work for all tools not just stamps
+

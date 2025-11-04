@@ -55,7 +55,7 @@ jobs:
             1. Download the `kidpix-${{ github.ref_name }}.tar.gz` file below
             2. Extract the archive to a folder
             3. Run a local web server in the extracted folder (e.g., `python -m http.server` or `npx serve .`)
-            4. Open the served URL in your browser, eg, http://localhost:8080/
+            4. Open the served URL in your browser ( http://localhost:8000/ )
             5. Start drawing!
 
             Enjoy creating digital masterpieces! 🎨
