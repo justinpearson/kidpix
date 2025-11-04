@@ -2,18 +2,41 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Quick Reference
+
+- **Live App**: https://justinpearson.github.io/kidpix/
+- **Docs**: https://justinpearson.github.io/kidpix/docs/
+- **Main Branch**: `main`
+- **Current Branch**: `name-stamps` (as of October 2025)
+- **Tech Stack**: Vanilla JS (~16,300 lines) + Vite 6.4.1 + Vitest + Playwright
+- **No Linting**: ESLint/Prettier removed - AI writes correct code without them
+- **Dev Server**: `yarn dev-app` → http://localhost:5173/
+- **Feature Requests**: See `prompts-TODO/current.txt`
+
 ## Project Overview
 
 This is a modular JavaScript implementation of the classic 1989 Kid Pix drawing application, based on Vikrum's HTML/JavaScript implementation (kidpix.app). The current focus is on maintaining and improving the modular JavaScript codebase as a foundation for future migration to React/TypeScript.
 
+### Recent Improvements (September-October 2025)
+
+- Multi-level undo/redo that persists across page reloads
+- Expanded stamp collection with organized naming system
+- Enhanced color picker tool
+- Improved image organization (moved to logical folders)
+- GitHub releases support for offline distribution
+- Comprehensive documentation for users and maintainers
+- Browser error monitoring integration for AI-assisted development
+- Removed ESLint/Prettier to reduce development friction (AI writes correct code without them)
+
 ## Technology Stack
 
 - **Runtime**: Modular JavaScript (ES5/ES6) loaded via script tags
-- **Build Tool**: Vite 6.3.5 for development server and asset serving
+- **Build Tool**: Vite 6.4.1 for development server and asset serving
 - **Package Manager**: Yarn 1.22.22
-- **Linting**: ESLint 9 (currently configured for TypeScript, needs update for JS)
-- **Testing**: Vitest and Playwright configured but not yet used for JS files
-- **Error Monitoring**: vite-plugin-terminal for browser console errors in Claude Code development
+- **Node.js**: v24.9.0
+- **Linting**: None (ESLint and Prettier removed in commit 3f1155b - September 2025)
+- **Testing**: Vitest 3.2.3 and Playwright 1.56.1 configured for JavaScript files
+- **Error Monitoring**: vite-plugin-terminal 1.3.0 for browser console errors in Claude Code development
 
 ## CRITICAL COMMIT WORKFLOW
 
@@ -59,45 +82,137 @@ git commit -m "feat(tooling): set up entire tech stack"
 
 - After finishing a feature and moving its feature-request file to prompts-DONE, offer to create a pull request (PR)
 
+## CI/CD and Deployment
+
+### GitHub Actions Workflows
+
+The project uses GitHub Actions for continuous integration and deployment:
+
+1. **build-and-deploy-all.yml** (PRIMARY - Active)
+   - Triggers: Push to main, manual workflow_dispatch
+   - Builds app with Vite (to `dist/`)
+   - Builds docs with MkDocs (to `dist/docs/`)
+   - Deploys to GitHub Pages at https://justinpearson.github.io/kidpix/
+   - Sets base URL to `/kidpix/` for GitHub Pages
+
+2. **release.yml** (Active)
+   - Triggers: Tag push matching `v*` pattern
+   - Builds application for production
+   - Creates tarball of `dist/` directory
+   - Publishes GitHub Release with downloadable archive
+   - Usage: `git tag v1.0.0 && git push --tags`
+
+3. **test.yml** (Currently disabled)
+   - Would run unit tests with coverage
+   - Would run Playwright E2E tests
+   - Upload test results and coverage to Codecov
+
+4. **deploy.yml** (Currently disabled)
+   - Alternative deployment workflow
+   - Runs tests before deploying
+
+5. **docs.yml** (Superseded by build-and-deploy-all.yml)
+   - Previously built docs separately
+
+### Release Process
+
+To create a new release:
+
+```bash
+# Using npm version command (increments package.json version)
+yarn release:patch   # v1.0.0 -> v1.0.1
+yarn release:minor   # v1.0.0 -> v1.1.0
+yarn release:major   # v1.0.0 -> v2.0.0
+
+# Or manually create and push a tag
+git tag v1.0.0
+git push origin --tags
+```
+
+The release workflow automatically:
+- Builds the application
+- Creates a tarball (e.g., `kidpix-v1.0.0.tar.gz`)
+- Publishes a GitHub Release with the tarball
+- Users can download and run locally with `python -m http.server`
+
+### Deployment URLs
+
+- **Live App**: https://justinpearson.github.io/kidpix/
+- **Documentation**: https://justinpearson.github.io/kidpix/docs/
+- **Releases**: https://github.com/justinpearson/kidpix/releases
+
 ## Development Commands
 
 ### Development Server
 
 ```bash
-yarn dev
-# Opens development server at http://localhost:5173/
-# Access points:
-# - http://localhost:5173/ - Modular JavaScript version (main entry point)
+yarn dev-app       # Start dev server (opens at http://localhost:5173/)
+yarn dev-app-stop  # Stop the background dev server
 ```
+
+**Dev Server Notes:**
+- Opens automatically at http://localhost:5173/
+- Hot module reloading for instant updates
+- Browser errors displayed in terminal via vite-plugin-terminal
+- Process ID saved to `.vite.pid` for cleanup
 
 ### Build
 
 ```bash
-yarn build
-# Runs Vite build for production deployment
+yarn build  # Build app and docs for both local (dist/) and GitHub Pages (dist-gh/)
 ```
 
-### Linting
+**Build Notes:**
+- Creates `dist/` directory for local deployment (base URL: `/`)
+- Creates `dist-gh/` directory for GitHub Pages deployment (base URL: `/kidpix/`)
+- Both builds include app + docs (MkDocs output in `docs/` subdirectory)
+
+### Testing
 
 ```bash
-yarn lint
-# Runs ESLint (currently only on TypeScript files, needs update for JS files)
+yarn test              # Run unit tests once
+yarn test:unit         # Run unit tests in watch mode
+yarn test:coverage     # Run unit tests with coverage report
+yarn test:e2e          # Run Playwright end-to-end tests (headless)
+yarn test:e2e:headed   # Run Playwright tests with visible browser
 ```
+
+### Documentation
+
+```bash
+yarn dev-docs  # Start MkDocs dev server at http://127.0.0.1:8000/
+```
+
+**Documentation Notes:**
+- Docs are built as part of `yarn build` (no separate docs:build command)
+- MkDocs outputs to `dist/docs/` and `dist-gh/docs/`
 
 ### Preview Built App
 
 ```bash
-yarn preview
-# Preview the built application locally
+yarn preview-release        # Preview local build at http://localhost:8080/ (dist/)
+yarn preview-github-pages   # Preview GitHub Pages build at http://localhost:8080/kidpix/ (dist-gh/)
 ```
+
+**Preview Notes:**
+- Uses Python's built-in HTTP server (`python3 -m http.server`)
+- Must run `yarn build` first to generate the build directories
+
+### Utilities
+
+```bash
+yarn screenshot  # Capture screenshots of the app (uses scripts/screenshot-capture.js)
+```
+
+**Note:** There is no `type-check` script in this project
 
 ## Claude Code Development Workflow
 
 ### Browser Error Monitoring Setup
 
-To facilitate development with Claude Code, this project is configured with `vite-plugin-terminal` to display browser runtime errors directly in the Vite dev server terminal; this makes browser console errors visible to Claude Code when it runs `yarn dev` in its own sub-shell.
+To facilitate development with Claude Code, this project is configured with `vite-plugin-terminal` to display browser runtime errors directly in the Vite dev server terminal; this makes browser console errors visible to Claude Code when it runs `yarn dev-app` in its own sub-shell.
 
-- **NOTE FOR CLAUDE CODE**: If claude code is running the local dev server in a sub-shell (ie, `yarn dev`), claude code should remember to frequently check its stdout / stderr for browser console errors, and compare the errors' timestamps with the current time to ensure it doesn't get confused by reading old errors.
+- **NOTE FOR CLAUDE CODE**: If claude code is running the local dev server in a sub-shell (ie, `yarn dev-app`), claude code should remember to frequently check its stdout / stderr for browser console errors, and compare the errors' timestamps with the current time to ensure it doesn't get confused by reading old errors.
 
 #### Setup Details
 
@@ -109,7 +224,7 @@ To facilitate development with Claude Code, this project is configured with `vit
 
 #### Usage for Claude Code
 
-1. **Start Development Server**: Claude Code runs `yarn dev` in background bash shell
+1. **Start Development Server**: Claude Code runs `yarn dev-app` in background bash shell
 2. **Error Monitoring**: Runtime errors appear in terminal with full stack traces
 3. **Real-time Debugging**: Errors visible immediately as user interacts with browser
 4. **Error Format**: Shows file location, line numbers, complete stack traces, and timestamps
@@ -145,7 +260,7 @@ Example error output:
 
 #### Version Compatibility
 
-⚠️ **Important**: We use Vite 6.3.5 (not the latest 7.x) for security reasons and plugin compatibility. The `vite-plugin-terminal` has [known compatibility issues](https://github.com/patak-dev/vite-plugin-terminal/issues/34) with Vite 7.x. If you need Vite 7.x, consider implementing a custom error monitoring solution.
+⚠️ **Important**: We use Vite 6.x (currently 6.4.1, not the latest 7.x) for security reasons and plugin compatibility. The `vite-plugin-terminal` has [known compatibility issues](https://github.com/patak-dev/vite-plugin-terminal/issues/34) with Vite 7.x. If you need Vite 7.x, consider implementing a custom error monitoring solution.
 
 #### Workflow Benefits
 
@@ -223,17 +338,18 @@ KiddoPaint.Tools.Toolbox.ToolName = function () {
 
 ## Feature Development Workflow
 
-1. Read feature requests from `prompts-TODO/` directory (newest first)
+1. Read feature requests from `prompts-TODO/` directory (check `current.txt` first, then others)
 2. Create a new git branch for the feature
-3. Implement using JavaScript best practices in the modular structure
-4. Ensure no build or lint errors before committing
-5. Use conventional commit format
-6. Push branch and create PR via GitHub CLI (`gh pr create`)
-7. Verify CI passes on GitHub, make & push any needed corrections
-8. **BEFORE MERGING**: Move feature request file from `prompts-TODO/` to `prompts-DONE/` using `git mv`
-9. Commit and push the moved feature request file to the PR
-10. Merge PR and delete branch
-11. Locally: `git fetch origin/main` and fast-forward local main branch
+3. **First commit**: Add the feature request file to git (if not already tracked)
+4. Implement using JavaScript best practices in the modular structure
+5. Make logical, incremental commits following conventional commit format
+6. Run tests locally (`yarn test`) before pushing
+7. Push branch and create PR via GitHub CLI (`gh pr create`)
+8. Verify CI passes on GitHub, make & push any needed corrections
+9. **BEFORE MERGING**: Move feature request file from `prompts-TODO/` to `prompts-DONE/` using `git mv`
+10. Commit and push the moved feature request file to the PR
+11. Merge PR and delete branch via GitHub UI
+12. Locally: `git checkout main && git pull origin main` to sync with remote
 
 ## Key Development Patterns
 
@@ -260,17 +376,27 @@ KiddoPaint.Tools.Toolbox.ToolName = function () {
 
 ## Testing Strategy
 
-Testing framework is configured but not yet adapted for JavaScript files:
+### Current Test Setup
 
-- Vitest and Playwright are set up but configured for TypeScript
-- Need to adapt testing for JavaScript files in `js/` directory
-- Focus on utility functions first (most testable)
-- Consider integration tests for tool interactions
-- Test canvas rendering functionality
+- **Unit Tests**: Vitest 3.2.3 configured for both JavaScript and TypeScript files
+  - Test files: `**/*.{test,spec}.{js,ts,tsx}` and `**/js/**/*.{test,spec}.js`
+  - Environment: jsdom for DOM testing
+  - Setup file: `src/test-setup.ts`
+  - Coverage provider: v8
+  - Coverage output: text, json, html formats
+
+- **E2E Tests**: Playwright 1.52.0 configured
+  - Test files in `tests/e2e/`
+  - Excluded from Vitest coverage
+  - Multiple browser support (Chromium, Firefox, WebKit)
+
+- **Coverage Scope**:
+  - Includes: `js/**/*.js` and `src/**/*.{js,ts,tsx}`
+  - Excludes: config files, test files, node_modules, coverage, dist, site
 
 ### Coverage Thresholds (TODO: Increase as tests are added)
 
-**Current Status (2025-06-17)**: Very low coverage thresholds set to allow CI to pass:
+**Current Status (as of June 2025)**: Very low coverage thresholds set to allow CI to pass:
 
 - Lines: 1% (currently 1.76%)
 - Functions: 10% (currently 14.96%)
@@ -279,15 +405,45 @@ Testing framework is configured but not yet adapted for JavaScript files:
 
 **Target Goals**: 70% lines/functions/statements, 60% branches
 
-⚠️ **IMPORTANT**: These thresholds should be gradually increased as we add more comprehensive tests to the JavaScript codebase. See `vitest.config.ts` for current configuration.
+⚠️ **IMPORTANT**: These thresholds should be gradually increased as we add more comprehensive tests to the JavaScript codebase. See [vitest.config.ts](vitest.config.ts:30-35) for current configuration.
+
+### Test Development Priorities
+
+1. Utility functions in `js/util/` (most testable, already has some tests)
+2. Brush and texture generators (pure functions)
+3. Tool behavior and canvas operations
+4. Integration tests for multi-tool workflows
+5. E2E tests for complete user journeys
 
 ## File Organization
 
-- `js/`: Modular JavaScript source code (primary codebase)
-- `src/assets/`: Static assets (images, sounds, CSS)
-- `src/`: React/TypeScript components (future migration target)
+- `js/`: Modular JavaScript source code (~15,700 lines, primary codebase)
+  - `js/tools/`: 50+ drawing tools
+  - `js/brushes/`: 20+ brush pattern generators
+  - `js/textures/`: Texture/fill pattern generators
+  - `js/builders/`: Complex shape builders
+  - `js/stamps/`: Stamp and text systems
+  - `js/submenus/`: UI submenu definitions
+  - `js/sounds/`: Audio system and sound library
+  - `js/util/`: Core utilities (display, colors, caching, filters)
+  - `js/init/`: Application initialization and setup
+- `src/`: React/TypeScript components and assets
+  - `src/assets/`: Static assets (images, sounds, CSS)
+  - `src/components/`, `src/contexts/`, `src/hooks/`: Future React migration target
+  - `src/kidpix-main.js`: Main entry point for React version (future)
+  - `src/test-setup.ts`: Vitest test setup
 - `index.html`: Main application entry point loading modular JS files
-- Documentation in `doc/` with user and maintainer guides
+- `doc/`: Documentation built with MkDocs (user and maintainer guides)
+- `prompts-TODO/`: Feature request files (newest first)
+- `prompts-DONE/`: Completed feature requests
+- `util/`: Utility scripts for stamp management
+  - Stamp spritesheet PNGs (kidpix-spritesheet-0.png through -8.png)
+  - Stamp name JSON files with metadata for all stamps
+  - `stamp-verification.html`: Visual tool for verifying stamp names and positions
+- `scripts/`: Development scripts (screenshot capture, install scripts)
+- `tests/`: Test files
+  - `tests/e2e/`: Playwright end-to-end tests
+- `.github/workflows/`: CI/CD workflows
 
 ## Key Systems
 
@@ -326,14 +482,17 @@ KiddoPaint.Submenu.toolname = [
 
 Each tool can have associated sounds (start, during, end) with support for random sound selection and multi-part audio sequences.
 
-### Canvas Management
+### Canvas Management and Persistence
 
 The `KiddoPaint.Display` system handles:
 
 - Canvas clearing and saving operations
-- Undo functionality (single-level)
-- Local storage persistence
-- Layer compositing
+- **Multi-level undo/redo** (works across page reloads!)
+  - Implemented in commit f25d218 (September 2025)
+  - Stores canvas states in browser localStorage
+  - Maintains undo/redo history across sessions
+- Local storage persistence for drawings
+- Layer compositing across five canvas layers
 
 ## Future Migration Notes
 
