@@ -42,8 +42,8 @@ The following sections decribe:
 
 - [Background](#background)
 - [How to Play](#how-to-play)
-- [How to Play Offline](#how-to-play-offline)
-- [How to Change the Code](#how-to-change-the-code)
+- [How to Play Offline via a Pre-packaged Release](#how-to-play-offline-via-a-pre-packaged-release)
+- [How to Play by running the Source Code](#how-to-play-by-running-the-source-code)
 - [For AI Agents](#for-ai-agents)
 - [Releasing](#releasing)
   - [Release manually](#release-manually)
@@ -66,7 +66,9 @@ The following sections decribe:
 
 Just browse to **<https://justinpearson.github.io/kidpix/>** !!
 
-## How to Play Offline
+## How to Play Offline via a Pre-packaged Release
+
+(Good for laptops that are too old to be let onto the Internet.)
 
 1. From an internet-enabled computer, to go the Releases page <https://github.com/justinpearson/kidpix/releases> and download the latest release's tarball, eg, `kidpix-v1.0.0.tar.gz`.
 
@@ -76,7 +78,11 @@ Just browse to **<https://justinpearson.github.io/kidpix/>** !!
 
 4. Browse to <http://localhost:8000/>
 
-## How to Change the Code
+## How to Play by running the Source Code
+
+(Good if you want to explore / modify the source code.)
+
+These instructions are for MacOS.
 
 **1. Clone the code:**
 
