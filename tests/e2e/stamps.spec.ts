@@ -212,4 +212,64 @@ test.describe("Stamp Tool Tests", () => {
 
     assertNoConsoleErrors(consoleErrors, "stamp hover-text");
   });
+
+  test("stamp names are displayed as text beneath stamps", async ({ page }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    // Verify first stamp has visible text "palm tree" inside the button
+    const subtoolButtons = await getSubtools(page);
+    const firstStampText = subtoolButtons.nth(0).locator(".stamp-name");
+    await expect(firstStampText).toHaveText("palm tree");
+
+    // Verify third stamp has visible text "brown dog"
+    const thirdStampText = subtoolButtons.nth(2).locator(".stamp-name");
+    await expect(thirdStampText).toHaveText("brown dog");
+
+    // Navigation buttons SHOULD now have stamp-name elements
+    const subtoolCount = await subtoolButtons.count();
+    const prevRowBtn = subtoolButtons.nth(subtoolCount - 4);
+    const nextRowBtn = subtoolButtons.nth(subtoolCount - 3);
+    const prevPackBtn = subtoolButtons.nth(subtoolCount - 2);
+    const nextPackBtn = subtoolButtons.nth(subtoolCount - 1);
+
+    await expect(prevRowBtn.locator(".stamp-name")).toHaveText("prev row");
+    await expect(nextRowBtn.locator(".stamp-name")).toHaveText("next row");
+    await expect(prevPackBtn.locator(".stamp-name")).toHaveText(
+      "prev stamp pack",
+    );
+    await expect(nextPackBtn.locator(".stamp-name")).toHaveText(
+      "next stamp pack",
+    );
+
+    assertNoConsoleErrors(consoleErrors, "stamp names display");
+  });
+
+  test("stamp buttons have custom size", async ({ page }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    const subtoolButtons = await getSubtools(page);
+    const subtoolCount = await subtoolButtons.count();
+
+    // All stamp buttons (stamps + navigation) should have stamp-button class
+    for (let i = 0; i < subtoolCount; i++) {
+      const button = subtoolButtons.nth(i);
+      await expect(button).toHaveClass(/stamp-button/);
+    }
+
+    // Verify first stamp button has correct dimensions (60px × 80px)
+    const firstButton = subtoolButtons.nth(0);
+    const box = await firstButton.boundingBox();
+    expect(box?.width).toBe(60);
+    expect(box?.height).toBe(80);
+
+    // Verify navigation button also has correct dimensions
+    const navButton = subtoolButtons.nth(subtoolCount - 1);
+    const navBox = await navButton.boundingBox();
+    expect(navBox?.width).toBe(60);
+    expect(navBox?.height).toBe(80);
+
+    assertNoConsoleErrors(consoleErrors, "stamp button size");
+  });
 });

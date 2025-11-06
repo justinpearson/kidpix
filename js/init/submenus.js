@@ -26,6 +26,11 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
     var button = document.createElement("button");
     button.className = "tool";
 
+    // Add stamp-button class for stamp/sprites submenu
+    if (subtoolbar === "sprites") {
+      button.className += " stamp-button";
+    }
+
     // title on hover
     button.title = buttonDetail.name;
 
@@ -52,6 +57,14 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
       var text = document.createTextNode(buttonDetail.emoji);
       emoji.appendChild(text);
       button.appendChild(emoji);
+
+      // Add stamp name text below the emoji (for navigation buttons)
+      if (buttonDetail.name) {
+        var nameSpan = document.createElement("span");
+        nameSpan.className = "stamp-name";
+        nameSpan.textContent = buttonDetail.name;
+        button.appendChild(nameSpan);
+      }
     } else if (buttonDetail.spriteSheet) {
       var img = document.createElement("img");
       img.src = buttonDetail.spriteSheet;
@@ -62,6 +75,14 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
         buttonDetail.spriteRow;
       img.setAttribute("draggable", "false");
       button.appendChild(img);
+
+      // Add stamp name text below the image
+      if (buttonDetail.name) {
+        var nameSpan = document.createElement("span");
+        nameSpan.className = "stamp-name";
+        nameSpan.textContent = buttonDetail.name;
+        button.appendChild(nameSpan);
+      }
     } else {
       //		console.log(buttonDetail);
     }
