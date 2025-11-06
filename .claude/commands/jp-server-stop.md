@@ -1,8 +1,8 @@
 Stop the local dev server (`vite`, from `yarn dev-app`) in the following way:
 
 If vite / yarn dev is running in your sub-shell, retrieve any last stdout /
-stderr lines from the sub-shell, report them to the User, and consider
-debugging them. Then simply type 'q' and ENTER to stop vite.
+stderr lines from the sub-shell, report them to the User if relevant, and then
+simply type 'q' and ENTER to stop vite.
 
 If that doesn't work, try running `yarn dev-app-stop` -- the `package.json` file
 defines a script `yarn dev-app-stop` that kills the pid recorded in `.vite.pid`.
