@@ -125,6 +125,7 @@ import "../js/builders/rail.js";
 import "../js/builders/road.js";
 
 // js/stamps/*
+import "../js/stamps/stamp-names-data.js"; // Load stamp names first
 import "../js/stamps/text.js";
 import "../js/stamps/stamps.js";
 

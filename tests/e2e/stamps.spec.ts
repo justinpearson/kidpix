@@ -180,4 +180,36 @@ test.describe("Stamp Tool Tests", () => {
 
     assertNoConsoleErrors(consoleErrors, "prev stamp pack navigation");
   });
+
+  test("stamp hover-text shows correct names", async ({ page }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    // On page load, first stamp should be 'palm tree'
+    const subtoolButtons = await getSubtools(page);
+    await expect(subtoolButtons.nth(0)).toHaveAttribute("title", "palm tree");
+
+    // Last stamp in row (14th stamp, index 13) should be 'coffee cup'
+    await expect(subtoolButtons.nth(13)).toHaveAttribute("title", "coffee cup");
+
+    // Click 'next row' button
+    const subtoolCount = await subtoolButtons.count();
+    const nextRowBtn = subtoolButtons.nth(subtoolCount - 3);
+    await nextRowBtn.click();
+
+    // After clicking next row, first stamp should be 'traffic light'
+    const subtoolButtons2 = await getSubtools(page);
+    await expect(subtoolButtons2.nth(0)).toHaveAttribute("title", "traffic light");
+
+    // Click 'next stamp pack' button
+    const subtoolCount2 = await subtoolButtons2.count();
+    const nextPackBtn = subtoolButtons2.nth(subtoolCount2 - 1);
+    await nextPackBtn.click();
+
+    // After clicking next stamp pack, first stamp should be 'red ant'
+    const subtoolButtons3 = await getSubtools(page);
+    await expect(subtoolButtons3.nth(0)).toHaveAttribute("title", "red ant");
+
+    assertNoConsoleErrors(consoleErrors, "stamp hover-text");
+  });
 });
