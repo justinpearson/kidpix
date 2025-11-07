@@ -174,7 +174,7 @@ this runs, eg, `npm version minor && git push origin --tags` from package.json, 
 - **Package Manager**: Yarn 1.22.22
 - **Testing**: Vitest (unit) + Playwright (e2e) configured but not yet used for JS files
 - **Deployment**: GitHub Actions → GitHub Pages
-- **Claude Code Integration**: Browser error monitoring with vite-plugin-terminal allows Claude Code to view browser console errors
+- **Claude Code Integration**: Browser error monitoring with Playwright MCP allows Claude Code to view browser console errors directly
 
 **Future Migration Target:**
 - **Framework**: React 18 with TypeScript
@@ -184,11 +184,11 @@ this runs, eg, `npm version minor && git push origin --tags` from package.json, 
 
 This project includes special features for AI-assisted development using Claude Code:
 
-- **Real-time Error Monitoring**: Browser runtime errors appear directly in the terminal
-- **Timestamped Debugging**: Local timestamps help coordinate debugging sessions
-- **Full Stack Traces**: Complete error context with file locations and line numbers
+- **Real-time Error Monitoring**: Browser runtime errors accessible via Playwright MCP
+- **Direct Browser Access**: Monitor console messages without webserver middleware
+- **Full Console Access**: View all console messages, not just errors
 
-**⚠️ CRITICAL for Claude Code Users**: For Claude Code to view the browser console errors, it must run the dev server (`yarn dev`) in its own background bash shell. Human developers should NOT run their own `yarn dev` in a separate terminal (which is not visible to Claude Code).
+**Note for Claude Code Users**: Use Playwright MCP tools to navigate to the application and monitor browser console messages directly for debugging.
 
 ### Git Hooks
 
@@ -201,7 +201,7 @@ The hooks are configured by running `git config core.hooksPath .githooks` (step 
 
 For detailed development information, see [Maintainer Documentation](doc/maintainer/).
 
-**Note for AI Agents**: Read `CLAUDE.md` for complete development workflow guidance including error monitoring setup and limitations.
+**Note for AI Agents**: Read `CLAUDE.md` for complete development workflow guidance including Playwright MCP error monitoring setup.
 
 ## Testing
 
