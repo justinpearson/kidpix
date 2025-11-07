@@ -36,7 +36,7 @@ This is a modular JavaScript implementation of the classic 1989 Kid Pix drawing 
 - **Node.js**: v24.9.0
 - **Linting**: None (ESLint and Prettier removed in commit 3f1155b - September 2025)
 - **Testing**: Vitest 3.2.3 and Playwright 1.56.1 configured for JavaScript files
-- **Error Monitoring**: vite-plugin-terminal 1.3.0 for browser console errors in Claude Code development
+- **Error Monitoring**: Playwright MCP for browser console errors in Claude Code development
 
 ## CRITICAL COMMIT WORKFLOW
 
@@ -153,7 +153,6 @@ yarn dev-app-stop  # Stop the background dev server
 **Dev Server Notes:**
 - Opens automatically at http://localhost:5173/
 - Hot module reloading for instant updates
-- Browser errors displayed in terminal via vite-plugin-terminal
 - Process ID saved to `.vite.pid` for cleanup
 
 ### Build
@@ -208,67 +207,33 @@ yarn screenshot  # Capture screenshots of the app (uses scripts/screenshot-captu
 
 ## Claude Code Development Workflow
 
-### Browser Error Monitoring Setup
+### Browser Error Monitoring with Playwright MCP
 
-To facilitate development with Claude Code, this project is configured with `vite-plugin-terminal` to display browser runtime errors directly in the Vite dev server terminal; this makes browser console errors visible to Claude Code when it runs `yarn dev-app` in its own sub-shell.
-
-- **NOTE FOR CLAUDE CODE**: If claude code is running the local dev server in a sub-shell (ie, `yarn dev-app`), claude code should remember to frequently check its stdout / stderr for browser console errors, and compare the errors' timestamps with the current time to ensure it doesn't get confused by reading old errors.
+Claude Code can monitor browser console errors using Playwright MCP, which provides direct access to the browser's console without requiring special Vite plugins or routing errors through the webserver.
 
 #### Setup Details
 
-- **Plugin**: `vite-plugin-terminal@1.3.0`
-- **Configuration**: Outputs to both browser console and terminal
-- **Error Handlers**: Captures uncaught exceptions, unhandled promise rejections, and console errors
-- **Location**: Error handling script in `index.html` imports from `virtual:terminal`
-- **Timestamps**: Local time format for human readability
+- **Tool**: Playwright MCP (Model Context Protocol)
+- **Access**: Direct browser console monitoring
+- **Available MCP Tools**:
+  - `mcp__playwright__browser_click` - Interact with browser elements
+  - `mcp__playwright__browser_console_messages` - Access browser console messages
+- **Timestamps**: Browser native timestamps
 
 #### Usage for Claude Code
 
-1. **Start Development Server**: Claude Code runs `yarn dev-app` in background bash shell
-2. **Error Monitoring**: Runtime errors appear in terminal with full stack traces
-3. **Real-time Debugging**: Errors visible immediately as user interacts with browser
-4. **Error Format**: Shows file location, line numbers, complete stack traces, and timestamps
-
-Example error output:
-
-```
-🚨 [8/14/2025, 6:09:37 AM] Runtime Error: Uncaught ReferenceError: distanceBetween is not defined
-   at http://localhost:5173/js/init/kiddopaint.js:586:14
-   Stack: ReferenceError: distanceBetween is not defined
-    at common_ev_proc (http://localhost:5173/js/init/kiddopaint.js:586:14)
-    at HTMLCanvasElement.ev_canvas (http://localhost:5173/js/init/kiddopaint.js:577:3)
-```
-
-#### Important Limitations and Pitfalls
-
-⚠️ **BashOutput Tool Behavior**: Claude Code's `BashOutput` tool only shows **NEW** output since the last check. Once checked, previous output is "consumed" and won't appear again.
-
-**Potential Issues:**
-
-- **Timing Sync Problems**: If Claude checks for errors before user triggers them, may miss errors
-- **Accidental Clearing**: Checking output prematurely can clear error history
-- **Old vs New Confusion**: Claude might see old cached errors instead of current ones
-- **Lost Context**: Previous error context disappears after each check
-
-**Best Practices:**
-
-- **Coordinate Timing**: User should signal when they've triggered new errors
-- **Check Systematically**: Claude should only check output when expecting new errors
-- **Use Timestamps**: Local timestamps help identify fresh errors vs cached ones
-- **Communicate Status**: Both parties should be clear about what errors are being discussed
-- **Use Browser Console as Backup**: User can always reference browser console for full error history
-
-#### Version Compatibility
-
-⚠️ **Important**: We use Vite 6.x (currently 6.4.1, not the latest 7.x) for security reasons and plugin compatibility. The `vite-plugin-terminal` has [known compatibility issues](https://github.com/patak-dev/vite-plugin-terminal/issues/34) with Vite 7.x. If you need Vite 7.x, consider implementing a custom error monitoring solution.
+1. **Start Development Server**: Run `yarn dev-app` in background bash shell
+2. **Navigate to App**: Use Playwright MCP to navigate to http://localhost:5173/
+3. **Monitor Console**: Use `mcp__playwright__browser_console_messages` to access console logs and errors
+4. **Real-time Debugging**: Check console messages as user interacts with browser
 
 #### Workflow Benefits
 
-- **Immediate Error Visibility**: No need to manually check browser console
-- **Detailed Stack Traces**: Full error context with file locations
-- **Continuous Monitoring**: Errors appear in real-time during development
-- **Timestamped History**: Local timestamps help coordinate debugging sessions
-- **Claude Code Integration**: Seamless debugging workflow for AI-assisted development
+- **Direct Browser Access**: No need for webserver middleware or plugins
+- **Cleaner Architecture**: Separation of concerns between dev server and error monitoring
+- **Full Console Access**: See all console messages, not just errors
+- **No Special Configuration**: Standard Vite setup without additional plugins
+- **Reliable Monitoring**: No timing issues with BashOutput tool consumption
 
 ## Architecture Overview
 

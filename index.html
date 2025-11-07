@@ -27,49 +27,6 @@
       window.KiddoPaint.Sprite = {};
     </script>
 
-    <!-- Runtime error handler for terminal display -->
-    <script type="module">
-      import { terminal } from "virtual:terminal";
-
-      // Test terminal logging
-      terminal.log(
-        "🧪 Terminal plugin test - this should appear in the terminal",
-      );
-
-      // Capture uncaught exceptions
-      window.addEventListener("error", function (event) {
-        const timestamp = new Date().toLocaleString();
-        const errorInfo = {
-          message: event.message,
-          filename: event.filename,
-          lineno: event.lineno,
-          colno: event.colno,
-          error: event.error ? event.error.stack : "No stack trace available",
-        };
-
-        const errorMsg = `🚨 [${timestamp}] Runtime Error: ${errorInfo.message}\n   at ${errorInfo.filename}:${errorInfo.lineno}:${errorInfo.colno}\n   Stack: ${errorInfo.error}`;
-        terminal.error(errorMsg);
-      });
-
-      // Capture unhandled promise rejections
-      window.addEventListener("unhandledrejection", function (event) {
-        const timestamp = new Date().toLocaleString();
-        const errorMsg = `🚨 [${timestamp}] Unhandled Promise Rejection: ${event.reason}\n   Stack: ${event.reason?.stack || "No stack trace available"}`;
-        terminal.error(errorMsg);
-      });
-
-      // Override console.error to also log to terminal (avoid infinite loop)
-      const originalConsoleError = console.error;
-      console.error = function (...args) {
-        originalConsoleError.apply(console, arguments);
-        // Only log to terminal if not already a terminal error message
-        if (!args[0] || !args[0].toString().includes("🚨")) {
-          const timestamp = new Date().toLocaleString();
-          terminal.error(`🚨 [${timestamp}] Console Error:`, ...args);
-        }
-      };
-    </script>
-
     <!-- Bundled KidPix JavaScript modules -->
     <script type="module" src="/src/kidpix-main.js"></script>
   </head>

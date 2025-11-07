@@ -1,15 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import Terminal from "vite-plugin-terminal";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    Terminal({
-      output: ["terminal", "console"],
-    }),
-  ],
+  plugins: [react()],
   // base: process.env.NODE_ENV === "production" ? "/kidpix/" : "/", // OLD
   // base: process.env.VITE_GITHUB_PAGES === "true" ? "/kidpix/" : "/", // OLD 2
   base: "/",
