@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidPix Stamp Verification Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .controls {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .file-section {
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .file-header {
+            background-color: #34495e;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .file-header.completed {
+            background-color: #27ae60;
+        }
+        .completion-checkbox {
+            transform: scale(1.5);
+        }
+        .sprite-grid {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+        }
+        .stamp-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .stamp-icon {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            image-rendering: pixelated;
+        }
+        .stamp-name {
+            width: 120px;
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 10px;
+            text-align: center;
+            resize: vertical;
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+        }
+        .stamp-index {
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+        .file-status-list {
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .file-status-item {
+            padding: 2px 0;
+            color: #666;
+        }
+        .file-status-item.loaded {
+            color: #27ae60;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .export-btn {
+            background-color: #e74c3c;
+        }
+        .export-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>KidPix Stamp Verification Tool</h1>
+        <p>Verify and edit stamp names for each sprite sheet. Check off completed files and export the corrected JSON.</p>
+    </div>
+
+    <div class="controls">
+        <button onclick="loadStampData()">Load Stamp Data</button>
+        <button onclick="exportJSON()" class="export-btn">Download Corrected JSON</button>
+        <button onclick="copyToClipboard(event)">Copy JSON to Clipboard</button>
+        <div class="file-status-list" id="fileStatusList">
+            <div>Click "Load Stamp Data" to begin</div>
+        </div>
+    </div>
+
+    <div id="fileContainer"></div>
+
+    <script>
+        let stampData = [];
+        const STORAGE_KEY = 'kidpix-stamp-verification';
+        const CHECKBOX_KEY = 'kidpix-file-completion';
+
+        // Load stamp data from JSON
+        async function loadStampData() {
+            try {
+                const response = await fetch('stamp-names.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                stampData = await response.json();
+
+                // Load saved edits and checkbox states
+                loadSavedData();
+
+                initFileStatusList();
+                renderAllFiles();
+                loadCheckboxStates();
+            } catch (error) {
+                const statusList = document.getElementById('fileStatusList');
+                statusList.innerHTML = `<div style="color: #e74c3c;">Error loading stamp data: ${error.message}</div>`;
+                console.error('Error loading stamp data:', error);
+            }
+        }
+
+        // Save edited data to localStorage
+        function saveData() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(stampData));
+        }
+
+        // Load saved data from localStorage
+        function loadSavedData() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const savedData = JSON.parse(saved);
+                // Merge saved names back into current data
+                savedData.forEach(savedFile => {
+                    const currentFile = stampData.find(f => f.filename === savedFile.filename);
+                    if (currentFile) {
+                        savedFile.stamp_data.forEach(savedStamp => {
+                            const currentStamp = currentFile.stamp_data.find(s => s.index === savedStamp.index);
+                            if (currentStamp) {
+                                currentStamp.name = savedStamp.name;
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        // Save checkbox states
+        function saveCheckboxStates() {
+            const states = {};
+            document.querySelectorAll('.completion-checkbox').forEach(checkbox => {
+                states[checkbox.dataset.filename] = checkbox.checked;
+            });
+            localStorage.setItem(CHECKBOX_KEY, JSON.stringify(states));
+        }
+
+        // Load checkbox states
+        function loadCheckboxStates() {
+            const saved = localStorage.getItem(CHECKBOX_KEY);
+            if (saved) {
+                const states = JSON.parse(saved);
+                setTimeout(() => {
+                    Object.entries(states).forEach(([filename, checked]) => {
+                        const checkbox = document.querySelector(`[data-filename="${filename}"]`);
+                        if (checkbox) {
+                            checkbox.checked = checked;
+                            updateFileHeaderStyle(checkbox);
+                        }
+                    });
+                    updateProgress();
+                }, 100);
+            }
+        }
+
+        // Update file header style based on completion
+        function updateFileHeaderStyle(checkbox) {
+            const header = checkbox.closest('.file-header');
+            if (checkbox.checked) {
+                header.classList.add('completed');
+            } else {
+                header.classList.remove('completed');
+            }
+        }
+
+        // Update file status list
+        function updateFileStatus(filename, iconCount) {
+            const statusItem = document.getElementById(`status-${filename}`);
+            if (statusItem) {
+                statusItem.textContent = `${filename}: loaded ${iconCount} icons`;
+                statusItem.classList.add('loaded');
+            }
+        }
+
+        // Initialize file status list
+        function initFileStatusList() {
+            const statusList = document.getElementById('fileStatusList');
+            statusList.innerHTML = '';
+
+            stampData.forEach(fileData => {
+                const statusItem = document.createElement('div');
+                statusItem.className = 'file-status-item';
+                statusItem.id = `status-${fileData.filename}`;
+                statusItem.textContent = `${fileData.filename}: loading...`;
+                statusList.appendChild(statusItem);
+            });
+        }
+
+        // Extract individual icons from sprite sheet
+        function extractIcons(canvas, spriteImage, stampData, filename) {
+            const ctx = canvas.getContext('2d');
+            const iconWidth = spriteImage.width / 14;  // 14 columns
+            const iconHeight = spriteImage.height / 8; // 8 rows
+
+            stampData.forEach((stamp, idx) => {
+                const x = (stamp.col - 1) * iconWidth;
+                const y = (stamp.row - 1) * iconHeight;
+
+                // Create a small canvas for this icon
+                const iconCanvas = document.createElement('canvas');
+                iconCanvas.width = 32;
+                iconCanvas.height = 32;
+                const iconCtx = iconCanvas.getContext('2d');
+
+                // Draw the icon from the sprite sheet
+                iconCtx.drawImage(spriteImage, x, y, iconWidth, iconHeight, 0, 0, 32, 32);
+
+                // Find the corresponding stamp item using both filename and index for uniqueness
+                const stampItem = document.querySelector(`[data-file-stamp="${filename}-${stamp.index}"]`);
+                if (stampItem) {
+                    const iconImg = stampItem.querySelector('.stamp-icon');
+                    iconImg.src = iconCanvas.toDataURL();
+                }
+            });
+        }
+
+        // Render all files
+        function renderAllFiles() {
+            const container = document.getElementById('fileContainer');
+            container.innerHTML = '';
+
+            stampData.forEach(fileData => {
+                const fileSection = document.createElement('div');
+                fileSection.className = 'file-section';
+
+                const fileHeader = document.createElement('div');
+                fileHeader.className = 'file-header';
+                fileHeader.innerHTML = `
+                    <input type="checkbox" class="completion-checkbox" data-filename="${fileData.filename}"
+                           onchange="updateFileHeaderStyle(this); saveCheckboxStates();">
+                    <h3>${fileData.filename}</h3>
+                    <span>(${fileData.stamp_data.length} stamps)</span>
+                `;
+
+                const spriteGrid = document.createElement('div');
+                spriteGrid.className = 'sprite-grid';
+
+                // Create stamp items
+                fileData.stamp_data.forEach(stamp => {
+                    const stampItem = document.createElement('div');
+                    stampItem.className = 'stamp-item';
+                    stampItem.setAttribute('data-file-stamp', `${fileData.filename}-${stamp.index}`);
+
+                    stampItem.innerHTML = `
+                        <div class="stamp-index">#${stamp.index}</div>
+                        <img class="stamp-icon" alt="Stamp ${stamp.index}">
+                        <textarea class="stamp-name" rows="2"
+                               onchange="updateStampName('${fileData.filename}', ${stamp.index}, this.value)">${stamp.name}</textarea>
+                    `;
+
+                    spriteGrid.appendChild(stampItem);
+                });
+
+                fileSection.appendChild(fileHeader);
+                fileSection.appendChild(spriteGrid);
+                container.appendChild(fileSection);
+
+                // Load and extract icons from sprite sheet
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    extractIcons(canvas, img, fileData.stamp_data, fileData.filename);
+                    updateFileStatus(fileData.filename, fileData.stamp_data.length);
+                };
+                img.src = fileData.filename;
+            });
+        }
+
+        // Update stamp name
+        function updateStampName(filename, index, newName) {
+            const fileData = stampData.find(f => f.filename === filename);
+            if (fileData) {
+                const stamp = fileData.stamp_data.find(s => s.index === index);
+                if (stamp) {
+                    stamp.name = newName;
+                    saveData();
+                }
+            }
+        }
+
+        // Export JSON
+        function exportJSON() {
+            const jsonString = JSON.stringify(stampData, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'stamp-names-corrected.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            // File download initiated successfully
+        }
+
+        // Copy to clipboard
+        async function copyToClipboard(event) {
+            try {
+                // const jsonString = JSON.stringify(stampData, null, 2);
+
+                // pretty JSON, but collapse each 2nd-level object (inside "stamp_data") into one line
+                const jsonString = JSON.stringify(stampData, null, 2).replace(
+                    /(\s+)\{\s+("index":[^}]+)\s+\}/g,
+                    (m, indent, inner) => `${indent}{ ${inner.replace(/\s+/g, ' ')} }`
+                    );
+
+                await navigator.clipboard.writeText(jsonString);
+                // Simple confirmation by temporarily changing button text
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.style.backgroundColor = '#27ae60';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.backgroundColor = '#3498db';
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy to clipboard:', err);
+                alert('Failed to copy to clipboard. Please use the download option.');
+            }
+        }
+
+        // Auto-load on page load
+        window.addEventListener('load', loadStampData);
+    </script>
+</body>
+</html>

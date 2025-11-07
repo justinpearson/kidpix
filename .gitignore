@@ -13,6 +13,7 @@ node_modules
 dist
 dist-gh
 dist-ssr
+dist-gh/
 *.local
 
 # Editor directories and files

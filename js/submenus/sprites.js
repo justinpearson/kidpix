@@ -1,6 +1,44 @@
 KiddoPaint.Submenu.sprites = [];
 
 KiddoPaint.Sprite.sheetPage = 0;
+
+/**
+ * Get the human-readable name for a stamp at given coordinates
+ * @param {string} sheetPath - Path to spritesheet (e.g., "img/stamp/kidpix-spritesheet-0.png")
+ * @param {number} row - 0-indexed row number
+ * @param {number} col - 0-indexed column number
+ * @returns {string} Human-readable stamp name or fallback
+ */
+KiddoPaint.Stamps.getStampName = function (sheetPath, row, col) {
+  // Column 14 (0-indexed) = column 15 (1-indexed) = row/page indicator
+  if (col === 14) {
+    return "Row/Page Indicator";
+  }
+
+  // Extract filename from path (e.g., "img/stamp/kidpix-spritesheet-0.png" -> "kidpix-spritesheet-0.png")
+  const filename = sheetPath.split("/").pop();
+
+  // Find the spritesheet in our data
+  const sheet = KiddoPaint.Stamps.namesData?.find(
+    (s) => s.filename === filename,
+  );
+
+  if (!sheet) {
+    return "Sprite"; // Fallback if sheet not found
+  }
+
+  // Convert 0-indexed to 1-indexed for JSON lookup
+  const jsonRow = row + 1;
+  const jsonCol = col + 1;
+
+  // Find the stamp by row and col
+  const stamp = sheet.stamp_data.find(
+    (s) => s.row === jsonRow && s.col === jsonCol,
+  );
+
+  return stamp?.name || "Sprite"; // Return name or fallback
+};
+
 KiddoPaint.Sprite.sheets = [
   "img/stamp/kidpix-spritesheet-0.png",
   "img/stamp/kidpix-spritesheet-0b.png",
@@ -55,8 +93,11 @@ window.init_sprites_submenu = function init_sprites_submenu() {
   KiddoPaint.Submenu.sprites = [];
 
   for (let j = 0; j < maxcols; j++) {
+    // Get the human-readable name for this stamp
+    const stampName = KiddoPaint.Stamps.getStampName(sheet, row, j);
+
     const individualSprite = {
-      name: "Sprite",
+      name: stampName,
       spriteSheet: sheet,
       spriteRow: row,
       spriteCol: j,
