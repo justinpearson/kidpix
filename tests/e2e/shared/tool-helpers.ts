@@ -67,11 +67,12 @@ export async function selectTool(page: Page, toolId: string): Promise<void> {
 
 /**
  * Verify subtools are visible and get subtool buttons
+ * Excludes the search clear button for stamp tool
  */
 export async function getSubtools(page: Page) {
   const genericSubmenu = page.locator("#genericsubmenu");
   await expect(genericSubmenu).toBeVisible();
-  return page.locator("#genericsubmenu button");
+  return page.locator("#genericsubmenu button:not(#stamp-search-clear)");
 }
 
 /**

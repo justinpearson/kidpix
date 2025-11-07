@@ -302,10 +302,12 @@ emj {
   box-sizing: border-box;
   background-color: #f0f0f0;
   border-bottom: 2px solid #ccc;
+  display: flex;
+  gap: 8px;
 }
 
 .stamp-search-input {
-  width: 100%;
+  flex: 1;
   padding: 8px 12px;
   font-size: 14px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -325,6 +327,29 @@ emj {
 .stamp-search-input::placeholder {
   color: #999;
   opacity: 1;
+}
+
+.stamp-search-clear {
+  padding: 8px 12px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  color: #666;
+  background-color: white;
+  border: 2px solid #333;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.stamp-search-clear:hover {
+  background-color: #333;
+  color: white;
+}
+
+.stamp-search-clear:active {
+  background-color: #000;
 }
 
 .sprite-pos-0-0 {

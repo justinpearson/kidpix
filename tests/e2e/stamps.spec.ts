@@ -318,4 +318,28 @@ test.describe("Stamp Tool Tests", () => {
     // Verify console.log was called with search terms
     expect(consoleMessages.some((msg) => msg.includes("tree"))).toBe(true);
   });
+
+  test("clear search button clears the search box", async ({ page }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    // Verify clear button exists
+    const clearButton = page.locator("#stamp-search-clear");
+    await expect(clearButton).toBeVisible();
+
+    // Type in search box
+    const searchInput = page.locator("#stamp-search");
+    await searchInput.fill("tree");
+
+    // Verify search box has text
+    await expect(searchInput).toHaveValue("tree");
+
+    // Click clear button
+    await clearButton.click();
+
+    // Verify search box is now empty
+    await expect(searchInput).toHaveValue("");
+
+    assertNoConsoleErrors(consoleErrors, "clear search button");
+  });
 });

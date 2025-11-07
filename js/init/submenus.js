@@ -41,7 +41,21 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
       console.log("Stamp search:", e.target.value);
     });
 
+    // Create clear button
+    var clearButton = document.createElement("button");
+    clearButton.id = "stamp-search-clear";
+    clearButton.className = "stamp-search-clear";
+    clearButton.textContent = "×";
+    clearButton.title = "Clear search";
+
+    // Handle clear button click
+    clearButton.addEventListener("click", function () {
+      searchInput.value = "";
+      searchInput.focus();
+    });
+
     searchContainer.appendChild(searchInput);
+    searchContainer.appendChild(clearButton);
     genericsubmenu.appendChild(searchContainer);
   }
 
