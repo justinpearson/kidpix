@@ -342,4 +342,44 @@ test.describe("Stamp Tool Tests", () => {
 
     assertNoConsoleErrors(consoleErrors, "clear search button");
   });
+
+  test("ESC key clears search when focused", async ({ page }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    const searchInput = page.locator("#stamp-search");
+
+    // Type in search box
+    await searchInput.fill("tree");
+    await expect(searchInput).toHaveValue("tree");
+
+    // Press ESC key
+    await searchInput.press("Escape");
+
+    // Verify search box is cleared
+    await expect(searchInput).toHaveValue("");
+
+    assertNoConsoleErrors(consoleErrors, "ESC key clears search");
+  });
+
+  test("slash key focuses search box", async ({ page }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    const searchInput = page.locator("#stamp-search");
+
+    // Verify search box is not focused initially
+    await expect(searchInput).not.toBeFocused();
+
+    // Press "/" key on the page
+    await page.keyboard.press("/");
+
+    // Verify search box is now focused
+    await expect(searchInput).toBeFocused();
+
+    // Verify the "/" character was NOT typed into the search box
+    await expect(searchInput).toHaveValue("");
+
+    assertNoConsoleErrors(consoleErrors, "slash key focuses search");
+  });
 });

@@ -41,6 +41,23 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
       console.log("Stamp search:", e.target.value);
     });
 
+    // Handle ESC key to clear search
+    searchInput.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        searchInput.value = "";
+        e.preventDefault();
+      }
+    });
+
+    // Handle "/" key globally to focus search box
+    document.addEventListener("keydown", function (e) {
+      // Only focus if "/" is pressed and search input is not already focused
+      if (e.key === "/" && document.activeElement !== searchInput) {
+        searchInput.focus();
+        e.preventDefault(); // Prevent "/" from being typed
+      }
+    });
+
     // Create clear button
     var clearButton = document.createElement("button");
     clearButton.id = "stamp-search-clear";
