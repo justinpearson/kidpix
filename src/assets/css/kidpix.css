@@ -295,6 +295,38 @@ emj {
   color: #333;
 }
 
+/* Stamp search input styling */
+.stamp-search-container {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #ccc;
+}
+
+.stamp-search-input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  border: 2px solid #333;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+  background-color: white;
+  color: #333;
+}
+
+.stamp-search-input:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+.stamp-search-input::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
 .sprite-pos-0-0 {
   object-position: 0px 0px;
 }

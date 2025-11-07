@@ -21,6 +21,30 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
 
   // clear old ; todo cache constructed buttons instead
   genericsubmenu.removeAllChildren();
+
+  // Add search input for stamps submenu
+  if (subtoolbar === "sprites") {
+    // Create search input container
+    var searchContainer = document.createElement("div");
+    searchContainer.id = "stamp-search-container";
+    searchContainer.className = "stamp-search-container";
+
+    var searchInput = document.createElement("input");
+    searchInput.type = "text";
+    searchInput.id = "stamp-search";
+    searchInput.className = "stamp-search-input";
+    searchInput.placeholder = "Search stamps...";
+    searchInput.autocomplete = "off";
+
+    // Handle search input - just log to console for now
+    searchInput.addEventListener("input", function (e) {
+      console.log("Stamp search:", e.target.value);
+    });
+
+    searchContainer.appendChild(searchInput);
+    genericsubmenu.appendChild(searchContainer);
+  }
+
   for (var i = 0, len = KiddoPaint.Submenu[subtoolbar].length; i < len; i++) {
     var buttonDetail = KiddoPaint.Submenu[subtoolbar][i];
     var button = document.createElement("button");

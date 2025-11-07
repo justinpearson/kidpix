@@ -272,4 +272,50 @@ test.describe("Stamp Tool Tests", () => {
 
     assertNoConsoleErrors(consoleErrors, "stamp button size");
   });
+
+  test("search box is present with correct styling", async ({ page }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    // Verify search input exists
+    const searchInput = page.locator("#stamp-search");
+    await expect(searchInput).toBeVisible();
+
+    // Verify placeholder text
+    await expect(searchInput).toHaveAttribute("placeholder", "Search stamps...");
+
+    // Verify autocomplete is off
+    await expect(searchInput).toHaveAttribute("autocomplete", "off");
+
+    // Verify it's a text input
+    await expect(searchInput).toHaveAttribute("type", "text");
+
+    // Verify CSS styling
+    await expect(searchInput).toHaveCSS("border-width", "2px");
+    await expect(searchInput).toHaveCSS("font-size", "14px");
+
+    assertNoConsoleErrors(consoleErrors, "search box styling");
+  });
+
+  test("typing in search box logs to console", async ({ page }) => {
+    await selectTool(page, TOOL_ID);
+
+    // Capture console.log messages
+    const consoleMessages: string[] = [];
+    page.on("console", (msg) => {
+      if (msg.type() === "log") {
+        consoleMessages.push(msg.text());
+      }
+    });
+
+    // Type in search box
+    const searchInput = page.locator("#stamp-search");
+    await searchInput.fill("tree");
+
+    // Wait a moment for console messages
+    await page.waitForTimeout(100);
+
+    // Verify console.log was called with search terms
+    expect(consoleMessages.some((msg) => msg.includes("tree"))).toBe(true);
+  });
 });
