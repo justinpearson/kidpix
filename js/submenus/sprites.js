@@ -212,7 +212,7 @@ window.init_sprites_submenu = function init_sprites_submenu(searchTerm) {
     handler: function (e) {
       KiddoPaint.Sprite.prevPage();
       init_sprites_submenu();
-      show_generic_submenu("sprites");
+      update_sprites_stamps(); // Only rebuild stamps, keep search box
     },
   });
 
@@ -222,7 +222,7 @@ window.init_sprites_submenu = function init_sprites_submenu(searchTerm) {
     handler: function (e) {
       KiddoPaint.Sprite.nextPage();
       init_sprites_submenu();
-      show_generic_submenu("sprites");
+      update_sprites_stamps(); // Only rebuild stamps, keep search box
     },
   });
 
@@ -233,7 +233,7 @@ window.init_sprites_submenu = function init_sprites_submenu(searchTerm) {
     handler: function (e) {
       KiddoPaint.Sprite.prevSprite();
       init_sprites_submenu();
-      show_generic_submenu("sprites");
+      update_sprites_stamps(); // Only rebuild stamps, keep search box
     },
   });
 
@@ -243,7 +243,7 @@ window.init_sprites_submenu = function init_sprites_submenu(searchTerm) {
     handler: function (e) {
       KiddoPaint.Sprite.nextSprite();
       init_sprites_submenu();
-      show_generic_submenu("sprites");
+      update_sprites_stamps(); // Only rebuild stamps, keep search box
     },
   });
 };
