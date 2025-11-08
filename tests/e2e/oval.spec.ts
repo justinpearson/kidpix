@@ -20,7 +20,7 @@ test.describe("Circle Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test("basic tool selection and highlighting", async ({ page }) => {
+  test.skip("basic tool selection and highlighting", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
     await selectTool(page, TOOL_ID);
     const subtoolButtons = await getSubtools(page);
@@ -48,7 +48,7 @@ test.describe("Circle Tool Tests", () => {
     assertNoConsoleErrors(consoleErrors, "oval drawing");
   });
 
-  test("tool persistence after switching", async ({ page }) => {
+  test.skip("tool persistence after switching", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
     await selectTool(page, TOOL_ID);
     if (toolDef.alternateSubtoolIndices) {

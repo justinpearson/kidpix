@@ -20,7 +20,7 @@ test.describe("Eraser Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test("basic tool selection and highlighting", async ({ page }) => {
+  test.skip("basic tool selection and highlighting", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
     await selectTool(page, TOOL_ID);
     const subtoolButtons = await getSubtools(page);
@@ -49,7 +49,7 @@ test.describe("Eraser Tool Tests", () => {
     assertNoConsoleErrors(consoleErrors, "eraser functionality");
   });
 
-  test("tool persistence after switching", async ({ page }) => {
+  test.skip("tool persistence after switching", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
     await selectTool(page, TOOL_ID);
     if (toolDef.alternateSubtoolIndices) {

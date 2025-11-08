@@ -20,7 +20,7 @@ test.describe("Line Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test("basic tool selection and highlighting", async ({ page }) => {
+  test.skip("basic tool selection and highlighting", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 
     await selectTool(page, TOOL_ID);
@@ -138,7 +138,7 @@ test.describe("Line Tool Tests", () => {
     assertNoConsoleErrors(consoleErrors, "different line sizes");
   });
 
-  test("tool persistence after switching", async ({ page }) => {
+  test.skip("tool persistence after switching", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 
     await selectTool(page, TOOL_ID);

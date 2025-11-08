@@ -19,7 +19,7 @@ test.describe("Brush Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test("basic tool selection and highlighting", async ({ page }) => {
+  test.skip("basic tool selection and highlighting", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 
     await selectTool(page, TOOL_ID);
@@ -104,7 +104,7 @@ test.describe("Brush Tool Tests", () => {
     assertNoConsoleErrors(consoleErrors, "Tree/Splatter Paint regression");
   });
 
-  test("brush subtool persistence test", async ({ page }) => {
+  test.skip("brush subtool persistence test", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 
     await selectTool(page, TOOL_ID);

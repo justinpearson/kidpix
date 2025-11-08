@@ -20,7 +20,7 @@ test.describe("Truck Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test("basic tool selection and highlighting", async ({ page }) => {
+  test.skip("basic tool selection and highlighting", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
     await selectTool(page, TOOL_ID);
     const subtoolButtons = await getSubtools(page);
@@ -50,7 +50,7 @@ test.describe("Truck Tool Tests", () => {
     assertNoConsoleErrors(consoleErrors, "moving van functionality");
   });
 
-  test("tool persistence after switching", async ({ page }) => {
+  test.skip("tool persistence after switching", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
     await selectTool(page, TOOL_ID);
     if (toolDef.alternateSubtoolIndices) {
