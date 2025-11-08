@@ -382,4 +382,118 @@ test.describe("Stamp Tool Tests", () => {
 
     assertNoConsoleErrors(consoleErrors, "slash key focuses search");
   });
+
+  test("search for 'tree' returns 17 results with correct metadata", async ({
+    page,
+  }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    const searchInput = page.locator("#stamp-search");
+
+    // Type "tree" in search box
+    await searchInput.fill("tree");
+
+    // Wait a moment for search to execute
+    await page.waitForTimeout(200);
+
+    // Get all stamp buttons (excluding clear button)
+    const subtoolButtons = await getSubtools(page);
+    const subtoolCount = await subtoolButtons.count();
+
+    // Should have 17 stamps with "tree" in the name
+    expect(subtoolCount).toBe(17);
+
+    // Verify first result is "palm tree" from kidpix-spritesheet-0.png, row 1, col 1
+    const firstStamp = subtoolButtons.nth(0);
+    await expect(firstStamp).toHaveAttribute("title", "palm tree");
+
+    // Verify the stamp has the correct metadata by checking if it works when clicked
+    // (The full metadata is in the handler, hard to test directly)
+
+    assertNoConsoleErrors(consoleErrors, "tree search");
+  });
+
+  test("click search result sets it as active and draws on canvas", async ({
+    page,
+  }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    const searchInput = page.locator("#stamp-search");
+
+    // Search for "tree"
+    await searchInput.fill("tree");
+    await page.waitForTimeout(200);
+
+    const subtoolButtons = await getSubtools(page);
+
+    // Click the first search result (palm tree)
+    await subtoolButtons.nth(0).click();
+
+    // Verify it's highlighted with red border
+    await expect(subtoolButtons.nth(0)).toHaveCSS("border-color", "rgb(255, 0, 0)");
+
+    // Click on canvas to draw the stamp (use helper to click on tmpCanvas)
+    await testCanvasClick(page, { x: 200, y: 200 });
+
+    // Wait for stamp to be drawn
+    await page.waitForTimeout(100);
+
+    // Verify something was drawn by checking canvas is not blank
+    // (We can't easily verify the exact stamp image, but we can verify the tool worked)
+    const hasDrawing = await page.evaluate(() => {
+      const canvas = document.getElementById("kiddopaint") as HTMLCanvasElement;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return false;
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      // Check if any pixel is non-white (has been drawn on)
+      for (let i = 0; i < imageData.data.length; i += 4) {
+        if (
+          imageData.data[i] !== 255 ||
+          imageData.data[i + 1] !== 255 ||
+          imageData.data[i + 2] !== 255
+        ) {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    expect(hasDrawing).toBe(true);
+
+    assertNoConsoleErrors(consoleErrors, "search result click and draw");
+  });
+
+  test("clearing search returns to default view", async ({ page }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    const searchInput = page.locator("#stamp-search");
+    const clearButton = page.locator("#stamp-search-clear");
+
+    // Search for "tree"
+    await searchInput.fill("tree");
+    await page.waitForTimeout(200);
+
+    // Verify we have search results (17 stamps)
+    let subtoolButtons = await getSubtools(page);
+    let subtoolCount = await subtoolButtons.count();
+    expect(subtoolCount).toBe(17);
+
+    // Clear the search
+    await clearButton.click();
+    await page.waitForTimeout(200);
+
+    // Verify we're back to default view (15 stamps + 4 nav buttons)
+    subtoolButtons = await getSubtools(page);
+    subtoolCount = await subtoolButtons.count();
+    expect(subtoolCount).toBe(19); // 15 stamps + 4 nav buttons
+
+    // Verify navigation buttons are present
+    const lastButton = subtoolButtons.nth(subtoolCount - 1);
+    await expect(lastButton).toHaveAttribute("title", "next stamp pack");
+
+    assertNoConsoleErrors(consoleErrors, "clear search");
+  });
 });

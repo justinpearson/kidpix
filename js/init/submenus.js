@@ -35,16 +35,22 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
     searchInput.className = "stamp-search-input";
     searchInput.placeholder = "Search stamps...";
     searchInput.autocomplete = "off";
+    searchInput.value = KiddoPaint.Sprite.currentSearch || ""; // Restore search value
 
-    // Handle search input - just log to console for now
+    // Handle search input - trigger search and refresh display
     searchInput.addEventListener("input", function (e) {
-      console.log("Stamp search:", e.target.value);
+      console.log("Stamp search:", e.target.value); // Log search for feature 1 test
+      init_sprites_submenu(e.target.value);
+      show_generic_submenu("sprites");
     });
 
     // Handle ESC key to clear search
     searchInput.addEventListener("keydown", function (e) {
       if (e.key === "Escape") {
         searchInput.value = "";
+        KiddoPaint.Sprite.currentSearch = ""; // Clear stored search term
+        init_sprites_submenu();
+        show_generic_submenu("sprites");
         e.preventDefault();
       }
     });
@@ -68,6 +74,9 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
     // Handle clear button click
     clearButton.addEventListener("click", function () {
       searchInput.value = "";
+      KiddoPaint.Sprite.currentSearch = ""; // Clear stored search term
+      init_sprites_submenu();
+      show_generic_submenu("sprites");
       searchInput.focus();
     });
 
