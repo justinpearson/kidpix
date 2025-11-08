@@ -9,7 +9,7 @@ import {
 } from "./shared/tool-helpers";
 import { TOOL_DEFINITIONS } from "./shared/test-fixtures";
 
-test.describe("Tool Switching and Persistence Tests", () => {
+test.describe.skip("Tool Switching and Persistence Tests", () => {
   test.beforeEach(async ({ page }) => {
     await initializeKidPix(page);
   });

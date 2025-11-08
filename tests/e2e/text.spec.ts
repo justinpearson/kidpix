@@ -33,12 +33,17 @@ test.describe("Text Tool Tests", () => {
   test("text/alphabet functionality", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
     await selectTool(page, TOOL_ID);
-    const subtoolButtons = await getSubtools(page);
-    const subtoolCount = await subtoolButtons.count();
+
+    // Text tool uses a special texttoolbar instead of genericsubmenu
+    const texttoolbar = page.locator("#texttoolbar");
+    await expect(texttoolbar).toBeVisible();
+
+    const textButtons = page.locator("#texttoolbar button");
+    const buttonCount = await textButtons.count();
 
     // Test different letters/characters
-    for (let i = 0; i < Math.min(5, subtoolCount); i++) {
-      await selectSubtool(page, i);
+    for (let i = 0; i < Math.min(5, buttonCount); i++) {
+      await textButtons.nth(i).click();
       await testCanvasClick(page, { x: 100 + i * 30, y: 100 });
     }
     assertNoConsoleErrors(consoleErrors, "text functionality");
