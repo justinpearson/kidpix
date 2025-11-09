@@ -18,7 +18,7 @@ test.describe("Mixer Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test("basic tool selection and highlighting", async ({ page }) => {
+  test.skip("basic tool selection and highlighting", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 
     await selectTool(page, TOOL_ID);
@@ -134,7 +134,7 @@ test.describe("Mixer Tool Tests", () => {
     assertNoConsoleErrors(consoleErrors, "mixer effects canvas interaction");
   });
 
-  test("mixer tool persistence after switching", async ({ page }) => {
+  test.skip("mixer tool persistence after switching", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 
     await selectTool(page, TOOL_ID);

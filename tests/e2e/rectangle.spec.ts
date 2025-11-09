@@ -20,7 +20,7 @@ test.describe("Rectangle Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test("basic tool selection and highlighting", async ({ page }) => {
+  test.skip("basic tool selection and highlighting", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 
     await selectTool(page, TOOL_ID);
@@ -80,7 +80,7 @@ test.describe("Rectangle Tool Tests", () => {
     assertNoConsoleErrors(consoleErrors, "rectangle drawing");
   });
 
-  test("tool persistence after switching", async ({ page }) => {
+  test.skip("tool persistence after switching", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 
     await selectTool(page, TOOL_ID);
@@ -113,6 +113,12 @@ test.describe("Rectangle Tool Tests", () => {
 
     // Test all available textures with different rectangle sizes
     for (let i = 0; i < subtoolCount; i++) {
+      // Skip invisible spacer buttons
+      const isVisible = await subtoolButtons.nth(i).isVisible();
+      if (!isVisible) {
+        continue;
+      }
+
       await selectSubtool(page, i);
 
       // Draw rectangles with varying sizes

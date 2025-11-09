@@ -295,6 +295,63 @@ emj {
   color: #333;
 }
 
+/* Stamp search input styling */
+.stamp-search-container {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #ccc;
+  display: flex;
+  gap: 8px;
+}
+
+.stamp-search-input {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  border: 2px solid #333;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+  background-color: white;
+  color: #333;
+}
+
+.stamp-search-input:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+.stamp-search-input::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.stamp-search-clear {
+  padding: 8px 12px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  color: #666;
+  background-color: white;
+  border: 2px solid #333;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.stamp-search-clear:hover {
+  background-color: #333;
+  color: white;
+}
+
+.stamp-search-clear:active {
+  background-color: #000;
+}
+
 .sprite-pos-0-0 {
   object-position: 0px 0px;
 }

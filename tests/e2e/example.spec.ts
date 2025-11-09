@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("has title", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle("JSKIDPIX v1.0.2021");
+  await expect(page).toHaveTitle("Justin's KidPix");
 });
 
 test("loads main canvas", async ({ page }) => {

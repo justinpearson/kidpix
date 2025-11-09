@@ -27,7 +27,7 @@ test.describe("Color Picker Tool Tests", () => {
     const colorPickerImg = colorPickerTool.locator("img");
     await expect(colorPickerImg).toHaveAttribute(
       "src",
-      /img\/eyedropper-icon\.png/,
+      "img/color-picker/eyedropper-icon.png",
     );
 
     // Verify position: should be between truck and undo
@@ -96,7 +96,7 @@ test.describe("Color Picker Tool Tests", () => {
     const subtoolImg = subtoolButtons.first().locator("img");
     await expect(subtoolImg).toHaveAttribute(
       "src",
-      /img\/eyedropper-icon\.png/,
+      "img/color-picker/eyedropper-icon.png",
     );
 
     // The subtool should be selected by default (red border)
