@@ -131,6 +131,17 @@ window.update_sprites_stamps = function update_sprites_stamps() {
 
     genericsubmenu.appendChild(button);
   }
+
+  // Update search results counter
+  var resultsCounter = document.getElementById("stamp-search-results");
+  if (resultsCounter && KiddoPaint.Sprite.currentSearch) {
+    var searchTerm = KiddoPaint.Sprite.currentSearch;
+    var stampCount = KiddoPaint.Submenu.sprites.length;
+    var resultText = stampCount === 1 ? "result" : "results";
+    resultsCounter.textContent = stampCount + " " + resultText + " for '" + searchTerm + "'";
+  } else if (resultsCounter) {
+    resultsCounter.textContent = "";
+  }
 };
 
 window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
@@ -213,8 +224,15 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
       searchInput.focus();
     });
 
+    // Create results counter
+    var resultsCounter = document.createElement("div");
+    resultsCounter.id = "stamp-search-results";
+    resultsCounter.className = "stamp-search-results";
+    resultsCounter.textContent = ""; // Initially empty
+
     searchContainer.appendChild(searchInput);
     searchContainer.appendChild(clearButton);
+    searchContainer.appendChild(resultsCounter);
     genericsubmenu.appendChild(searchContainer);
   }
 

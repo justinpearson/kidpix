@@ -496,4 +496,43 @@ test.describe("Stamp Tool Tests", () => {
 
     assertNoConsoleErrors(consoleErrors, "clear search");
   });
+
+  test("search results counter displays correct count", async ({ page }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    const searchInput = page.locator("#stamp-search");
+    const resultsCounter = page.locator("#stamp-search-results");
+
+    // Initially, counter should not be visible (or show empty state)
+    await expect(resultsCounter).toHaveText("");
+
+    // Search for "tree" - should show 17 results
+    await searchInput.fill("tree");
+    await page.waitForTimeout(200);
+
+    await expect(resultsCounter).toBeVisible();
+    await expect(resultsCounter).toHaveText("17 results for 'tree'");
+
+    // Search for something with 2 results
+    await searchInput.fill("palm tree");
+    await page.waitForTimeout(200);
+
+    await expect(resultsCounter).toHaveText("2 results for 'palm tree'");
+
+    // Search for something with no results
+    await searchInput.fill("xyzzyzyx");
+    await page.waitForTimeout(200);
+
+    await expect(resultsCounter).toHaveText("0 results for 'xyzzyzyx'");
+
+    // Clear search - counter should be empty again
+    const clearButton = page.locator("#stamp-search-clear");
+    await clearButton.click();
+    await page.waitForTimeout(200);
+
+    await expect(resultsCounter).toHaveText("");
+
+    assertNoConsoleErrors(consoleErrors, "search results counter");
+  });
 });
