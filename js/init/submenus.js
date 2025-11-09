@@ -1,6 +1,27 @@
 KiddoPaint.Submenu = {};
 
 /**
+ * Highlight matching substring in text with <mark> tags
+ * @param {string} text - The full text (e.g., stamp name)
+ * @param {string} searchTerm - The search term to highlight
+ * @returns {string} HTML string with highlighted text
+ */
+function highlightSearchTerm(text, searchTerm) {
+  if (!searchTerm || !text) {
+    return text;
+  }
+
+  // Escape special regex characters in search term
+  var escapedSearch = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  // Create regex for case-insensitive search
+  var regex = new RegExp('(' + escapedSearch + ')', 'gi');
+
+  // Replace matches with <mark> wrapped text
+  return text.replace(regex, '<mark>$1</mark>');
+}
+
+/**
  * Update only the stamp buttons in the sprites submenu, preserving the search box
  */
 window.update_sprites_stamps = function update_sprites_stamps() {
@@ -53,7 +74,13 @@ window.update_sprites_stamps = function update_sprites_stamps() {
       if (buttonDetail.name) {
         var nameSpan = document.createElement("span");
         nameSpan.className = "stamp-name";
-        nameSpan.textContent = buttonDetail.name;
+        // Highlight search term if present
+        var highlightedName = highlightSearchTerm(buttonDetail.name, KiddoPaint.Sprite.currentSearch);
+        if (KiddoPaint.Sprite.currentSearch) {
+          nameSpan.innerHTML = highlightedName;
+        } else {
+          nameSpan.textContent = buttonDetail.name;
+        }
         button.appendChild(nameSpan);
       }
     } else if (buttonDetail.spriteSheet) {
@@ -71,7 +98,13 @@ window.update_sprites_stamps = function update_sprites_stamps() {
       if (buttonDetail.name) {
         var nameSpan = document.createElement("span");
         nameSpan.className = "stamp-name";
-        nameSpan.textContent = buttonDetail.name;
+        // Highlight search term if present
+        var highlightedName = highlightSearchTerm(buttonDetail.name, KiddoPaint.Sprite.currentSearch);
+        if (KiddoPaint.Sprite.currentSearch) {
+          nameSpan.innerHTML = highlightedName;
+        } else {
+          nameSpan.textContent = buttonDetail.name;
+        }
         button.appendChild(nameSpan);
       }
     }
@@ -277,7 +310,13 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
       if (buttonDetail.name) {
         var nameSpan = document.createElement("span");
         nameSpan.className = "stamp-name";
-        nameSpan.textContent = buttonDetail.name;
+        // Highlight search term if present
+        var highlightedName = highlightSearchTerm(buttonDetail.name, KiddoPaint.Sprite.currentSearch);
+        if (KiddoPaint.Sprite.currentSearch) {
+          nameSpan.innerHTML = highlightedName;
+        } else {
+          nameSpan.textContent = buttonDetail.name;
+        }
         button.appendChild(nameSpan);
       }
     } else if (buttonDetail.spriteSheet) {
@@ -295,7 +334,13 @@ window.show_generic_submenu = function show_generic_submenu(subtoolbar) {
       if (buttonDetail.name) {
         var nameSpan = document.createElement("span");
         nameSpan.className = "stamp-name";
-        nameSpan.textContent = buttonDetail.name;
+        // Highlight search term if present
+        var highlightedName = highlightSearchTerm(buttonDetail.name, KiddoPaint.Sprite.currentSearch);
+        if (KiddoPaint.Sprite.currentSearch) {
+          nameSpan.innerHTML = highlightedName;
+        } else {
+          nameSpan.textContent = buttonDetail.name;
+        }
         button.appendChild(nameSpan);
       }
     } else {

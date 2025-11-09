@@ -535,4 +535,44 @@ test.describe("Stamp Tool Tests", () => {
 
     assertNoConsoleErrors(consoleErrors, "search results counter");
   });
+
+  test("stamp names highlight matching substring", async ({ page }) => {
+    const consoleErrors = setupConsoleErrorMonitoring(page);
+    await selectTool(page, TOOL_ID);
+
+    const searchInput = page.locator("#stamp-search");
+
+    // Search for "tree"
+    await searchInput.fill("tree");
+    await page.waitForTimeout(200);
+
+    // Get stamp buttons
+    const subtoolButtons = await getSubtools(page);
+
+    // Check first stamp (should be "palm tree")
+    const firstStamp = subtoolButtons.nth(0);
+    await expect(firstStamp).toHaveAttribute("title", "palm tree");
+
+    // Get the stamp name text element
+    const firstName = firstStamp.locator(".stamp-name");
+
+    // The name should contain a <mark> element highlighting "tree"
+    const highlightedText = firstName.locator("mark");
+    await expect(highlightedText).toBeVisible();
+    await expect(highlightedText).toHaveText("tree");
+
+    // Clear search - highlighting should be removed
+    const clearButton = page.locator("#stamp-search-clear");
+    await clearButton.click();
+    await page.waitForTimeout(200);
+
+    // After clearing, there should be no <mark> elements
+    const subtoolButtonsAfterClear = await getSubtools(page);
+    const firstStampAfterClear = subtoolButtonsAfterClear.nth(0);
+    const firstNameAfterClear = firstStampAfterClear.locator(".stamp-name");
+    const highlightAfterClear = firstNameAfterClear.locator("mark");
+    await expect(highlightAfterClear).toHaveCount(0);
+
+    assertNoConsoleErrors(consoleErrors, "stamp name highlighting");
+  });
 });
