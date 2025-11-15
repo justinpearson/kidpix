@@ -8,9 +8,8 @@
       "Bash(yarn test:*)",
       "Bash(yarn test:coverage:*)",
       "Bash(yarn test:e2e:*)",
-      "Bash(yarn dev-app)",
-      "Bash(yarn dev-app-stop)",
-      "Bash(yarn dev-docs)",
+      "Bash(yarn dev)",
+      "Bash(yarn dev-stop)",
       "Bash(yarn preview-release)",
       "Bash(yarn preview-github-pages)",
       "Bash(yarn release:*)",
@@ -18,8 +17,6 @@
       "Bash(yarn list:*)",
       "Bash(npx playwright test:*)",
       "Bash(npx playwright show-report)",
-      "Bash(mkdocs serve)",
-      "Bash(mkdocs build:*)",
       "mcp__playwright__browser_click",
       "mcp__playwright__browser_console_messages"
     ]
