@@ -4,8 +4,7 @@
   "version": "1.2.0",
   "type": "module",
   "scripts": {
-    "dev-app": "vite dev & echo $! > .vite.pid",
-    "dev-app-stop": "kill $(cat .vite.pid 2>/dev/null) 2>/dev/null && rm -f .vite.pid || true",
+    "dev": "vite dev",
     "build": "vite build --outDir dist --base=/ && vite build --outDir dist-gh --base=/kidpix/",
     "preview-release": "python3 -m http.server 8080 --directory dist",
     "preview-github-pages": "echo \"WARNING: SERVING APP AT http://localhost:8080/kidpix/ , NOTE THE /kidpix/ !! \" && python3 -m http.server 8080 --directory dist-gh",
