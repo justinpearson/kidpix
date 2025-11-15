@@ -5,7 +5,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Quick Reference
 
 - **Live App**: https://justinpearson.github.io/kidpix/
-- **Docs**: https://justinpearson.github.io/kidpix/docs/
 - **Main Branch**: `main`
 - **Current Branch**: `name-stamps` (as of October 2025)
 - **Tech Stack**: Vanilla JS (~16,300 lines) + Vite 6.4.1 + Vitest + Playwright
@@ -24,7 +23,6 @@ This is a modular JavaScript implementation of the classic 1989 Kid Pix drawing 
 - Enhanced color picker tool
 - Improved image organization (moved to logical folders)
 - GitHub releases support for offline distribution
-- Comprehensive documentation for users and maintainers
 - Browser error monitoring integration for AI-assisted development
 - Removed ESLint/Prettier to reduce development friction (AI writes correct code without them)
 
@@ -57,7 +55,6 @@ Following the pattern from `.cursor/rules/git_auto_commit.md`, when implementing
 - Complete one feature component → **COMMIT IMMEDIATELY**
 - Complete configuration setup → **COMMIT IMMEDIATELY**
 - Complete testing setup → **COMMIT IMMEDIATELY**
-- Complete documentation → **COMMIT IMMEDIATELY**
 
 ### Benefits:
 
@@ -90,8 +87,7 @@ The project uses GitHub Actions for continuous integration and deployment:
 
 1. **build-and-deploy-all.yml** (PRIMARY - Active)
    - Triggers: Push to main, manual workflow_dispatch
-   - Builds app with Vite (to `dist/`)
-   - Builds docs with MkDocs (to `dist/docs/`)
+   - Builds app with Vite (to `dist/` and `dist-gh/`)
    - Deploys to GitHub Pages at https://justinpearson.github.io/kidpix/
    - Sets base URL to `/kidpix/` for GitHub Pages
 
@@ -110,9 +106,6 @@ The project uses GitHub Actions for continuous integration and deployment:
 4. **deploy.yml** (Currently disabled)
    - Alternative deployment workflow
    - Runs tests before deploying
-
-5. **docs.yml** (Superseded by build-and-deploy-all.yml)
-   - Previously built docs separately
 
 ### Release Process
 
@@ -138,7 +131,6 @@ The release workflow automatically:
 ### Deployment URLs
 
 - **Live App**: https://justinpearson.github.io/kidpix/
-- **Documentation**: https://justinpearson.github.io/kidpix/docs/
 - **Releases**: https://github.com/justinpearson/kidpix/releases
 
 ## Development Commands
@@ -158,13 +150,12 @@ yarn dev-app-stop  # Stop the background dev server
 ### Build
 
 ```bash
-yarn build  # Build app and docs for both local (dist/) and GitHub Pages (dist-gh/)
+yarn build  # Build app for both local (dist/) and GitHub Pages (dist-gh/)
 ```
 
 **Build Notes:**
 - Creates `dist/` directory for local deployment (base URL: `/`)
 - Creates `dist-gh/` directory for GitHub Pages deployment (base URL: `/kidpix/`)
-- Both builds include app + docs (MkDocs output in `docs/` subdirectory)
 
 ### Testing
 
@@ -175,16 +166,6 @@ yarn test:coverage     # Run unit tests with coverage report
 yarn test:e2e          # Run Playwright end-to-end tests (headless)
 yarn test:e2e:headed   # Run Playwright tests with visible browser
 ```
-
-### Documentation
-
-```bash
-yarn dev-docs  # Start MkDocs dev server at http://127.0.0.1:8000/
-```
-
-**Documentation Notes:**
-- Docs are built as part of `yarn build` (no separate docs:build command)
-- MkDocs outputs to `dist/docs/` and `dist-gh/docs/`
 
 ### Preview Built App
 
@@ -398,7 +379,6 @@ KiddoPaint.Tools.Toolbox.ToolName = function () {
   - `src/kidpix-main.js`: Main entry point for React version (future)
   - `src/test-setup.ts`: Vitest test setup
 - `index.html`: Main application entry point loading modular JS files
-- `doc/`: Documentation built with MkDocs (user and maintainer guides)
 - `prompts-TODO/`: Feature request files (newest first)
 - `prompts-DONE/`: Completed feature requests
 - `util/`: Utility scripts for stamp management
