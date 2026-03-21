@@ -24,7 +24,7 @@ window.JumbleFx = JumbleFx;
 KiddoPaint.Tools.Toolbox.WholeCanvasEffect = function () {
   var tool = this;
   this.isDown = false;
-  this.gfx = fx.canvas(); // expensive; create once
+  try { this.gfx = fx.canvas(); } catch (e) { this.gfx = null; } // graceful fallback when WebGL unavailable
   this.textureGfx = {};
   this.mainImageData = {};
   this.initialClick = {};

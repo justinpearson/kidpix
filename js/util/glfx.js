@@ -770,7 +770,10 @@ window.fx = (function () {
     } catch (d) {
       a = null;
     }
-    if (!a) throw "This browser does not support WebGL";
+    if (!a) {
+      console.warn("glfx.js: WebGL not available, effects requiring WebGL will be disabled");
+      return null;
+    }
     b._ = {
       gl: a,
       isInitialized: !1,
