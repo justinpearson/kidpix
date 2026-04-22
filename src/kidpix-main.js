@@ -132,12 +132,21 @@ import "../js/stamps/stamps.js";
 // js/sounds/*
 import "../js/sounds/sounds.js";
 
-// Initialize the application after all modules are loaded
-document.addEventListener("DOMContentLoaded", function () {
+// Initialize the application after all modules are loaded.
+// With Vite's dev server processing 100+ module imports, DOMContentLoaded
+// may fire before this module finishes evaluating. Handle both cases.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof init_kiddo_paint === "function") {
+      init_kiddo_paint();
+    }
+  });
+} else {
+  // DOMContentLoaded already fired — init immediately
   if (typeof init_kiddo_paint === "function") {
     init_kiddo_paint();
   }
-});
+}
 
 // Export the global object for potential future use
 export default window.KiddoPaint;

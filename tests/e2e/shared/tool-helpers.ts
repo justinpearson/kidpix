@@ -33,14 +33,15 @@ export interface WackyBrushSubtool {
 }
 
 /**
- * Initialize KidPix application and wait for it to be ready
+ * Initialize KidPix application and wait for it to be ready.
+ * We wait for #tmpCanvas to exist because it's dynamically created by
+ * init_kiddo_paint() — its presence signals the app is fully initialized.
  */
 export async function initializeKidPix(page: Page): Promise<void> {
   await page.goto("/");
   await page.waitForLoadState("networkidle");
-  await page.waitForFunction(
-    () => window.KiddoPaint && window.KiddoPaint.Current,
-  );
+  // Wait for the dynamically-created tmpCanvas, which signals init_kiddo_paint() has completed
+  await page.waitForSelector("#tmpCanvas", { timeout: 10000 });
 }
 
 /**

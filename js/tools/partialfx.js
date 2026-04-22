@@ -3,7 +3,7 @@ KiddoPaint.Tools.Toolbox.Ink = function () {
   this.isDown = false;
   this.size = 36;
   this.scale = 1;
-  this.gfx = fx.canvas();
+  try { this.gfx = fx.canvas(); } catch (e) { this.gfx = null; } // graceful fallback when WebGL unavailable
   this.initialClick = {};
 
   this.mousedown = function (ev) {
