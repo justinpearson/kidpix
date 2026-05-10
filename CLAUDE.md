@@ -98,10 +98,12 @@ The project uses GitHub Actions for continuous integration and deployment:
    - Publishes GitHub Release with downloadable archive
    - Usage: `git tag v1.0.0 && git push --tags`
 
-3. **test.yml** (Currently disabled)
-   - Would run unit tests with coverage
-   - Would run Playwright E2E tests
-   - Upload test results and coverage to Codecov
+3. **test.yml** (Active — re-enabled May 2026)
+   - Triggers: Pull request to main, manual workflow_dispatch
+   - Runs unit tests with coverage (vitest)
+   - Runs Playwright E2E tests (chromium-only, `--workers=1`)
+   - Uploads test results and coverage to Codecov
+   - 28 E2E tests are pre-existing skips tracked in issue #84
 
 4. **deploy.yml** (Currently disabled)
    - Alternative deployment workflow
