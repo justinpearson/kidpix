@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./shared/playwright-fixtures";
 import {
   initializeKidPix,
   setupConsoleErrorMonitoring,

@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./shared/playwright-fixtures";
 
 test.describe("Keyboard Shortcuts Help Popup", () => {
   test.beforeEach(async ({ page }) => {
