@@ -40,7 +40,7 @@ KiddoPaint.Display.saveUndoRedoToLocalStorage = function () {
       localStorage.setItem("kiddopaint_undo", JSON.stringify(undoToSave));
       localStorage.setItem("kiddopaint_redo", JSON.stringify(redoToSave));
     } catch (e) {
-      if (e.name === "QuotaExceededError") {
+      if (e instanceof Error && e.name === "QuotaExceededError") {
         console.log(
           "localStorage quota exceeded, clearing undo/redo persistence",
         );
@@ -188,8 +188,10 @@ KiddoPaint.Display.saveUndo = function () {
 // operation is to push the canvas onto the opposite buffer, to save it.
 
 KiddoPaint.Display.popAndLoad = function (stack) {
-  var img = new Image();
-  img.src = stack.pop();
+  const src = stack.pop();
+  if (src === undefined) return;
+  const img = new Image();
+  img.src = src;
   img.onload = function () {
     KiddoPaint.Display.clearMain();
     KiddoPaint.Display.main_context.drawImage(img, 0, 0);
@@ -251,34 +253,34 @@ KiddoPaint.Display.saveToLocalStorage = function () {
 };
 
 KiddoPaint.Display.loadFromLocalStorage = function () {
-  var img = new Image();
+  const img = new Image();
   img.crossOrigin = "Anonymous";
   img.onload = function () {
     KiddoPaint.Display.clearMain();
     KiddoPaint.Display.main_context.drawImage(img, 0, 0);
   };
-  if (typeof Storage != "undefined" && localStorage.getItem("kiddopaint")) {
-    img.src = localStorage.getItem("kiddopaint");
-  } else {
-    img.src = "static/splash.png";
-  }
+  const saved =
+    typeof Storage != "undefined" ? localStorage.getItem("kiddopaint") : null;
+  img.src = saved ? saved : "static/splash.png";
 };
 
 KiddoPaint.Display.canvasToImageData = function (canvas) {
   return canvas
-    .getContext("2d")
+    .getContext("2d")!
     .getImageData(0, 0, canvas.width, canvas.height);
 };
 
 KiddoPaint.Display.imageTypeToCanvas = function (imageData, doDraw) {
-  var canvas = document.createElement("canvas");
-  var ctx = canvas.getContext("2d");
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d")!;
   canvas.width = imageData.width;
   canvas.height = imageData.height;
   if (doDraw) {
-    ctx.drawImage(imageData, 0, 0);
+    // doDraw contract: the caller passes a drawable source (canvas/image)
+    ctx.drawImage(imageData as HTMLCanvasElement | HTMLImageElement, 0, 0);
   } else {
-    ctx.putImageData(imageData, 0, 0);
+    // otherwise raw ImageData
+    ctx.putImageData(imageData as ImageData, 0, 0);
   }
   return canvas;
 };

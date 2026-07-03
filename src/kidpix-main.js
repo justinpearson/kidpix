@@ -7,7 +7,7 @@
 import "../js/util/array";
 import "../js/util/cache";
 import "../js/util/colors";
-import "../js/util/display.js";
+import "../js/util/display";
 import "../js/util/dither.js";
 import "../js/util/douglas-peucker.js";
 import "../js/util/filters.js";
