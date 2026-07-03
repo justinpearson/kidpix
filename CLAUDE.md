@@ -6,15 +6,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **Live App**: https://justinpearson.github.io/kidpix/
 - **Main Branch**: `main`
-- **Current Branch**: `name-stamps` (as of October 2025)
-- **Tech Stack**: Vanilla JS (~16,300 lines) + Vite 6.4.1 + Vitest + Playwright
+- **Tech Stack**: Vanilla JS migrating to TypeScript (~23,700 lines in `js/`) + Vite + Vitest + Playwright
 - **No Linting**: ESLint/Prettier removed - AI writes correct code without them
 - **Dev Server**: `yarn dev-app` → http://localhost:5173/
-- **Feature Requests**: See `prompts-TODO/current.txt`
+- **Feature Requests**: See `prompts-TODO/` (e.g. `backlog.txt`)
+- **TypeScript Migration**: In progress (July 2026) — see `TS_MIGRATION_PLAN.md` and issue #62
 
 ## Project Overview
 
-This is a modular JavaScript implementation of the classic 1989 Kid Pix drawing application, based on Vikrum's HTML/JavaScript implementation (kidpix.app). The current focus is on maintaining and improving the modular JavaScript codebase as a foundation for future migration to React/TypeScript.
+This is a modular JavaScript implementation of the classic 1989 Kid Pix drawing application, based on Vikrum's HTML/JavaScript implementation (kidpix.app). The current focus is an incremental migration of the modular JavaScript codebase to TypeScript (no framework — a React migration was attempted twice and deliberately abandoned; see issue #62), for simplicity, maintainability, and legibility to both humans and AI agents.
 
 ### Recent Improvements (September-October 2025)
 
@@ -286,7 +286,7 @@ KiddoPaint.Tools.Toolbox.ToolName = function () {
 
 ## Feature Development Workflow
 
-1. Read feature requests from `prompts-TODO/` directory (check `current.txt` first, then others)
+1. Read feature requests from `prompts-TODO/` directory
 2. Create a new git branch for the feature
 3. **First commit**: Add the feature request file to git (if not already tracked)
 4. Implement using JavaScript best practices in the modular structure
@@ -375,11 +375,10 @@ KiddoPaint.Tools.Toolbox.ToolName = function () {
   - `js/sounds/`: Audio system and sound library
   - `js/util/`: Core utilities (display, colors, caching, filters)
   - `js/init/`: Application initialization and setup
-- `src/`: React/TypeScript components and assets
-  - `src/assets/`: Static assets (images, sounds, CSS)
-  - `src/components/`, `src/contexts/`, `src/hooks/`: Future React migration target
-  - `src/kidpix-main.js`: Main entry point for React version (future)
-  - `src/test-setup.ts`: Vitest test setup
+- `src/`: App entry point and assets
+  - `src/assets/`: Static assets (images, sounds, CSS) — served as Vite's `publicDir`
+  - `src/kidpix-main.js`: Main entry point; side-effect-imports all `js/` files in dependency order
+  - `src/test-setup.ts`: Vitest test setup (canvas/ImageData mocks)
 - `index.html`: Main application entry point loading modular JS files
 - `prompts-TODO/`: Feature request files (newest first)
 - `prompts-DONE/`: Completed feature requests
@@ -441,24 +440,16 @@ The `KiddoPaint.Display` system handles:
 - Local storage persistence for drawings
 - Layer compositing across five canvas layers
 
-## Future Migration Notes
+## TypeScript Migration (in progress, July 2026)
 
-The project currently uses modular JavaScript as a foundation for future React/TypeScript migration. Key considerations:
+The codebase is being converted file-by-file from JavaScript to TypeScript — no framework. See `TS_MIGRATION_PLAN.md` for the full plan (conversion order, per-file recipe, vendored-file exclusions) and issue #62 for milestone tracking. Key points:
 
-### Current State
+- Converted `.ts` files keep the `KiddoPaint.X = ...` global-namespace style; ambient declarations in `types/` make it type-check under `strict: true`
+- Behavior preservation is the rule: preserve the five-canvas layer system, pixel-perfect rendering (`imageSmoothingEnabled = false`), tool behavior, and sounds exactly
+- Vendored third-party libraries in `js/util/` (glfx, fit-curve, kdtree, smooth, dither, douglas-peucker, smoke, filters) stay `.js` and are never converted
+- Drawing tools convert to ES6 classes with arrow-function fields (replacing `var tool = this` closures)
+- Run `yarn type-check` along with `yarn test` before pushing
 
-- Individual `js/*` files are the primary source code
-- Application loads modular files directly for easier development
-- Preserve original tool behavior, sound effects, and multi-layer canvas architecture
-- Asset files (images, sounds) in `src/assets/` maintain original structure
+### Migration workflow exception (owner-authorized, July 2026)
 
-### Future React Migration Strategy
-
-When migrating to React/TypeScript:
-
-- Use current modular JS files as reference implementation
-- Preserve the five-canvas layer system (main, tmp, preview, anim, bnim)
-- Maintain pixel-perfect rendering (`imageSmoothingEnabled = false`)
-- Convert three-method pattern to React event handlers with hooks
-- Convert global `KiddoPaint.Current` object to Context API or state management
-- Maintain compatibility with existing assets and sounds
+For TypeScript-migration work, commits go **directly to `main`** — no feature branches or PRs — provided local verification passes first (`yarn test`, `yarn type-check`, `yarn build`, and Playwright chromium for risky changes). Note that `test.yml` CI runs only on pull requests, and every push to `main` deploys to GitHub Pages, so local verification is the real gate. Non-migration feature work still follows the branch-and-PR workflow above.
