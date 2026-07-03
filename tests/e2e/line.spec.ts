@@ -20,27 +20,6 @@ test.describe("Line Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test.skip("basic tool selection and highlighting", async ({ page }) => {
-    const consoleErrors = setupConsoleErrorMonitoring(page);
-
-    await selectTool(page, TOOL_ID);
-
-    // Verify subtools appear
-    const subtoolButtons = await getSubtools(page);
-
-    // Verify both default size (index 1) and texture (index 7) are highlighted
-    await expect(subtoolButtons.nth(1)).toHaveCSS(
-      "border-color",
-      "rgb(255, 0, 0)",
-    );
-    await expect(subtoolButtons.nth(7)).toHaveCSS(
-      "border-color",
-      "rgb(255, 0, 0)",
-    );
-
-    assertNoConsoleErrors(consoleErrors, "tool selection");
-  });
-
   test("multi-selection support (size + texture)", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 

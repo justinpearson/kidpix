@@ -19,23 +19,6 @@ test.describe("Brush Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test.skip("basic tool selection and highlighting", async ({ page }) => {
-    const consoleErrors = setupConsoleErrorMonitoring(page);
-
-    await selectTool(page, TOOL_ID);
-
-    // Verify subtools appear
-    const subtoolButtons = await getSubtools(page);
-
-    // First brush should be highlighted by default
-    await expect(subtoolButtons.nth(0)).toHaveCSS(
-      "border-color",
-      "rgb(255, 0, 0)",
-    );
-
-    assertNoConsoleErrors(consoleErrors, "tool selection");
-  });
-
   // Test each individual Wacky Brush subtool
   for (const subtool of WACKY_BRUSH_SUBTOOLS) {
     test(`${subtool.name} brush (index ${subtool.index}) works without console errors`, async ({

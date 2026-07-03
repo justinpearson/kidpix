@@ -19,17 +19,6 @@ test.describe("Paint Can Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test.skip("basic tool selection and highlighting", async ({ page }) => {
-    const consoleErrors = setupConsoleErrorMonitoring(page);
-    await selectTool(page, TOOL_ID);
-    const subtoolButtons = await getSubtools(page);
-    await expect(subtoolButtons.nth(0)).toHaveCSS(
-      "border-color",
-      "rgb(255, 0, 0)",
-    );
-    assertNoConsoleErrors(consoleErrors, "tool selection");
-  });
-
   test("paint can fill patterns", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
     await selectTool(page, TOOL_ID);

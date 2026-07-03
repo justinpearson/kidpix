@@ -20,27 +20,6 @@ test.describe("Pencil Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test.skip("basic tool selection and highlighting", async ({ page }) => {
-    const consoleErrors = setupConsoleErrorMonitoring(page);
-
-    await selectTool(page, TOOL_ID);
-
-    // Verify subtools appear
-    const subtoolButtons = await getSubtools(page);
-
-    // Verify default subtools are highlighted (size 3, solid texture)
-    if (toolDef.defaultSubtoolIndices) {
-      for (const index of toolDef.defaultSubtoolIndices) {
-        await expect(subtoolButtons.nth(index)).toHaveCSS(
-          "border-color",
-          "rgb(255, 0, 0)",
-        );
-      }
-    }
-
-    assertNoConsoleErrors(consoleErrors, "tool selection");
-  });
-
   test("multi-selection support (size + texture)", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 

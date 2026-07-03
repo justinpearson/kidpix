@@ -20,23 +20,6 @@ test.describe("Rectangle Tool Tests", () => {
     await initializeKidPix(page);
   });
 
-  test.skip("basic tool selection and highlighting", async ({ page }) => {
-    const consoleErrors = setupConsoleErrorMonitoring(page);
-
-    await selectTool(page, TOOL_ID);
-
-    // Verify subtools appear
-    const subtoolButtons = await getSubtools(page);
-
-    // Default texture (None texture, index 0) should be highlighted
-    await expect(subtoolButtons.nth(0)).toHaveCSS(
-      "border-color",
-      "rgb(255, 0, 0)",
-    );
-
-    assertNoConsoleErrors(consoleErrors, "tool selection");
-  });
-
   test("texture selection", async ({ page }) => {
     const consoleErrors = setupConsoleErrorMonitoring(page);
 

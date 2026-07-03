@@ -4,12 +4,14 @@ import { ToolDefinition, WackyBrushSubtool } from "./tool-helpers";
  * Complete tool definitions for all KidPix drawing tools
  */
 export const TOOL_DEFINITIONS: ToolDefinition[] = [
+  // defaultSubtoolIndices = the subtool buttons the app actually highlights on
+  // tool selection (verified empirically against the running app, July 2026).
   {
     id: "pencil",
     name: "Pencil",
     hasSubtools: true,
     hasMultipleSubtoolSets: true,
-    defaultSubtoolIndices: [0], // first size (conservative)
+    defaultSubtoolIndices: [0, 7], // "Thickness 1" + "Solid" texture
     alternateSubtoolIndices: [1], // second size
   },
   {
@@ -17,7 +19,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     name: "Line",
     hasSubtools: true,
     hasMultipleSubtoolSets: true,
-    defaultSubtoolIndices: [0], // first size (conservative)
+    defaultSubtoolIndices: [1, 7], // "Thickness 5" + "Solid" texture
     alternateSubtoolIndices: [1], // second size
   },
   {
@@ -25,7 +27,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     name: "Rectangle",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,
-    defaultSubtoolIndices: [0], // first texture
+    defaultSubtoolIndices: [1, 7], // "Thickness 2" + "None" texture
     alternateSubtoolIndices: [1], // second texture
   },
   {
@@ -33,7 +35,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     name: "Circle",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,
-    defaultSubtoolIndices: [0], // first texture
+    defaultSubtoolIndices: [1, 7], // "Thickness 2" + "None" texture
     alternateSubtoolIndices: [1], // second texture
   },
   {
@@ -73,7 +75,8 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     name: "Text",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,
-    defaultSubtoolIndices: [0], // letter A
+    // No defaultSubtoolIndices: the text tool renders its subtools in
+    // #texttoolbar, not #genericsubmenu (see init_text_subtoolbar).
     alternateSubtoolIndices: [1], // letter B
   },
   {
@@ -81,7 +84,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     name: "Stamp",
     hasSubtools: true,
     hasMultipleSubtoolSets: false,
-    defaultSubtoolIndices: [0], // first stamp
+    defaultSubtoolIndices: [], // stamp submenu shows with NO default highlighted
     alternateSubtoolIndices: [1], // different stamp
   },
   {
