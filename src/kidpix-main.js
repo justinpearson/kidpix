@@ -23,7 +23,7 @@ import "../js/util/trim-canvas";
 import "../js/util/utils";
 
 // js/init/* (load after utilities since they depend on them)
-import "../js/init/submenus.js";
+import "../js/init/submenus";
 import "../js/init/kiddopaint.js";
 
 // js/tools/*

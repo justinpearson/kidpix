@@ -14,6 +14,16 @@ interface Window {
   /** Resets mouse-wheel ranges, multiplier, and toggle modifier state. */
   reset_ranges: () => void;
 
+  // ---- js/init/submenus.ts ----
+  /** Renders the submenu buttons for a tool into #genericsubmenu. */
+  show_generic_submenu(subtoolbar: string): void;
+  /** Rebuilds only the stamp buttons, preserving the search box. */
+  update_sprites_stamps(): void;
+
+  // ---- js/submenus/sprites.js ----
+  /** (Re)builds KiddoPaint.Submenu.sprites, optionally filtered by search. */
+  init_sprites_submenu(searchTerm?: string): void;
+
   // Canvas layers created by init_kiddo_paint(); undefined before init.
   tmpCanvas: HTMLCanvasElement;
   tmpContext: CanvasRenderingContext2D;

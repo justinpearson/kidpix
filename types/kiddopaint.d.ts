@@ -183,7 +183,12 @@ interface KiddoPaintDisplay {
  */
 interface KiddoPaintSubmenuEntry {
   name?: string;
-  handler?: (e?: MouseEvent) => void;
+  /**
+   * Click handler. Invisible spacer entries carry the filler value `true`
+   * instead of a function; the submenu click wrapper only dispatches when
+   * this is actually callable.
+   */
+  handler?: ((e: MouseEvent) => void) | boolean;
   imgSrc?: string;
   /** Generates a data-URL for the button image at render time. */
   imgJs?: () => string;
