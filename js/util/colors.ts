@@ -1,8 +1,8 @@
-KiddoPaint.Colors.Palette = {};
-KiddoPaint.Colors.Current = {};
-
-KiddoPaint.Colors.Palette.Blank = ["rgba(0, 0, 0, 0)"];
-KiddoPaint.Colors.Palette.Bright = [
+// Palettes are built as local consts and attached to KiddoPaint.Colors below;
+// the ambient KiddoPaintColors interface (types/kiddopaint.d.ts) describes the
+// resulting shape.
+const Blank: string[] = ["rgba(0, 0, 0, 0)"];
+const Bright: string[] = [
   "rgb(255,0,0)",
   "rgb(255,255,0)",
   "rgb(0,255,0)",
@@ -12,7 +12,7 @@ KiddoPaint.Colors.Palette.Bright = [
 ];
 
 // these are len(pal)=32
-KiddoPaint.Colors.Palette.Basic = {
+const Basic: KiddoPaintNamedPalette = {
   name: "Basic",
   colors: [
     "rgb(0, 0, 0)",
@@ -67,7 +67,7 @@ KiddoPaint.Colors.Palette.Basic = {
 };
 
 // https://lospec.com/palette-list/endesga-32
-KiddoPaint.Colors.Palette.Endesga = {
+const Endesga: KiddoPaintNamedPalette = {
   name: "Endesga",
   colors: [
     "rgb(24,20,37)",
@@ -105,7 +105,7 @@ KiddoPaint.Colors.Palette.Endesga = {
   ]
 };
 // https://lospec.com/palette-list/dawnbringer-32
-KiddoPaint.Colors.Palette.DawnBringer = {
+const DawnBringer: KiddoPaintNamedPalette = {
   name: "DawnBringer",
   colors: [
     "rgb(0, 0, 0)",
@@ -143,7 +143,7 @@ KiddoPaint.Colors.Palette.DawnBringer = {
   ]
 };
 // http://medialab.github.io/iwanthue/
-KiddoPaint.Colors.Palette.Pastels = {
+const Pastels: KiddoPaintNamedPalette = {
   name: "Pastels",
   colors: [
     "#84dcce",
@@ -180,7 +180,7 @@ KiddoPaint.Colors.Palette.Pastels = {
     "#ffe3ed",
   ]
 };
-KiddoPaint.Colors.Palette.Pinks = {
+const Pinks: KiddoPaintNamedPalette = {
   name: "Pinks",
   colors: [
     "#d170e6",
@@ -217,7 +217,7 @@ KiddoPaint.Colors.Palette.Pinks = {
     "#9166aa",
   ]
 };
-KiddoPaint.Colors.Palette.Blues = {
+const Blues: KiddoPaintNamedPalette = {
   name: "Blues",
   colors: [
     "#52e2ff",
@@ -254,7 +254,7 @@ KiddoPaint.Colors.Palette.Blues = {
     "#0098dc",
   ]
 };
-KiddoPaint.Colors.Palette.Greyscale = {
+const Greyscale: KiddoPaintNamedPalette = {
   name: "Greyscale",
   colors: [
     "rgb(0,    0,     0)",
@@ -292,7 +292,7 @@ KiddoPaint.Colors.Palette.Greyscale = {
   ]
 };
 // https://coolors.co/gradient-palette/88ffff-ff44ff?number=30
-KiddoPaint.Colors.Palette.CyanMagenta = {
+const CyanMagenta: KiddoPaintNamedPalette = {
   name: "CyanMagenta",
   colors: [
     "#22FFFF",
@@ -330,23 +330,38 @@ KiddoPaint.Colors.Palette.CyanMagenta = {
   ]
 };
 
+KiddoPaint.Colors.Palette = {
+  Blank,
+  Bright,
+  Basic,
+  Endesga,
+  DawnBringer,
+  Pastels,
+  Pinks,
+  Blues,
+  Greyscale,
+  CyanMagenta,
+};
+
 KiddoPaint.Colors.All = [
-  KiddoPaint.Colors.Palette.Basic,
-  KiddoPaint.Colors.Palette.DawnBringer,
-  KiddoPaint.Colors.Palette.Endesga,
-  KiddoPaint.Colors.Palette.Pastels,
-  KiddoPaint.Colors.Palette.Pinks,
-  KiddoPaint.Colors.Palette.Blues,
-  KiddoPaint.Colors.Palette.CyanMagenta,
-  KiddoPaint.Colors.Palette.Greyscale,
+  Basic,
+  DawnBringer,
+  Endesga,
+  Pastels,
+  Pinks,
+  Blues,
+  CyanMagenta,
+  Greyscale,
 ];
 
-KiddoPaint.Colors.Current.PaletteNumber = 0; // load primary colors by default.
-KiddoPaint.Colors.Current.Palette =
-  KiddoPaint.Colors.All[KiddoPaint.Colors.Current.PaletteNumber].colors;
+KiddoPaint.Colors.Current = {
+  PaletteNumber: 0, // load primary colors by default.
+  Palette: KiddoPaint.Colors.All[0].colors,
+  colorStep: 0,
+};
 
 KiddoPaint.Colors.rainbowPalette = function () {
-  var rpal = [];
+  let rpal: string[] = [];
   if (KiddoPaint.Colors.Current.PaletteNumber == 0) {
     rpal = ["red", "orange", "yellow", "green", "blue", "purple", "violet"];
   } else {
@@ -403,23 +418,18 @@ KiddoPaint.Colors.randomColor = function () {
   ];
 };
 
-KiddoPaint.Colors.Current.colorStep = 0;
 KiddoPaint.Colors.getAndIncColorStep = function () {
   KiddoPaint.Colors.Current.colorStep += 1;
   return KiddoPaint.Colors.Current.colorStep;
 };
 
 KiddoPaint.Colors.nextAllColor = function () {
-  var pal = KiddoPaint.Colors.currentPalette();
+  const pal = KiddoPaint.Colors.currentPalette();
   return pal[KiddoPaint.Colors.getAndIncColorStep() % pal.length];
 };
 
 KiddoPaint.Colors.randomAllColor = function () {
-  var pal = KiddoPaint.Colors.currentPalette();
+  const pal = KiddoPaint.Colors.currentPalette();
   return pal[Math.floor(Math.random() * pal.length)];
 };
 
-function getColorIndicesForCoord(x, y, width) {
-  var red = y * (width * 4) + x * 4;
-  return [red, red + 1, red + 2, red + 3];
-}

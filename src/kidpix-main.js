@@ -6,7 +6,7 @@
 // js/util/* (load utilities first since they are dependencies)
 import "../js/util/array.js";
 import "../js/util/cache.js";
-import "../js/util/colors.js";
+import "../js/util/colors";
 import "../js/util/display.js";
 import "../js/util/dither.js";
 import "../js/util/douglas-peucker.js";

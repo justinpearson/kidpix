@@ -218,9 +218,48 @@ interface KiddoPaintSoundsRegistry {
   [soundName: string]: any;
 }
 
-/** TODO(ts): tighten in M6 when js/util/colors.js converts. */
-interface KiddoPaintColorsRegistry {
-  [key: string]: any;
+/** A named 32-color palette (js/util/colors.ts). */
+interface KiddoPaintNamedPalette {
+  name: string;
+  colors: string[];
+}
+
+/** Color system (js/util/colors.ts). */
+interface KiddoPaintColors {
+  Palette: {
+    /** Single transparent entry. */
+    Blank: string[];
+    /** Six bright colors cycled by nextColor()/randomColor(). */
+    Bright: string[];
+    Basic: KiddoPaintNamedPalette;
+    Endesga: KiddoPaintNamedPalette;
+    DawnBringer: KiddoPaintNamedPalette;
+    Pastels: KiddoPaintNamedPalette;
+    Pinks: KiddoPaintNamedPalette;
+    Blues: KiddoPaintNamedPalette;
+    Greyscale: KiddoPaintNamedPalette;
+    CyanMagenta: KiddoPaintNamedPalette;
+  };
+  Current: {
+    /** Index into All; 0 (Basic) by default. */
+    PaletteNumber: number;
+    /** The current palette's colors; kept in sync by next/prevPalette(). */
+    Palette: string[];
+    /** Monotonic counter for color-cycling brushes (getAndIncColorStep). */
+    colorStep: number;
+  };
+  /** The palettes cyclable from the UI, in cycle order. */
+  All: KiddoPaintNamedPalette[];
+  rainbowPalette(): string[];
+  currentPalette(): string[];
+  currentPaletteName(): string;
+  nextPalette(): string[];
+  prevPalette(): string[];
+  nextColor(): string;
+  randomColor(): string;
+  getAndIncColorStep(): number;
+  nextAllColor(): string;
+  randomAllColor(): string;
 }
 
 /** TODO(ts): tighten in M6 when js/util/cache.js converts. */
@@ -255,7 +294,7 @@ interface KiddoPaintNamespace {
   Stamps: KiddoPaintStampsRegistry;
   Sounds: KiddoPaintSoundsRegistry;
   Display: KiddoPaintDisplay;
-  Colors: KiddoPaintColorsRegistry;
+  Colors: KiddoPaintColors;
   Current: KiddoPaintCurrent;
   Cache: KiddoPaintCacheRegistry;
   Text: KiddoPaintTextRegistry;

@@ -1,16 +1,13 @@
 import { describe, it, expect, beforeEach } from "vitest";
 
-// Mock the KiddoPaint global namespace
+// Seed the KiddoPaint global namespace (normally created by index.html).
+// colors.ts fully replaces Palette/Current/All, so an empty Colors suffices.
 global.KiddoPaint = {
-  Colors: {
-    Palette: {},
-    Current: {},
-    All: [],
-  },
-};
+  Colors: {},
+} as unknown as KiddoPaintNamespace;
 
 // Import the colors module (this will populate KiddoPaint.Colors)
-await import("./colors.js");
+await import("./colors");
 
 describe("KiddoPaint.Colors", () => {
   describe("Palette structure", () => {
@@ -131,13 +128,13 @@ describe("KiddoPaint.Colors", () => {
     it("includes Basic palette", () => {
       const basic = KiddoPaint.Colors.All.find((p) => p.name === "Basic");
       expect(basic).toBeDefined();
-      expect(basic.colors).toHaveLength(32);
+      expect(basic!.colors).toHaveLength(32);
     });
 
     it("includes Endesga palette", () => {
       const endesga = KiddoPaint.Colors.All.find((p) => p.name === "Endesga");
       expect(endesga).toBeDefined();
-      expect(endesga.colors).toHaveLength(32);
+      expect(endesga!.colors).toHaveLength(32);
     });
 
     it("includes DawnBringer palette", () => {
@@ -145,13 +142,13 @@ describe("KiddoPaint.Colors", () => {
         (p) => p.name === "DawnBringer",
       );
       expect(dawnbringer).toBeDefined();
-      expect(dawnbringer.colors).toHaveLength(32);
+      expect(dawnbringer!.colors).toHaveLength(32);
     });
 
     it("includes Pastels palette", () => {
       const pastels = KiddoPaint.Colors.All.find((p) => p.name === "Pastels");
       expect(pastels).toBeDefined();
-      expect(pastels.colors).toHaveLength(32);
+      expect(pastels!.colors).toHaveLength(32);
     });
   });
 });
