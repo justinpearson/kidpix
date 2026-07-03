@@ -1,6 +1,9 @@
 backlog
 
 
+# Feature: Add debug info into UI
+
+It would be useful for development of kidpix to have a thin gray banner across the bottom of the screen with information about the current kidpix version that's running. Information like: what SHA is this, what commit message (1st line only), commit date, link to commit on github, click SHA to copy to clipboard.
 
 
 
