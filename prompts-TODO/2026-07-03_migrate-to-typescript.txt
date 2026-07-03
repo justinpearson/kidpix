@@ -1,0 +1,22 @@
+# Feature request: Migrate the codebase from JavaScript to TypeScript (no React)
+
+The js/ codebase (~23,700 lines, global KiddoPaint namespace) should be
+incrementally converted to TypeScript for simplicity, maintainability, and
+legibility to humans and AI agents. Explicitly NOT a React migration — two
+prior React attempts stalled and the decision (July 2026) is TypeScript only.
+
+Plan: see TS_MIGRATION_PLAN.md at the repo root.
+Tracking: GitHub issue #62 (milestones M1-M11).
+
+Scope bundled into this initiative:
+- Housekeeping: merge PR #82, delete stale branches, close #45
+- Remove the dormant React skeleton in src/
+- Consolidate the 11 duplicate E2E tool-selection tests (issue #84 Category B)
+- TS foundation: accurate ambient declarations in types/, yarn type-check, CI step
+- File-by-file conversion, bottom-up: util -> init -> textures/brushes/builders
+  -> tools (as ES6 classes) -> submenus/stamps/sounds -> entry point
+
+Workflow: commits go directly to main after local verification (owner-authorized
+exception to the usual PR workflow; see CLAUDE.md).
+
+This file moves to prompts-DONE/ when the migration completes (issue #62 closed).
