@@ -6,11 +6,11 @@
 KiddoPaint.Settings = {
   /**
    * Check if keyboard shortcuts are enabled
-   * @returns {boolean} True if keyboard shortcuts are enabled, false otherwise
+   * @returns True if keyboard shortcuts are enabled, false otherwise
    */
   isKeyboardShortcutsEnabled: function () {
     // Default to false (disabled) to maintain child-friendly behavior
-    var value = localStorage.getItem(
+    const value = localStorage.getItem(
       "kiddopaint.settings.keyboardShortcutsEnabled",
     );
     return value === "true";
@@ -18,7 +18,7 @@ KiddoPaint.Settings = {
 
   /**
    * Set keyboard shortcuts enabled/disabled state
-   * @param {boolean} enabled - True to enable shortcuts, false to disable
+   * @param enabled - True to enable shortcuts, false to disable
    */
   setKeyboardShortcutsEnabled: function (enabled) {
     localStorage.setItem(

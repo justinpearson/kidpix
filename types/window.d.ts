@@ -24,6 +24,16 @@ interface Window {
   bnimCanvas: HTMLCanvasElement;
   bnimContext: CanvasRenderingContext2D;
 
+  // ---- js/util/array.ts ----
+  /** In-place Fisher-Yates shuffle. */
+  fisherYatesArrayShuffle<T>(array: T[]): void;
+
+  // ---- js/util/trim-canvas.ts ----
+  /** Returns a copy of the canvas cropped to its non-transparent bounds. */
+  trimCanvas3(canvas: HTMLCanvasElement): HTMLCanvasElement;
+  /** Like trimCanvas3, but also flattens transparent pixels to white. */
+  trimAndFlattenCanvas(canvas: HTMLCanvasElement): HTMLCanvasElement;
+
   // ---- js/util/utils.ts ----
   distanceBetween(ev1: KidPixPoint, ev2: KidPixPoint): number;
   angleBetween(ev1: KidPixPoint, ev2: KidPixPoint): number;

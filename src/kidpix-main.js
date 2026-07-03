@@ -4,8 +4,8 @@
 
 // Import all modules in the correct dependency order
 // js/util/* (load utilities first since they are dependencies)
-import "../js/util/array.js";
-import "../js/util/cache.js";
+import "../js/util/array";
+import "../js/util/cache";
 import "../js/util/colors";
 import "../js/util/display.js";
 import "../js/util/dither.js";
@@ -13,13 +13,13 @@ import "../js/util/douglas-peucker.js";
 import "../js/util/filters.js";
 import "../js/util/fit-curve.js";
 import "../js/util/glfx.js";
-import "../js/util/html.js";
+import "../js/util/html";
 import "../js/util/kdtree.js";
-import "../js/util/settings.js";
-import "../js/util/keyboard-help.js";
+import "../js/util/settings";
+import "../js/util/keyboard-help";
 import "../js/util/smoke.js";
 import "../js/util/smooth.js";
-import "../js/util/trim-canvas.js";
+import "../js/util/trim-canvas";
 import "../js/util/utils";
 
 // js/init/* (load after utilities since they depend on them)

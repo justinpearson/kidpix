@@ -277,9 +277,46 @@ interface KiddoPaintColors {
   randomAllColor(): string;
 }
 
-/** TODO(ts): tighten in M6 when js/util/cache.js converts. */
-interface KiddoPaintCacheRegistry {
-  [key: string]: any;
+/** Per-stamp settings cached by js/util/cache.ts. */
+interface KidPixStampSettings {
+  hueShift: number;
+  altSize: number;
+}
+
+/** Stamp-settings cache (js/util/cache.ts). */
+interface KiddoPaintCache {
+  StampSettings: Record<string, KidPixStampSettings>;
+  Defaults: KidPixStampSettings;
+  /** Returns (creating if needed) the settings for a stamp. */
+  getStampSettings(stamp: string): KidPixStampSettings;
+  setStampSetting(
+    stamp: string,
+    setting: keyof KidPixStampSettings,
+    value: number,
+  ): void;
+}
+
+/** User settings persisted in localStorage (js/util/settings.ts). */
+interface KiddoPaintSettings {
+  isKeyboardShortcutsEnabled(): boolean;
+  setKeyboardShortcutsEnabled(enabled: boolean): void;
+}
+
+/** Keyboard-shortcuts help popup (js/util/keyboard-help.ts). */
+interface KiddoPaintKeyboardHelp {
+  popup: HTMLElement | null;
+  overlay: HTMLElement | null;
+  closeBtn: HTMLElement | null;
+  enabledContent: HTMLElement | null;
+  disabledContent: HTMLElement | null;
+  isInitialized: boolean;
+  init(): void;
+  /** @private */
+  _attachEventListeners(): void;
+  show(): void;
+  hide(): void;
+  toggle(): void;
+  isVisible(): boolean;
 }
 
 /** TODO(ts): tighten in M10 (js/stamps/ text system). */
@@ -311,10 +348,28 @@ interface KiddoPaintNamespace {
   Display: KiddoPaintDisplay;
   Colors: KiddoPaintColors;
   Current: KiddoPaintCurrent;
-  Cache: KiddoPaintCacheRegistry;
+  Cache: KiddoPaintCache;
   Text: KiddoPaintTextRegistry;
   Sprite: KiddoPaintSpriteRegistry;
   Submenu: KiddoPaintSubmenuRegistry;
+  /** Created by js/util/settings.ts (not part of the index.html bootstrap). */
+  Settings: KiddoPaintSettings;
+  /** Created by js/util/keyboard-help.ts (not part of the index.html bootstrap). */
+  KeyboardHelp: KiddoPaintKeyboardHelp;
+}
+
+// ---------------------------------------------------------------------------
+// Prototype extensions (js/util/array.ts, js/util/html.ts)
+// ---------------------------------------------------------------------------
+
+interface Array<T> {
+  /** Returns a random element (prototype extension from js/util/array.ts). */
+  random(): T;
+}
+
+interface HTMLElement {
+  /** Removes all child nodes (prototype extension from js/util/html.ts). */
+  removeAllChildren(): void;
 }
 
 declare var KiddoPaint: KiddoPaintNamespace;

@@ -1,16 +1,18 @@
-import { describe, it, expect, beforeEach, vi, beforeAll } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 
 // Set up global KiddoPaint namespace BEFORE importing the module
 if (!global.window.KiddoPaint) {
-  global.window.KiddoPaint = {};
+  global.window.KiddoPaint = {} as KiddoPaintNamespace;
 }
 
+const isKeyboardShortcutsEnabledMock = vi.fn(() => false);
 global.window.KiddoPaint.Settings = {
-  isKeyboardShortcutsEnabled: vi.fn(() => false),
+  isKeyboardShortcutsEnabled: isKeyboardShortcutsEnabledMock,
+  setKeyboardShortcutsEnabled: vi.fn(),
 };
 
 // Import module after globals are set up
-await import("./keyboard-help.js");
+await import("./keyboard-help");
 
 describe("KiddoPaint.KeyboardHelp", () => {
   beforeEach(() => {
@@ -59,13 +61,11 @@ describe("KiddoPaint.KeyboardHelp", () => {
       window.KiddoPaint.KeyboardHelp.show();
 
       const overlay = document.getElementById("keyboard-shortcuts-popup");
-      expect(overlay.style.display).toBe("flex");
+      expect(overlay!.style.display).toBe("flex");
     });
 
     it("shows disabled content when shortcuts are disabled", () => {
-      window.KiddoPaint.Settings.isKeyboardShortcutsEnabled.mockReturnValue(
-        false,
-      );
+      isKeyboardShortcutsEnabledMock.mockReturnValue(false);
 
       window.KiddoPaint.KeyboardHelp.show();
 
@@ -76,14 +76,12 @@ describe("KiddoPaint.KeyboardHelp", () => {
         "shortcuts-disabled-content",
       );
 
-      expect(enabledContent.style.display).toBe("none");
-      expect(disabledContent.style.display).toBe("block");
+      expect(enabledContent!.style.display).toBe("none");
+      expect(disabledContent!.style.display).toBe("block");
     });
 
     it("shows enabled content when shortcuts are enabled", () => {
-      window.KiddoPaint.Settings.isKeyboardShortcutsEnabled.mockReturnValue(
-        true,
-      );
+      isKeyboardShortcutsEnabledMock.mockReturnValue(true);
 
       window.KiddoPaint.KeyboardHelp.show();
 
@@ -94,8 +92,8 @@ describe("KiddoPaint.KeyboardHelp", () => {
         "shortcuts-disabled-content",
       );
 
-      expect(enabledContent.style.display).toBe("block");
-      expect(disabledContent.style.display).toBe("none");
+      expect(enabledContent!.style.display).toBe("block");
+      expect(disabledContent!.style.display).toBe("none");
     });
   });
 
@@ -105,7 +103,7 @@ describe("KiddoPaint.KeyboardHelp", () => {
       window.KiddoPaint.KeyboardHelp.hide();
 
       const overlay = document.getElementById("keyboard-shortcuts-popup");
-      expect(overlay.style.display).toBe("none");
+      expect(overlay!.style.display).toBe("none");
     });
   });
 
@@ -114,7 +112,7 @@ describe("KiddoPaint.KeyboardHelp", () => {
       window.KiddoPaint.KeyboardHelp.toggle();
 
       const overlay = document.getElementById("keyboard-shortcuts-popup");
-      expect(overlay.style.display).toBe("flex");
+      expect(overlay!.style.display).toBe("flex");
     });
 
     it("closes popup when visible", () => {
@@ -122,7 +120,7 @@ describe("KiddoPaint.KeyboardHelp", () => {
       window.KiddoPaint.KeyboardHelp.toggle();
 
       const overlay = document.getElementById("keyboard-shortcuts-popup");
-      expect(overlay.style.display).toBe("none");
+      expect(overlay!.style.display).toBe("none");
     });
   });
 

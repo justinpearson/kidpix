@@ -27,8 +27,8 @@ KiddoPaint.KeyboardHelp = {
       return;
     }
 
-    this.popup = this.overlay.querySelector(".modal-content");
-    this.closeBtn = this.overlay.querySelector(".close-btn");
+    this.popup = this.overlay.querySelector<HTMLElement>(".modal-content");
+    this.closeBtn = this.overlay.querySelector<HTMLElement>(".close-btn");
     this.enabledContent = document.getElementById("shortcuts-enabled-content");
     this.disabledContent = document.getElementById(
       "shortcuts-disabled-content",
@@ -45,7 +45,7 @@ KiddoPaint.KeyboardHelp = {
    * @private
    */
   _attachEventListeners: function () {
-    var self = this;
+    const self = this;
 
     // Close button click
     if (this.closeBtn) {
@@ -55,8 +55,9 @@ KiddoPaint.KeyboardHelp = {
       });
     }
 
-    // Click on overlay (outside popup) to close
-    this.overlay.addEventListener("click", function (e) {
+    // Click on overlay (outside popup) to close; the overlay is verified
+    // non-null by init() before this method is called.
+    this.overlay!.addEventListener("click", function (e) {
       if (e.target === self.overlay) {
         self.hide();
       }
@@ -89,7 +90,7 @@ KiddoPaint.KeyboardHelp = {
     }
 
     // Check if keyboard shortcuts are enabled
-    var shortcutsEnabled = KiddoPaint.Settings.isKeyboardShortcutsEnabled();
+    const shortcutsEnabled = KiddoPaint.Settings.isKeyboardShortcutsEnabled();
 
     // Show/hide appropriate content
     if (this.enabledContent && this.disabledContent) {
@@ -130,9 +131,9 @@ KiddoPaint.KeyboardHelp = {
 
   /**
    * Check if the popup is currently visible
-   * @returns {boolean} True if popup is visible, false otherwise
+   * @returns True if popup is visible, false otherwise
    */
   isVisible: function () {
-    return this.overlay && this.overlay.style.display === "flex";
+    return !!(this.overlay && this.overlay.style.display === "flex");
   },
 };
