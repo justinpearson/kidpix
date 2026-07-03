@@ -282,3 +282,34 @@ describe("srng()", () => {
     }
   });
 });
+
+// These utilities are called from OTHER modules (brushes, tools, stamps).
+// Since the app is served as ES modules, cross-file calls only resolve via
+// window attachment. Regression test for the "ziggurat is not defined" bug
+// that broke the Spray/Dumbbell/Icy brushes, stamp hue-shifting, smudge,
+// bezfollow, wholefx pixelate, and placer scaling in the shipped app.
+describe("cross-module window attachments", () => {
+  const crossModuleFns = [
+    "hueShift", // js/stamps/stamps.js, js/util/cache.js
+    "ziggurat", // js/brushes/spray.js, js/brushes/dumbbell.js
+    "boxmuller", // js/brushes/spray.js
+    "randn_bm", // js/brushes/icy.js
+    "createFeatherGradient", // js/tools/smudge.js
+    "getCubicBezierXYatPercent", // js/tools/bezfollow.js
+    "bezierLength", // js/tools/bezfollow.js
+    "pixelateCanvas", // js/tools/wholefx.js
+    "scaleImageDataCanvasAPI", // js/tools/placer.js
+  ];
+  it.each(crossModuleFns)("window.%s is attached", (fn) => {
+    expect(typeof window[fn]).toBe("function");
+  });
+
+  it("boxmuller returns a numeric pair without throwing", () => {
+    // The old implementation assigned to an undeclared `y`, which always
+    // throws in strict-mode ES modules.
+    const pts = window.boxmuller();
+    expect(pts).toHaveLength(2);
+    expect(typeof pts[0]).toBe("number");
+    expect(typeof pts[1]).toBe("number");
+  });
+});

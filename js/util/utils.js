@@ -127,7 +127,7 @@ function ziggurat() {
 function boxmuller() {
   const r = Math.sqrt(-2 * Math.log(Math.random()));
   const theta = 2 * Math.PI * Math.random();
-  return [r * Math.cos(theta), (y = r * Math.sin(theta))];
+  return [r * Math.cos(theta), r * Math.sin(theta)];
 }
 
 // Standard Normal variate using Box-Muller transform.
@@ -220,6 +220,21 @@ window.rgbToHsl = rgbToHsl;
 window.hslToRgb = hslToRgb;
 window.getRandomInt = getRandomInt;
 window.getRandomLetter = getRandomLetter;
+
+// These are also called from other modules (brushes, tools, stamps). Since
+// the app is served as ES modules, top-level functions are module-scoped —
+// cross-file calls only work via window. Missing attachments here broke the
+// Spray/Dumbbell/Icy brushes, stamp hue-shifting, smudge, bezfollow, wholefx
+// pixelate, and placer scaling with ReferenceErrors.
+window.hueShift = hueShift;
+window.ziggurat = ziggurat;
+window.boxmuller = boxmuller;
+window.randn_bm = randn_bm;
+window.createFeatherGradient = createFeatherGradient;
+window.getCubicBezierXYatPercent = getCubicBezierXYatPercent;
+window.bezierLength = bezierLength;
+window.pixelateCanvas = pixelateCanvas;
+window.scaleImageDataCanvasAPI = scaleImageDataCanvasAPI;
 
 function guil(R, r, m, theta, p, Q, m2, n) {
   var x =
