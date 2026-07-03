@@ -78,8 +78,8 @@ import "../js/tools/mixer-wallpaper.js";
 import "../js/tools/wholefx.js";
 
 // js/textures/*
-import "../js/textures/gco.js";
-import "../js/textures/textures.js";
+import "../js/textures/gco";
+import "../js/textures/textures";
 
 // js/submenus/*
 import "../js/submenus/brush.js";

@@ -24,6 +24,18 @@ interface Window {
   /** (Re)builds KiddoPaint.Submenu.sprites, optionally filtered by search. */
   init_sprites_submenu(searchTerm?: string): void;
 
+  // ---- js/textures/gco.ts ----
+  /** HSV->RGB conversion helper (channels 0-255). */
+  Color: {
+    HSV_RGB(o: { H: number; S: number; V: number }): {
+      R: number;
+      G: number;
+      B: number;
+    };
+  };
+  /** Color-sphere + light-mix composite used by the Mean Streak brush. */
+  makeComposite(gco: GlobalCompositeOperation): HTMLCanvasElement;
+
   // ---- js/tools/wholefx.js ----
   /** Whole-canvas effect name constants (INVERT, PIXELATE, ...). */
   // TODO(ts): tighten to the literal effect map when wholefx.js converts (M9)
