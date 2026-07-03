@@ -20,7 +20,7 @@ import {
   getRandomInt,
   getRandomLetter,
   srng,
-} from "./utils.js";
+} from "./utils";
 
 describe("distanceBetween()", () => {
   it("handles a classic 3-4-5 triangle", () => {
@@ -301,7 +301,8 @@ describe("cross-module window attachments", () => {
     "scaleImageDataCanvasAPI", // js/tools/placer.js
   ];
   it.each(crossModuleFns)("window.%s is attached", (fn) => {
-    expect(typeof window[fn]).toBe("function");
+    const w = window as unknown as Record<string, unknown>;
+    expect(typeof w[fn]).toBe("function");
   });
 
   it("boxmuller returns a numeric pair without throwing", () => {

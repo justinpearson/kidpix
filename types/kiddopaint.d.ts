@@ -9,12 +9,27 @@
 // tightened when the milestone that converts their owning files completes.
 
 /**
+ * A point in canvas coordinates, using the app's underscore convention.
+ * Plain {_x,_y} objects are passed interchangeably with pointer events
+ * (e.g. bezfollow's synthetic events, test fixtures).
+ */
+interface KidPixPoint {
+  _x: number;
+  _y: number;
+}
+
+/**
  * MouseEvent as seen by tools: ev_canvas (js/init/kiddopaint.js) injects
  * canvas-relative coordinates before dispatching to the current tool.
  */
-interface KidPixPointerEvent extends MouseEvent {
-  _x: number;
-  _y: number;
+interface KidPixPointerEvent extends MouseEvent, KidPixPoint {}
+
+/** An rgba color unpacked to channel values 0-255 (see color2json). */
+interface KidPixRGBA {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
 }
 
 /**

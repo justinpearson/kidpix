@@ -20,7 +20,7 @@ import "../js/util/keyboard-help.js";
 import "../js/util/smoke.js";
 import "../js/util/smooth.js";
 import "../js/util/trim-canvas.js";
-import "../js/util/utils.js";
+import "../js/util/utils";
 
 // js/init/* (load after utilities since they depend on them)
 import "../js/init/submenus.js";

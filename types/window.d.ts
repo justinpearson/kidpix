@@ -23,4 +23,96 @@ interface Window {
   animContext: CanvasRenderingContext2D;
   bnimCanvas: HTMLCanvasElement;
   bnimContext: CanvasRenderingContext2D;
+
+  // ---- js/util/utils.ts ----
+  distanceBetween(ev1: KidPixPoint, ev2: KidPixPoint): number;
+  angleBetween(ev1: KidPixPoint, ev2: KidPixPoint): number;
+  angleBetweenRad(ev1: KidPixPoint, ev2: KidPixPoint): number;
+  /** Renders a texture swatch into a 50x50 square icon; returns a data URL. */
+  makeIcon(texture: () => string | CanvasGradient | CanvasPattern): string;
+  /** Renders a texture swatch into a 50x50 circle icon; returns a data URL. */
+  makeCircleIcon(
+    texture: () => string | CanvasGradient | CanvasPattern,
+  ): string;
+  /** Seeded pseudo-random number generator. */
+  srng(seed?: number): { next(): number };
+  color2json(color: string): KidPixRGBA;
+  scaleImageDataCanvasAPIPixelated(
+    source: HTMLCanvasElement | HTMLImageElement,
+    scale: number,
+  ): HTMLCanvasElement;
+  extractSprite(
+    img: HTMLCanvasElement | HTMLImageElement,
+    size: number,
+    col: number,
+    row: number,
+    offset: number,
+  ): HTMLCanvasElement;
+  colorsEqual(color1: KidPixRGBA, color2: KidPixRGBA): boolean;
+  makePatternFromImage(
+    image: HTMLCanvasElement | HTMLImageElement,
+  ): CanvasPattern | null;
+  flattenImage(imageData: ImageData): ImageData;
+  remap(imin: number, imax: number, omin: number, omax: number, v: number): number;
+  getRandomFloat(min: number, max: number): number;
+  scaleImageData(imageData: ImageData, scale: number): ImageData;
+  colorNearWhite(color: KidPixRGBA): boolean;
+  /** Interpolates along a line, invoking callback every few pixels. */
+  bresenham(
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    callback: (x: number, y: number) => void,
+  ): void;
+  /** Guilloche curve point (js/brushes + guilloche tool). */
+  guil(
+    R: number,
+    r: number,
+    m: number,
+    theta: number,
+    p: number,
+    Q: number,
+    m2: number,
+    n: number,
+  ): { x: number; y: number };
+  clamp(value: number, min: number, max: number): number;
+  rgbToHsl(r: number, g: number, b: number): { h: number; s: number; l: number };
+  hslToRgb(h: number, s: number, l: number): { r: number; g: number; b: number };
+  getRandomInt(min: number, max: number): number;
+  getRandomLetter(): string;
+  /** Hue-shifts a canvas's pixels in place. */
+  hueShift(
+    canvas: HTMLCanvasElement,
+    context: CanvasRenderingContext2D,
+    shift: number,
+  ): void;
+  /** Approximate standard normal sample in roughly [-1, 1]. */
+  ziggurat(): number;
+  /** Box-Muller transform: a pair of standard normal samples. */
+  boxmuller(): [number, number];
+  /** Skewed normal sample stretched to [min, max]. */
+  randn_bm(min: number, max: number, skew: number): number;
+  createFeatherGradient(radius: number, hardness: number): CanvasGradient;
+  getCubicBezierXYatPercent(
+    startPt: number[],
+    controlPt1: number[],
+    controlPt2: number[],
+    endPt: number[],
+    percent: number,
+  ): KidPixPoint;
+  bezierLength(
+    startPt: number[],
+    controlPt1: number[],
+    controlPt2: number[],
+    endPt: number[],
+  ): number;
+  pixelateCanvas(
+    source: HTMLCanvasElement | HTMLImageElement,
+    block: number,
+  ): HTMLCanvasElement;
+  scaleImageDataCanvasAPI(
+    source: HTMLCanvasElement | HTMLImageElement,
+    scale: number,
+  ): HTMLCanvasElement;
 }
