@@ -6,8 +6,8 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./src/test-setup.ts"],
     exclude: ["**/node_modules/**", "**/tests/e2e/**"],
-    // Include JavaScript files from js/ directory
-    include: ["**/*.{test,spec}.{js,ts,tsx}", "**/js/**/*.{test,spec}.js"],
+    // Include test files from js/ (both .js and converted .ts) and src/
+    include: ["**/*.{test,spec}.{js,ts,tsx}", "**/js/**/*.{test,spec}.{js,ts}"],
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
@@ -22,7 +22,7 @@ export default defineConfig({
         "tests/**",
         "site/**",
       ],
-      include: ["js/**/*.js", "src/**/*.{js,ts,tsx}"],
+      include: ["js/**/*.{js,ts}", "src/**/*.{js,ts,tsx}"],
       all: true,
       // TODO: Increase coverage thresholds as we add more tests
       // Current coverage (as of 2025-06-17): ~1.76% lines, ~14.96% functions, ~25% branches
