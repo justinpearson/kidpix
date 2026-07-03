@@ -1,11 +1,11 @@
-KiddoPaint.Brushes.Concentric = function (color1, step) {
+KiddoPaint.Brushes.Concentric = function (color1: string | undefined, step: number) {
   color1 = color1 || "black";
 
-  var canvasBrush = document.createElement("canvas");
-  var size = ((step % 7) * 5 + 5) * KiddoPaint.Current.scaling;
+  const canvasBrush = document.createElement("canvas");
+  const size = ((step % 7) * 5 + 5) * KiddoPaint.Current.scaling;
   canvasBrush.width = size * 2 + 10;
   canvasBrush.height = size * 2 + 10;
-  var contextBrush = canvasBrush.getContext("2d");
+  const contextBrush = canvasBrush.getContext("2d")!;
 
   contextBrush.beginPath();
   contextBrush.arc(size + 5, size + 5, size, 0, Math.PI * 2);

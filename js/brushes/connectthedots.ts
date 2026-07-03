@@ -1,20 +1,19 @@
-KiddoPaint.Brushes.ConnectTheDots = function (color1, step) {
+KiddoPaint.Brushes.ConnectTheDots = function (color1: string | undefined, step: number) {
   color1 = color1 || "black";
 
-  var canvasBrush = document.createElement("canvas");
+  const canvasBrush = document.createElement("canvas");
   canvasBrush.width = canvasBrush.height = 150;
-  var contextBrush = canvasBrush.getContext("2d", { willReadFrequently: true });
+  const contextBrush = canvasBrush.getContext("2d", { willReadFrequently: true })!;
 
   contextBrush.font = "16px sans-serif";
   contextBrush.textBaseline = "middle";
   contextBrush.textAlign = "center";
   contextBrush.fillStyle = color1;
   const dotandnumber = "• " + step;
-  const textsize = contextBrush.measureText(dotandnumber);
   contextBrush.fillText(dotandnumber, 16, 16, canvasBrush.width); // 3rd arg tries to constrain width
 
   return {
-    brush: trimCanvas3(canvasBrush),
+    brush: window.trimCanvas3(canvasBrush),
     offset: 0,
   };
 };

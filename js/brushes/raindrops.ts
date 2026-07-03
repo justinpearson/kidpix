@@ -1,11 +1,11 @@
-KiddoPaint.Brushes.Raindrops = function (color1) {
+KiddoPaint.Brushes.Raindrops = function (color1?: string) {
   color1 = color1 || "black";
   const size = (5 + 100 * Math.random()) * KiddoPaint.Current.scaling;
 
-  var canvasBrush = document.createElement("canvas");
+  const canvasBrush = document.createElement("canvas");
   canvasBrush.width = size * 2;
   canvasBrush.height = size * 2;
-  var contextBrush = canvasBrush.getContext("2d");
+  const contextBrush = canvasBrush.getContext("2d")!;
 
   contextBrush.beginPath();
   contextBrush.arc(size, size, size / 2, 0, 2 * Math.PI);
@@ -19,8 +19,8 @@ KiddoPaint.Brushes.Raindrops = function (color1) {
   return {
     brush: canvasBrush,
     abspos: {
-      x: getRandomFloat(-5, KiddoPaint.Display.canvas.width + 5),
-      y: getRandomFloat(-5, KiddoPaint.Display.canvas.width + 5),
+      x: window.getRandomFloat(-5, KiddoPaint.Display.canvas.width + 5),
+      y: window.getRandomFloat(-5, KiddoPaint.Display.canvas.width + 5),
     },
   };
 };

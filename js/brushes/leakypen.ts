@@ -1,9 +1,9 @@
 KiddoPaint.Brushes.LeakyPen = (function () {
-  var prevSize = 3;
-  var baseSize = 3;
-  var maxSize = Math.PI * baseSize * Math.E;
+  let prevSize = 3;
+  const baseSize = 3;
+  const maxSize = Math.PI * baseSize * Math.E;
 
-  return function (color1, distPrev) {
+  return function (color1: string | undefined, distPrev: number) {
     color1 = color1 || "black";
     if (distPrev < 2) {
       if (prevSize < maxSize) {
@@ -15,10 +15,10 @@ KiddoPaint.Brushes.LeakyPen = (function () {
 
     const size = prevSize * KiddoPaint.Current.scaling;
 
-    var canvasBrush = document.createElement("canvas");
+    const canvasBrush = document.createElement("canvas");
     canvasBrush.width = size * 4.5;
     canvasBrush.height = size * 4.5;
-    var contextBrush = canvasBrush.getContext("2d");
+    const contextBrush = canvasBrush.getContext("2d")!;
 
     contextBrush.beginPath();
     contextBrush.ellipse(

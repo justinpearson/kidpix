@@ -1,11 +1,11 @@
-KiddoPaint.Brushes.MeanStreak = function (step) {
-  var canvasBrush = document.createElement("canvas");
-  var size = 32 * KiddoPaint.Current.scaling;
+KiddoPaint.Brushes.MeanStreak = function (step: number) {
+  const canvasBrush = document.createElement("canvas");
+  const size = 32 * KiddoPaint.Current.scaling;
   canvasBrush.width = size * 2;
   canvasBrush.height = size * 2;
-  var contextBrush = canvasBrush.getContext("2d");
+  const contextBrush = canvasBrush.getContext("2d")!;
 
-  var transforms = [
+  const transforms: GlobalCompositeOperation[] = [
     "source-in",
     "source-out",
     "destination-atop",
@@ -17,7 +17,7 @@ KiddoPaint.Brushes.MeanStreak = function (step) {
     "luminosity",
   ];
 
-  var c = makeComposite(transforms[KiddoPaint.Current.multiplier]);
+  const c = window.makeComposite(transforms[KiddoPaint.Current.multiplier]);
 
   contextBrush.translate(size / 2, size / 2);
   contextBrush.rotate((step % 360) * (Math.PI / 180));

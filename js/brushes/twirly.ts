@@ -1,13 +1,13 @@
-KiddoPaint.Brushes.Twirly = function (color1, step) {
+KiddoPaint.Brushes.Twirly = function (color1: string | undefined, step: number) {
   color1 = color1 || "black";
   step = (step % 24) / 24;
 
-  var canvasBrush = document.createElement("canvas");
-  var size = 25 * KiddoPaint.Current.scaling;
-  var x, y; // Declare variables to avoid global assignment
+  const canvasBrush = document.createElement("canvas");
+  const size = 25 * KiddoPaint.Current.scaling;
+  let x: number, y: number; // Declare variables to avoid global assignment
   canvasBrush.width = size * 2;
   canvasBrush.height = size * 2;
-  var contextBrush = canvasBrush.getContext("2d");
+  const contextBrush = canvasBrush.getContext("2d")!;
 
   contextBrush.beginPath();
   contextBrush.moveTo(size, size);

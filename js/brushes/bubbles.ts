@@ -1,11 +1,11 @@
-KiddoPaint.Brushes.Bubbles = function (color1) {
+KiddoPaint.Brushes.Bubbles = function (color1?: string) {
   color1 = color1 || "black";
 
-  var canvasBrush = document.createElement("canvas");
-  var size = 20 * KiddoPaint.Current.scaling;
+  const canvasBrush = document.createElement("canvas");
+  const size = 20 * KiddoPaint.Current.scaling;
   canvasBrush.width = size * 2;
   canvasBrush.height = size * 2;
-  var contextBrush = canvasBrush.getContext("2d");
+  const contextBrush = canvasBrush.getContext("2d")!;
 
   for (let i = -(size / 2); i < size / 2; i += 4) {
     for (let j = -(size / 2); j < size / 2; j += 4) {

@@ -1,17 +1,17 @@
 KiddoPaint.Brushes.Splatters = function () {
   const size = 27 * KiddoPaint.Current.scaling;
 
-  var canvasBrush = document.createElement("canvas");
+  const canvasBrush = document.createElement("canvas");
   canvasBrush.width = size * 2;
   canvasBrush.height = size * 2;
-  var contextBrush = canvasBrush.getContext("2d");
+  const contextBrush = canvasBrush.getContext("2d")!;
 
-  for (let i = 0; i < 2 + getRandomInt(1, 3); i++) {
-    const csize = getRandomFloat(1, 7);
+  for (let i = 0; i < 2 + window.getRandomInt(1, 3); i++) {
+    const csize = window.getRandomFloat(1, 7);
     contextBrush.beginPath();
     contextBrush.arc(
-      size + getRandomFloat(-size / 2.0, size / 2.0),
-      size + getRandomFloat(-size / 2.0, size / 2.0),
+      size + window.getRandomFloat(-size / 2.0, size / 2.0),
+      size + window.getRandomFloat(-size / 2.0, size / 2.0),
       csize,
       0,
       2 * Math.PI,

@@ -1,12 +1,12 @@
-KiddoPaint.Brushes.Pies = function (color1) {
+KiddoPaint.Brushes.Pies = function (color1?: string) {
   color1 = color1 || "black";
 
-  var canvasBrush = document.createElement("canvas");
-  var size = 20 * KiddoPaint.Current.scaling;
-  var offset; // Declare variable to avoid global assignment
+  const canvasBrush = document.createElement("canvas");
+  const size = 20 * KiddoPaint.Current.scaling;
+  let offset: number; // Declare variable to avoid global assignment
   canvasBrush.width = size * 2;
   canvasBrush.height = size * 2;
-  var contextBrush = canvasBrush.getContext("2d");
+  const contextBrush = canvasBrush.getContext("2d")!;
 
   contextBrush.beginPath();
   contextBrush.arc(size, size, size, 0, Math.PI * 2);
