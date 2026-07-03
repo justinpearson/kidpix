@@ -1,11 +1,17 @@
-KiddoPaint.Builders.Prints = function (color1, print, angle) {
+KiddoPaint.Builders.Prints = function (
+  color1: string | undefined,
+  print: string,
+  angle?: number,
+) {
   color1 = color1 || "black";
   angle = angle || 0;
 
-  var canvasBrush = document.createElement("canvas");
+  const canvasBrush = document.createElement("canvas");
   canvasBrush.width = 150 * KiddoPaint.Current.scaling;
   canvasBrush.height = 150 * KiddoPaint.Current.scaling;
-  var contextBrush = canvasBrush.getContext("2d", { willReadFrequently: true });
+  const contextBrush = canvasBrush.getContext("2d", {
+    willReadFrequently: true,
+  })!;
 
   contextBrush.save();
   contextBrush.translate(
@@ -26,7 +32,7 @@ KiddoPaint.Builders.Prints = function (color1, print, angle) {
   contextBrush.fillRect(0, 0, canvasBrush.width, canvasBrush.height);
 
   return {
-    brush: trimCanvas3(canvasBrush),
+    brush: window.trimCanvas3(canvasBrush),
     offset: 0,
   };
 };

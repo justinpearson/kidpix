@@ -1,15 +1,17 @@
-KiddoPaint.Builders.Arrow = function (color1, angle) {
-  jitter = function () {
+KiddoPaint.Builders.Arrow = function (color1?: string, angle?: number) {
+  // 'jitter' was assigned without declaration — a ReferenceError under
+  // module strict mode that left this builder broken until now.
+  const jitter = function () {
     const baseJitter = 10;
     return baseJitter + Math.random() * baseJitter;
   };
   color1 = color1 || "black";
   angle = angle || 0;
 
-  var canvasBrush = document.createElement("canvas");
+  const canvasBrush = document.createElement("canvas");
   canvasBrush.width = 50;
   canvasBrush.height = 50;
-  var contextBrush = canvasBrush.getContext("2d");
+  const contextBrush = canvasBrush.getContext("2d")!;
 
   contextBrush.beginPath();
   //	contextBrush.rect(0, 0, 43, 43);

@@ -1,11 +1,11 @@
-KiddoPaint.Builders.Rail = function (color1, angle) {
+KiddoPaint.Builders.Rail = function (color1?: string, angle?: number) {
   color1 = color1 || "black";
   angle = angle || 0;
 
-  var canvasBrush = document.createElement("canvas");
+  const canvasBrush = document.createElement("canvas");
   canvasBrush.width = 43;
   canvasBrush.height = 43;
-  var contextBrush = canvasBrush.getContext("2d");
+  const contextBrush = canvasBrush.getContext("2d")!;
 
   contextBrush.beginPath();
 
@@ -24,8 +24,8 @@ KiddoPaint.Builders.Rail = function (color1, angle) {
   contextBrush.fillRect(27.5, 0, 2.5, 40);
 
   // ties
-  for (var i = 0; i < 4; i++) {
-    var offset = 8 * i;
+  for (let i = 0; i < 4; i++) {
+    const offset = 8 * i;
     contextBrush.fillStyle = "rgb(136, 104, 67)";
     contextBrush.fillRect(0, 5.5 + offset, 35, 2);
     contextBrush.fillStyle = "rgb(73, 61, 38)";

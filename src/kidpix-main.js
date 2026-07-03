@@ -119,10 +119,10 @@ import "../js/brushes/triangles.js";
 import "../js/brushes/twirly.js";
 
 // js/builders/*
-import "../js/builders/arrow.js";
-import "../js/builders/prints.js";
-import "../js/builders/rail.js";
-import "../js/builders/road.js";
+import "../js/builders/arrow";
+import "../js/builders/prints";
+import "../js/builders/rail";
+import "../js/builders/road";
 
 // js/stamps/*
 import "../js/stamps/stamp-names-data.js"; // Load stamp names first
