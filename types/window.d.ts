@@ -24,6 +24,11 @@ interface Window {
   /** (Re)builds KiddoPaint.Submenu.sprites, optionally filtered by search. */
   init_sprites_submenu(searchTerm?: string): void;
 
+  // ---- js/tools/wholefx.js ----
+  /** Whole-canvas effect name constants (INVERT, PIXELATE, ...). */
+  // TODO(ts): tighten to the literal effect map when wholefx.js converts (M9)
+  JumbleFx: Record<string, string>;
+
   // Canvas layers created by init_kiddo_paint(); undefined before init.
   tmpCanvas: HTMLCanvasElement;
   tmpContext: CanvasRenderingContext2D;
