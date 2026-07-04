@@ -9,6 +9,14 @@
 // actually consume them — do not add speculative declarations. Keep this file
 // ambient (no top-level import/export) so declarations stay global.
 
+/** A running smoke-particle emitter from js/util/smoke.js. */
+interface KidPixSmokeMachine {
+  start(): void;
+  stop(): void;
+  addSmoke(x: number, y: number, numParticles: number): void;
+  step(dtMs: number): void;
+}
+
 interface Window {
   /**
    * js/util/fit-curve.js (Schneider curve fitting). Takes [x,y] points and
@@ -20,4 +28,25 @@ interface Window {
     maxError: number,
     progressCallback?: (bez: number[][], error: number, split: number) => void,
   ): number[][][];
+
+  /** js/util/smoke.js (bijection/smoke.js, UMD). */
+  SmokeMachine(
+    context: CanvasRenderingContext2D,
+    color: [number, number, number],
+  ): KidPixSmokeMachine;
+
+  /**
+   * js/util/filters.js (html5rocks-derived image filters).
+   * Members that converted code uses are typed precisely; the rest are
+   * loose (vendored surface).
+   */
+  Filters: {
+    gcoInvert(imageData: ImageData, alpha?: number): HTMLCanvasElement;
+  } & Record<string, (...args: any[]) => any>;
+
+  /**
+   * js/util/glfx.js (Evan Wallace's WebGL effects). The chainable effect
+   * canvas is deliberately untyped — the vendored API surface is large.
+   */
+  fx: { canvas(): any };
 }

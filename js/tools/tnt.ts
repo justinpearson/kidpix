@@ -1,31 +1,30 @@
-KiddoPaint.Tools.Toolbox.Tnt = function () {
-  var tool = this;
-  this.isDown = false;
+class TntTool implements KiddoPaintTool {
+  isDown = false;
 
-  this.mousedown = function (ev) {
-    tool.isDown = true;
-    tool.animate(ev);
+  mousedown = (ev: KidPixPointerEvent) => {
+    this.isDown = true;
+    this.animate(ev);
   };
 
-  this.mousemove = function (ev) {};
+  mousemove = () => {};
 
-  this.mouseup = function (ev) {
-    if (tool.isDown) {
-      tool.isDown = false;
+  mouseup = () => {
+    if (this.isDown) {
+      this.isDown = false;
     }
   };
 
-  this.animate = function (ev) {
+  animate = (ev: KidPixPointerEvent) => {
     KiddoPaint.Display.saveUndo();
     KiddoPaint.Display.pauseUndo();
 
-    var iter = 1;
-    var intervalID = setInterval(drawBomb, 175); // Will alert every second.
+    let iter = 1;
+    const intervalID = setInterval(drawBomb, 175); // Will alert every second.
     KiddoPaint.Sounds.explosion();
     drawBomb();
 
     function drawBomb() {
-      var ctx = KiddoPaint.Display.context;
+      const ctx = KiddoPaint.Display.context;
       ctx.beginPath();
       ctx.fillStyle = "rgb(0, 255, 0)";
       ctx.arc(ev._x, ev._y, 50 * iter, 0, 2 * Math.PI);
@@ -43,5 +42,6 @@ KiddoPaint.Tools.Toolbox.Tnt = function () {
       }
     }
   };
-};
-KiddoPaint.Tools.Tnt = new KiddoPaint.Tools.Toolbox.Tnt();
+}
+KiddoPaint.Tools.Toolbox.Tnt = TntTool;
+KiddoPaint.Tools.Tnt = new TntTool();
