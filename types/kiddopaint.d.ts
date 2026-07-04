@@ -241,8 +241,23 @@ interface KiddoPaintBuildersRegistry {
   [builderName: string]: any;
 }
 
-/** TODO(ts): tighten in M10 (js/stamps/). */
+/** One named stamp cell in a spritesheet (js/stamps/stamp-names-data.ts). */
+interface KidPixStampName {
+  index: number;
+  row: number;
+  col: number;
+  name: string;
+}
+
+/** Stamp-name metadata for one spritesheet image. */
+interface KidPixStampSheet {
+  filename: string;
+  stamp_data: KidPixStampName[];
+}
+
 interface KiddoPaintStampsRegistry {
+  /** Human-readable stamp names for every spritesheet. */
+  namesData: KidPixStampSheet[];
   [key: string]: any;
 }
 

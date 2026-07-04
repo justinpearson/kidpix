@@ -2,7 +2,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Solid",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Solid);
+      return window.makeIcon(KiddoPaint.Textures.Solid);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -14,7 +14,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Partial1",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Partial1);
+      return window.makeIcon(KiddoPaint.Textures.Partial1);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -26,7 +26,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Partial2",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Partial2);
+      return window.makeIcon(KiddoPaint.Textures.Partial2);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -38,7 +38,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Partial3",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Partial3);
+      return window.makeIcon(KiddoPaint.Textures.Partial3);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -50,7 +50,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "PartialArtifactAlias",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.PartialArtifactAlias);
+      return window.makeIcon(KiddoPaint.Textures.PartialArtifactAlias);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -64,7 +64,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Speckles",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Speckles);
+      return window.makeIcon(KiddoPaint.Textures.Speckles);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -76,7 +76,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Speckles",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Stripes);
+      return window.makeIcon(KiddoPaint.Textures.Stripes);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -88,7 +88,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Speckles",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Thatch);
+      return window.makeIcon(KiddoPaint.Textures.Thatch);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -100,7 +100,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Speckles",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Shingles);
+      return window.makeIcon(KiddoPaint.Textures.Shingles);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -112,7 +112,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Bubbles",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Bubbles);
+      return window.makeIcon(KiddoPaint.Textures.Bubbles);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -124,7 +124,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Diamond",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Diamond);
+      return window.makeIcon(KiddoPaint.Textures.Diamond);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -136,7 +136,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Diamond",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Ribbon);
+      return window.makeIcon(KiddoPaint.Textures.Ribbon);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -148,7 +148,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Sand",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Sand);
+      return window.makeIcon(KiddoPaint.Textures.Sand);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -160,7 +160,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Brick",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Brick);
+      return window.makeIcon(KiddoPaint.Textures.Brick);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -172,7 +172,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Brick",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Chevron);
+      return window.makeIcon(KiddoPaint.Textures.Chevron);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -184,7 +184,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Brick",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Stairs);
+      return window.makeIcon(KiddoPaint.Textures.Stairs);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -196,7 +196,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Brick",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Cross);
+      return window.makeIcon(KiddoPaint.Textures.Cross);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -208,7 +208,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Brick",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.DiagBrick);
+      return window.makeIcon(KiddoPaint.Textures.DiagBrick);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -220,7 +220,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "CornerStair",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.CornerStair);
+      return window.makeIcon(KiddoPaint.Textures.CornerStair);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";
@@ -232,7 +232,7 @@ KiddoPaint.Submenu.paintcan = [
   {
     name: "Houndstooth",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Houndstooth);
+      return window.makeIcon(KiddoPaint.Textures.Houndstooth);
     },
     handler: function () {
       KiddoPaint.Tools.PaintCan.gcop = "destination-in";

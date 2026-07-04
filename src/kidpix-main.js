@@ -81,19 +81,19 @@ import "../js/textures/gco";
 import "../js/textures/textures";
 
 // js/submenus/*
-import "../js/submenus/brush.js";
-import "../js/submenus/oval.js";
-import "../js/submenus/eraser.js";
-import "../js/submenus/paintcan.js";
-import "../js/submenus/jumble.js";
-import "../js/submenus/line.js";
-import "../js/submenus/pencil.js";
-import "../js/submenus/colorpicker.js";
-import "../js/submenus/spray.js";
-import "../js/submenus/sprites.js";
-import "../js/submenus/rectangle.js";
-import "../js/submenus/stickers.js";
-import "../js/submenus/truck.js";
+import "../js/submenus/brush";
+import "../js/submenus/oval";
+import "../js/submenus/eraser";
+import "../js/submenus/paintcan";
+import "../js/submenus/jumble";
+import "../js/submenus/line";
+import "../js/submenus/pencil";
+import "../js/submenus/colorpicker";
+import "../js/submenus/spray";
+import "../js/submenus/sprites";
+import "../js/submenus/rectangle";
+import "../js/submenus/stickers";
+import "../js/submenus/truck";
 
 // js/brushes/*
 import "../js/brushes/bubbles";
@@ -124,12 +124,12 @@ import "../js/builders/rail";
 import "../js/builders/road";
 
 // js/stamps/*
-import "../js/stamps/stamp-names-data.js"; // Load stamp names first
-import "../js/stamps/text.js";
-import "../js/stamps/stamps.js";
+import "../js/stamps/stamp-names-data"; // Load stamp names first
+import "../js/stamps/text";
+import "../js/stamps/stamps";
 
 // js/sounds/*
-import "../js/sounds/sounds.js";
+import "../js/sounds/sounds";
 
 // Initialize the application after all modules are loaded.
 // With Vite's dev server processing 100+ module imports, DOMContentLoaded

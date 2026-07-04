@@ -18,10 +18,10 @@ global.KiddoPaint = {
     ],
   },
   Submenu: {},
-};
+} as unknown as KiddoPaintNamespace;
 
 // Import the stamp names data
-await import("./stamp-names-data.js");
+await import("./stamp-names-data");
 
 describe("KiddoPaint.Stamps.namesData", () => {
   describe("Data structure", () => {
@@ -119,8 +119,8 @@ describe("KiddoPaint.Stamps.namesData", () => {
         (s) => s.name === "palm tree",
       );
       expect(palmTree).toBeDefined();
-      expect(palmTree.row).toBe(1);
-      expect(palmTree.col).toBe(1);
+      expect(palmTree!.row).toBe(1);
+      expect(palmTree!.col).toBe(1);
     });
 
     it("includes strawberry stamp", () => {

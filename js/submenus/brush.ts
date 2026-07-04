@@ -3,11 +3,11 @@ KiddoPaint.Submenu.brush = [
     name: "Leaky Pen",
     imgSrc: "img/brush/tool-menu-wacky-brush-70.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.AnimBrush;
       KiddoPaint.Tools.AnimBrush.reset();
-      KiddoPaint.Tools.AnimBrush.texture = function (step, distancePrev) {
+      KiddoPaint.Tools.AnimBrush.texture = function (_step: number, distancePrev: number) {
         KiddoPaint.Sounds.brushleakypen(); // sound
         return KiddoPaint.Brushes.LeakyPen(
           KiddoPaint.Current.color,
@@ -20,7 +20,7 @@ KiddoPaint.Submenu.brush = [
     name: "Zig Zag",
     imgSrc: "img/brush/tool-menu-wacky-brush-71.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Scribble;
     },
@@ -29,7 +29,7 @@ KiddoPaint.Submenu.brush = [
     name: "Dots",
     imgSrc: "img/brush/tool-menu-wacky-brush-72.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
       KiddoPaint.Tools.PlainBrush.reset();
@@ -46,7 +46,7 @@ KiddoPaint.Submenu.brush = [
     name: "Bubbly",
     imgSrc: "img/brush/tool-menu-wacky-brush-73.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.AnimBrush;
       KiddoPaint.Tools.AnimBrush.reset();
@@ -60,7 +60,7 @@ KiddoPaint.Submenu.brush = [
     name: "Pies",
     imgSrc: "img/brush/tool-menu-wacky-brush-74.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
       KiddoPaint.Tools.PlainBrush.reset();
@@ -75,13 +75,13 @@ KiddoPaint.Submenu.brush = [
     name: "Echoes",
     imgSrc: "img/brush/tool-menu-wacky-brush-75.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
       KiddoPaint.Tools.PlainBrush.reset();
       KiddoPaint.Tools.PlainBrush.soundduring = KiddoPaint.Sounds.brushecho;
       KiddoPaint.Tools.PlainBrush.spacing = 1;
-      KiddoPaint.Tools.PlainBrush.texture = function (step) {
+      KiddoPaint.Tools.PlainBrush.texture = function (step: number) {
         return KiddoPaint.Brushes.Concentric(KiddoPaint.Current.color, step);
       };
     },
@@ -90,7 +90,7 @@ KiddoPaint.Submenu.brush = [
     name: "Northern Lights",
     imgSrc: "img/brush/tool-menu-wacky-brush-76.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Contours;
     },
@@ -99,7 +99,7 @@ KiddoPaint.Submenu.brush = [
     name: "Fuzzer",
     imgSrc: "img/brush/tool-menu-wacky-brush-77.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-none");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Fuzzer;
     },
@@ -108,7 +108,7 @@ KiddoPaint.Submenu.brush = [
     name: "Magnifying Glass",
     imgSrc: "img/brush/tool-menu-wacky-brush-78.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Magnify;
     },
@@ -116,8 +116,8 @@ KiddoPaint.Submenu.brush = [
   {
     name: "Spray Paint",
     imgSrc: "img/brush/tool-menu-wacky-brush-79.png",
-    handler: function (e) {
-      KiddoPaint.Display.canvas.classList = "";
+    handler: function (e: MouseEvent) {
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Tools.SpritePlacer.image = KiddoPaint.Textures.SprayPaint2(
         KiddoPaint.Current.color,
@@ -128,7 +128,7 @@ KiddoPaint.Submenu.brush = [
       };
       KiddoPaint.Current.tool = KiddoPaint.Tools.SpritePlacer;
       if (e.ctrlKey) {
-        show_generic_submenu("spray");
+        window.show_generic_submenu("spray");
       }
     },
   },
@@ -136,7 +136,7 @@ KiddoPaint.Submenu.brush = [
     name: "Pine Needles",
     imgSrc: "img/brush/tool-menu-wacky-brush-80.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Pines;
     },
@@ -145,7 +145,7 @@ KiddoPaint.Submenu.brush = [
     name: "3-D",
     imgSrc: "img/brush/tool-menu-wacky-brush-81.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.ThreeDBrush;
       KiddoPaint.Tools.ThreeDBrush.soundduring =
@@ -156,7 +156,7 @@ KiddoPaint.Submenu.brush = [
     name: "Kaliediscope",
     imgSrc: "img/brush/tool-menu-wacky-brush-82.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Kaleidoscope;
     },
@@ -166,7 +166,7 @@ KiddoPaint.Submenu.brush = [
     name: 'Drippy Paint',
     imgSrc: 'img/brush/tool-menu-wacky-brush-83.png',
     handler: function() {
-        KiddoPaint.Display.canvas.classList = "";
+        KiddoPaint.Display.canvas.className = "";
         KiddoPaint.Display.canvas.classList.add('cursor-paint-brush');
         KiddoPaint.Sounds.unimpl();
     }
@@ -176,13 +176,13 @@ KiddoPaint.Submenu.brush = [
     name: "Connect The Dots",
     imgSrc: "img/brush/tool-menu-wacky-brush-84.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
       KiddoPaint.Tools.PlainBrush.reset();
       KiddoPaint.Tools.PlainBrush.spacing = 25;
       KiddoPaint.Tools.PlainBrush.soundduring = KiddoPaint.Sounds.brushtwirly;
-      KiddoPaint.Tools.PlainBrush.texture = function (step, pstep) {
+      KiddoPaint.Tools.PlainBrush.texture = function (_step: number, pstep: number) {
         return KiddoPaint.Brushes.ConnectTheDots(
           KiddoPaint.Current.modifiedMeta
             ? KiddoPaint.Colors.nextColor()
@@ -197,7 +197,7 @@ KiddoPaint.Submenu.brush = [
     name: 'Alphabet Line',
     imgSrc: 'img/brush/tool-menu-wacky-brush-85.png',
     handler: function() {
-        KiddoPaint.Display.canvas.classList = "";
+        KiddoPaint.Display.canvas.className = "";
         KiddoPaint.Display.canvas.classList.add('cursor-paint-brush');
         KiddoPaint.Sounds.unimpl();
     }
@@ -207,13 +207,13 @@ KiddoPaint.Submenu.brush = [
     name: "Swirl",
     imgSrc: "img/brush/tool-menu-wacky-brush-86.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
       KiddoPaint.Tools.PlainBrush.reset();
       KiddoPaint.Tools.PlainBrush.spacing = 1;
       KiddoPaint.Tools.PlainBrush.soundduring = KiddoPaint.Sounds.brushtwirly;
-      KiddoPaint.Tools.PlainBrush.texture = function (step) {
+      KiddoPaint.Tools.PlainBrush.texture = function (step: number) {
         return KiddoPaint.Brushes.Twirly(
           KiddoPaint.Current.modifiedMeta
             ? KiddoPaint.Colors.nextColor()
@@ -227,14 +227,14 @@ KiddoPaint.Submenu.brush = [
     name: "Rotating Dots",
     imgSrc: "img/brush/br12.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
       KiddoPaint.Tools.PlainBrush.reset();
       KiddoPaint.Tools.PlainBrush.soundduring =
         KiddoPaint.Sounds.brushrollingdots;
       KiddoPaint.Tools.PlainBrush.spacing = 1;
-      KiddoPaint.Tools.PlainBrush.texture = function (step) {
+      KiddoPaint.Tools.PlainBrush.texture = function (step: number) {
         return KiddoPaint.Current.modifiedCtrl
           ? KiddoPaint.Brushes.RotatingPentagon(
               KiddoPaint.Current.modifiedMeta
@@ -255,7 +255,7 @@ KiddoPaint.Submenu.brush = [
     name: "Inverter",
     imgSrc: "img/brush/tool-menu-wacky-brush-87.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Inverter;
     },
@@ -264,7 +264,7 @@ KiddoPaint.Submenu.brush = [
     name: "Geometry",
     imgSrc: "img/brush/tool-menu-wacky-brush-88.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Guilloche;
     },
@@ -273,7 +273,7 @@ KiddoPaint.Submenu.brush = [
     name: "XY to XY",
     imgSrc: "img/brush/br16.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Astroid;
     },
@@ -282,7 +282,7 @@ KiddoPaint.Submenu.brush = [
     name: "Tree",
     imgSrc: "img/brush/tool-menu-wacky-brush-89.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Tree;
     },
@@ -292,7 +292,7 @@ KiddoPaint.Submenu.brush = [
     name: 'Caterpillars',
     imgSrc: 'img/brush/tool-menu-wacky-brush-90.png',
     handler: function() {
-        KiddoPaint.Display.canvas.classList = "";
+        KiddoPaint.Display.canvas.className = "";
         KiddoPaint.Display.canvas.classList.add('cursor-paint-brush');
         KiddoPaint.Sounds.unimpl();
     }
@@ -302,7 +302,7 @@ KiddoPaint.Submenu.brush = [
     name: "Splatter Paint",
     imgSrc: "img/brush/tool-menu-wacky-brush-91.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.AnimBrush;
       KiddoPaint.Tools.AnimBrush.reset();
@@ -319,7 +319,7 @@ KiddoPaint.Submenu.brush = [
     name: "Starburst",
     imgSrc: "img/brush/br-starburst.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Tools.Line.size = KiddoPaint.Current.modified ? 3 : 2;
       KiddoPaint.Tools.Line.stomp = false;
@@ -333,7 +333,7 @@ KiddoPaint.Submenu.brush = [
     name: "The Looper",
     imgSrc: "img/brush/tool-menu-wacky-brush-92.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Looper;
       KiddoPaint.Tools.Looper.soundduring = KiddoPaint.Sounds.brushrollingdots;
@@ -344,7 +344,7 @@ KiddoPaint.Submenu.brush = [
     name: 'Roll The Dice',
     imgSrc: 'img/brush/tool-menu-wacky-brush-93.png',
     handler: function() {
-        KiddoPaint.Display.canvas.classList = "";
+        KiddoPaint.Display.canvas.className = "";
         KiddoPaint.Display.canvas.classList.add('cursor-paint-brush');
         KiddoPaint.Sounds.unimpl();
     }
@@ -354,7 +354,7 @@ KiddoPaint.Submenu.brush = [
     name: "A Galaxy of Stars",
     imgSrc: "img/brush/tool-menu-wacky-brush-94.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
       KiddoPaint.Tools.PlainBrush.reset();
@@ -372,7 +372,7 @@ KiddoPaint.Submenu.brush = [
     name: "Lots of Hugs and Xs",
     imgSrc: "img/brush/tool-menu-wacky-brush-95.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
       KiddoPaint.Tools.PlainBrush.reset();
@@ -390,7 +390,7 @@ KiddoPaint.Submenu.brush = [
     name: "A Full Deck of Cards",
     imgSrc: "img/brush/tool-menu-wacky-brush-96.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
       KiddoPaint.Tools.PlainBrush.reset();
@@ -408,7 +408,7 @@ KiddoPaint.Submenu.brush = [
     name: "Shapes and More Shapes",
     imgSrc: "img/brush/tool-menu-wacky-brush-97.png",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.PlainBrush;
       KiddoPaint.Tools.PlainBrush.reset();
@@ -426,12 +426,12 @@ KiddoPaint.Submenu.brush = [
     name: "Paw Prints",
     emoji: "🐾",
     handler: function () {
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.Brush;
       KiddoPaint.Tools.Brush.reset();
       KiddoPaint.Tools.Brush.soundduring = KiddoPaint.Sounds.brushprints;
-      KiddoPaint.Tools.Brush.texture = function (angle) {
+      KiddoPaint.Tools.Brush.texture = function (angle: number) {
         return KiddoPaint.Builders.Prints(
           KiddoPaint.Current.color,
           KiddoPaint.Current.modifiedMeta ? "👣" : "🐾",

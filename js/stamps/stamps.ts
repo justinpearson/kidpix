@@ -1,18 +1,18 @@
 KiddoPaint.Stamps.stamp = function (
-  stamp,
-  alt,
-  ctrl,
-  size,
-  shiftAmount,
-  color,
+  stamp: string,
+  alt: boolean,
+  ctrl: boolean,
+  size: number,
+  shiftAmount: number,
+  color: string | null,
 ) {
   stamp = stamp || "";
-  var canvasBrush = document.createElement("canvas");
+  const canvasBrush = document.createElement("canvas");
   canvasBrush.width = Math.max(size + size * 0.05, 24);
   canvasBrush.height = Math.max(size + size * 0.05, 24);
   canvasBrush.height += 0.15 * canvasBrush.height; // prevent clipping on bottom
 
-  var contextBrush = canvasBrush.getContext("2d");
+  const contextBrush = canvasBrush.getContext("2d")!;
   contextBrush.font = size + "px " + KiddoPaint.Stamps.currentFace;
   if (color) {
     // chrome & safari compat hack
@@ -38,7 +38,7 @@ KiddoPaint.Stamps.stamp = function (
   contextBrush.restore();
 
   if (shiftAmount != 0) {
-    hueShift(canvasBrush, contextBrush, shiftAmount);
+    window.hueShift(canvasBrush, contextBrush, shiftAmount);
   }
 
   return canvasBrush;

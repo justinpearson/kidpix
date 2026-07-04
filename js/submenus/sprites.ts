@@ -10,7 +10,11 @@ KiddoPaint.Sprite.currentSearch = ""; // Track current search term
  * @param {number} col - 0-indexed column number
  * @returns {string} Human-readable stamp name or fallback
  */
-KiddoPaint.Stamps.getStampName = function (sheetPath, row, col) {
+KiddoPaint.Stamps.getStampName = function (
+  sheetPath: string,
+  row: number,
+  col: number,
+) {
   // Column 14 (0-indexed) = column 15 (1-indexed) = row/page indicator
   if (col === 14) {
     return "Row/Page Indicator";
@@ -21,7 +25,7 @@ KiddoPaint.Stamps.getStampName = function (sheetPath, row, col) {
 
   // Find the spritesheet in our data
   const sheet = KiddoPaint.Stamps.namesData?.find(
-    (s) => s.filename === filename,
+    (s: { filename: string }) => s.filename === filename,
   );
 
   if (!sheet) {
@@ -34,7 +38,8 @@ KiddoPaint.Stamps.getStampName = function (sheetPath, row, col) {
 
   // Find the stamp by row and col
   const stamp = sheet.stamp_data.find(
-    (s) => s.row === jsonRow && s.col === jsonCol,
+    (s: { row: number; col: number; name?: string }) =>
+      s.row === jsonRow && s.col === jsonCol,
   );
 
   return stamp?.name || "Sprite"; // Return name or fallback
@@ -90,7 +95,7 @@ KiddoPaint.Sprite.prevPage = function () {
  * @param {string} searchTerm - Search term to match against stamp names
  * @returns {Array} Array of matching stamps with metadata {name, sheet, row, col}
  */
-KiddoPaint.Sprite.searchAllStamps = function (searchTerm) {
+KiddoPaint.Sprite.searchAllStamps = function (searchTerm: string) {
   if (!searchTerm || searchTerm.trim() === "") {
     return [];
   }
@@ -105,7 +110,7 @@ KiddoPaint.Sprite.searchAllStamps = function (searchTerm) {
 
     // Find the sheet in namesData
     const sheetData = KiddoPaint.Stamps.namesData?.find(
-      (s) => s.filename === filename
+      (s: { filename: string }) => s.filename === filename
     );
 
     if (!sheetData) continue;
@@ -143,14 +148,14 @@ window.init_sprites_submenu = function init_sprites_submenu(searchTerm) {
         spriteSheet: result.sheet,
         spriteRow: result.row,
         spriteCol: result.col,
-        handler: function (e) {
-          var img = new Image();
+        handler: function () {
+          const img = new Image();
           img.src = result.sheet;
           img.crossOrigin = "anonymous";
           img.onload = function () {
             KiddoPaint.Tools.SpritePlacer.image =
-              scaleImageDataCanvasAPIPixelated(
-                extractSprite(img, 32, result.col, result.row, 0),
+              window.scaleImageDataCanvasAPIPixelated(
+                window.extractSprite(img, 32, result.col, result.row, 0),
                 2,
               );
             KiddoPaint.Tools.SpritePlacer.soundBefore = function () {
@@ -183,14 +188,14 @@ window.init_sprites_submenu = function init_sprites_submenu(searchTerm) {
       spriteSheet: sheet,
       spriteRow: row,
       spriteCol: j,
-      handler: function (e) {
+      handler: function () {
         var img = new Image();
         img.src = sheet;
         img.crossOrigin = "anonymous";
         img.onload = function () {
           KiddoPaint.Tools.SpritePlacer.image =
-            scaleImageDataCanvasAPIPixelated(
-              extractSprite(img, 32, j, row, 0),
+            window.scaleImageDataCanvasAPIPixelated(
+              window.extractSprite(img, 32, j, row, 0),
               2,
             );
           KiddoPaint.Tools.SpritePlacer.soundBefore = function () {
@@ -209,20 +214,20 @@ window.init_sprites_submenu = function init_sprites_submenu(searchTerm) {
   KiddoPaint.Submenu.sprites.push({
     name: "prev row",
     emoji: "⏪",
-    handler: function (e) {
+    handler: function () {
       KiddoPaint.Sprite.prevPage();
-      init_sprites_submenu();
-      update_sprites_stamps(); // Only rebuild stamps, keep search box
+      window.init_sprites_submenu();
+      window.update_sprites_stamps(); // Only rebuild stamps, keep search box
     },
   });
 
   KiddoPaint.Submenu.sprites.push({
     name: "next row",
     emoji: "⏩",
-    handler: function (e) {
+    handler: function () {
       KiddoPaint.Sprite.nextPage();
-      init_sprites_submenu();
-      update_sprites_stamps(); // Only rebuild stamps, keep search box
+      window.init_sprites_submenu();
+      window.update_sprites_stamps(); // Only rebuild stamps, keep search box
     },
   });
 
@@ -230,20 +235,20 @@ window.init_sprites_submenu = function init_sprites_submenu(searchTerm) {
   KiddoPaint.Submenu.sprites.push({
     name: "prev stamp pack",
     emoji: "⏮️",
-    handler: function (e) {
+    handler: function () {
       KiddoPaint.Sprite.prevSprite();
-      init_sprites_submenu();
-      update_sprites_stamps(); // Only rebuild stamps, keep search box
+      window.init_sprites_submenu();
+      window.update_sprites_stamps(); // Only rebuild stamps, keep search box
     },
   });
 
   KiddoPaint.Submenu.sprites.push({
     name: "next stamp pack",
     emoji: "⏭️",
-    handler: function (e) {
+    handler: function () {
       KiddoPaint.Sprite.nextSprite();
-      init_sprites_submenu();
-      update_sprites_stamps(); // Only rebuild stamps, keep search box
+      window.init_sprites_submenu();
+      window.update_sprites_stamps(); // Only rebuild stamps, keep search box
     },
   });
 };

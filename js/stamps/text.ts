@@ -287,9 +287,9 @@ KiddoPaint.Text.nextPage = function () {
   }
 };
 
-KiddoPaint.Text.nextWingding = (function (page) {
-  var idx = 0;
-  return function (page) {
+KiddoPaint.Text.nextWingding = (function () {
+  let idx = 0;
+  return function (page: number) {
     if (idx >= KiddoPaint.Text.wingdings["character" + page].letters.length) {
       idx = 0;
     }

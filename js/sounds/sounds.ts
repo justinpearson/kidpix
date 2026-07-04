@@ -211,7 +211,7 @@ KiddoPaint.Sounds.Library.english = {
   "&": "snd/text/symbols/dp - ampersand.m4a",
 };
 
-KiddoPaint.Sounds.Library.playRand = function (sound) {
+KiddoPaint.Sounds.Library.playRand = function (sound: string) {
   if (KiddoPaint.Sounds.Library.enabled && KiddoPaint.Sounds.Library[sound]) {
     var idx = Math.floor(
       Math.random() * KiddoPaint.Sounds.Library[sound].length,
@@ -223,7 +223,7 @@ KiddoPaint.Sounds.Library.playRand = function (sound) {
   }
 };
 
-KiddoPaint.Sounds.Library.playKey = function (key) {
+KiddoPaint.Sounds.Library.playKey = function (key: string) {
   if (
     KiddoPaint.Sounds.Library.enabled &&
     KiddoPaint.Sounds.Library.english[key]
@@ -236,7 +236,7 @@ KiddoPaint.Sounds.Library.playKey = function (key) {
   }
 };
 
-KiddoPaint.Sounds.Library.playIdx = function (sound, idx) {
+KiddoPaint.Sounds.Library.playIdx = function (sound: string, idx: number) {
   if (
     KiddoPaint.Sounds.Library.enabled &&
     KiddoPaint.Sounds.Library[sound] &&
@@ -249,7 +249,7 @@ KiddoPaint.Sounds.Library.playIdx = function (sound, idx) {
   }
 };
 
-KiddoPaint.Sounds.Library.playSingle = function (sound) {
+KiddoPaint.Sounds.Library.playSingle = function (sound: string) {
   if (KiddoPaint.Sounds.Library.enabled && KiddoPaint.Sounds.Library[sound]) {
     var s = KiddoPaint.Sounds.Library[sound][0];
     if (s) {
@@ -258,7 +258,7 @@ KiddoPaint.Sounds.Library.playSingle = function (sound) {
   }
 };
 
-KiddoPaint.Sounds.Library.pplaySingle = async function (sound) {
+KiddoPaint.Sounds.Library.pplaySingle = async function (sound: string) {
   if (KiddoPaint.Sounds.Library.enabled && KiddoPaint.Sounds.Library[sound]) {
     var s = KiddoPaint.Sounds.Library[sound][0];
     if (s) {
@@ -267,7 +267,7 @@ KiddoPaint.Sounds.Library.pplaySingle = async function (sound) {
   }
 };
 
-function pplayAudio(audio) {
+function pplayAudio(audio: HTMLAudioElement) {
   return new Promise((res) => {
     audio.play();
     audio.onended = res;

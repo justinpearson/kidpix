@@ -1,44 +1,44 @@
-KiddoPaint.Submenu.rectangle = [
+KiddoPaint.Submenu.oval = [
   {
     name: "Thickness 1",
     imgSrc: "img/line/pw1.png",
     handler: function () {
-      KiddoPaint.Tools.Rectangle.thickness = 1;
+      KiddoPaint.Tools.Oval.thickness = 1;
     },
   },
   {
     name: "Thickness 2",
     imgSrc: "img/line/pw2.png",
     handler: function () {
-      KiddoPaint.Tools.Rectangle.thickness = 2;
+      KiddoPaint.Tools.Oval.thickness = 2;
     },
   },
   {
     name: "Thickness 3",
     imgSrc: "img/line/pw3.png",
     handler: function () {
-      KiddoPaint.Tools.Rectangle.thickness = 3;
+      KiddoPaint.Tools.Oval.thickness = 3;
     },
   },
   {
     name: "Thickness 5",
     imgSrc: "img/line/pw4.png",
     handler: function () {
-      KiddoPaint.Tools.Rectangle.thickness = 5;
+      KiddoPaint.Tools.Oval.thickness = 5;
     },
   },
   {
     name: "Thickness 8",
     imgSrc: "img/line/pw5.png",
     handler: function () {
-      KiddoPaint.Tools.Rectangle.thickness = 8;
+      KiddoPaint.Tools.Oval.thickness = 8;
     },
   },
   {
     name: "Thickness 12",
     imgSrc: "img/line/pw6.png",
     handler: function () {
-      KiddoPaint.Tools.Rectangle.thickness = 12;
+      KiddoPaint.Tools.Oval.thickness = 12;
     },
   },
 
@@ -51,10 +51,10 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "None",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.None);
+      return window.makeCircleIcon(KiddoPaint.Textures.None);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.None(KiddoPaint.Current.color);
       };
     },
@@ -62,10 +62,10 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "Solid",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Solid);
+      return window.makeCircleIcon(KiddoPaint.Textures.Solid);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Solid(KiddoPaint.Current.color);
       };
     },
@@ -73,10 +73,10 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "Partial1",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Partial1);
+      return window.makeCircleIcon(KiddoPaint.Textures.Partial1);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Partial1(KiddoPaint.Current.color);
       };
     },
@@ -84,10 +84,10 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "Partial2",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Partial2);
+      return window.makeCircleIcon(KiddoPaint.Textures.Partial2);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Partial2(KiddoPaint.Current.color);
       };
     },
@@ -95,10 +95,10 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "Partial3",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Partial3);
+      return window.makeCircleIcon(KiddoPaint.Textures.Partial3);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Partial3(KiddoPaint.Current.color);
       };
     },
@@ -106,10 +106,10 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "PartialArtifactAlias",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.PartialArtifactAlias);
+      return window.makeCircleIcon(KiddoPaint.Textures.PartialArtifactAlias);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.PartialArtifactAlias(
           KiddoPaint.Current.color,
         );
@@ -119,43 +119,43 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "Speckles",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Speckles);
+      return window.makeCircleIcon(KiddoPaint.Textures.Speckles);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Speckles(KiddoPaint.Current.color);
       };
     },
   },
   {
-    name: "Stripes",
+    name: "Speckles",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Stripes);
+      return window.makeCircleIcon(KiddoPaint.Textures.Stripes);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Stripes(KiddoPaint.Current.color);
       };
     },
   },
   {
-    name: "Thatch",
+    name: "Speckles",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Thatch);
+      return window.makeCircleIcon(KiddoPaint.Textures.Thatch);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Thatch(KiddoPaint.Current.color);
       };
     },
   },
   {
-    name: "Shingles",
+    name: "Speckles",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Shingles);
+      return window.makeCircleIcon(KiddoPaint.Textures.Shingles);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Shingles(KiddoPaint.Current.color);
       };
     },
@@ -163,10 +163,10 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "Bubbles",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Bubbles);
+      return window.makeCircleIcon(KiddoPaint.Textures.Bubbles);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Bubbles(KiddoPaint.Current.color);
       };
     },
@@ -174,21 +174,21 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "Diamond",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Diamond);
+      return window.makeCircleIcon(KiddoPaint.Textures.Diamond);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Diamond(KiddoPaint.Current.color);
       };
     },
   },
   {
-    name: "Ribbon",
+    name: "Diamond",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Ribbon);
+      return window.makeCircleIcon(KiddoPaint.Textures.Ribbon);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Ribbon(KiddoPaint.Current.color);
       };
     },
@@ -196,10 +196,10 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "Sand",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Sand);
+      return window.makeCircleIcon(KiddoPaint.Textures.Sand);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Sand(KiddoPaint.Current.color);
       };
     },
@@ -207,54 +207,54 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "Brick",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Brick);
+      return window.makeCircleIcon(KiddoPaint.Textures.Brick);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Brick(KiddoPaint.Current.color);
       };
     },
   },
   {
-    name: "Chevron",
+    name: "Brick",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Chevron);
+      return window.makeCircleIcon(KiddoPaint.Textures.Chevron);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Chevron(KiddoPaint.Current.color);
       };
     },
   },
   {
-    name: "Stairs",
+    name: "Brick",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Stairs);
+      return window.makeCircleIcon(KiddoPaint.Textures.Stairs);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Stairs(KiddoPaint.Current.color);
       };
     },
   },
   {
-    name: "Cross",
+    name: "Brick",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Cross);
+      return window.makeCircleIcon(KiddoPaint.Textures.Cross);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Cross(KiddoPaint.Current.color);
       };
     },
   },
   {
-    name: "DiagBrick",
+    name: "Brick",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.DiagBrick);
+      return window.makeCircleIcon(KiddoPaint.Textures.DiagBrick);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.DiagBrick(KiddoPaint.Current.color);
       };
     },
@@ -262,10 +262,10 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "CornerStair",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.CornerStair);
+      return window.makeCircleIcon(KiddoPaint.Textures.CornerStair);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.CornerStair(KiddoPaint.Current.color);
       };
     },
@@ -273,10 +273,10 @@ KiddoPaint.Submenu.rectangle = [
   {
     name: "Houndstooth",
     imgJs: function () {
-      return makeIcon(KiddoPaint.Textures.Houndstooth);
+      return window.makeCircleIcon(KiddoPaint.Textures.Houndstooth);
     },
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function () {
+      KiddoPaint.Tools.Oval.texture = function () {
         return KiddoPaint.Textures.Houndstooth(KiddoPaint.Current.color);
       };
     },
@@ -285,7 +285,7 @@ KiddoPaint.Submenu.rectangle = [
     name: "Texture ?",
     imgSrc: "img/patterns/rainbow-icon.png",
     handler: function () {
-      KiddoPaint.Tools.Rectangle.texture = function (start, end) {
+      KiddoPaint.Tools.Oval.texture = function (start?: KidPixPointerEvent | null, end?: KidPixPointerEvent) {
         return KiddoPaint.Textures.RainbowGrad(start, end);
       };
     },
