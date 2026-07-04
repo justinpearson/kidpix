@@ -2,11 +2,13 @@
 //
 // These are derived from the REAL runtime shape (js/init/kiddopaint.js,
 // js/util/display.js) — see TS_MIGRATION_PLAN.md. The namespace skeleton is
-// created by an inline script in index.html before any module runs; each js/
+// created by js/init/namespace.ts before any other module runs; each js/
 // file then mutates its sub-namespace (`KiddoPaint.Tools.Pencil = ...`).
 //
-// Registry interfaces marked TODO(ts) are deliberately loose; they get
-// tightened when the milestone that converts their owning files completes.
+// Registry interfaces are CLOSED (no index signatures except where lookup is
+// inherently dynamic): single-owner registries are declared here; multi-file
+// registries (Tools, Toolbox, Brushes, Textures, Builders, Sounds) are merged
+// by their owning modules via `declare global`.
 
 /**
  * A point in canvas coordinates, using the app's underscore convention.
@@ -38,7 +40,8 @@ interface KidPixRGBA {
  */
 interface KidPixBrushFill {
   brush: HTMLCanvasElement;
-  offset: number;
+  /** Center offset; absent for abspos-style brushes (e.g. Raindrops). */
+  offset?: number;
   /** Draw only at the cursor position instead of stamping along the path. */
   inplace?: boolean;
   /** Absolute position override (e.g. the Raindrops brush). */
@@ -220,26 +223,38 @@ interface KiddoPaintSubmenuEntry {
 // each `any` below is scheduled for tightening in the milestone noted.
 // ---------------------------------------------------------------------------
 
-/** TODO(ts): tighten in M9 to Record<string, new () => KiddoPaintTool> & instances. */
+/**
+ * Tool classes. Each js/tools/*.ts module merges its own entry via
+ * `declare global`, so this interface is the union of all tool files.
+ */
+interface KiddoPaintToolbox {}
+
+/**
+ * Tool instances (the same modules merge their instance entries), plus the
+ * Toolbox of constructors. Fully closed — no index signature — so every
+ * `KiddoPaint.Tools.X` access is checked against the real tool class.
+ */
 interface KiddoPaintToolsRegistry {
-  Toolbox: Record<string, any>;
-  [toolName: string]: any;
+  Toolbox: KiddoPaintToolbox;
 }
 
-/** TODO(ts): tighten in M8 (js/textures/). */
-interface KiddoPaintTexturesRegistry {
-  [textureName: string]: any;
-}
+/**
+ * Texture factories (js/textures/textures.ts merges the full member list via
+ * `declare global`). All pattern-based textures return non-null CanvasPattern.
+ */
+interface KiddoPaintTexturesRegistry {}
 
-/** TODO(ts): tighten in M8 (js/brushes/). */
-interface KiddoPaintBrushesRegistry {
-  [brushName: string]: any;
-}
+/**
+ * Brush factories. Each js/brushes/*.ts module merges its own signature via
+ * `declare global`; assignments are checked against these members.
+ */
+interface KiddoPaintBrushesRegistry {}
 
-/** TODO(ts): tighten in M8 (js/builders/). */
-interface KiddoPaintBuildersRegistry {
-  [builderName: string]: any;
-}
+/**
+ * Shape builders. Each js/builders/*.ts module merges its signature via
+ * `declare global`.
+ */
+interface KiddoPaintBuildersRegistry {}
 
 /** One named stamp cell in a spritesheet (js/stamps/stamp-names-data.ts). */
 interface KidPixStampName {
@@ -255,16 +270,46 @@ interface KidPixStampSheet {
   stamp_data: KidPixStampName[];
 }
 
+/** A named group of letter/symbol stamps (js/stamps/text.ts). */
+interface KidPixTextGroups {
+  face: string;
+  pages: number;
+  [group: `character${number}`]: { letters: string[] };
+}
+
+/** Stamp system (js/stamps/*.ts + js/submenus/sprites.ts). */
 interface KiddoPaintStampsRegistry {
   /** Human-readable stamp names for every spritesheet. */
   namesData: KidPixStampSheet[];
-  [key: string]: any;
+  /** Current stamp page; reset in init_kiddo_defaults(). */
+  page: number;
+  /** Font used to render text/emoji stamps; set by the text tool. */
+  currentFace: string;
+  /**
+   * Never initialized at runtime — referenced only by nextPage/prevPage,
+   * whose UI button (stnext) was removed long ago.
+   */
+  grouping: { pages: number };
+  /** Renders a stamp (emoji/letter) to a canvas. */
+  stamp(
+    stamp: string,
+    alt: boolean,
+    ctrl: boolean,
+    size: number,
+    shiftAmount: number,
+    color: string | null,
+  ): HTMLCanvasElement;
+  nextPage(): void;
+  prevPage(): void;
+  /** Human-readable name for a spritesheet cell (js/submenus/sprites.ts). */
+  getStampName(sheetPath: string, row: number, col: number): string;
 }
 
-/** TODO(ts): tighten in M10 (js/sounds/). */
-interface KiddoPaintSoundsRegistry {
-  [soundName: string]: any;
-}
+/**
+ * Sound effect triggers. js/sounds/sounds.ts merges its full member list
+ * (each a zero-arg trigger) plus the Library via `declare global`.
+ */
+interface KiddoPaintSoundsRegistry {}
 
 /** A named 32-color palette (js/util/colors.ts). */
 interface KiddoPaintNamedPalette {
@@ -352,14 +397,34 @@ interface KiddoPaintKeyboardHelp {
   isVisible(): boolean;
 }
 
-/** TODO(ts): tighten in M10 (js/stamps/ text system). */
+/** Letter/number/symbol stamp pages (js/stamps/text.ts). */
 interface KiddoPaintTextRegistry {
-  [key: string]: any;
+  english: KidPixTextGroups;
+  wingdings: KidPixTextGroups;
+  /** Current character page; reset in init_kiddo_defaults(). */
+  page: number;
+  nextPage(): void;
+  /** Cycles through the wingdings of a page. */
+  nextWingding(page: number): string;
 }
 
-/** TODO(ts): tighten in M10 (js/submenus/sprites.js). */
+/** Spritesheet stamp browser state (js/submenus/sprites.ts). */
 interface KiddoPaintSpriteRegistry {
-  [key: string]: any;
+  /** Spritesheet image paths, in page order. */
+  sheets: string[];
+  /** Row page within the current sheet. */
+  page: number;
+  /** Which spritesheet is showing. */
+  sheetPage: number;
+  /** Current stamp-search term ("" when not searching). */
+  currentSearch: string;
+  nextSprite(): void;
+  prevSprite(): void;
+  nextPage(): void;
+  prevPage(): void;
+  searchAllStamps(
+    searchTerm: string,
+  ): { name: string; sheet: string; row: number; col: number }[];
 }
 
 /**

@@ -29,3 +29,9 @@ KiddoPaint.Brushes.Dumbbell = function (color1?: string, color2?: string) {
     offset: radius,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Dumbbell(color1?: string, color2?: string): KidPixBrushFill;
+  }
+}

@@ -47,7 +47,7 @@ class MixerInverterTool implements KiddoPaintTool {
 
     KiddoPaint.Tools.WholeCanvasEffect.effect = window.JumbleFx.INVERT;
     KiddoPaint.Tools.WholeCanvasEffect.mousedown(ev);
-    KiddoPaint.Tools.WholeCanvasEffect.mouseup(ev);
+    KiddoPaint.Tools.WholeCanvasEffect.mouseup();
 
     KiddoPaint.Sounds.mixerinvert(); // estimated duration: 1.393107 sec
 
@@ -73,5 +73,14 @@ class MixerInverterTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    MixerInverter: typeof MixerInverterTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    MixerInverter: MixerInverterTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.MixerInverter = MixerInverterTool;
 KiddoPaint.Tools.MixerInverter = new MixerInverterTool();

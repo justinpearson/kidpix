@@ -7,7 +7,7 @@ KiddoPaint.Submenu.brush = [
       KiddoPaint.Display.canvas.classList.add("cursor-paint-brush");
       KiddoPaint.Current.tool = KiddoPaint.Tools.AnimBrush;
       KiddoPaint.Tools.AnimBrush.reset();
-      KiddoPaint.Tools.AnimBrush.texture = function (_step: number, distancePrev: number) {
+      KiddoPaint.Tools.AnimBrush.texture = function (_step: number, distancePrev: number | null) {
         KiddoPaint.Sounds.brushleakypen(); // sound
         return KiddoPaint.Brushes.LeakyPen(
           KiddoPaint.Current.color,

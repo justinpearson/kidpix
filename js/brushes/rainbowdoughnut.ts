@@ -56,3 +56,9 @@ KiddoPaint.Brushes.RainbowDoughnut = function (_step: number) {
     offset: size / 2.0,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    RainbowDoughnut(step: number): KidPixBrushFill;
+  }
+}

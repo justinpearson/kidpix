@@ -37,3 +37,9 @@ KiddoPaint.Brushes.Pies = function (color1?: string) {
     offset: size,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Pies(color1?: string): KidPixBrushFill;
+  }
+}

@@ -54,5 +54,14 @@ class LineTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Line: typeof LineTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Line: LineTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Line = LineTool;
 KiddoPaint.Tools.Line = new LineTool();

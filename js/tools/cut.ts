@@ -134,5 +134,14 @@ class CutTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Cut: typeof CutTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Cut: CutTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Cut = CutTool;
 KiddoPaint.Tools.Cut = new CutTool();

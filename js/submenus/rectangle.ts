@@ -55,7 +55,7 @@ KiddoPaint.Submenu.rectangle = [
     },
     handler: function () {
       KiddoPaint.Tools.Rectangle.texture = function () {
-        return KiddoPaint.Textures.None(KiddoPaint.Current.color);
+        return KiddoPaint.Textures.None();
       };
     },
   },

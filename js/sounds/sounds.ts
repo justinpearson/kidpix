@@ -3,7 +3,8 @@
 // hack 3: https://stackoverflow.com/a/31351186
 // XXX FIXME TODO: switch everything to lazy load; too many audios() throws error in chrome
 
-KiddoPaint.Sounds.Library = {};
+// Populated by the assignments below (banks, english map, play helpers).
+KiddoPaint.Sounds.Library = {} as KidPixSoundLibrary;
 KiddoPaint.Sounds.Library.enabled = true;
 
 // array to randomize
@@ -446,3 +447,76 @@ KiddoPaint.Sounds.eraser = function () {
 KiddoPaint.Sounds.eraserfadeb = function () {
   KiddoPaint.Sounds.Library.playSingle("mixerpip");
 };
+
+declare global {
+  /** The audio bank + playback helpers (looked up dynamically by name). */
+  interface KidPixSoundLibrary {
+    enabled: boolean;
+    /** Per-key sound file paths for the text tool. */
+    english: Record<string, string>;
+    playRand(sound: string): void;
+    playKey(key: string): void;
+    playIdx(sound: string, idx: number): void;
+    playSingle(sound: string): void;
+    pplaySingle(sound: string): Promise<void>;
+    /** Named HTMLAudioElement banks, one array per sound name. */
+    [sound: string]: any;
+  }
+
+  interface KiddoPaintSoundsRegistry {
+    Library: KidPixSoundLibrary;
+    box(): void;
+    brushbubbly(): void;
+    brushcards(): void;
+    brushdots(): void;
+    brushecho(): void;
+    brushfuzzer(): void;
+    brushguil(): void;
+    brushinvert(): void;
+    brushkaliediscope(): void;
+    brushleakypen(): void;
+    brushnorthern(): void;
+    brushpies(): void;
+    brushpines(): void;
+    brushprints(): void;
+    brushrollingdots(): void;
+    brushshapes(): void;
+    brushspraypaint(): void;
+    brushstars(): void;
+    brushtree(): void;
+    brushtwirly(): void;
+    brushxos(): void;
+    brushzigzag(): void;
+    brushzoom(): void;
+    bubblepops(): void;
+    circle(): void;
+    eraser(): void;
+    eraserfadea(): void;
+    eraserfadeb(): void;
+    explosion(): void;
+    lineDuring(): void;
+    lineEnd(): void;
+    lineStart(): void;
+    mainmenu(): void;
+    mixerframe(): void;
+    mixerinvert(): void;
+    mixerpip(): void;
+    mixershadowbox(): void;
+    mixervenetian(): void;
+    mixerwallpaper(): void;
+    oops(): void;
+    paintcan(): void;
+    pencil(): void;
+    stamp(): void;
+    submenucolor(): void;
+    submenuoption(): void;
+    todo(): void;
+    truckDuring(): void;
+    truckEnd(): void;
+    truckStart(): void;
+    unimpl(): void;
+    xyDuring(): void;
+    xyEnd(): void;
+    xyStart(): void;
+  }
+}

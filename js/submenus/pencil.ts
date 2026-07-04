@@ -54,7 +54,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Solid);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Solid(color);
       };
     },
@@ -65,7 +65,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Partial1);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Partial1(color);
       };
     },
@@ -76,7 +76,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Partial2);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Partial2(color);
       };
     },
@@ -87,7 +87,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Partial3);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Partial3(color);
       };
     },
@@ -98,7 +98,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.PartialArtifactAlias);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.PartialArtifactAlias(color);
       };
     },
@@ -109,7 +109,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Speckles);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Speckles(color);
       };
     },
@@ -120,7 +120,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Stripes);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Stripes(color);
       };
     },
@@ -131,7 +131,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Thatch);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Thatch(color);
       };
     },
@@ -142,7 +142,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Shingles);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Shingles(color);
       };
     },
@@ -153,7 +153,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Bubbles);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Bubbles(color);
       };
     },
@@ -164,7 +164,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Diamond);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Diamond(color);
       };
     },
@@ -175,7 +175,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Ribbon);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Ribbon(color);
       };
     },
@@ -186,7 +186,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Sand);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Sand(color);
       };
     },
@@ -197,7 +197,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Brick);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Brick(color);
       };
     },
@@ -208,7 +208,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Chevron);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Chevron(color);
       };
     },
@@ -219,7 +219,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Stairs);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Stairs(color);
       };
     },
@@ -230,7 +230,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Cross);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Cross(color);
       };
     },
@@ -241,7 +241,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.DiagBrick);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.DiagBrick(color);
       };
     },
@@ -252,7 +252,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.CornerStair);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.CornerStair(color);
       };
     },
@@ -263,7 +263,7 @@ KiddoPaint.Submenu.pencil = [
       return window.makeIcon(KiddoPaint.Textures.Houndstooth);
     },
     handler: function () {
-      KiddoPaint.Tools.Pencil.texture = function (color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (color?: string) {
         return KiddoPaint.Textures.Houndstooth(color);
       };
     },
@@ -274,7 +274,7 @@ KiddoPaint.Submenu.pencil = [
     imgSrc: "img/patterns/rainbow-icon.png",
     handler: function () {
       var hue = 0;
-      KiddoPaint.Tools.Pencil.texture = function (_color: string) {
+      KiddoPaint.Tools.Pencil.texture = function (_color?: string) {
         if (KiddoPaint.Current.modifiedMeta) {
           return KiddoPaint.Textures.Rainbow();
         } else if (KiddoPaint.Current.modifiedAlt) {

@@ -56,5 +56,14 @@ class EraserLettersTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    EraserLetters: typeof EraserLettersTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    EraserLetters: EraserLettersTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.EraserLetters = EraserLettersTool;
 KiddoPaint.Tools.EraserLetters = new EraserLettersTool();

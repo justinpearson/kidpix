@@ -81,5 +81,14 @@ class MagnifyTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Magnify: typeof MagnifyTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Magnify: MagnifyTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Magnify = MagnifyTool;
 KiddoPaint.Tools.Magnify = new MagnifyTool();

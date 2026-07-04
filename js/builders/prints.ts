@@ -36,3 +36,13 @@ KiddoPaint.Builders.Prints = function (
     offset: 0,
   };
 };
+
+declare global {
+  interface KiddoPaintBuildersRegistry {
+    Prints(
+      color1: string | undefined,
+      print: string,
+      angle?: number,
+    ): { brush: HTMLCanvasElement; offset: number };
+  }
+}

@@ -1,7 +1,6 @@
 // Stamp names data - generated from util/stamp-names.json
 // This file contains human-readable names for all stamps in the sprite sheets
 
-KiddoPaint.Stamps = KiddoPaint.Stamps || {};
 KiddoPaint.Stamps.namesData = 
 [
   {

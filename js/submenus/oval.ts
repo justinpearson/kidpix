@@ -55,7 +55,7 @@ KiddoPaint.Submenu.oval = [
     },
     handler: function () {
       KiddoPaint.Tools.Oval.texture = function () {
-        return KiddoPaint.Textures.None(KiddoPaint.Current.color);
+        return KiddoPaint.Textures.None();
       };
     },
   },

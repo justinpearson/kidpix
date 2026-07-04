@@ -22,3 +22,9 @@ KiddoPaint.Brushes.Concentric = function (color1: string | undefined, step: numb
     offset: size,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Concentric(color1: string | undefined, step: number): KidPixBrushFill;
+  }
+}

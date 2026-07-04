@@ -60,3 +60,9 @@ KiddoPaint.Brushes.Spray = function (color1?: string, color2?: string) {
     offset: radius,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Spray(color1?: string, color2?: string): KidPixBrushFill;
+  }
+}

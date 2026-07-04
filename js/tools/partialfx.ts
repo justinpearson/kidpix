@@ -54,5 +54,14 @@ class InkTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Ink: typeof InkTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Ink: InkTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Ink = InkTool;
 KiddoPaint.Tools.Ink = new InkTool();

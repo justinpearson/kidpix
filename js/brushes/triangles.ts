@@ -21,3 +21,9 @@ KiddoPaint.Brushes.Triangles = function () {
     offset: size / 2.0,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Triangles(): KidPixBrushFill;
+  }
+}

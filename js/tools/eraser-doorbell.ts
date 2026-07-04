@@ -187,5 +187,14 @@ class DoorbellTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Doorbell: typeof DoorbellTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Doorbell: DoorbellTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Doorbell = DoorbellTool;
 KiddoPaint.Tools.Doorbell = new DoorbellTool();

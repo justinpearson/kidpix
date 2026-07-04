@@ -73,5 +73,14 @@ class EraserHiddenPictureTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    EraserHiddenPicture: typeof EraserHiddenPictureTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    EraserHiddenPicture: EraserHiddenPictureTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.EraserHiddenPicture = EraserHiddenPictureTool;
 KiddoPaint.Tools.EraserHiddenPicture = new EraserHiddenPictureTool();

@@ -16,6 +16,15 @@ class SpiralTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Spiral: typeof SpiralTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Spiral: SpiralTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Spiral = SpiralTool;
 KiddoPaint.Tools.Spiral = new SpiralTool();
 

@@ -31,5 +31,14 @@ class MixerPipTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    MixerPip: typeof MixerPipTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    MixerPip: MixerPipTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.MixerPip = MixerPipTool;
 KiddoPaint.Tools.MixerPip = new MixerPipTool();

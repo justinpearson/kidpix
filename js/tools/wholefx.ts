@@ -261,5 +261,14 @@ class WholeCanvasEffectTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    WholeCanvasEffect: typeof WholeCanvasEffectTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    WholeCanvasEffect: WholeCanvasEffectTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.WholeCanvasEffect = WholeCanvasEffectTool;
 KiddoPaint.Tools.WholeCanvasEffect = new WholeCanvasEffectTool();

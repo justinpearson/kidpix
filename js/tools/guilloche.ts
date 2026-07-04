@@ -88,5 +88,14 @@ class GuillocheTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Guilloche: typeof GuillocheTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Guilloche: GuillocheTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Guilloche = GuillocheTool;
 KiddoPaint.Tools.Guilloche = new GuillocheTool();

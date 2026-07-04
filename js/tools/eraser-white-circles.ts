@@ -35,5 +35,14 @@ class EraserWhiteCirclesTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    EraserWhiteCircles: typeof EraserWhiteCirclesTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    EraserWhiteCircles: EraserWhiteCirclesTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.EraserWhiteCircles = EraserWhiteCirclesTool;
 KiddoPaint.Tools.EraserWhiteCircles = new EraserWhiteCirclesTool();

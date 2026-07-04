@@ -36,3 +36,9 @@ KiddoPaint.Builders.Arrow = function (color1?: string, angle?: number) {
 
   return canvasBrush;
 };
+
+declare global {
+  interface KiddoPaintBuildersRegistry {
+    Arrow(color1?: string, angle?: number): HTMLCanvasElement;
+  }
+}

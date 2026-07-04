@@ -15,5 +15,14 @@ class MixerCheckerboardTool implements KiddoPaintTool {
 
   mouseup = () => {};
 }
+declare global {
+  interface KiddoPaintToolbox {
+    MixerCheckerboard: typeof MixerCheckerboardTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    MixerCheckerboard: MixerCheckerboardTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.MixerCheckerboard = MixerCheckerboardTool;
 KiddoPaint.Tools.MixerCheckerboard = new MixerCheckerboardTool();

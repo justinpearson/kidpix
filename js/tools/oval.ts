@@ -84,5 +84,14 @@ class OvalTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Oval: typeof OvalTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Oval: OvalTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Oval = OvalTool;
 KiddoPaint.Tools.Oval = new OvalTool();

@@ -29,3 +29,9 @@ KiddoPaint.Brushes.MeanStreak = function (step: number) {
     offset: size / 2.0,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    MeanStreak(step: number): KidPixBrushFill;
+  }
+}

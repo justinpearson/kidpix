@@ -51,5 +51,14 @@ class ScribbleTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Scribble: typeof ScribbleTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Scribble: ScribbleTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Scribble = ScribbleTool;
 KiddoPaint.Tools.Scribble = new ScribbleTool();

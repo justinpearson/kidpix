@@ -4,8 +4,9 @@ class PencilTool implements KiddoPaintTool {
   lastY = 0;
   size = 7;
 
-  // Replaced by submenu handlers to change the pencil's texture.
-  texture: (color: string) => string | CanvasGradient | CanvasPattern = (
+  // Replaced by submenu handlers to change the pencil's texture. Some
+  // callers (bezfollow, smoothpen) invoke it with no argument.
+  texture: (color?: string) => string | CanvasGradient | CanvasPattern = (
     color,
   ) => KiddoPaint.Textures.Solid(color);
 
@@ -43,5 +44,14 @@ class PencilTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Pencil: typeof PencilTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Pencil: PencilTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Pencil = PencilTool;
 KiddoPaint.Tools.Pencil = new PencilTool();

@@ -85,5 +85,14 @@ class SpritePlacerTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    SpritePlacer: typeof SpritePlacerTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    SpritePlacer: SpritePlacerTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.SpritePlacer = SpritePlacerTool;
 KiddoPaint.Tools.SpritePlacer = new SpritePlacerTool();

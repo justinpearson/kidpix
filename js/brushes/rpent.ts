@@ -28,3 +28,9 @@ KiddoPaint.Brushes.RotatingPentagon = function (color1: string | undefined, step
     inplace: true,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    RotatingPentagon(color1: string | undefined, step: number): KidPixBrushFill;
+  }
+}

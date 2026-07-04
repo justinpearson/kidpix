@@ -51,5 +51,14 @@ class MixerPatternTool implements KiddoPaintTool {
   mousemove = () => {};
   mouseup = () => {};
 }
+declare global {
+  interface KiddoPaintToolbox {
+    MixerPattern: typeof MixerPatternTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    MixerPattern: MixerPatternTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.MixerPattern = MixerPatternTool;
 KiddoPaint.Tools.MixerPattern = new MixerPatternTool();

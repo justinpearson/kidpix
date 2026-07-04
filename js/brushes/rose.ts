@@ -30,3 +30,9 @@ KiddoPaint.Brushes.Rose = function (color1: string | undefined, step: number) {
     inplace: true,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Rose(color1: string | undefined, step: number): KidPixBrushFill;
+  }
+}

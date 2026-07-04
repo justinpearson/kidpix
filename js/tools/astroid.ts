@@ -90,5 +90,14 @@ class AstroidTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Astroid: typeof AstroidTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Astroid: AstroidTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Astroid = AstroidTool;
 KiddoPaint.Tools.Astroid = new AstroidTool();

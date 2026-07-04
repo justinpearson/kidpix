@@ -31,3 +31,9 @@ KiddoPaint.Brushes.Bubbles = function (color1?: string) {
     offset: size,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Bubbles(color1?: string): KidPixBrushFill;
+  }
+}

@@ -73,5 +73,14 @@ class MixerVenetianBlindsTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    MixerVenetianBlinds: typeof MixerVenetianBlindsTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    MixerVenetianBlinds: MixerVenetianBlindsTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.MixerVenetianBlinds = MixerVenetianBlindsTool;
 KiddoPaint.Tools.MixerVenetianBlinds = new MixerVenetianBlindsTool();

@@ -520,7 +520,7 @@ function init_tool_bar() {
   document.getElementById("text")!.addEventListener("mousedown", function () {
     highlightSelectedTool("text");
     KiddoPaint.Sounds.mainmenu();
-    init_text_bar("character" + KiddoPaint.Text.page);
+    init_text_bar(`character${KiddoPaint.Text.page}`);
     show_sub_toolbar("texttoolbar");
     KiddoPaint.Tools.Stamp.useColor = true;
     KiddoPaint.Current.tool = KiddoPaint.Tools.Stamp;
@@ -595,7 +595,7 @@ function init_tool_bar() {
   document.getElementById("alnext")!.addEventListener("mousedown", function () {
     KiddoPaint.Sounds.submenuoption();
     KiddoPaint.Text.nextPage();
-    init_text_bar("character" + KiddoPaint.Text.page);
+    init_text_bar(`character${KiddoPaint.Text.page}`);
   });
 
   //    document.getElementById('stnext').addEventListener('mousedown', function(e) {
@@ -618,7 +618,7 @@ function init_tool_bar() {
   });
 }
 
-function init_text_bar(textgroup: string) {
+function init_text_bar(textgroup: `character${number}`) {
   const texttoolbar = KiddoPaint.Text.english[textgroup].letters;
   // first letter / number / symbol is selected when the bar is created:
   KiddoPaint.Tools.Stamp.stamp = texttoolbar[0];
@@ -672,7 +672,7 @@ function init_text_subtoolbar() {
         console.log("empty button, no-op.");
         return;
       }
-      KiddoPaint.Tools.Stamp.stamp = src.firstChild.nodeValue;
+      KiddoPaint.Tools.Stamp.stamp = src.firstChild.nodeValue ?? "";
       KiddoPaint.Sounds.Library.playKey(KiddoPaint.Tools.Stamp.stamp);
       const alphaselect2 =
         document.querySelectorAll<HTMLElement>('*[id^="xal"]');

@@ -68,5 +68,14 @@ class FuzzerTool implements KiddoPaintTool {
     );
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Fuzzer: typeof FuzzerTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Fuzzer: FuzzerTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Fuzzer = FuzzerTool;
 KiddoPaint.Tools.Fuzzer = new FuzzerTool();

@@ -88,5 +88,14 @@ class PlacerTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Placer: typeof PlacerTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Placer: PlacerTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Placer = PlacerTool;
 KiddoPaint.Tools.Placer = new PlacerTool();

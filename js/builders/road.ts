@@ -29,3 +29,9 @@ KiddoPaint.Builders.Road = function (
 
   return canvasBrush;
 };
+
+declare global {
+  interface KiddoPaintBuildersRegistry {
+    Road(color1?: string, color2?: string, angle?: number): HTMLCanvasElement;
+  }
+}

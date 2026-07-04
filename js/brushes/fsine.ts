@@ -23,3 +23,9 @@ KiddoPaint.Brushes.FollowingSine = function (color1: string | undefined, step: n
     inplace: true,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    FollowingSine(color1: string | undefined, step: number): KidPixBrushFill;
+  }
+}

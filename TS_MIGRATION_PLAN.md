@@ -2,12 +2,16 @@
 
 **Tracking issue:** [#62](https://github.com/justinpearson/kidpix/issues/62) · **Started & completed:** July 2026 · **Decision: TypeScript only, no React.**
 
-> **STATUS: COMPLETE.** Every file under `js/` is TypeScript except the 8
-> vendored libraries; the entry point is `src/kidpix-main.ts`; the namespace
-> bootstrap lives in `js/init/namespace.ts`; `yarn type-check` is strict-green
-> and enforced in CI. Remaining niceties (tightening the loose registry
-> types in `types/kiddopaint.d.ts` to per-tool/brush shapes) are optional
-> follow-ups, marked TODO(ts) in place.
+> **STATUS: COMPLETE (including registry tightening).** Every file under
+> `js/` is TypeScript except the 8 vendored libraries; the entry point is
+> `src/kidpix-main.ts`; the namespace bootstrap lives in
+> `js/init/namespace.ts`; `yarn type-check` is strict-green and enforced in
+> CI. All registry interfaces are CLOSED: multi-file registries (Tools,
+> Toolbox, Brushes, Textures, Builders, Sounds) are populated via
+> `declare global` merges in their owning modules, so every
+> `KiddoPaint.X.Y` access is checked against the real shape. The only
+> remaining `any`s sit at documented vendored-library boundaries (glfx
+> effect chains, the dynamic sound-bank lookup, loose Filters members).
 
 ## Why TypeScript, why no framework
 

@@ -25,3 +25,9 @@ KiddoPaint.Brushes.Twirly = function (color1: string | undefined, step: number) 
     inplace: true,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Twirly(color1: string | undefined, step: number): KidPixBrushFill;
+  }
+}

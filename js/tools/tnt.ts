@@ -43,5 +43,14 @@ class TntTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Tnt: typeof TntTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Tnt: TntTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Tnt = TntTool;
 KiddoPaint.Tools.Tnt = new TntTool();

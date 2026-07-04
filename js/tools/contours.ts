@@ -42,5 +42,14 @@ class ContoursTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Contours: typeof ContoursTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Contours: ContoursTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Contours = ContoursTool;
 KiddoPaint.Tools.Contours = new ContoursTool();

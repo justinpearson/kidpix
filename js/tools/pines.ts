@@ -54,5 +54,14 @@ class PinesTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Pines: typeof PinesTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Pines: PinesTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Pines = PinesTool;
 KiddoPaint.Tools.Pines = new PinesTool();

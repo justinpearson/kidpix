@@ -97,5 +97,14 @@ class ThreeDBrushTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    ThreeDBrush: typeof ThreeDBrushTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    ThreeDBrush: ThreeDBrushTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.ThreeDBrush = ThreeDBrushTool;
 KiddoPaint.Tools.ThreeDBrush = new ThreeDBrushTool();

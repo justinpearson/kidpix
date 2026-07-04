@@ -55,5 +55,14 @@ class RectangleTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Rectangle: typeof RectangleTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Rectangle: RectangleTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Rectangle = RectangleTool;
 KiddoPaint.Tools.Rectangle = new RectangleTool();

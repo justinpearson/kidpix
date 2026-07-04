@@ -207,5 +207,14 @@ class PaintCanTool implements KiddoPaintTool {
   mousemove = () => {};
   mouseup = () => {};
 }
+declare global {
+  interface KiddoPaintToolbox {
+    PaintCan: typeof PaintCanTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    PaintCan: PaintCanTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.PaintCan = PaintCanTool;
 KiddoPaint.Tools.PaintCan = new PaintCanTool();

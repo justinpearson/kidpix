@@ -24,6 +24,7 @@ The codebase was migrated file-by-file to TypeScript in July 2026 — **no frame
 `TS_MIGRATION_PLAN.md` documents how the migration was done (per-file recipe, conversion order). The essentials:
 
 - Files keep the `KiddoPaint.X = ...` global-namespace style; ambient declarations in `types/` (`kiddopaint.d.ts`, `window.d.ts`, `vendor.d.ts`) make everything type-check under `strict: true`.
+- Registry interfaces are **closed** (no loose index signatures): each tool/brush/texture/builder/sound module merges its own precise entry via `declare global { interface KiddoPaintToolsRegistry {...} }` next to its registry assignment. When adding a module, add its merge block too — tsc then checks both the assignment and every cross-file access.
 - Tools are ES6 classes with **arrow-function fields** (`mousedown = (ev: KidPixPointerEvent) => {...}`), which reproduce the old `var tool = this` closure semantics. Registry assignments stay: `KiddoPaint.Tools.Toolbox.X = XTool; KiddoPaint.Tools.X = new XTool();`
 - Behavior preservation is the rule: pixel-perfect rendering (`imageSmoothingEnabled = false`), same sounds, same tool behavior.
 - Eight vendored third-party files in `js/util/` stay `.js` forever: glfx, fit-curve, kdtree, smooth, dither, douglas-peucker, smoke, filters. Type them only via `types/vendor.d.ts`. (fit-curve carries a small marked local patch attaching `window.fitCurve`.)

@@ -18,6 +18,15 @@ class MazeTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Maze: typeof MazeTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Maze: MazeTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Maze = MazeTool;
 KiddoPaint.Tools.Maze = new MazeTool();
 

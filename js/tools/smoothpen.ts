@@ -108,5 +108,14 @@ class SmoothPenTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    SmoothPen: typeof SmoothPenTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    SmoothPen: SmoothPenTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.SmoothPen = SmoothPenTool;
 KiddoPaint.Tools.SmoothPen = new SmoothPenTool();

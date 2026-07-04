@@ -58,5 +58,14 @@ class LooperTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Looper: typeof LooperTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Looper: LooperTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Looper = LooperTool;
 KiddoPaint.Tools.Looper = new LooperTool();

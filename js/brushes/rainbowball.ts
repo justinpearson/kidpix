@@ -21,3 +21,9 @@ KiddoPaint.Brushes.RainbowBall = function (_step: number) {
     offset: size / 2.0,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    RainbowBall(step: number): KidPixBrushFill;
+  }
+}

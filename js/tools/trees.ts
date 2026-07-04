@@ -25,6 +25,15 @@ class TreeTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Tree: typeof TreeTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Tree: TreeTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Tree = TreeTool;
 KiddoPaint.Tools.Tree = new TreeTool();
 

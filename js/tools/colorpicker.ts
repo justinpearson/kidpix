@@ -45,5 +45,14 @@ class ColorPickerTool implements KiddoPaintTool {
 }
 
 // Create the tool instance
+declare global {
+  interface KiddoPaintToolbox {
+    ColorPicker: typeof ColorPickerTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    ColorPicker: ColorPickerTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.ColorPicker = ColorPickerTool;
 KiddoPaint.Tools.ColorPicker = new ColorPickerTool();

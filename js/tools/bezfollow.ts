@@ -196,5 +196,14 @@ class BezFollowTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    BezFollow: typeof BezFollowTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    BezFollow: BezFollowTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.BezFollow = BezFollowTool;
 KiddoPaint.Tools.BezFollow = new BezFollowTool();

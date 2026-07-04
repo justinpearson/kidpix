@@ -56,8 +56,8 @@ class PlainBrushTool implements KiddoPaintTool {
             const brushFill = this.texture(this.step, this.pstep)!;
             KiddoPaint.Display.context.drawImage(
               brushFill.brush,
-              Math.round(x - brushFill.offset),
-              Math.round(y - brushFill.offset),
+              Math.round(x - brushFill.offset!),
+              Math.round(y - brushFill.offset!),
             );
             this.step += 1;
             this.pstep += 1;
@@ -72,8 +72,8 @@ class PlainBrushTool implements KiddoPaintTool {
         this.soundduring();
         KiddoPaint.Display.context.drawImage(
           brushFill.brush,
-          Math.round(ev._x - brushFill.offset),
-          Math.round(ev._y - brushFill.offset),
+          Math.round(ev._x - brushFill.offset!),
+          Math.round(ev._y - brushFill.offset!),
         );
         this.previousEv = ev;
         this.step += 1;
@@ -96,5 +96,14 @@ class PlainBrushTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    PlainBrush: typeof PlainBrushTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    PlainBrush: PlainBrushTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.PlainBrush = PlainBrushTool;
 KiddoPaint.Tools.PlainBrush = new PlainBrushTool();

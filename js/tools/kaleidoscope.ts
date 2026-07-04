@@ -93,5 +93,14 @@ class KaleidoscopeTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Kaleidoscope: typeof KaleidoscopeTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Kaleidoscope: KaleidoscopeTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Kaleidoscope = KaleidoscopeTool;
 KiddoPaint.Tools.Kaleidoscope = new KaleidoscopeTool();

@@ -45,5 +45,14 @@ class EraserFadeAwayTool implements KiddoPaintTool {
   mousemove = () => {};
   mouseup = () => {};
 }
+declare global {
+  interface KiddoPaintToolbox {
+    EraserFadeAway: typeof EraserFadeAwayTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    EraserFadeAway: EraserFadeAwayTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.EraserFadeAway = EraserFadeAwayTool;
 KiddoPaint.Tools.EraserFadeAway = new EraserFadeAwayTool();

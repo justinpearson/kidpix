@@ -33,5 +33,14 @@ class CompositeTool implements KiddoPaintTool {
     KiddoPaint.Display.saveMain();
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Composite: typeof CompositeTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Composite: CompositeTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Composite = CompositeTool;
 KiddoPaint.Tools.Composite = new CompositeTool();

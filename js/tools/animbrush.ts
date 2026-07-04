@@ -90,5 +90,14 @@ class AnimBrushTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    AnimBrush: typeof AnimBrushTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    AnimBrush: AnimBrushTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.AnimBrush = AnimBrushTool;
 KiddoPaint.Tools.AnimBrush = new AnimBrushTool();

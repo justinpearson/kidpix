@@ -71,5 +71,14 @@ class MixerShadowBoxesTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    MixerShadowBoxes: typeof MixerShadowBoxesTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    MixerShadowBoxes: MixerShadowBoxesTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.MixerShadowBoxes = MixerShadowBoxesTool;
 KiddoPaint.Tools.MixerShadowBoxes = new MixerShadowBoxesTool();

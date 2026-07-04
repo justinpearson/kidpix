@@ -290,10 +290,10 @@ KiddoPaint.Text.nextPage = function () {
 KiddoPaint.Text.nextWingding = (function () {
   let idx = 0;
   return function (page: number) {
-    if (idx >= KiddoPaint.Text.wingdings["character" + page].letters.length) {
+    if (idx >= KiddoPaint.Text.wingdings[`character${page}`].letters.length) {
       idx = 0;
     }
-    var ret = KiddoPaint.Text.wingdings["character" + page].letters[idx];
+    var ret = KiddoPaint.Text.wingdings[`character${page}`].letters[idx];
     idx += 1;
     return ret;
   };

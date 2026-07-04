@@ -21,7 +21,7 @@ KiddoPaint.Submenu.jumble = [
         KiddoPaint.Display.canvas.className = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
       };
-      KiddoPaint.Tools.AnimBrush.texture = function (_step: number, _distancePrev: number) {
+      KiddoPaint.Tools.AnimBrush.texture = function (_step: number, _distancePrev: number | null) {
         KiddoPaint.Display.canvas.className = "";
         KiddoPaint.Display.canvas.classList.add("cursor-guy-wow");
         KiddoPaint.Sounds.bubblepops();

@@ -184,5 +184,14 @@ class SmudgeTool implements KiddoPaintTool {
     this.feather(this.brushCtx);
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Smudge: typeof SmudgeTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Smudge: SmudgeTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Smudge = SmudgeTool;
 KiddoPaint.Tools.Smudge = new SmudgeTool();

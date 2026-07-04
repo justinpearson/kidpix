@@ -38,5 +38,14 @@ class SmokeTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Smoke: typeof SmokeTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Smoke: SmokeTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Smoke = SmokeTool;
 KiddoPaint.Tools.Smoke = new SmokeTool();

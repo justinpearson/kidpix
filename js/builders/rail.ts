@@ -33,3 +33,9 @@ KiddoPaint.Builders.Rail = function (color1?: string, angle?: number) {
   }
   return canvasBrush;
 };
+
+declare global {
+  interface KiddoPaintBuildersRegistry {
+    Rail(color1?: string, angle?: number): HTMLCanvasElement;
+  }
+}

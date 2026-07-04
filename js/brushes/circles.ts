@@ -36,3 +36,10 @@ KiddoPaint.Brushes.RCircles = function () {
   const color2 = KiddoPaint.Colors.randomColor();
   return KiddoPaint.Brushes.Circles(color1, color2, true);
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Circles(color1?: string, color2?: string, alwaysFill?: boolean): KidPixBrushFill;
+    RCircles(): KidPixBrushFill;
+  }
+}

@@ -78,5 +78,14 @@ class MixerWallpaperTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    MixerWallpaper: typeof MixerWallpaperTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    MixerWallpaper: MixerWallpaperTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.MixerWallpaper = MixerWallpaperTool;
 KiddoPaint.Tools.MixerWallpaper = new MixerWallpaperTool();

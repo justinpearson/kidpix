@@ -29,3 +29,9 @@ KiddoPaint.Brushes.Splatters = function () {
     offset: size / 2.0,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Splatters(): KidPixBrushFill;
+  }
+}

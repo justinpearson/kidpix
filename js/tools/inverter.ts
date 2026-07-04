@@ -43,5 +43,14 @@ class InverterTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Inverter: typeof InverterTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Inverter: InverterTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Inverter = InverterTool;
 KiddoPaint.Tools.Inverter = new InverterTool();

@@ -24,3 +24,9 @@ KiddoPaint.Brushes.Raindrops = function (color1?: string) {
     },
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Raindrops(color1?: string): KidPixBrushFill;
+  }
+}

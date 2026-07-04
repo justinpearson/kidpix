@@ -64,5 +64,14 @@ class BrushTool implements KiddoPaintTool {
     }
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Brush: typeof BrushTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Brush: BrushTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Brush = BrushTool;
 KiddoPaint.Tools.Brush = new BrushTool();

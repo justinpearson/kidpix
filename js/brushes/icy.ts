@@ -31,3 +31,9 @@ KiddoPaint.Brushes.Icy = function (color1?: string) {
     offset: 0,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    Icy(color1?: string): KidPixBrushFill;
+  }
+}

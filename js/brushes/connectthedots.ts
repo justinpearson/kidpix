@@ -17,3 +17,9 @@ KiddoPaint.Brushes.ConnectTheDots = function (color1: string | undefined, step: 
     offset: 0,
   };
 };
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    ConnectTheDots(color1: string | undefined, step: number): KidPixBrushFill;
+  }
+}

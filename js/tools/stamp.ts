@@ -83,5 +83,14 @@ class StampTool implements KiddoPaintTool {
     KiddoPaint.Display.saveMain();
   };
 }
+declare global {
+  interface KiddoPaintToolbox {
+    Stamp: typeof StampTool;
+  }
+  interface KiddoPaintToolsRegistry {
+    Stamp: StampTool;
+  }
+}
+
 KiddoPaint.Tools.Toolbox.Stamp = StampTool;
 KiddoPaint.Tools.Stamp = new StampTool();

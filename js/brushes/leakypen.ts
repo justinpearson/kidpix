@@ -3,9 +3,10 @@ KiddoPaint.Brushes.LeakyPen = (function () {
   const baseSize = 3;
   const maxSize = Math.PI * baseSize * Math.E;
 
-  return function (color1: string | undefined, distPrev: number) {
+  return function (color1: string | undefined, distPrev: number | null) {
     color1 = color1 || "black";
-    if (distPrev < 2) {
+    // null coerced to 0 in the untyped version; keep that behavior
+    if ((distPrev ?? 0) < 2) {
       if (prevSize < maxSize) {
         prevSize += 0.15;
       }
@@ -40,3 +41,9 @@ KiddoPaint.Brushes.LeakyPen = (function () {
     };
   };
 })();
+
+declare global {
+  interface KiddoPaintBrushesRegistry {
+    LeakyPen(color1: string | undefined, distPrev: number | null): KidPixBrushFill;
+  }
+}
