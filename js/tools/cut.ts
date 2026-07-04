@@ -1,12 +1,15 @@
-KiddoPaint.Tools.Toolbox.Cut = function () {
-  var tool = this;
-  var sizex, sizey; // Declare variables to avoid global assignment
-  this.isDown = false;
-  this.length = 50;
-  this.width = 50;
-  this.size = function () {
-    const lx = tool.length;
-    const ly = tool.width;
+class CutTool implements KiddoPaintTool {
+  isDown = false;
+  length = 50;
+  width = 50;
+  stomp = true;
+  selectedData: ImageData | null = null;
+  x = 0;
+  y = 0;
+
+  size = () => {
+    const lx = this.length;
+    const ly = this.width;
     return {
       x:
         lx *
@@ -20,51 +23,48 @@ KiddoPaint.Tools.Toolbox.Cut = function () {
         ((KiddoPaint.Current.modifiedAltRange + 100) / 100),
     };
   };
-  this.stomp = true;
-  this.selectedData;
 
-  this.texture = function () {
-    return KiddoPaint.Textures.None();
-  };
+  texture: () => string | CanvasGradient | CanvasPattern = () =>
+    KiddoPaint.Textures.None();
 
-  this.mousedown = function (ev) {
+  mousedown = (ev: KidPixPointerEvent) => {
     KiddoPaint.Sounds.truckStart();
-    tool.isDown = true;
-    tool.x = ev._x;
-    tool.y = ev._y;
-    sizex = tool.size().x;
-    sizey = tool.size().y;
+    this.isDown = true;
+    this.x = ev._x;
+    this.y = ev._y;
+    const sizex = this.size().x;
+    const sizey = this.size().y;
     if (!KiddoPaint.Current.modifiedToggle) {
       // save previous capture to reuse; click and drag to reinstantiate
-      tool.selectedData = KiddoPaint.Display.main_context.getImageData(
+      this.selectedData = KiddoPaint.Display.main_context.getImageData(
         ev._x - sizex,
         ev._y - sizey,
         2 * sizex,
         2 * sizey,
       );
     }
-    tool.mousemove(ev);
+    this.mousemove(ev);
   };
 
-  this.mousemove = function (ev) {
-    sizex = tool.size().x;
-    sizey = tool.size().y;
+  mousemove = (ev: KidPixPointerEvent) => {
+    const sizex = this.size().x;
+    const sizey = this.size().y;
 
-    if (tool.stomp) {
+    if (this.stomp) {
       KiddoPaint.Display.clearTmp();
     }
 
     if (
-      tool.isDown ||
-      (KiddoPaint.Current.modifiedToggle && tool.selectedData)
+      this.isDown ||
+      (KiddoPaint.Current.modifiedToggle && this.selectedData)
     ) {
       KiddoPaint.Sounds.truckDuring();
       if (!KiddoPaint.Current.modifiedMeta) {
         // preview what a cut will look like
         KiddoPaint.Display.animContext.fillStyle = "white";
         KiddoPaint.Display.animContext.fillRect(
-          tool.x - sizex,
-          tool.y - sizey,
+          this.x - sizex,
+          this.y - sizey,
           2 * sizex,
           2 * sizey,
         );
@@ -72,7 +72,7 @@ KiddoPaint.Tools.Toolbox.Cut = function () {
         KiddoPaint.Display.clearAnim(); // cut preview if they change mind show underlying
       }
       KiddoPaint.Display.previewContext.putImageData(
-        tool.selectedData,
+        this.selectedData!,
         ev._x - sizex,
         ev._y - sizey,
       );
@@ -98,14 +98,14 @@ KiddoPaint.Tools.Toolbox.Cut = function () {
     }
   };
 
-  this.mouseup = function (ev) {
-    if (tool.isDown) {
+  mouseup = (ev: KidPixPointerEvent) => {
+    if (this.isDown) {
       KiddoPaint.Sounds.truckEnd();
-      sizex = tool.size().x;
-      sizey = tool.size().y;
-      tool.isDown = false;
+      const sizex = this.size().x;
+      const sizey = this.size().y;
+      this.isDown = false;
       KiddoPaint.Display.context.putImageData(
-        tool.selectedData,
+        this.selectedData!,
         ev._x - sizex,
         ev._y - sizey,
       );
@@ -117,8 +117,8 @@ KiddoPaint.Tools.Toolbox.Cut = function () {
       if (!KiddoPaint.Current.modifiedMeta) {
         // actually do the cut; and before placing the new pixels
         KiddoPaint.Display.main_context.clearRect(
-          tool.x - sizex,
-          tool.y - sizey,
+          this.x - sizex,
+          this.y - sizey,
           2 * sizex,
           2 * sizey,
         );
@@ -133,5 +133,6 @@ KiddoPaint.Tools.Toolbox.Cut = function () {
       KiddoPaint.Display.saveToLocalStorage();
     }
   };
-};
-KiddoPaint.Tools.Cut = new KiddoPaint.Tools.Toolbox.Cut();
+}
+KiddoPaint.Tools.Toolbox.Cut = CutTool;
+KiddoPaint.Tools.Cut = new CutTool();
