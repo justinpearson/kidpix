@@ -6,24 +6,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **Live App**: https://justinpearson.github.io/kidpix/
 - **Main Branch**: `main`
-- **Tech Stack**: JavaScript migrating to TypeScript (strict) + Vite + Vitest + Playwright; no framework
+- **Tech Stack**: TypeScript (strict) + Vite + Vitest + Playwright; no framework
 - **Dev Server**: `yarn dev` → http://localhost:5173/
 - **Verify before pushing**: `yarn type-check && yarn test && yarn build` (+ Playwright for risky changes)
-- **TypeScript Migration**: In progress (July 2026) — see `TS_MIGRATION_PLAN.md` and issue #62
+- **TypeScript Migration**: COMPLETE (July 2026) — see `TS_MIGRATION_PLAN.md`
 - **Feature Requests**: files in `prompts-TODO/` (move to `prompts-DONE/` when shipped)
 - **No Linting**: ESLint/Prettier deliberately removed
 
 ## Project Overview
 
-A web implementation of the classic 1989 Kid Pix drawing application, forked from Vikrum's kidpix.app. The code lives in `js/` as small modular files that populate a global `KiddoPaint` namespace, loaded as ES modules by `src/kidpix-main.js`.
+A web implementation of the classic 1989 Kid Pix drawing application, forked from Vikrum's kidpix.app. The code lives in `js/` as small modular TypeScript files that populate a global `KiddoPaint` namespace, loaded as ES modules by `src/kidpix-main.ts`.
 
-The current focus is an incremental file-by-file migration to TypeScript — **no framework**. A React migration was attempted twice and deliberately abandoned (see issue #62); the app is five stacked canvases plus a toolbar, and the drawing tools write pixels imperatively.
+The codebase was migrated file-by-file to TypeScript in July 2026 — **no framework**. A React migration was attempted twice and deliberately abandoned (see issue #62); the app is five stacked canvases plus a toolbar, and the drawing tools write pixels imperatively.
 
-## TypeScript Migration (in progress)
+## TypeScript (migrated July 2026)
 
-`TS_MIGRATION_PLAN.md` holds the full plan (per-file recipe, conversion order, milestone tracking in issue #62). The essentials:
+`TS_MIGRATION_PLAN.md` documents how the migration was done (per-file recipe, conversion order). The essentials:
 
-- Converted `.ts` files keep the `KiddoPaint.X = ...` global-namespace style; ambient declarations in `types/` (`kiddopaint.d.ts`, `window.d.ts`, `vendor.d.ts`) make everything type-check under `strict: true`. Plain `.js` files are invisible to `tsc` (no `allowJs`), so each converted file joins checking automatically.
+- Files keep the `KiddoPaint.X = ...` global-namespace style; ambient declarations in `types/` (`kiddopaint.d.ts`, `window.d.ts`, `vendor.d.ts`) make everything type-check under `strict: true`.
 - Tools are ES6 classes with **arrow-function fields** (`mousedown = (ev: KidPixPointerEvent) => {...}`), which reproduce the old `var tool = this` closure semantics. Registry assignments stay: `KiddoPaint.Tools.Toolbox.X = XTool; KiddoPaint.Tools.X = new XTool();`
 - Behavior preservation is the rule: pixel-perfect rendering (`imageSmoothingEnabled = false`), same sounds, same tool behavior.
 - Eight vendored third-party files in `js/util/` stay `.js` forever: glfx, fit-curve, kdtree, smooth, dither, douglas-peucker, smoke, filters. Type them only via `types/vendor.d.ts`. (fit-curve carries a small marked local patch attaching `window.fitCurve`.)
@@ -85,7 +85,7 @@ Because `test.yml` only runs on PRs, direct pushes to main are gated by local ve
 
 ### Global namespace
 
-An inline script in `index.html` creates `window.KiddoPaint` with its sub-namespaces (Tools, Brushes, Textures, Builders, Stamps, Sounds, Display, Colors, Current, Cache, Text, Sprite) **before** any module runs. `src/kidpix-main.js` then side-effect-imports every `js/` file in dependency order (util → init → tools → textures → submenus → brushes → builders → stamps → sounds) and calls `init_kiddo_paint()`. Converted files use extensionless imports there; vendored files keep `.js`.
+`js/init/namespace.ts` creates `window.KiddoPaint` with its sub-namespaces (Tools, Brushes, Textures, Builders, Stamps, Sounds, Display, Colors, Current, Cache, Text, Sprite); it is the first import of `src/kidpix-main.ts`, which then side-effect-imports every `js/` file in dependency order (util → init → tools → textures → submenus → brushes → builders → stamps → sounds) and calls `init_kiddo_paint()`. Vendored files keep their `.js` extension in imports (with sibling `export {}` type stubs).
 
 Ambient types for all of this live in `types/kiddopaint.d.ts` — including the accurate 23-property `KiddoPaint.Current`. Watch the naming trap: `Current.modifiedCtrl` is set by the **Command** key, `Current.modifiedMeta` by the **actual Control** key.
 
@@ -137,13 +137,13 @@ Brush factories (`KiddoPaint.Brushes.X`) return `KidPixBrushFill` objects (`{bru
 
 ## File Organization
 
-- `js/` — the app (~23k lines, mixed .ts/.js during migration)
+- `js/` — the app (~23k lines of TypeScript + 8 vendored .js libraries)
   - `js/tools/` — ~48 drawing tools · `js/brushes/` — 20 brush factories · `js/textures/` — fill patterns
   - `js/builders/` — shape builders · `js/submenus/` — submenu definitions · `js/stamps/` — stamp/text systems
   - `js/sounds/` — audio library · `js/util/` — display, colors, utils + the 8 vendored libs · `js/init/` — bootstrap, event dispatch, toolbar
 - `types/` — ambient TypeScript declarations (the namespace, window globals, vendored libs)
-- `src/` — `kidpix-main.js` (entry), `test-setup.ts`, `assets/` (Vite `publicDir`: images, sounds, css)
-- `index.html` — namespace bootstrap script, toolbar/canvas DOM, entry module tag
+- `src/` — `kidpix-main.ts` (entry), `test-setup.ts`, `assets/` (Vite `publicDir`: images, sounds, css)
+- `index.html` — toolbar/canvas DOM and the entry module tag
 - `tests/e2e/` — Playwright specs · `util/` — stamp spritesheets + metadata + verification page
 - `prompts-TODO/`, `prompts-DONE/` — feature request lifecycle
 - `scripts/` — dev utilities · `.github/workflows/` — CI/CD

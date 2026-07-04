@@ -1,6 +1,8 @@
-// Main entry point for KidPix JavaScript modules
-// This file imports all the modular JS files in the correct order
-// The global KiddoPaint object is initialized in index.html before this module loads
+// Main entry point for the KidPix modules.
+// Imports every js/ file in dependency order; the global KiddoPaint namespace
+// skeleton is created by the FIRST import below, before anything else runs.
+
+import "../js/init/namespace";
 
 // Import all modules in the correct dependency order
 // js/util/* (load utilities first since they are dependencies)
@@ -136,15 +138,11 @@ import "../js/sounds/sounds";
 // may fire before this module finishes evaluating. Handle both cases.
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", function () {
-    if (typeof init_kiddo_paint === "function") {
-      init_kiddo_paint();
-    }
+    window.init_kiddo_paint();
   });
 } else {
   // DOMContentLoaded already fired — init immediately
-  if (typeof init_kiddo_paint === "function") {
-    init_kiddo_paint();
-  }
+  window.init_kiddo_paint();
 }
 
 // Export the global object for potential future use

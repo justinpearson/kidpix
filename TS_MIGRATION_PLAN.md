@@ -1,6 +1,13 @@
 # TypeScript Migration Plan
 
-**Tracking issue:** [#62](https://github.com/justinpearson/kidpix/issues/62) · **Started:** July 2026 · **Decision: TypeScript only, no React.**
+**Tracking issue:** [#62](https://github.com/justinpearson/kidpix/issues/62) · **Started & completed:** July 2026 · **Decision: TypeScript only, no React.**
+
+> **STATUS: COMPLETE.** Every file under `js/` is TypeScript except the 8
+> vendored libraries; the entry point is `src/kidpix-main.ts`; the namespace
+> bootstrap lives in `js/init/namespace.ts`; `yarn type-check` is strict-green
+> and enforced in CI. Remaining niceties (tightening the loose registry
+> types in `types/kiddopaint.d.ts` to per-tool/brush shapes) are optional
+> follow-ups, marked TODO(ts) in place.
 
 ## Why TypeScript, why no framework
 

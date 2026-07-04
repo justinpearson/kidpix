@@ -9,27 +9,8 @@
     <link rel="icon" type="image/png" href="img/branding/kidpix.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-    <!-- Initialize global KiddoPaint namespace before modules load -->
-    <script>
-      // Initialize the global KiddoPaint namespace
-      window.KiddoPaint = {};
-      window.KiddoPaint.Tools = {};
-      window.KiddoPaint.Tools.Toolbox = {};
-      window.KiddoPaint.Textures = {};
-      window.KiddoPaint.Brushes = {};
-      window.KiddoPaint.Builders = {};
-      window.KiddoPaint.Stamps = {};
-      window.KiddoPaint.Sounds = {};
-      window.KiddoPaint.Display = {};
-      window.KiddoPaint.Colors = {};
-      window.KiddoPaint.Current = {};
-      window.KiddoPaint.Cache = {};
-      window.KiddoPaint.Text = {};
-      window.KiddoPaint.Sprite = {};
-    </script>
-
-    <!-- Bundled KidPix JavaScript modules -->
-    <script type="module" src="/src/kidpix-main.js"></script>
+    <!-- KidPix modules; the first import creates the KiddoPaint namespace -->
+    <script type="module" src="/src/kidpix-main.ts"></script>
   </head>
 
   <body>
