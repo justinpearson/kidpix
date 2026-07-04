@@ -1,14 +1,17 @@
-KiddoPaint.Tools.Toolbox.ThreeDBrush = function () {
-  var tool = this;
-  this.isDown = false;
-  this.size = function () {
+class ThreeDBrushTool implements KiddoPaintTool {
+  isDown = false;
+  previousEv: KidPixPointerEvent | null = null;
+  spacing = 3;
+  soundduring: () => void = () => {};
+
+  size = () => {
     return 16 * KiddoPaint.Current.scaling;
   };
-  this.previousEv = null;
-  this.spacing = 3;
-  this.soundduring = function () {};
-  this.texture = function () {
-    const shadecolor = colorNearWhite(color2json(KiddoPaint.Current.color))
+
+  texture: () => string | CanvasGradient | CanvasPattern = () => {
+    const shadecolor = window.colorNearWhite(
+      window.color2json(KiddoPaint.Current.color),
+    )
       ? "black"
       : "white";
     if (KiddoPaint.Current.modifiedAlt) {
@@ -22,42 +25,43 @@ KiddoPaint.Tools.Toolbox.ThreeDBrush = function () {
     }
   };
 
-  this.mousedown = function (ev) {
-    tool.isDown = true;
-    tool.mousemove(ev);
-    tool.previousEv = ev;
+  mousedown = (ev: KidPixPointerEvent) => {
+    this.isDown = true;
+    this.mousemove(ev);
+    this.previousEv = ev;
   };
 
-  this.mousemove = function (ev) {
-    if (tool.isDown) {
+  mousemove = (ev: KidPixPointerEvent) => {
+    if (this.isDown) {
       if (KiddoPaint.Current.modifiedToggle) {
-        ev._x = ev._x - (ev._x % tool.size());
-        ev._y = ev._y - (ev._y % tool.size());
+        ev._x = ev._x - (ev._x % this.size());
+        ev._y = ev._y - (ev._y % this.size());
       }
       if (
-        tool.previousEv == null ||
-        distanceBetween(tool.previousEv, ev) < tool.spacing
+        this.previousEv == null ||
+        window.distanceBetween(this.previousEv, ev) < this.spacing
       ) {
         KiddoPaint.Display.context.fillStyle = KiddoPaint.Current.color;
         KiddoPaint.Display.context.fillRect(
           Math.round(ev._x),
           Math.round(ev._y),
-          tool.size(),
-          tool.size(),
+          this.size(),
+          this.size(),
         );
 
-        KiddoPaint.Display.context.fillStyle = tool.texture();
+        KiddoPaint.Display.context.fillStyle = this.texture();
         KiddoPaint.Display.context.fillRect(
           Math.round(ev._x),
           Math.round(ev._y),
-          tool.size() / 2,
-          tool.size() / 2,
+          this.size() / 2,
+          this.size() / 2,
         );
-        tool.soundduring();
+        this.soundduring();
       } else {
-        bresenham(
-          tool.previousEv._x,
-          tool.previousEv._y,
+        const tool = this;
+        window.bresenham(
+          this.previousEv._x,
+          this.previousEv._y,
           ev._x,
           ev._y,
           function (lx, ly) {
@@ -80,17 +84,18 @@ KiddoPaint.Tools.Toolbox.ThreeDBrush = function () {
           },
         );
       }
-      tool.previousEv = ev;
+      this.previousEv = ev;
     }
   };
 
-  this.mouseup = function (ev) {
-    if (tool.isDown) {
-      tool.mousemove(ev);
-      tool.isDown = false;
-      tool.previousEv = null;
+  mouseup = (ev: KidPixPointerEvent) => {
+    if (this.isDown) {
+      this.mousemove(ev);
+      this.isDown = false;
+      this.previousEv = null;
       KiddoPaint.Display.saveMain();
     }
   };
-};
-KiddoPaint.Tools.ThreeDBrush = new KiddoPaint.Tools.Toolbox.ThreeDBrush();
+}
+KiddoPaint.Tools.Toolbox.ThreeDBrush = ThreeDBrushTool;
+KiddoPaint.Tools.ThreeDBrush = new ThreeDBrushTool();
