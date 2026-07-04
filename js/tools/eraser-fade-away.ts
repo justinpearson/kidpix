@@ -1,7 +1,6 @@
-KiddoPaint.Tools.Toolbox.EraserFadeAway = function () {
-  var tool = this;
-  this.mousedown = function (ev) {
-    var ctx = KiddoPaint.Display.context;
+class EraserFadeAwayTool implements KiddoPaintTool {
+  mousedown = () => {
+    const ctx = KiddoPaint.Display.context;
     setTimeout(function () {
       KiddoPaint.Sounds.eraserfadeb();
       ctx.fillStyle = KiddoPaint.Textures.Screen1();
@@ -43,7 +42,8 @@ KiddoPaint.Tools.Toolbox.EraserFadeAway = function () {
       KiddoPaint.Display.clearAll();
     }, 2000);
   };
-  this.mousemove = function (ev) {};
-  this.mouseup = function (ev) {};
-};
-KiddoPaint.Tools.EraserFadeAway = new KiddoPaint.Tools.Toolbox.EraserFadeAway();
+  mousemove = () => {};
+  mouseup = () => {};
+}
+KiddoPaint.Tools.Toolbox.EraserFadeAway = EraserFadeAwayTool;
+KiddoPaint.Tools.EraserFadeAway = new EraserFadeAwayTool();

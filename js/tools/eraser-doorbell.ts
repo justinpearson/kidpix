@@ -1,45 +1,47 @@
-KiddoPaint.Tools.Toolbox.Doorbell = function () {
-  var tool = this;
-  this.isDown = false;
-  this.leftside = {};
-  this.rightside = {};
-  this.centerGraphic = [
+class DoorbellTool implements KiddoPaintTool {
+  isDown = false;
+  leftside: ImageData | null = null;
+  rightside: ImageData | null = null;
+  centerGraphic = [
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAADIAQAAAADpJcE2AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAd2KE6QAAAAHdElNRQflCAMBLh5YUprGAAAA3ElEQVRYw+3YPQ6DMAyG4Q8xMPYI3KS5WEU4Wo7CERg9INwB0jb87S+ql0joWSJjy7GEitp9woM4SbX7jAZtv5zV2WUJoBmKrPV8sGYOCGxbRSMUlDl6JB4IknzU6+eXe8JBNHVYsNxuzqAyJFhizpIIbCd5oE25FbPBvnXdAxTljwM5bXcGCmjwmcTcRAXfLnc6wxCAbgOKQfhwKqaB6uiFggBrfpqBC5pBUphy+XfiAtXuxTKCBopvm2c8E0QTFSjmOx4sgjhA7kkKbqf7RwSQgnu6XAYjwD/o8QYamlM2v+DGWAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wOC0wM1QwMTo0NjowOCswMDowMGhjP2IAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDgtMDNUMDE6NDY6MDgrMDA6MDAZPofeAAAAAElFTkSuQmCC",
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAAC9AQAAAABKKqazAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAd2KE6QAAAAHdElNRQflCAMBLiXpWXPiAAABOklEQVRYw9XYMXKFIBCA4d+hsOQIHMWLOYTMu5hH4QiUFExIoUEx+JKOhcbis3CdZXcBykrHU3maq7erUL8nzdEO41gY1bGzX/Um0ldITBEVUJ7Zj+YqoIIF9JaYItIcvaEdwAIWec5S9p9xg7k98qPUt9lzzfPePkVUOOuC+Yyl2A3hezwqfwE6pyNeQY55hUt9mOI9Rfq6hfXSF4xr5Y9gb8crx/d+oPJe39LRL8bxvV9Uft+fXf2hn0hxXZJjzufwuAzjZ3wXb8bfycs8c3ojf+R6e54U5BhXn89+1bvOzgoq7ys9xCPaVbicL5/m944u/nzw9/kBPiIqbzzM752ddNSHN/cjXV36/ct/7mfqvibMsbe+NpD/FLeygiCfck7VPHG7Z+rsOmcPS/X5rzyOS/+/4vPzjX8DdoGgLPOs1MUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDgtMDNUMDE6NDY6MDgrMDA6MDBoYz9iAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTA4LTAzVDAxOjQ2OjA4KzAwOjAwGT6H3gAAAABJRU5ErkJggg==",
   ];
 
-  this.mousedown = function (ev) {
-    tool.isDown = true;
+  mousedown = (ev: KidPixPointerEvent) => {
+    this.isDown = true;
 
-    tool.leftside = KiddoPaint.Display.main_context.getImageData(
+    this.leftside = KiddoPaint.Display.main_context.getImageData(
       0,
       0,
       KiddoPaint.Display.main_canvas.width / 2,
       KiddoPaint.Display.main_canvas.height,
     );
-    tool.rightside = KiddoPaint.Display.main_context.getImageData(
+    this.rightside = KiddoPaint.Display.main_context.getImageData(
       KiddoPaint.Display.main_canvas.width / 2,
       0,
       KiddoPaint.Display.main_canvas.width / 2,
       KiddoPaint.Display.main_canvas.height,
     );
-    tool.animate(ev);
+    this.animate(ev);
   };
 
-  this.mousemove = function (ev) {};
+  mousemove = () => {};
 
-  this.mouseup = function (ev) {
-    if (tool.isDown) {
-      tool.isDown = false;
-      tool.leftside = {};
-      tool.rightside = {};
+  mouseup = () => {
+    if (this.isDown) {
+      this.isDown = false;
+      this.leftside = null;
+      this.rightside = null;
     }
   };
 
-  this.animate = function (ev) {
-    var iter = 1;
-    var right = flattenImage(tool.rightside);
-    var left = flattenImage(tool.leftside);
+  animate = (ev: KidPixPointerEvent) => {
+    const tool = this;
+    // set by mousedown immediately before animate() is called
+    if (!this.leftside || !this.rightside) return;
+    let iter = 1;
+    const right = window.flattenImage(this.rightside);
+    const left = window.flattenImage(this.leftside);
 
     KiddoPaint.Display.bnimContext.fillStyle = "white";
     KiddoPaint.Display.bnimContext.fillRect(
@@ -52,18 +54,18 @@ KiddoPaint.Tools.Toolbox.Doorbell = function () {
     image.src = KiddoPaint.Tools.EraserHiddenPicture.hiddenPictures.random();
     image.crossOrigin = "anonymous";
     image.onload = function () {
-      var wrh = image.width / image.height;
-      var newWidth = KiddoPaint.Display.canvas.width;
-      var newHeight = newWidth / wrh;
+      const wrh = image.width / image.height;
+      let newWidth = KiddoPaint.Display.canvas.width;
+      let newHeight = newWidth / wrh;
       if (newHeight > KiddoPaint.Display.canvas.height) {
         newHeight = KiddoPaint.Display.canvas.height;
         newWidth = newHeight * wrh;
       }
-      var xOffset =
+      const xOffset =
         newWidth < KiddoPaint.Display.canvas.width
           ? (KiddoPaint.Display.canvas.width - newWidth) / 2
           : 0;
-      var yOffset =
+      const yOffset =
         newHeight < KiddoPaint.Display.canvas.height
           ? (KiddoPaint.Display.canvas.height - newHeight) / 2
           : 0;
@@ -112,7 +114,7 @@ KiddoPaint.Tools.Toolbox.Doorbell = function () {
 
     KiddoPaint.Sounds.Library.pplaySingle("doordingdong").then(() => {
       KiddoPaint.Sounds.Library.playSingle("doorcreak"); // estimated duration: 2.153560 sec
-      var intervalID = setInterval(drawSlideOut, 20); // 20ms frames
+      const intervalID = setInterval(drawSlideOut, 20); // 20ms frames
       drawSlideOut();
 
       function drawSlideOut() {
@@ -136,18 +138,18 @@ KiddoPaint.Tools.Toolbox.Doorbell = function () {
     });
   };
 
-  this.animatenext = function (ev) {
+  animatenext = (_ev: KidPixPointerEvent) => {
     KiddoPaint.Sounds.Library.playSingle("doorwow"); // estimated duration: 1.337959 sec
 
-    var iter = 1;
+    let iter = 1;
 
-    var left = KiddoPaint.Display.bnimContext.getImageData(
+    const left = KiddoPaint.Display.bnimContext.getImageData(
       0,
       0,
       KiddoPaint.Display.main_canvas.width / 2,
       KiddoPaint.Display.main_canvas.height,
     );
-    var right = KiddoPaint.Display.bnimContext.getImageData(
+    const right = KiddoPaint.Display.bnimContext.getImageData(
       KiddoPaint.Display.main_canvas.width / 2,
       0,
       KiddoPaint.Display.main_canvas.width / 2,
@@ -163,7 +165,7 @@ KiddoPaint.Tools.Toolbox.Doorbell = function () {
 
     KiddoPaint.Display.clearBnim();
 
-    var intervalID = setInterval(drawSlideOut, 20); // 20ms frames
+    const intervalID = setInterval(drawSlideOut, 20); // 20ms frames
     drawSlideOut();
 
     function drawSlideOut() {
@@ -184,5 +186,6 @@ KiddoPaint.Tools.Toolbox.Doorbell = function () {
       }
     }
   };
-};
-KiddoPaint.Tools.Doorbell = new KiddoPaint.Tools.Toolbox.Doorbell();
+}
+KiddoPaint.Tools.Toolbox.Doorbell = DoorbellTool;
+KiddoPaint.Tools.Doorbell = new DoorbellTool();

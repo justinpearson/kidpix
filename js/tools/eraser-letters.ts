@@ -1,41 +1,41 @@
-KiddoPaint.Tools.Toolbox.EraserLetters = function () {
-  var tool = this;
-  this.isDown = false;
-  this.animInterval = 10;
-  this.timeout = null;
+class EraserLettersTool implements KiddoPaintTool {
+  isDown = false;
+  animInterval = 10;
+  timeout: ReturnType<typeof setTimeout> | null = null;
 
-  this.mousedown = function (ev) {
-    tool.isDown = true;
-    const interval = tool.animInterval;
-    tool.timeout = setTimeout(function draw() {
+  mousedown = () => {
+    this.isDown = true;
+    const tool = this;
+    const interval = this.animInterval;
+    this.timeout = setTimeout(function draw() {
       tool.toolDraw();
       if (!tool.timeout) return;
       tool.timeout = setTimeout(draw, interval);
     }, interval);
-    tool.toolDraw();
+    this.toolDraw();
   };
 
-  this.mousemove = function (ev) {};
+  mousemove = () => {};
 
-  this.mouseup = function (ev) {
-    if (tool.isDown) {
-      tool.isDown = false;
-      if (tool.timeout) {
-        clearTimeout(tool.timeout);
-        tool.timeout = null;
+  mouseup = () => {
+    if (this.isDown) {
+      this.isDown = false;
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+        this.timeout = null;
       }
       KiddoPaint.Display.clearAnim();
       KiddoPaint.Display.clearAll();
     }
   };
 
-  this.toolDraw = function () {
-    if (tool.isDown) {
+  toolDraw = () => {
+    if (this.isDown) {
       KiddoPaint.Sounds.mixershadowbox();
-      const rx = getRandomFloat(-10, KiddoPaint.Display.canvas.width);
-      const ry = getRandomFloat(-10, KiddoPaint.Display.canvas.height);
-      const rs = getRandomInt(24, 500);
-      const rl = getRandomLetter();
+      const rx = window.getRandomFloat(-10, KiddoPaint.Display.canvas.width);
+      const ry = window.getRandomFloat(-10, KiddoPaint.Display.canvas.height);
+      const rs = window.getRandomInt(24, 500);
+      const rl = window.getRandomLetter();
 
       KiddoPaint.Display.animContext.fillStyle = "white";
       KiddoPaint.Display.animContext.fillRect(rx, ry, rs / 2, rs / 2);
@@ -55,5 +55,6 @@ KiddoPaint.Tools.Toolbox.EraserLetters = function () {
       }
     }
   };
-};
-KiddoPaint.Tools.EraserLetters = new KiddoPaint.Tools.Toolbox.EraserLetters();
+}
+KiddoPaint.Tools.Toolbox.EraserLetters = EraserLettersTool;
+KiddoPaint.Tools.EraserLetters = new EraserLettersTool();
