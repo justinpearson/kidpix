@@ -33,6 +33,19 @@ interface KidPixRGBA {
 }
 
 /**
+ * The stamp object returned by brush factory functions
+ * (js/brushes/*, consumed by the PlainBrush/AnimBrush tools).
+ */
+interface KidPixBrushFill {
+  brush: HTMLCanvasElement;
+  offset: number;
+  /** Draw only at the cursor position instead of stamping along the path. */
+  inplace?: boolean;
+  /** Absolute position override (e.g. the Raindrops brush). */
+  abspos?: { x: number; y: number };
+}
+
+/**
  * The duck-typed tool contract. ev_canvas dispatches via
  * `KiddoPaint.Current.tool[ev.type]` for mousedown/mousemove/mouseup, and the
  * canvas mouseleave listener calls `tool.mouseup`. All handlers are optional —

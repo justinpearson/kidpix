@@ -661,3 +661,8 @@ class bezier {
     );
   }
 }
+
+// --- KidPix local patch (not upstream): as an ES module this file's
+// top-level function is module-scoped; expose it for the SmoothPen and
+// Bezfollow tools, which call it cross-module via the global. ---
+window.fitCurve = fitCurve;
