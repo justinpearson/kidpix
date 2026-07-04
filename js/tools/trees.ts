@@ -1,10 +1,9 @@
 // this & maze can be refactored to a generic tool that takes a lambda
-KiddoPaint.Tools.Toolbox.Tree = function () {
-  var tool = this;
-  this.isDown = false;
+class TreeTool implements KiddoPaintTool {
+  isDown = false;
 
-  this.mousedown = function (ev) {
-    tool.isDown = true;
+  mousedown = (ev: KidPixPointerEvent) => {
+    this.isDown = true;
     KiddoPaint.Sounds.brushtree();
     drawTree(
       ev._x,
@@ -17,18 +16,19 @@ KiddoPaint.Tools.Toolbox.Tree = function () {
     // drawTree(ev._x, ev._y, 180 * KiddoPaint.Current.scaling, 0, 12, 15) // big tree at 3 o'clock
   };
 
-  this.mousemove = function (ev) {};
+  mousemove = () => {};
 
-  this.mouseup = function (ev) {
-    if (tool.isDown) {
-      tool.isDown = false;
+  mouseup = () => {
+    if (this.isDown) {
+      this.isDown = false;
       KiddoPaint.Display.saveMain();
     }
   };
-};
-KiddoPaint.Tools.Tree = new KiddoPaint.Tools.Toolbox.Tree();
+}
+KiddoPaint.Tools.Toolbox.Tree = TreeTool;
+KiddoPaint.Tools.Tree = new TreeTool();
 
-function hexToRgb(hex) {
+function hexToRgb(hex: string) {
   // Parse a string like "#22FFFF" into red, green, blue components, each from 0 to 255.
   // Remove the leading '#' if it exists
   hex = hex.replace(/^#/, "");
@@ -51,20 +51,21 @@ drawTree(750, 600, 60, -Math.PI / 2, 12, 15);
 */
 
 // https://github.com/PavlyukVadim/amadev/tree/master/RecursiveTree
-function drawTree(startX, startY, length, angle, depth, branchWidth) {
-  var newLength,
-    newAngle,
-    newDepth,
-    maxBranch = 3,
-    endX,
-    endY,
-    maxAngle = (2 * Math.PI) / 6,
-    subBranches;
+function drawTree(
+  startX: number,
+  startY: number,
+  length: number,
+  angle: number,
+  depth: number,
+  branchWidth: number,
+) {
+  const maxBranch = 3;
+  const maxAngle = (2 * Math.PI) / 6;
 
   KiddoPaint.Display.context.beginPath();
   KiddoPaint.Display.context.moveTo(startX, startY);
-  endX = startX + length * Math.cos(angle);
-  endY = startY + length * Math.sin(angle);
+  const endX = startX + length * Math.cos(angle);
+  const endY = startY + length * Math.sin(angle);
   KiddoPaint.Display.context.lineCap = "round";
   KiddoPaint.Display.context.lineWidth = branchWidth;
   KiddoPaint.Display.context.lineTo(endX, endY);
@@ -116,10 +117,10 @@ function drawTree(startX, startY, length, angle, depth, branchWidth) {
   })();
 
   if (rgb) {
-    const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+    const hsl = window.rgbToHsl(rgb.r, rgb.g, rgb.b);
     // brighten (inc lightness) of leaves (depth<=2)
     // darken (dec lightness) of trunk (depth>2)
-    const newLightness = clamp(
+    const newLightness = window.clamp(
       hsl.l + (depth <= 2 ? 1 : -1) * Math.random() * 0.25,
       0,
       1,
@@ -129,24 +130,24 @@ function drawTree(startX, startY, length, angle, depth, branchWidth) {
       s: hsl.s,
       l: newLightness,
     };
-    const rgb2 = hslToRgb(hsl2.h, hsl2.s, hsl2.l);
+    const rgb2 = window.hslToRgb(hsl2.h, hsl2.s, hsl2.l);
     newColor = `rgb(${rgb2.r},${rgb2.g},${rgb2.b})`;
     // console.log('potato', newColor);
   }
   KiddoPaint.Display.context.strokeStyle = newColor;
 
   KiddoPaint.Display.context.stroke();
-  newDepth = depth - 1;
+  const newDepth = depth - 1;
 
   if (!newDepth) {
     return;
   }
-  subBranches = Math.random() * (maxBranch - 1) + 1;
+  const subBranches = Math.random() * (maxBranch - 1) + 1;
   branchWidth *= 0.7;
 
-  for (var i = 0; i < subBranches; i++) {
-    newAngle = angle + Math.random() * maxAngle - maxAngle * 0.5;
-    newLength = length * (0.7 + Math.random() * 0.3);
+  for (let i = 0; i < subBranches; i++) {
+    const newAngle = angle + Math.random() * maxAngle - maxAngle * 0.5;
+    const newLength = length * (0.7 + Math.random() * 0.3);
     drawTree(endX, endY, newLength, newAngle, newDepth, branchWidth);
   }
 }

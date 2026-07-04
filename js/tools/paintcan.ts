@@ -1,50 +1,48 @@
-KiddoPaint.Tools.Toolbox.PaintCan = function () {
-  var tool = this;
-  this.gcop = "destination-in";
-  this.texture = function (color) {
-    return KiddoPaint.Textures.Solid(KiddoPaint.Current.color);
-  };
+class PaintCanTool implements KiddoPaintTool {
+  gcop: GlobalCompositeOperation = "destination-in";
+  texture: (color?: string) => string | CanvasGradient | CanvasPattern = () =>
+    KiddoPaint.Textures.Solid(KiddoPaint.Current.color);
 
-  this.mousedown = function (ev) {
+  mousedown = (ev: KidPixPointerEvent) => {
     if (KiddoPaint.Current.modifiedAlt) {
-      tool.canvasWideReplace(ev);
+      this.canvasWideReplace(ev);
     } else {
-      tool.boundedFill(ev);
+      this.boundedFill(ev);
     }
   };
 
-  this.canvasWideReplace = function (ev) {
+  canvasWideReplace = (ev: KidPixPointerEvent) => {
     KiddoPaint.Sounds.paintcan();
-    var x = ev._x;
-    var y = ev._y;
+    const x = ev._x;
+    const y = ev._y;
 
-    var pixels = KiddoPaint.Display.main_context.getImageData(
+    const pixels = KiddoPaint.Display.main_context.getImageData(
       0,
       0,
       KiddoPaint.Display.canvas.width,
       KiddoPaint.Display.canvas.height,
     );
-    var changedPixels = new ImageData(
+    const changedPixels = new ImageData(
       KiddoPaint.Display.canvas.width,
       KiddoPaint.Display.canvas.height,
     );
 
-    var linear_cords = (y * KiddoPaint.Display.canvas.width + x) * 4;
-    var original_color = {
+    const linear_cords = (y * KiddoPaint.Display.canvas.width + x) * 4;
+    const original_color = {
       r: pixels.data[linear_cords],
       g: pixels.data[linear_cords + 1],
       b: pixels.data[linear_cords + 2],
       a: pixels.data[linear_cords + 3],
     };
 
-    var color = color2json(KiddoPaint.Current.color);
+    const color = window.color2json(KiddoPaint.Current.color);
 
-    if (colorsEqual(color, original_color)) {
+    if (window.colorsEqual(color, original_color)) {
       return;
     }
 
-    var d = pixels.data;
-    for (var i = 0; i < d.length; i += 4) {
+    const d = pixels.data;
+    for (let i = 0; i < d.length; i += 4) {
       if (
         pixels.data[i] == original_color.r &&
         pixels.data[i + 1] == original_color.g &&
@@ -58,8 +56,8 @@ KiddoPaint.Tools.Toolbox.PaintCan = function () {
       }
     }
     KiddoPaint.Display.context.putImageData(changedPixels, 0, 0);
-    KiddoPaint.Display.context.globalCompositeOperation = tool.gcop;
-    KiddoPaint.Display.context.fillStyle = tool.texture(
+    KiddoPaint.Display.context.globalCompositeOperation = this.gcop;
+    KiddoPaint.Display.context.fillStyle = this.texture(
       KiddoPaint.Current.color,
     );
     KiddoPaint.Display.context.fillRect(
@@ -72,49 +70,49 @@ KiddoPaint.Tools.Toolbox.PaintCan = function () {
     KiddoPaint.Display.saveMain();
   };
 
-  this.boundedFill = function (ev) {
+  boundedFill = (ev: KidPixPointerEvent) => {
     KiddoPaint.Sounds.paintcan();
-    var x = ev._x;
-    var y = ev._y;
-    var pixel_stack = [
+    let x = ev._x;
+    let y = ev._y;
+    const pixel_stack = [
       {
         x: x,
         y: y,
       },
     ];
-    var touched = [];
+    const touched: number[] = [];
     // read from main_context for underlying pixels
-    var pixels = KiddoPaint.Display.main_context.getImageData(
+    const pixels = KiddoPaint.Display.main_context.getImageData(
       0,
       0,
       KiddoPaint.Display.canvas.width,
       KiddoPaint.Display.canvas.height,
     );
-    var changedPixels = new ImageData(
+    const changedPixels = new ImageData(
       KiddoPaint.Display.canvas.width,
       KiddoPaint.Display.canvas.height,
     );
 
-    var linear_cords = (y * KiddoPaint.Display.canvas.width + x) * 4;
-    var original_color = {
+    let linear_cords = (y * KiddoPaint.Display.canvas.width + x) * 4;
+    const original_color = {
       r: pixels.data[linear_cords],
       g: pixels.data[linear_cords + 1],
       b: pixels.data[linear_cords + 2],
       a: pixels.data[linear_cords + 3],
     };
 
-    var color = color2json(KiddoPaint.Current.color);
+    const color = window.color2json(KiddoPaint.Current.color);
 
-    if (colorsEqual(color, original_color)) {
+    if (window.colorsEqual(color, original_color)) {
       return;
     }
 
     while (pixel_stack.length > 0) {
-      var new_pixel = pixel_stack.shift();
+      const new_pixel = pixel_stack.shift()!;
       x = new_pixel.x;
       y = new_pixel.y;
 
-      var linear_cords = (y * KiddoPaint.Display.canvas.width + x) * 4;
+      linear_cords = (y * KiddoPaint.Display.canvas.width + x) * 4;
       while (
         y-- >= 0 &&
         pixels.data[linear_cords] == original_color.r &&
@@ -127,8 +125,8 @@ KiddoPaint.Tools.Toolbox.PaintCan = function () {
       linear_cords += KiddoPaint.Display.canvas.width * 4;
       y++;
 
-      var reached_left = false;
-      var reached_right = false;
+      let reached_left = false;
+      let reached_right = false;
       while (
         y++ < KiddoPaint.Display.canvas.height &&
         pixels.data[linear_cords] == original_color.r &&
@@ -192,8 +190,8 @@ KiddoPaint.Tools.Toolbox.PaintCan = function () {
       changedPixels.data[l + 3] = color.a;
     }
     KiddoPaint.Display.context.putImageData(changedPixels, 0, 0);
-    KiddoPaint.Display.context.globalCompositeOperation = tool.gcop;
-    KiddoPaint.Display.context.fillStyle = tool.texture(
+    KiddoPaint.Display.context.globalCompositeOperation = this.gcop;
+    KiddoPaint.Display.context.fillStyle = this.texture(
       KiddoPaint.Current.color,
     );
     KiddoPaint.Display.context.fillRect(
@@ -206,7 +204,8 @@ KiddoPaint.Tools.Toolbox.PaintCan = function () {
     KiddoPaint.Display.saveMain(); // corrupts alpha
   };
 
-  this.mousemove = function (ev) {};
-  this.mouseup = function (ev) {};
-};
-KiddoPaint.Tools.PaintCan = new KiddoPaint.Tools.Toolbox.PaintCan();
+  mousemove = () => {};
+  mouseup = () => {};
+}
+KiddoPaint.Tools.Toolbox.PaintCan = PaintCanTool;
+KiddoPaint.Tools.PaintCan = new PaintCanTool();

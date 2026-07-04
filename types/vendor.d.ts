@@ -9,6 +9,15 @@
 // actually consume them — do not add speculative declarations. Keep this file
 // ambient (no top-level import/export) so declarations stay global.
 
+/** A k-d tree over {x,y} points, from js/util/kdtree.js (ubilabs, UMD). */
+interface KidPixKdTree {
+  /** Returns up to maxNodes nearest [point, distance] pairs. */
+  nearest(
+    point: { x: number; y: number },
+    maxNodes: number,
+  ): [{ x: number; y: number }, number][];
+}
+
 /** A running smoke-particle emitter from js/util/smoke.js. */
 interface KidPixSmokeMachine {
   start(): void;
@@ -49,4 +58,23 @@ interface Window {
    * canvas is deliberately untyped — the vendored API surface is large.
    */
   fx: { canvas(): any };
+
+  /**
+   * js/util/dither.js (NielsLeenheer/CanvasDither singleton). Each method
+   * dithers the ImageData in place and returns it. Exposed via a marked
+   * local patch at the end of the vendored file.
+   */
+  Dither: {
+    threshold(image: ImageData, threshold: number): ImageData;
+    bayer(image: ImageData, threshold: number): ImageData;
+    floydsteinberg(image: ImageData): ImageData;
+    atkinson(image: ImageData): ImageData;
+  };
+
+  /** js/util/kdtree.js constructor. */
+  kdTree: new (
+    points: { x: number; y: number }[],
+    distance: (a: { x: number; y: number }, b: { x: number; y: number }) => number,
+    dimensions: string[],
+  ) => KidPixKdTree;
 }

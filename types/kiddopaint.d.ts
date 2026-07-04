@@ -114,8 +114,8 @@ interface KiddoPaintCurrent {
   velocity: number;
   /** Velocity-derived size multiplier. */
   velocityMultiplier: number;
-  /** Ephemeral kd-tree used only by the Spiral tool (js/tools/spiral.js). */
-  kdspiral?: unknown; // TODO(ts): type via types/vendor.d.ts kdTree when spiral.js converts (M9)
+  /** Ephemeral kd-tree used only by the Spiral tool (js/tools/spiral.ts). */
+  kdspiral?: KidPixKdTree;
 }
 
 /**

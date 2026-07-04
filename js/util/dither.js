@@ -165,3 +165,8 @@ class CanvasDither {
 }
 
 var Dither = new CanvasDither();
+
+// --- KidPix local patch (not upstream): as an ES module this file's
+// top-level var is module-scoped; expose the singleton for the
+// WholeCanvasEffect (jumble) tool's dither/threshold effects. ---
+window.Dither = Dither;
