@@ -1,46 +1,46 @@
-KiddoPaint.Tools.Toolbox.MixerWallpaper = function () {
-  var tool = this;
-  this.isDown = false;
-  this.animInterval = 50;
-  this.timeout = null;
-  this.currentEv = null;
+class MixerWallpaperTool implements KiddoPaintTool {
+  isDown = false;
+  animInterval = 50;
+  timeout: ReturnType<typeof setTimeout> | null = null;
+  currentEv: KidPixPointerEvent | null = null;
 
-  this.mousedown = function (ev) {
-    tool.isDown = true;
-    tool.currentEv = ev;
+  mousedown = (ev: KidPixPointerEvent) => {
+    this.isDown = true;
+    this.currentEv = ev;
     KiddoPaint.Display.context.save();
-    KiddoPaint.Display.canvas.classList = "";
+    KiddoPaint.Display.canvas.className = "";
     KiddoPaint.Display.canvas.classList.add("cursor-guy-wow");
-    const interval = tool.animInterval;
-    tool.timeout = setTimeout(function draw() {
+    const tool = this;
+    const interval = this.animInterval;
+    this.timeout = setTimeout(function draw() {
       tool.toolDraw();
       if (!tool.timeout) return;
       tool.timeout = setTimeout(draw, interval);
     }, interval);
-    tool.toolDraw();
+    this.toolDraw();
   };
 
-  this.mousemove = function (ev) {
-    tool.currentEv = ev;
+  mousemove = (ev: KidPixPointerEvent) => {
+    this.currentEv = ev;
   };
 
-  this.mouseup = function (ev) {
-    if (tool.isDown) {
-      tool.isDown = false;
+  mouseup = () => {
+    if (this.isDown) {
+      this.isDown = false;
       KiddoPaint.Display.context.restore();
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
-      if (tool.timeout) {
-        clearTimeout(tool.timeout);
-        tool.timeout = null;
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+        this.timeout = null;
       }
       KiddoPaint.Display.clearAnim();
       KiddoPaint.Display.clearBeforeSaveMain();
     }
   };
 
-  this.toolDraw = function () {
-    if (tool.isDown) {
+  toolDraw = () => {
+    if (this.isDown && this.currentEv) {
       KiddoPaint.Sounds.mixerwallpaper();
       // alpha hide hack
       KiddoPaint.Display.animContext.fillStyle = "white";
@@ -52,13 +52,13 @@ KiddoPaint.Tools.Toolbox.MixerWallpaper = function () {
       );
 
       // random source
-      const rx = tool.currentEv._x;
-      const ry = tool.currentEv._y;
+      const rx = this.currentEv._x;
+      const ry = this.currentEv._y;
 
       const rwidth = KiddoPaint.Display.canvas.width / 3.0;
       const rheight = KiddoPaint.Display.canvas.height / 3.0;
 
-      var sourceImage = KiddoPaint.Display.main_context.getImageData(
+      const sourceImage = KiddoPaint.Display.main_context.getImageData(
         rx,
         ry,
         rwidth,
@@ -70,12 +70,13 @@ KiddoPaint.Tools.Toolbox.MixerWallpaper = function () {
           // kidpix has this jitter which decays the edges....
           KiddoPaint.Display.context.putImageData(
             sourceImage,
-            rwidth * i + getRandomInt(1, 4),
-            rheight * j + getRandomInt(1, 4),
+            rwidth * i + window.getRandomInt(1, 4),
+            rheight * j + window.getRandomInt(1, 4),
           );
         }
       }
     }
   };
-};
-KiddoPaint.Tools.MixerWallpaper = new KiddoPaint.Tools.Toolbox.MixerWallpaper();
+}
+KiddoPaint.Tools.Toolbox.MixerWallpaper = MixerWallpaperTool;
+KiddoPaint.Tools.MixerWallpaper = new MixerWallpaperTool();

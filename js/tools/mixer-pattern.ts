@@ -1,6 +1,5 @@
-KiddoPaint.Tools.Toolbox.MixerPattern = function () {
-  var tool = this;
-  this.patternImages = [
+class MixerPatternTool implements KiddoPaintTool {
+  patternImages = [
     "img/patterns/kidpix-mixer-pattern-206.png",
     "img/patterns/kidpix-mixer-pattern-207.png",
     "img/patterns/kidpix-mixer-pattern-208.png",
@@ -27,18 +26,19 @@ KiddoPaint.Tools.Toolbox.MixerPattern = function () {
     "img/patterns/kidpix-mixer-pattern-229.png",
     "img/patterns/kidpix-mixer-pattern-230.png",
   ];
-  this.mousedown = function (ev) {
+
+  mousedown = () => {
     KiddoPaint.Sounds.mixerframe();
     const image = new Image();
-    image.src = tool.patternImages.random();
+    image.src = this.patternImages.random();
     image.crossOrigin = "anonymous";
     image.onload = function () {
-      var ctx = KiddoPaint.Display.context;
+      const ctx = KiddoPaint.Display.context;
       ctx.imageSmoothingEnabled = false;
       ctx.fillStyle = ctx.createPattern(
-        scaleImageDataCanvasAPIPixelated(image, 4),
+        window.scaleImageDataCanvasAPIPixelated(image, 4),
         "repeat",
-      );
+      )!;
       ctx.fillRect(
         0,
         0,
@@ -48,7 +48,8 @@ KiddoPaint.Tools.Toolbox.MixerPattern = function () {
       KiddoPaint.Display.saveMain();
     };
   };
-  this.mousemove = function (ev) {};
-  this.mouseup = function (ev) {};
-};
-KiddoPaint.Tools.MixerPattern = new KiddoPaint.Tools.Toolbox.MixerPattern();
+  mousemove = () => {};
+  mouseup = () => {};
+}
+KiddoPaint.Tools.Toolbox.MixerPattern = MixerPatternTool;
+KiddoPaint.Tools.MixerPattern = new MixerPatternTool();

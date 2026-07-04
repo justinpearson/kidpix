@@ -1,41 +1,42 @@
-KiddoPaint.Tools.Toolbox.MixerInverter = function () {
-  var tool = this;
-  this.isDown = false;
-  this.leftside = {};
-  this.rightside = {};
+class MixerInverterTool implements KiddoPaintTool {
+  isDown = false;
+  leftside: ImageData | null = null;
+  rightside: ImageData | null = null;
 
-  this.mousedown = function (ev) {
-    tool.isDown = true;
+  mousedown = (ev: KidPixPointerEvent) => {
+    this.isDown = true;
 
-    tool.leftside = KiddoPaint.Display.main_context.getImageData(
+    this.leftside = KiddoPaint.Display.main_context.getImageData(
       0,
       0,
       KiddoPaint.Display.main_canvas.width / 2,
       KiddoPaint.Display.main_canvas.height,
     );
-    tool.rightside = KiddoPaint.Display.main_context.getImageData(
+    this.rightside = KiddoPaint.Display.main_context.getImageData(
       KiddoPaint.Display.main_canvas.width / 2,
       0,
       KiddoPaint.Display.main_canvas.width / 2,
       KiddoPaint.Display.main_canvas.height,
     );
-    tool.animate(ev);
+    this.animate(ev);
   };
 
-  this.mousemove = function (ev) {};
+  mousemove = () => {};
 
-  this.mouseup = function (ev) {
-    if (tool.isDown) {
-      tool.isDown = false;
-      tool.leftside = {};
-      tool.rightside = {};
+  mouseup = () => {
+    if (this.isDown) {
+      this.isDown = false;
+      this.leftside = null;
+      this.rightside = null;
     }
   };
 
-  this.animate = function (ev) {
-    var iter = 1;
-    var right = flattenImage(tool.rightside);
-    var left = flattenImage(tool.leftside);
+  animate = (ev: KidPixPointerEvent) => {
+    // set by mousedown immediately before animate() is called
+    if (!this.leftside || !this.rightside) return;
+    let iter = 1;
+    const right = window.flattenImage(this.rightside);
+    const left = window.flattenImage(this.leftside);
 
     KiddoPaint.Display.animContext.putImageData(left, 0, 0);
     KiddoPaint.Display.animContext.putImageData(
@@ -44,13 +45,13 @@ KiddoPaint.Tools.Toolbox.MixerInverter = function () {
       0,
     );
 
-    KiddoPaint.Tools.WholeCanvasEffect.effect = JumbleFx.INVERT;
+    KiddoPaint.Tools.WholeCanvasEffect.effect = window.JumbleFx.INVERT;
     KiddoPaint.Tools.WholeCanvasEffect.mousedown(ev);
     KiddoPaint.Tools.WholeCanvasEffect.mouseup(ev);
 
     KiddoPaint.Sounds.mixerinvert(); // estimated duration: 1.393107 sec
 
-    var intervalID = setInterval(drawSlideOut, 20); // 20ms frames
+    const intervalID = setInterval(drawSlideOut, 20); // 20ms frames
     drawSlideOut();
 
     function drawSlideOut() {
@@ -71,5 +72,6 @@ KiddoPaint.Tools.Toolbox.MixerInverter = function () {
       }
     }
   };
-};
-KiddoPaint.Tools.MixerInverter = new KiddoPaint.Tools.Toolbox.MixerInverter();
+}
+KiddoPaint.Tools.Toolbox.MixerInverter = MixerInverterTool;
+KiddoPaint.Tools.MixerInverter = new MixerInverterTool();

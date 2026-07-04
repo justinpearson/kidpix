@@ -1,26 +1,25 @@
-KiddoPaint.Tools.Toolbox.MixerPip = function () {
-  var tool = this;
-  this.isDown = false;
+class MixerPipTool implements KiddoPaintTool {
+  isDown = false;
 
-  this.mousedown = function (ev) {
-    tool.isDown = true;
+  mousedown = () => {
+    this.isDown = true;
     KiddoPaint.Sounds.mixerpip();
   };
 
-  this.mousemove = function (ev) {};
+  mousemove = () => {};
 
-  this.mouseup = function (ev) {
-    if (tool.isDown) {
+  mouseup = () => {
+    if (this.isDown) {
       KiddoPaint.Sounds.mixershadowbox();
-      tool.isDown = false;
-      var target = KiddoPaint.Display.main_context.getImageData(
+      this.isDown = false;
+      const target = KiddoPaint.Display.main_context.getImageData(
         0,
         0,
         KiddoPaint.Display.canvas.width,
         KiddoPaint.Display.canvas.height,
       );
       KiddoPaint.Tools.Placer.image = KiddoPaint.Display.imageTypeToCanvas(
-        scaleImageData(target, 1.0 / 5.0),
+        window.scaleImageData(target, 1.0 / 5.0),
         false,
       );
       KiddoPaint.Tools.Placer.size = {
@@ -31,5 +30,6 @@ KiddoPaint.Tools.Toolbox.MixerPip = function () {
       KiddoPaint.Tools.Placer.prevTool = KiddoPaint.Tools.MixerPip;
     }
   };
-};
-KiddoPaint.Tools.MixerPip = new KiddoPaint.Tools.Toolbox.MixerPip();
+}
+KiddoPaint.Tools.Toolbox.MixerPip = MixerPipTool;
+KiddoPaint.Tools.MixerPip = new MixerPipTool();

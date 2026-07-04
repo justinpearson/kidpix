@@ -68,13 +68,13 @@ import "../js/tools/stamp.js";
 import "../js/tools/three3d.js";
 import "../js/tools/tnt.js";
 import "../js/tools/trees.js";
-import "../js/tools/mixer-checkerboard.js";
-import "../js/tools/mixer-inverter.js";
-import "../js/tools/mixer-pattern.js";
-import "../js/tools/mixer-pip.js";
-import "../js/tools/mixer-shadow-boxes.js";
-import "../js/tools/mixer-venetian-blinds.js";
-import "../js/tools/mixer-wallpaper.js";
+import "../js/tools/mixer-checkerboard";
+import "../js/tools/mixer-inverter";
+import "../js/tools/mixer-pattern";
+import "../js/tools/mixer-pip";
+import "../js/tools/mixer-shadow-boxes";
+import "../js/tools/mixer-venetian-blinds";
+import "../js/tools/mixer-wallpaper";
 import "../js/tools/wholefx.js";
 
 // js/textures/*

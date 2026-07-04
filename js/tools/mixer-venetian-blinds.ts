@@ -1,46 +1,46 @@
-KiddoPaint.Tools.Toolbox.MixerVenetianBlinds = function () {
-  var tool = this;
-  this.isDown = false;
-  this.animInterval = 100;
-  this.timeout = null;
-  this.currentEv = null;
+class MixerVenetianBlindsTool implements KiddoPaintTool {
+  isDown = false;
+  animInterval = 100;
+  timeout: ReturnType<typeof setTimeout> | null = null;
+  currentEv: KidPixPointerEvent | null = null;
 
-  this.mousedown = function (ev) {
-    tool.isDown = true;
-    tool.currentEv = ev;
+  mousedown = (ev: KidPixPointerEvent) => {
+    this.isDown = true;
+    this.currentEv = ev;
     KiddoPaint.Display.context.save();
-    KiddoPaint.Display.canvas.classList = "";
+    KiddoPaint.Display.canvas.className = "";
     KiddoPaint.Display.canvas.classList.add("cursor-guy-wow");
-    const interval = tool.animInterval;
-    tool.timeout = setTimeout(function draw() {
+    const tool = this;
+    const interval = this.animInterval;
+    this.timeout = setTimeout(function draw() {
       tool.toolDraw();
       if (!tool.timeout) return;
       tool.timeout = setTimeout(draw, interval);
     }, interval);
-    tool.toolDraw();
+    this.toolDraw();
   };
 
-  this.mousemove = function (ev) {
-    tool.currentEv = ev;
+  mousemove = (ev: KidPixPointerEvent) => {
+    this.currentEv = ev;
   };
 
-  this.mouseup = function (ev) {
-    if (tool.isDown) {
-      tool.isDown = false;
+  mouseup = () => {
+    if (this.isDown) {
+      this.isDown = false;
       KiddoPaint.Display.context.restore();
-      KiddoPaint.Display.canvas.classList = "";
+      KiddoPaint.Display.canvas.className = "";
       KiddoPaint.Display.canvas.classList.add("cursor-guy-smile");
-      if (tool.timeout) {
-        clearTimeout(tool.timeout);
-        tool.timeout = null;
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+        this.timeout = null;
       }
       KiddoPaint.Display.clearAnim();
       KiddoPaint.Display.clearBeforeSaveMain();
     }
   };
 
-  this.toolDraw = function () {
-    if (tool.isDown) {
+  toolDraw = () => {
+    if (this.isDown) {
       KiddoPaint.Sounds.mixervenetian();
       // alpha hide hack
       KiddoPaint.Display.animContext.fillStyle = "white";
@@ -54,9 +54,9 @@ KiddoPaint.Tools.Toolbox.MixerVenetianBlinds = function () {
       const rwidth = KiddoPaint.Display.canvas.width;
       const rheight = KiddoPaint.Display.canvas.height / 10;
 
-      const blinds = [];
+      const blinds: ImageData[] = [];
       for (let i = 0; i < 10; i++) {
-        var sourceImage = KiddoPaint.Display.main_context.getImageData(
+        const sourceImage = KiddoPaint.Display.main_context.getImageData(
           0,
           rheight * i,
           rwidth,
@@ -65,13 +65,13 @@ KiddoPaint.Tools.Toolbox.MixerVenetianBlinds = function () {
         blinds[i] = sourceImage;
       }
 
-      fisherYatesArrayShuffle(blinds);
+      window.fisherYatesArrayShuffle(blinds);
 
       for (let i = 0; i < 10; i++) {
         KiddoPaint.Display.context.putImageData(blinds[i], 0, rheight * i);
       }
     }
   };
-};
-KiddoPaint.Tools.MixerVenetianBlinds =
-  new KiddoPaint.Tools.Toolbox.MixerVenetianBlinds();
+}
+KiddoPaint.Tools.Toolbox.MixerVenetianBlinds = MixerVenetianBlindsTool;
+KiddoPaint.Tools.MixerVenetianBlinds = new MixerVenetianBlindsTool();
